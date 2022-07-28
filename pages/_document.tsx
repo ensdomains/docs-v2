@@ -1,4 +1,4 @@
-import { SkipNavLink } from '@reach/skip-nav';
+// import { SkipNavLink } from '@reach/skip-nav';
 import { Head, Html, Main, NextScript } from 'next/document';
 import React, { FC } from 'react';
 
@@ -7,7 +7,7 @@ const Document: FC = () => {
         <Html lang="en">
             <Head />
             <body>
-                <SkipNavLink />
+                {/* <SkipNavLink /> */}
                 <Main />
                 <NextScript />
             </body>
