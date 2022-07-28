@@ -7,8 +7,8 @@ import { ThemeProvider } from 'next-themes';
 import React, { useMemo, useState } from 'react';
 import innerText from 'react-innertext';
 
+import Head from '../components/Header';
 import Footer, { NavLinks } from './footer';
-import Head from './head';
 import { ActiveAnchor } from './misc/active-anchor';
 import defaultConfig from './misc/default.config';
 import Theme from './misc/theme';
