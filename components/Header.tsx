@@ -1,7 +1,7 @@
 import NextHead from 'next/head';
 import React from 'react';
 
-import renderComponent from './utils/render-component';
+import renderComponent from '../src/utils/render-component';
 
 export default function Head({ config, title, locale, meta }) {
     return (
