@@ -1,139 +1,157 @@
-import React, { useMemo, useCallback, useRef, useState, useEffect } from 'react'
-import matchSorter from 'match-sorter'
-import cn from 'classnames'
-import { useRouter } from 'next/router'
-import Link from 'next/link'
+import cn from 'classnames';
+import matchSorter from 'match-sorter';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import React, {
+    useCallback,
+    useEffect,
+    useMemo,
+    useRef,
+    useState,
+} from 'react';
 
 const Item = ({ title, active, href, onMouseOver, search }) => {
-  const highlight = title.toLowerCase().indexOf(search.toLowerCase())
+    const highlight = title.toLowerCase().indexOf(search.toLowerCase());
 
-  return (
-    <Link href={href}>
-      <a className="block no-underline" onMouseOver={onMouseOver}>
-        <li className={cn('p-2', { active })}>
-          {title.substring(0, highlight)}
-          <span className="highlight">
-            {title.substring(highlight, highlight + search.length)}
-          </span>
-          {title.substring(highlight + search.length)}
-        </li>
-      </a>
-    </Link>
-  )
-}
+    return (
+        <Link href={href}>
+            <a
+                className="block no-underline"
+                onMouseOver={onMouseOver}
+                onFocus={onMouseOver}
+            >
+                <li className={cn('p-2', { active })}>
+                    {title.slice(0, Math.max(0, highlight))}
+                    <span className="highlight">
+                        {title.slice(highlight, highlight + search.length)}
+                    </span>
+                    {title.slice(Math.max(0, highlight + search.length))}
+                </li>
+            </a>
+        </Link>
+    );
+};
 
-const UP = true
-const DOWN = false
+const UP = true;
+const DOWN = false;
 
 const Search = ({ directories = [] }) => {
-  const router = useRouter()
-  const [show, setShow] = useState(false)
-  const [search, setSearch] = useState('')
-  const [active, setActive] = useState(0)
-  const input = useRef(null)
+    const router = useRouter();
 
-  const results = useMemo(() => {
-    if (!search) return []
+    const [show, setShow] = useState(false);
+    const [search, setSearch] = useState('');
+    const [active, setActive] = useState(0);
 
-    // Will need to scrape all the headers from each page and search through them here
-    // (similar to what we already do to render the hash links in sidebar)
-    // We could also try to search the entire string text from each page
-    return matchSorter(directories, search, { keys: ['title'] })
-  }, [search])
+    const input = useRef(null);
 
-  const moveActiveItem = up => {
-    const position = active + (up ? -1 : 1)
-    const { length } = results
+    const results = useMemo(() => {
+        if (!search) return [];
 
-    // Modulo instead of remainder,
-    // see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Remainder
-    const next = (position + length) % length
-    setActive(next)
-  }
+        // Will need to scrape all the headers from each page and search through them here
+        // (similar to what we already do to render the hash links in sidebar)
+        // We could also try to search the entire string text from each page
+        return matchSorter(directories, search, { keys: ['title'] });
+    }, [search]);
 
-  const handleKeyDown = useCallback(
-    e => {
-      const { key, ctrlKey } = e
+    const moveActiveItem = (up) => {
+        const position = active + (up ? -1 : 1);
 
-      if ((ctrlKey && key === 'n') || key === 'ArrowDown') {
-        e.preventDefault()
-        moveActiveItem(DOWN)
-      }
+        const { length } = results;
 
-      if ((ctrlKey && key === 'p') || key === 'ArrowUp') {
-        e.preventDefault()
-        moveActiveItem(UP)
-      }
+        // Modulo instead of remainder,
+        // see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Remainder
+        const next = (position + length) % length;
 
-      if (key === 'Enter') {
-        router.push(results[active].route)
-      }
-    },
-    [active, results, router]
-  )
+        setActive(next);
+    };
 
-  useEffect(() => {
-    setActive(0)
-  }, [search])
+    const handleKeyDown = useCallback(
+        (e) => {
+            const { key, ctrlKey } = e;
 
-  useEffect(() => {
-    const inputs = ['input', 'select', 'button', 'textarea']
+            if ((ctrlKey && key === 'n') || key === 'ArrowDown') {
+                e.preventDefault();
+                moveActiveItem(DOWN);
+            }
 
-    const down = e => {
-      if (
-        document.activeElement &&
-        inputs.indexOf(document.activeElement.tagName.toLowerCase()) === -1
-      ) {
-        if (e.key === '/') {
-          e.preventDefault()
-          input.current.focus()
-        } else if (e.key === 'Escape') {
-          setShow(false)
-        }
-      }
-    }
+            if ((ctrlKey && key === 'p') || key === 'ArrowUp') {
+                e.preventDefault();
+                moveActiveItem(UP);
+            }
 
-    window.addEventListener('keydown', down)
-    return () => window.removeEventListener('keydown', down)
-  }, [])
+            if (key === 'Enter') {
+                router.push(results[active].route);
+            }
+        },
+        [active, results, router]
+    );
 
-  const renderList = show && results.length > 0
+    useEffect(() => {
+        setActive(0);
+    }, [search]);
 
-  return (
-    <div className="nextra-search relative w-full md:w-64">
-      {renderList && (
-        <div className="search-overlay z-10" onClick={() => setShow(false)} />
-      )}
-      <input
-        onChange={e => {
-          setSearch(e.target.value)
-          setShow(true)
-        }}
-        className="appearance-none border rounded py-2 px-3 leading-tight focus:outline-none focus:ring w-full"
-        type="search"
-        placeholder='Search ("/" to focus)'
-        onKeyDown={handleKeyDown}
-        onFocus={() => setShow(true)}
-        ref={input}
-      />
-      {renderList && (
-        <ul className="shadow-md list-none p-0 m-0 absolute left-0 md:right-0 rounded mt-1 border top-100 divide-y z-20 w-full md:w-auto">
-          {results.map((res, i) => {
-            return (
-              <Item
-                key={`search-item-${i}`}
-                title={res.title}
-                href={res.route}
-                active={i === active}
-                search={search}
-                onMouseOver={() => setActive(i)}
-              />
-            )
-          })}
-        </ul>
-      )}
-    </div>
-  )
-}
+    useEffect(() => {
+        const inputs = new Set(['input', 'select', 'button', 'textarea']);
 
-export default Search
+        const down = (e) => {
+            if (
+                document.activeElement &&
+                !inputs.has(document.activeElement.tagName.toLowerCase())
+            ) {
+                if (e.key === '/') {
+                    e.preventDefault();
+                    input.current.focus();
+                } else if (e.key === 'Escape') {
+                    setShow(false);
+                }
+            }
+        };
+
+        window.addEventListener('keydown', down);
+
+        return () => window.removeEventListener('keydown', down);
+    }, []);
+
+    const renderList = show && results.length > 0;
+
+    return (
+        <div className="nextra-search relative w-full md:w-64">
+            {renderList && (
+                <div
+                    className="search-overlay z-10"
+                    onClick={() => setShow(false)}
+                />
+            )}
+            <input
+                onChange={(e) => {
+                    setSearch(e.target.value);
+                    setShow(true);
+                }}
+                className="appearance-none border rounded py-2 px-3 leading-tight focus:outline-none focus:ring w-full"
+                type="search"
+                placeholder='Search ("/" to focus)'
+                onKeyDown={handleKeyDown}
+                onFocus={() => setShow(true)}
+                ref={input}
+            />
+            {renderList && (
+                <ul className="shadow-md list-none p-0 m-0 absolute left-0 md:right-0 rounded mt-1 border top-100 divide-y z-20 w-full md:w-auto">
+                    {results.map((res, index) => {
+                        return (
+                            <Item
+                                key={`search-item-${index}`}
+                                title={res.title}
+                                href={res.route}
+                                active={index === active}
+                                search={search}
+                                onMouseOver={() => setActive(index)}
+                            />
+                        );
+                    })}
+                </ul>
+            )}
+        </div>
+    );
+};
+
+export default Search;

@@ -2,6 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@headlessui/react': ^1.6.6
+  '@types/node': ^18.6.2
   '@typescript-eslint/parser': ^5.31.0
   autoprefixer: ^10.4.7
   classnames: ^2.3.1
@@ -9,13 +10,17 @@ specifiers:
   eslint: ^8.20.0
   eslint-plugin-lvksh: ^1.4.1
   flexsearch: ^0.7.21
+  github-slugger: ^1.4.0
+  grapheme-splitter: ^1.0.4
   next: ^12.1.0
   next-themes: ^0.2.0
   nextra: ^1.1.0
   nextra-theme-docs: ^1.2.2
+  parse-git-url: ^1.0.1
   react: ^17.0.1
   react-dom: ^17.0.1
   react-feather: ^2.0.10
+  react-innertext: ^1.1.5
   scroll-into-view-if-needed: ^2.2.29
   tailwindcss: ^3.1.6
   typescript: ^4.7.4
@@ -26,17 +31,22 @@ dependencies:
   classnames: 2.3.1
   cssnano: 5.1.12_postcss@8.4.14
   flexsearch: 0.7.21
+  github-slugger: 1.4.0
+  grapheme-splitter: 1.0.4
   next: 12.2.3_sfoxds7t5ydpegc3knd667wn6m
   next-themes: 0.2.0_lomk7fwgwcwgv5os6tnu5kl3ge
   nextra: 1.1.0_z3yk7izmwsoahwplgcmcxkn2yu
   nextra-theme-docs: 1.2.6_xmcsh3nx5vlujfjnd3ainpjgpu
+  parse-git-url: 1.0.1
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
   react-feather: 2.0.10_react@17.0.2
+  react-innertext: 1.1.5_4gfzdku2uxzmcxoufcoh2xryee
   scroll-into-view-if-needed: 2.2.29
   tailwindcss: 3.1.6
 
 devDependencies:
+  '@types/node': 18.6.2
   '@typescript-eslint/parser': 5.31.0_he2ccbldppg44uulnyq4rwocfa
   eslint: 8.20.0
   eslint-plugin-lvksh: 1.4.1_he2ccbldppg44uulnyq4rwocfa
@@ -464,7 +474,6 @@ packages:
 
   /@types/node/18.6.2:
     resolution: {integrity: sha512-KcfkBq9H4PI6Vpu5B/KoPeuVDAbmi+2mDBqGPGUgoL7yXQtcWGu2vJWmmRkneWK3Rh0nIAX192Aa87AqKHYChQ==}
-    dev: false
 
   /@types/normalize-package-data/2.4.1:
     resolution: {integrity: sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==}
