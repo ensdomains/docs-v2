@@ -5,7 +5,7 @@
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "lint": "eslint -c .eslintrc.json --ext .ts ./src",
+        "lint": "eslint -c .eslintrc.json ./src",
         "build": "next build && next export -o dist",
         "dev": "next"
     },
@@ -13,11 +13,20 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
+        "@headlessui/react": "^1.6.6",
+        "autoprefixer": "^10.4.7",
+        "classnames": "^2.3.1",
+        "cssnano": "^5.1.12",
+        "flexsearch": "^0.7.21",
         "next": "^12.1.0",
+        "next-themes": "^0.2.0",
         "nextra": "^1.1.0",
         "nextra-theme-docs": "^1.2.2",
         "react": "^17.0.1",
-        "react-dom": "^17.0.1"
+        "react-dom": "^17.0.1",
+        "react-feather": "^2.0.10",
+        "scroll-into-view-if-needed": "^2.2.29",
+        "tailwindcss": "^3.1.6"
     },
     "devDependencies": {
         "@typescript-eslint/parser": "^5.31.0",
