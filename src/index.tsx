@@ -1,6 +1,6 @@
 import 'focus-visible';
 
-import { SkipNavContent } from '@reach/skip-nav';
+// import { SkipNavContent } from '@reach/skip-nav';
 import cn from 'classnames';
 import { useRouter } from 'next/router';
 import { ThemeProvider } from 'next-themes';
@@ -39,7 +39,7 @@ function useDirectoryInfo(pageMap) {
 function Body({ meta, config, toc, filepathWithName, navLinks, children }) {
     return (
         <React.Fragment>
-            <SkipNavContent />
+            {/* <SkipNavContent /> */}
             {meta.full ? (
                 <article className="relative pt-16 w-full overflow-x-hidden">
                     {children}
