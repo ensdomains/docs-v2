@@ -64,3 +64,4 @@ jobs:
           publish_dir: ./dist
           tag_name: ${{ steps.prepare_tag.outputs.deploy_tag_name }}
           tag_message: 'Deployment ${{ steps.prepare_tag.outputs.tag_name }}'
+          cname: alpha.ens.build
