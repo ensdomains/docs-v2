@@ -1,3 +1,7 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/mouse-events-have-key-events */
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import cn from 'classnames';
 import GraphemeSplitter from 'grapheme-splitter';
 import Link from 'next/link';
@@ -13,9 +17,11 @@ import React, {
 
 const splitter = new GraphemeSplitter();
 
+// @ts-ignore
 const TextWithHighlights = React.memo(({ content, ranges }) => {
     const splittedText = content ? splitter.splitGraphemes(content) : [];
 
+    // eslint-disable-next-line unicorn/prevent-abbreviations
     const res = [];
 
     let id = 0,
@@ -46,6 +52,7 @@ const Item = ({ title, active, href, onMouseOver, excerpt }) => {
                     {excerpt && (
                         <div className="text-gray-600">
                             <TextWithHighlights
+                                // @ts-ignore
                                 content={excerpt.text}
                                 ranges={excerpt.highlight_ranges}
                             />
@@ -102,10 +109,10 @@ export default function Search() {
     }, [search]);
 
     const handleKeyDown = useCallback(
-        (e) => {
-            switch (e.key) {
+        (event) => {
+            switch (event.key) {
                 case 'ArrowDown': {
-                    e.preventDefault();
+                    event.preventDefault();
 
                     if (active + 1 < results.length) {
                         setActive(active + 1);
@@ -115,8 +122,10 @@ export default function Search() {
 
                         if (
                             activeElement &&
+                            // @ts-ignore
                             activeElement.scrollIntoViewIfNeeded
                         ) {
+                            // @ts-ignore
                             activeElement.scrollIntoViewIfNeeded();
                         }
                     }
@@ -124,7 +133,7 @@ export default function Search() {
                     break;
                 }
                 case 'ArrowUp': {
-                    e.preventDefault();
+                    event.preventDefault();
 
                     if (active - 1 >= 0) {
                         setActive(active - 1);
@@ -134,8 +143,10 @@ export default function Search() {
 
                         if (
                             activeElement &&
+                            // @ts-ignore
                             activeElement.scrollIntoViewIfNeeded
                         ) {
+                            // @ts-ignore
                             activeElement.scrollIntoViewIfNeeded();
                         }
                     }
@@ -156,12 +167,13 @@ export default function Search() {
 
         if (!stork[localeCode]) {
             stork[localeCode] = await import('./wasm-loader');
+            // @ts-ignore
             setStork({});
 
             const init = stork[localeCode].init('/stork.wasm');
-            const res = await fetch(`/index-${localeCode}.st`);
+            const response = await fetch(`/index-${localeCode}.st`);
 
-            const buf = await res.arrayBuffer();
+            const buf = await response.arrayBuffer();
 
             await init;
             stork[localeCode].wasm_register_index(
@@ -178,15 +190,15 @@ export default function Search() {
     useEffect(() => {
         const inputs = new Set(['input', 'select', 'button', 'textarea']);
 
-        const down = (e) => {
+        const down = (event) => {
             if (
                 document.activeElement &&
                 !inputs.has(document.activeElement.tagName.toLowerCase())
             ) {
-                if (e.key === '/') {
-                    e.preventDefault();
+                if (event.key === '/') {
+                    event.preventDefault();
                     input.current.focus();
-                } else if (e.key === 'Escape') {
+                } else if (event.key === 'Escape') {
                     setShow(false);
                 }
             }
@@ -208,8 +220,8 @@ export default function Search() {
                 />
             )}
             <input
-                onChange={(e) => {
-                    setSearch(e.target.value);
+                onChange={(event) => {
+                    setSearch(event.target.value);
                     setShow(true);
                 }}
                 className="appearance-none border rounded py-2 px-3 leading-tight focus:outline-none focus:ring w-full"
@@ -225,13 +237,13 @@ export default function Search() {
             />
             {renderList && (
                 <ul className="p-0 m-0 mt-1 top-full absolute divide-y z-20">
-                    {results.map((res, index) => {
+                    {results.map((response, index) => {
                         return (
                             <Item
                                 key={`search-item-${index}`}
-                                title={res.title}
-                                href={res.route}
-                                excerpt={res.excerpt}
+                                title={response.title}
+                                href={response.route}
+                                excerpt={response.excerpt}
                                 active={index === active}
                                 onMouseOver={() => setActive(index)}
                             />

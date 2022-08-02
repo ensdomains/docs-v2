@@ -7,7 +7,6 @@ const Document: FC = () => {
         <Html lang="en">
             <Head />
             <body className="bg-ens-backgroundSecondary dark:bg-ensd-backgroundSecondary">
-                
                 {/* <SkipNavLink /> */}
                 <Main />
                 <NextScript />

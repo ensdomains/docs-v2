@@ -1,8 +1,11 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import cn from 'classnames';
 import Slugger from 'github-slugger';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { useEffect, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import innerText from 'react-innertext';
 
 import { useActiveAnchor } from './misc/active-anchor';
@@ -122,7 +125,11 @@ function File({ item, anchors }) {
     );
 }
 
-function Menu({ directories, anchors }) {
+const Menu: FC<{
+    directories: { children: unknown; name: string }[];
+    anchors: unknown;
+    base?: unknown;
+}> = ({ directories, anchors }) => {
     return (
         <ul>
             {directories.map((item) => {
@@ -136,7 +143,7 @@ function Menu({ directories, anchors }) {
             })}
         </ul>
     );
-}
+};
 
 export default function Sidebar({
     directories,

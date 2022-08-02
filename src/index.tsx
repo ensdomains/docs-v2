@@ -82,19 +82,24 @@ const Layout = ({ filename, config: _config, pageMap, meta, children }) => {
     const filepath = route.slice(0, route.lastIndexOf('/') + 1);
     const filepathWithName = filepath + filename;
     const titles = React.Children.toArray(children).filter(
-        (child) => child.props && titleType.has(child.props.mdxType)
+        //@ts-ignore
+        (child) => child['props'] && titleType.has(child.props.mdxType)
     );
     const titleElement = titles.find(
+        //@ts-ignore
         (child) => child.props && child.props.mdxType === 'h1'
     );
     const title =
         meta.title ||
+        //@ts-ignore
         (titleElement ? innerText(titleElement.props.children) : 'Untitled');
     const anchors = titles
         .filter(
             (child) =>
+                //@ts-ignore
                 child.props && (config.floatTOC || child.props.mdxType === 'h2')
         )
+        //@ts-ignore
         .map((child) => child.props.children);
 
     const isRTL = useMemo(() => {
@@ -120,6 +125,7 @@ const Layout = ({ filename, config: _config, pageMap, meta, children }) => {
                     value={{
                         menu,
                         setMenu,
+                        //@ts-ignore
                         defaultMenuCollapsed: !!config.defaultMenuCollapsed,
                     }}
                 >
@@ -152,6 +158,7 @@ const Layout = ({ filename, config: _config, pageMap, meta, children }) => {
                                     config={config}
                                     filepathWithName={filepathWithName}
                                     navLinks={undefined}
+                                    toc={undefined}
                                 >
                                     {children}
                                 </Body>
@@ -171,6 +178,7 @@ const Layout = ({ filename, config: _config, pageMap, meta, children }) => {
                 value={{
                     menu,
                     setMenu,
+                    //@ts-ignore
                     defaultMenuCollapsed: !!config.defaultMenuCollapsed,
                 }}
             >

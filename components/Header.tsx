@@ -21,6 +21,7 @@ export default function Head({ config, title, locale, meta }) {
             {config.font && (
                 <style
                     dangerouslySetInnerHTML={{
+                        // eslint-disable-next-line quotes
                         __html: "html{font-family:Inter,sans-serif}@supports(font-variation-settings:normal){html{font-family:'Inter var',sans-serif}}",
                     }}
                 />

@@ -5,6 +5,7 @@ specifiers:
   '@headlessui/react': ^1.6.6
   '@mdx-js/react': ^2.1.2
   '@next/eslint-plugin-next': ^12.2.3
+  '@types/match-sorter': ^6.0.0
   '@types/node': ^18.6.2
   '@types/react': ^18.0.15
   '@typescript-eslint/parser': ^5.31.0
@@ -59,6 +60,7 @@ dependencies:
   title: 3.4.4
 
 devDependencies:
+  '@types/match-sorter': 6.0.0
   '@types/node': 18.6.2
   '@types/react': 18.0.15
   '@typescript-eslint/parser': 5.31.0_he2ccbldppg44uulnyq4rwocfa
@@ -581,6 +583,13 @@ packages:
     dependencies:
       '@types/node': 18.6.2
     dev: false
+
+  /@types/match-sorter/6.0.0:
+    resolution: {integrity: sha512-/B8BLck7dy+vQQedYvrTw2f+U02KghNCMLocjRSWtHhCKE1OeoAmOWiLGAPs96qacT9bSJF4HmJNyijiy5bycA==}
+    deprecated: This is a stub types definition. match-sorter provides its own type definitions, so you do not need this installed.
+    dependencies:
+      match-sorter: 6.3.1
+    dev: true
 
   /@types/mdast/3.0.10:
     resolution: {integrity: sha512-W864tg/Osz1+9f4lrGTZpCSO5/z4608eUp19tbozkq2HJK6i3z1kT0H9tlADXuYIb1YYOBByU4Jsqkk75q48qA==}
@@ -2976,7 +2985,6 @@ packages:
     dependencies:
       '@babel/runtime': 7.18.9
       remove-accents: 0.4.2
-    dev: false
 
   /mdast-util-definitions/5.1.1:
     resolution: {integrity: sha512-rQ+Gv7mHttxHOBx2dkF4HWTg+EE+UR78ptQWDylzPKaQuVGdG4HIoY3SrS/pCp80nZ04greFvXbVFHT+uf0JVQ==}
@@ -4517,7 +4525,6 @@ packages:
 
   /remove-accents/0.4.2:
     resolution: {integrity: sha512-7pXIJqJOq5tFgG1A2Zxti3Ht8jJF337m4sowbuHsW30ZnkQFnDzy9qBNhgzX8ZLW4+UBcXiiR7SwR6pokHsxiA==}
-    dev: false
 
   /repeat-string/1.6.1:
     resolution: {integrity: sha512-PV0dzCYDNfRi1jCDbJzpW7jNNDRuCOG/jI5ctQcGKt/clZD+YcPS3yIlWuTJMmESC8aevCFmWJy5wjAFgNqN6w==}

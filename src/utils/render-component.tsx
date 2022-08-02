@@ -1,10 +1,12 @@
 import React from 'react';
 
-const renderComponent = (ComponentOrNode, props) => {
-    if (!ComponentOrNode) return null;
+const renderComponent = (ComponentOrNode, properties) => {
+    if (!ComponentOrNode) return;
+
     if (typeof ComponentOrNode === 'function') {
-        return <ComponentOrNode {...props} />;
+        return <ComponentOrNode {...properties} />;
     }
+
     return ComponentOrNode;
 };
 

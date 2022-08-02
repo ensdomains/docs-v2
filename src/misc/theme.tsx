@@ -57,8 +57,8 @@ const createOrGetObserver = (rootMargin) => {
     if (!ob[rootMargin]) {
         obCallback[rootMargin] = [];
         ob[rootMargin] = new IntersectionObserver(
-            (e) => {
-                for (const callback of obCallback[rootMargin]) callback(e);
+            (events) => {
+                for (const callback of obCallback[rootMargin]) callback(events);
             },
             {
                 rootMargin,
@@ -73,16 +73,16 @@ const createOrGetObserver = (rootMargin) => {
 function useIntersect(margin, reference, callback_) {
     useEffect(() => {
         const callback = (entries) => {
-            let e;
+            let event;
 
             for (const entry of entries) {
                 if (entry.target === reference.current) {
-                    e = entry;
+                    event = entry;
                     break;
                 }
             }
 
-            if (e) callback_(e);
+            if (event) callback_(event);
         };
 
         const observer = createOrGetObserver(margin);
@@ -121,12 +121,13 @@ const HeaderLink = ({
     // separately, so we attach a mutable index property to slugger.
     const index = slugger.index++;
 
-    useIntersect('0px 0px -50%', obReference, (e) => {
+    useIntersect('0px 0px -50%', obReference, (event) => {
         const aboveHalfViewport =
-            e.boundingClientRect.y + e.boundingClientRect.height <=
-            e.rootBounds.y + e.rootBounds.height;
-        const insideHalfViewport = e.intersectionRatio > 0;
+            event.boundingClientRect.y + event.boundingClientRect.height <=
+            event.rootBounds.y + event.rootBounds.height;
+        const insideHalfViewport = event.intersectionRatio > 0;
 
+        // @ts-ignore
         setActiveAnchor((f) => {
             const returnValue = {
                 ...f,
@@ -277,6 +278,7 @@ const Code = ({ children, className, highlight, ...properties }) => {
             {...defaultProps}
             code={children.trim()}
             language={language}
+            // @ts-ignore
             theme={THEME}
         >
             {({ className, style, tokens, getLineProps, getTokenProps }) => (
@@ -297,7 +299,7 @@ const Code = ({ children, className, highlight, ...properties }) => {
                                           margin: '0 -1rem',
                                           padding: '0 1rem',
                                       }
-                                    : null
+                                    : undefined
                             }
                         >
                             {line.map((token, key) => (

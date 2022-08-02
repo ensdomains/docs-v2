@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import cn from 'classnames';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -98,7 +99,7 @@ export const NavLinks = ({ config, flatDirectories, currentIndex, isRTL }) => {
                         title={previous.title}
                         isRTL={isRTL}
                     />
-                ) : null}
+                ) : undefined}
             </div>
             <div>
                 {config.nextLinks && next ? (
@@ -107,7 +108,7 @@ export const NavLinks = ({ config, flatDirectories, currentIndex, isRTL }) => {
                         title={next.title}
                         isRTL={isRTL}
                     />
-                ) : null}
+                ) : undefined}
             </div>
         </div>
     );
@@ -132,9 +133,9 @@ const Footer = ({ config, filepathWithName, children }) => {
                             repository={config.docsRepositoryBase}
                             text={config.footerEditLink}
                         />
-                    ) : null}
+                    ) : undefined}
                 </div>
-            ) : null}
+            ) : undefined}
         </footer>
     );
 };

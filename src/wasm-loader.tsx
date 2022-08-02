@@ -98,7 +98,8 @@ function passStringToWasm0(argument, malloc, realloc) {
     for (; offset < length; offset++) {
         const code = argument.codePointAt(offset);
 
-        if (code > 0x7f) break;
+        // eslint-disable-next-line prettier/prettier
+        if (code > 0x7F) break;
 
         mem[ptr + offset] = code;
     }
@@ -239,7 +240,7 @@ function addHeapObject(object) {
 
     const index = heap_next;
 
-    heap_next = heap[index];
+    heap_next = heap[index] as number;
 
     if (typeof heap_next !== 'number') throw new Error('corrupt heap');
 
@@ -278,9 +279,9 @@ async function load(module, imports) {
 }
 
 export async function init(input) {
-    const imports = {};
+    // eslint-disable-next-line sonarjs/prefer-object-literal
+    const imports = { wbg: {} as Record<string, unknown> };
 
-    imports.wbg = {};
     imports.wbg.__wbg_error_4bb6c2a97407129a = logError(
         (argument0, argument1) => {
             try {
@@ -291,13 +292,16 @@ export async function init(input) {
         }
     );
     imports.wbg.__wbg_new_59cb74e423758ede = logError(() => {
+        // eslint-disable-next-line unicorn/error-message
         const returnValue = new Error();
 
         return addHeapObject(returnValue);
     });
     imports.wbg.__wbg_stack_558ba5917b466edd = logError(
         (argument0, argument1) => {
-            const returnValue = getObject(argument1).stack;
+            const returnValue = (getObject(argument1) as { stack: unknown })[
+                'stack'
+            ];
 
             const ptr0 = passStringToWasm0(
                 returnValue,
@@ -320,7 +324,8 @@ export async function init(input) {
     const { instance, module } = await load(await fetch(input), imports);
 
     wasm = instance.exports;
-    init.__wbindgen_wasm_module = module;
+    (init as unknown as Record<string, unknown>).__wbindgen_wasm_module =
+        module;
 
     return wasm;
 }

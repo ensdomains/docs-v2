@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import cn from 'classnames';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -14,7 +15,7 @@ export default function LocaleSwitch({ options, isRTL }) {
         <details className="locale-switch relative">
             <summary
                 className="text-current p-2 cursor-pointer outline-none"
-                tabIndex="0"
+                tabIndex={0}
             >
                 <svg
                     fill="none"

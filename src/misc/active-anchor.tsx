@@ -1,6 +1,8 @@
 import React, { createContext, useContext, useState } from 'react';
 
+// @ts-ignore
 const ActiveAnchorContext = createContext();
+// @ts-ignore
 const ActiveAnchorSetterContext = createContext();
 
 // Separate the state as 2 contexts here to avoid

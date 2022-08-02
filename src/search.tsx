@@ -1,3 +1,6 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import cn from 'classnames';
 import matchSorter from 'match-sorter';
 import Link from 'next/link';
@@ -50,6 +53,7 @@ const Search = ({ directories = [] }) => {
         // Will need to scrape all the headers from each page and search through them here
         // (similar to what we already do to render the hash links in sidebar)
         // We could also try to search the entire string text from each page
+        // @ts-ignore
         return matchSorter(directories, search, { keys: ['title'] });
     }, [search]);
 
@@ -66,16 +70,16 @@ const Search = ({ directories = [] }) => {
     };
 
     const handleKeyDown = useCallback(
-        (e) => {
-            const { key, ctrlKey } = e;
+        (event) => {
+            const { key, ctrlKey } = event;
 
             if ((ctrlKey && key === 'n') || key === 'ArrowDown') {
-                e.preventDefault();
+                event.preventDefault();
                 moveActiveItem(DOWN);
             }
 
             if ((ctrlKey && key === 'p') || key === 'ArrowUp') {
-                e.preventDefault();
+                event.preventDefault();
                 moveActiveItem(UP);
             }
 
@@ -93,15 +97,15 @@ const Search = ({ directories = [] }) => {
     useEffect(() => {
         const inputs = new Set(['input', 'select', 'button', 'textarea']);
 
-        const down = (e) => {
+        const down = (event) => {
             if (
                 document.activeElement &&
                 !inputs.has(document.activeElement.tagName.toLowerCase())
             ) {
-                if (e.key === '/') {
-                    e.preventDefault();
+                if (event.key === '/') {
+                    event.preventDefault();
                     input.current.focus();
-                } else if (e.key === 'Escape') {
+                } else if (event.key === 'Escape') {
                     setShow(false);
                 }
             }
@@ -123,8 +127,8 @@ const Search = ({ directories = [] }) => {
                 />
             )}
             <input
-                onChange={(e) => {
-                    setSearch(e.target.value);
+                onChange={(event) => {
+                    setSearch(event.target.value);
                     setShow(true);
                 }}
                 className="appearance-none border rounded py-2 px-3 leading-tight focus:outline-none focus:ring w-full"
@@ -136,12 +140,12 @@ const Search = ({ directories = [] }) => {
             />
             {renderList && (
                 <ul className="shadow-md list-none p-0 m-0 absolute left-0 md:right-0 rounded mt-1 border top-100 divide-y z-20 w-full md:w-auto">
-                    {results.map((res, index) => {
+                    {results.map((response, index) => {
                         return (
                             <Item
                                 key={`search-item-${index}`}
-                                title={res.title}
-                                href={res.route}
+                                title={response.title}
+                                href={response.route}
                                 active={index === active}
                                 search={search}
                                 onMouseOver={() => setActive(index)}
