@@ -14,7 +14,7 @@ const makePrimaryColor =
 /** @type {import('tailwindcss').Config} */
 module.exports = {
     content: [
-        './components/**/*.js',
+        './components/**/*.{html,js,ts,jsx,tsx,md,mdx}',
         './src/**/*.{html,js,ts,jsx,tsx,md,mdx}',
         './pages/**/*.{html,js,ts,jsx,tsx,md,mdx}',
         './theme.config.tsx',
