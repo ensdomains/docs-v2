@@ -1,4 +1,5 @@
 const colors = require('tailwindcss/colors');
+const { lightTheme, darkTheme } = require('@ensdomains/thorin');
 
 const makePrimaryColor =
     (l) =>
@@ -14,10 +15,8 @@ const makePrimaryColor =
 module.exports = {
     content: [
         './components/**/*.js',
-        './src/**/*.{html,js,ts,jsx,tsx}',
-        './pages/**/*.md',
-        './pages/**/*.mdx',
-        './pages/index.mdx',
+        './src/**/*.{html,js,ts,jsx,tsx,md,mdx}',
+        './pages/**/*.{html,js,ts,jsx,tsx,md,mdx}',
         './theme.config.tsx',
         './src/styles.css',
     ],
@@ -70,6 +69,8 @@ module.exports = {
                 900: makePrimaryColor(24),
                 1000: makePrimaryColor(12),
             },
+            ensl: lightTheme.colors,
+            ensd: darkTheme.colors,
         },
         extend: {
             colors: {

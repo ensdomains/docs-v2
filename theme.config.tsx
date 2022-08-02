@@ -1,13 +1,13 @@
+import logo from './assets/ens_docs_logo.svg';
+import ogPreview from './assets/og_preview.png';
+
 export default {
     github: 'https://github.com/ensdomains/docs-v2',
     docsRepositoryBase: 'https://github.com/ensdomains/docs-v2/blob/main',
     titleSuffix: ' — ENS Documentation',
     logo: (
         <>
-            <span className="mr-2 font-extrabold hidden md:inline">ENS</span>
-            <span className="text-gray-600 font-normal hidden md:inline">
-                Docs
-            </span>
+            <img src={logo.src} alt="ENS Docs" className="h-full" />
         </>
     ),
     head: (
@@ -29,7 +29,7 @@ export default {
             <meta name="twitter:site:domain" content="docs.ens.domains" />
             <meta name="twitter:url" content="https://docs.ens.domains" />
             <meta name="og:title" content="ENS Domains Documentation" />
-            <meta name="og:image" content="https://nextra.vercel.app/og.png" />
+            <meta name="og:image" content={ogPreview.src} />
             <meta name="apple-mobile-web-app-title" content="Nextra" />
             <link
                 rel="apple-touch-icon"

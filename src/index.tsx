@@ -8,11 +8,11 @@ import React, { useMemo, useState } from 'react';
 import innerText from 'react-innertext';
 
 import Head from '../components/Header';
+import Navbar from '../components/Navbar';
 import Footer, { NavLinks } from './footer';
 import { ActiveAnchor } from './misc/active-anchor';
 import defaultConfig from './misc/default.config';
 import Theme from './misc/theme';
-import Navbar from './navbar';
 import Sidebar from './sidebar';
 import ToC from './toc';
 import { getFSRoute } from './utils/get-fs-route';

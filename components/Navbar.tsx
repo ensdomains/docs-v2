@@ -3,14 +3,14 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React from 'react';
 
-import GitHubIcon from './github-icon';
-import LocaleSwitch from './locale-switch';
-import Search from './search';
-import StorkSearch from './stork-search';
-import ThemeSwitch from './theme-switch';
-import { getFSRoute } from './utils/get-fs-route';
-import useMenuContext from './utils/menu-context';
-import renderComponent from './utils/render-component';
+import GitHubIcon from '../src/github-icon';
+import LocaleSwitch from '../src/locale-switch';
+import Search from '../src/search';
+import StorkSearch from '../src/stork-search';
+import ThemeSwitch from '../src/theme-switch';
+import { getFSRoute } from '../src/utils/get-fs-route';
+import useMenuContext from '../src/utils/menu-context';
+import renderComponent from '../src/utils/render-component';
 
 export default function Navbar({
     config,

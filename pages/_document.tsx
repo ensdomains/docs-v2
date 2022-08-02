@@ -6,7 +6,7 @@ const Document: FC = () => {
     return (
         <Html lang="en">
             <Head />
-            <body>
+            <body className="bg-ens-backgroundSecondary dark:bg-ensd-backgroundSecondary">
                 {/* <SkipNavLink /> */}
                 <Main />
                 <NextScript />
