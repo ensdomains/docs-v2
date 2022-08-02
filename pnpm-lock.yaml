@@ -28,6 +28,7 @@ specifiers:
   react-dom: ^17.0.1
   react-feather: ^2.0.10
   react-innertext: ^1.1.5
+  react-transition-state: 1.2.0-alpha.5
   scroll-into-view-if-needed: ^2.2.29
   styled-components: ^5.3.5
   tailwindcss: ^3.1.6
@@ -35,7 +36,7 @@ specifiers:
   typescript: ^4.7.4
 
 dependencies:
-  '@ensdomains/thorin': 0.6.9_yfgnbxojpjyzegtmtl2rcejwea
+  '@ensdomains/thorin': 0.6.9_yoq5sl2ixojdc3t5atfw72tiae
   '@headlessui/react': 1.6.6_sfoxds7t5ydpegc3knd667wn6m
   '@mdx-js/react': 2.1.2_react@17.0.2
   '@next/eslint-plugin-next': 12.2.3
@@ -56,6 +57,7 @@ dependencies:
   react-dom: 17.0.2_react@17.0.2
   react-feather: 2.0.10_react@17.0.2
   react-innertext: 1.1.5_4gfzdku2uxzmcxoufcoh2xryee
+  react-transition-state: 1.2.0-alpha.5_sfoxds7t5ydpegc3knd667wn6m
   scroll-into-view-if-needed: 2.2.29
   styled-components: 5.3.5_d5kzqcx725xkmyluugjzy5jwom
   tailwindcss: 3.1.6
@@ -221,7 +223,7 @@ packages:
     resolution: {integrity: sha512-OWORNpfjMsSSUBVrRBVGECkhWcULOAJz9ZW8uK9qgxD+87M7jHRcvh/A96XXNhXTLmKcoYSQtBEX7lHMO7YRwg==}
     dev: false
 
-  /@ensdomains/thorin/0.6.9_yfgnbxojpjyzegtmtl2rcejwea:
+  /@ensdomains/thorin/0.6.9_yoq5sl2ixojdc3t5atfw72tiae:
     resolution: {integrity: sha512-TE7KwkbIsFAhQq80snLX9+0QYLH01onnKHYIhP8uXJsfe1WBB2QaIp8plb4s3jcH3DdeAkvNUuiLd3Kv2DDzug==}
     peerDependencies:
       react: ^17
@@ -234,7 +236,7 @@ packages:
       lodash: 4.17.21
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
-      react-transition-state: 1.1.4_sfoxds7t5ydpegc3knd667wn6m
+      react-transition-state: 1.2.0-alpha.5_sfoxds7t5ydpegc3knd667wn6m
       styled-components: 5.3.5_d5kzqcx725xkmyluugjzy5jwom
     dev: false
 
@@ -4380,8 +4382,8 @@ packages:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
     dev: false
 
-  /react-transition-state/1.1.4_sfoxds7t5ydpegc3knd667wn6m:
-    resolution: {integrity: sha512-6nQLWWx95gYazCm6OdtD1zGbRiirvVXPrDtHAGsYb4xs9spMM7bA8Vx77KCpjL8PJ8qz1lXFGz2PTboCSvt7iw==}
+  /react-transition-state/1.2.0-alpha.5_sfoxds7t5ydpegc3knd667wn6m:
+    resolution: {integrity: sha512-ymno9Tkxxz4nxiIWez/3DDMpujiWdmk59ki0/bO80BtI5nduX8oOx0qN+it0myC3oHF3S1LcnFm1urIw796r6Q==}
     peerDependencies:
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
