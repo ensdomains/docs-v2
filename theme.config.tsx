@@ -22,10 +22,7 @@ export default {
             <meta name="description" content="ENS Documentation" />
             <meta name="og:description" content="ENS Documentation" />
             <meta name="twitter:card" content="summary_large_image" />
-            <meta
-                name="twitter:image"
-                content="https://nextra.vercel.app/og.png"
-            />
+            <meta name="twitter:image" content={ogPreview.src} />
             <meta name="twitter:site:domain" content="docs.ens.domains" />
             <meta name="twitter:url" content="https://docs.ens.domains" />
             <meta name="og:title" content="ENS Domains Documentation" />

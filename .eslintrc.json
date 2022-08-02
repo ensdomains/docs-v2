@@ -5,7 +5,7 @@
     },
     "extends": ["plugin:lvksh/recommended"],
     "ignorePatterns": ["!**/*"],
-    "plugins": ["lvksh"],
+    "plugins": ["lvksh", "plugin:@next/next/recommended"],
     "env": {
         "browser": true
     },
