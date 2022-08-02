@@ -26,7 +26,7 @@ export default function ToC({ titles }) {
     const activeAnchor = useActiveAnchor();
 
     return (
-        <div className="w-64 hidden xl:block text-sm pl-4">
+        <div className="w-64 hidden 2xl:block text-sm pl-4">
             {titles && (
                 <ul className="overflow-y-auto sticky max-h-[calc(100vh-4rem)] top-16 pt-8 pb-10 m-0 list-none">
                     {titles

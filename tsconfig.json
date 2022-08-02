@@ -15,6 +15,6 @@
         "jsx": "preserve",
         "moduleResolution": "node"
     },
-    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/index.tsx", "tailwind.config.js", "src/stork-search.jsx"],
+    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/index.tsx", "tailwind.config.js", "src/stork-search.tsx"],
     "exclude": ["node_modules"]
 }

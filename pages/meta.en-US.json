@@ -1,0 +1,24 @@
+{
+    "index": {
+        "title": "Introduction",
+        "type": "docs",
+        "hidden": true,
+        "theme": {}
+    },
+    "governance": {
+        "title": "Governance",
+        "type": "nav"
+    },
+    "user": {
+        "title": "User",
+        "type": "nav"
+    },
+    "developer": {
+        "title": "Developer",
+        "type": "nav"
+    },
+    "technical": {
+        "title": "Technical",
+        "type": "nav"
+    }
+}

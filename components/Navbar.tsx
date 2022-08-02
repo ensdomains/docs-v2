@@ -27,41 +27,44 @@ export default function Navbar({
 
     return (
         <nav className="flex items-center bg-white z-20 fixed top-0 left-0 right-0 h-16 border-b border-gray-200 px-6 dark:bg-dark dark:border-gray-900 bg-opacity-[.97] dark:bg-opacity-100">
-            <div className="w-full flex items-center mr-2">
+            <div className="h-10 flex flex-shrink-0 items-center mr-4">
                 <Link href="/">
-                    <a className="no-underline text-current inline-flex items-center hover:opacity-75">
+                    <a className="h-full flex no-underline text-current items-center hover:opacity-75">
                         {renderComponent(config.logo, { locale })}
                     </a>
                 </Link>
             </div>
+            <div className="w-full hidden lg:block">
+                {flatPageDirectories &&
+                    flatPageDirectories.map((page) => {
+                        if (page.hidden) return;
 
-            {flatPageDirectories &&
-                flatPageDirectories.map((page) => {
-                    if (page.hidden) return;
+                        let href = page.route;
 
-                    let href = page.route;
+                        // If it's a directory
+                        if (page.children) {
+                            href = page.firstChildRoute;
+                        }
 
-                    // If it's a directory
-                    if (page.children) {
-                        href = page.firstChildRoute;
-                    }
-
-                    return (
-                        <Link href={href} key={page.route}>
-                            <a
-                                className={cn(
-                                    'no-underline whitespace-nowrap mr-4 hidden md:inline-block',
-                                    page.route === activeRoute ||
-                                        activeRoute.startsWith(page.route + '/')
-                                        ? 'text-current'
-                                        : 'text-gray-500'
-                                )}
-                            >
-                                {page.title}
-                            </a>
-                        </Link>
-                    );
-                })}
+                        return (
+                            <Link href={href} key={page.route}>
+                                <a
+                                    className={cn(
+                                        'font-bold no-underline whitespace-nowrap mr-4 hidden md:inline-block',
+                                        page.route === activeRoute ||
+                                            activeRoute.startsWith(
+                                                page.route + '/'
+                                            )
+                                            ? 'text-ensl-accent dark:text-ensd-accent'
+                                            : 'text-gray-500'
+                                    )}
+                                >
+                                    {page.title}
+                                </a>
+                            </Link>
+                        );
+                    })}
+            </div>
 
             <div className="flex-1">
                 <div className="hidden md:inline-block mr-2">

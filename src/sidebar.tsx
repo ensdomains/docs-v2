@@ -166,7 +166,7 @@ export default function Sidebar({
     return (
         <aside
             className={cn(
-                'fixed h-screen bg-ensl-background dark:bg-ensd-backgroundSecondary flex-shrink-0 w-full md:w-64 md:sticky z-20',
+                'fixed h-screen bg-ensl-background dark:bg-ensd-backgroundSecondary flex-shrink-0 w-full md:w-64 xl:w-96 md:sticky z-20',
                 menu ? '' : 'hidden',
                 mdShow ? 'md:block' : ''
             )}
