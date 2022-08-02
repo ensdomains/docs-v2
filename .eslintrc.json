@@ -3,9 +3,9 @@
     "parserOptions": {
         "ecmaVersion": 2021
     },
-    "extends": ["plugin:lvksh/recommended"],
+    "extends": ["plugin:lvksh/recommended", "plugin:@next/next/recommended"],
     "ignorePatterns": ["!**/*"],
-    "plugins": ["lvksh", "plugin:@next/next/recommended"],
+    "plugins": ["lvksh"],
     "env": {
         "browser": true
     },

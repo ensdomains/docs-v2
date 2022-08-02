@@ -5,7 +5,7 @@
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "lint": "eslint -c .eslintrc.json ./src",
+        "lint": "eslint -c .eslintrc.json --ext .tsx ./src ./pages",
         "build": "next build && next export -o dist",
         "dev": "next"
     },

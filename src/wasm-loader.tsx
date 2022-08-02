@@ -108,11 +108,13 @@ function passStringToWasm0(argument, malloc, realloc) {
             argument = argument.slice(offset);
         }
 
-        ptr = realloc(ptr, length, (length = offset + argument.length * 3));
+        const { length: argumentLength } = argument;
+
+        ptr = realloc(ptr, length, (length = offset + argumentLength * 3));
         const view = getUint8Memory0().subarray(ptr + offset, ptr + length);
         const returnValue = encodeString(argument, view);
 
-        if (returnValue.read !== argument.length)
+        if (returnValue.read !== argumentLength)
             throw new Error('failed to pass whole string');
 
         offset += returnValue.written;
