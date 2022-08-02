@@ -17,6 +17,8 @@ module.exports = {
         './components/**/*.{html,js,ts,jsx,tsx,md,mdx}',
         './src/**/*.{html,js,ts,jsx,tsx,md,mdx}',
         './pages/**/*.{html,js,ts,jsx,tsx,md,mdx}',
+        './pages/_app.tsx',
+        './pages/_document.tsx',
         './theme.config.tsx',
         './src/styles.css',
     ],
