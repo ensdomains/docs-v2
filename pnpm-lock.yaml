@@ -29,6 +29,7 @@ specifiers:
   react-feather: ^2.0.10
   react-innertext: ^1.1.5
   scroll-into-view-if-needed: ^2.2.29
+  styled-components: ^5.3.5
   tailwindcss: ^3.1.6
   title: ^3.4.4
   typescript: ^4.7.4
@@ -56,6 +57,7 @@ dependencies:
   react-feather: 2.0.10_react@17.0.2
   react-innertext: 1.1.5_4gfzdku2uxzmcxoufcoh2xryee
   scroll-into-view-if-needed: 2.2.29
+  styled-components: 5.3.5_d5kzqcx725xkmyluugjzy5jwom
   tailwindcss: 3.1.6
   title: 3.4.4
 
