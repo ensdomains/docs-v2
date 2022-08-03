@@ -4,3 +4,8 @@ const withNextra = require('nextra')({
 });
 
 module.exports = withNextra();
+
+module.exports.images = {
+    loader: 'akamai',
+    path: '',
+};
