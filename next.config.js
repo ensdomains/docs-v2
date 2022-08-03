@@ -3,9 +3,9 @@ const withNextra = require('nextra')({
     themeConfig: './theme.config.tsx',
 });
 
-module.exports = withNextra();
-
-module.exports.images = {
-    loader: 'akamai',
-    path: 'public/assets',
-};
+module.exports = withNextra({
+    images: {
+        loader: 'akamai',
+        path: 'public/assets',
+    },
+});

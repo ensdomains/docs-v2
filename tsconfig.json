@@ -13,10 +13,7 @@
         "resolveJsonModule": true,
         "isolatedModules": true,
         "jsx": "preserve",
-        "moduleResolution": "node",
-        "paths": {
-            "@components/*": ["components/*"]
-        }
+        "moduleResolution": "node"
     },
     "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/index.tsx", "tailwind.config.js", "src/stork-search.tsx"],
     "exclude": ["node_modules"]
