@@ -7,5 +7,5 @@ module.exports = withNextra();
 
 module.exports.images = {
     loader: 'akamai',
-    path: '',
+    path: 'public/assets',
 };
