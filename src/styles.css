@@ -82,7 +82,7 @@ a code {
   @apply select-none md:border-r;
 }
 .sidebar ul ul {
-  @apply ml-5 relative;
+  @apply ml-4 relative;
 }
 .sidebar a:focus-visible,
 .sidebar button:focus-visible {
@@ -92,28 +92,28 @@ a code {
   @apply font-semibold text-gray-900 dark:text-white;
 }
 .sidebar li.active > a {
-  @apply font-semibold text-black bg-gray-200;
+  /* @apply font-semibold text-black bg-gray-200; */
 }
 .dark .sidebar li.active > a {
-  @apply text-white bg-gray-800;
+  /* @apply text-white bg-gray-800; */
 }
 .sidebar button,
 .sidebar a {
-  @apply block w-full text-left text-base no-underline text-gray-600 mt-1 p-2 rounded select-none outline-none;
+  @apply block w-full text-left text-base no-underline text-gray-600 mt-1 p-2 pl-0 rounded select-none outline-none;
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
 }
 .dark .sidebar button,
 .dark .sidebar a {
-  @apply text-gray-500;
+  /* @apply text-gray-500; */
 }
 .sidebar a:hover,
 .sidebar button:hover {
-  @apply text-gray-900 bg-gray-100;
+  /* @apply text-gray-900 bg-gray-100; */
 }
 .dark .sidebar a:hover,
 .dark .sidebar button:hover {
-  @apply text-white bg-gray-900;
+  /* @apply text-white bg-gray-900; */
 }
 article ul {
   @apply list-disc ml-6 mt-6;
@@ -402,4 +402,25 @@ pre .prism-code .token.tag:not(.script) {
 
 .noheadpats h1, .noheadpats h2, .noheadpats h3, .noheadpats h4 {
   margin: 0;
+}
+
+.combofox > div {
+  height: 100%;
+  position: relative;
+  @apply w-64;
+}
+.combofox > div > div:first {
+  position: absolute;
+}
+.combofox > div > div:nth-child(1) {
+  display: none;
+}
+.combofox > div > div:nth-child(2) {
+  height: 100%;
+  min-height: 100%;
+  max-height: 100%;
+}
+.combofox > div > div:nth-child(2) > div {
+  min-height: 100%;
+  border: none;
 }

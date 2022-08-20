@@ -1,4 +1,4 @@
-import { darkTheme, lightTheme } from '@ensdomains/thorin';
+import { darkTheme, lightTheme, ThorinGlobalStyles } from '@ensdomains/thorin';
 import { useTheme } from 'next-themes';
 import { ThemeProvider as NextThemeProvider } from 'next-themes';
 import { FC, PropsWithChildren } from 'react';
@@ -13,7 +13,7 @@ const Theme: FC<PropsWithChildren> = ({ children }) => {
 
     return (
         <ThemeProvider theme={theme.theme == 'dark' ? darkTheme : lightTheme}>
-            {/* <ThorinGlobalStyles /> */}
+            <ThorinGlobalStyles />
             {children}
         </ThemeProvider>
     );

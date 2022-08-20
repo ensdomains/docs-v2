@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/anchor-is-valid */
+import classNames from 'classnames';
 import cn from 'classnames';
 import Slugger from 'github-slugger';
 import Link from 'next/link';
@@ -32,7 +33,7 @@ function Folder({ item, anchors }) {
     }, [active]);
 
     return (
-        <li className={open ? 'active' : ''}>
+        <li className={classNames(open ? 'active' : '', 'mb-8')}>
             <button
                 onClick={() => {
                     if (active) return;
@@ -40,6 +41,7 @@ function Folder({ item, anchors }) {
                     TreeState[item.route] = !open;
                     render((x) => !x);
                 }}
+                className="font-bold"
             >
                 {item.title}
             </button>
@@ -48,11 +50,13 @@ function Folder({ item, anchors }) {
                     display: open ? 'initial' : 'none',
                 }}
             >
-                <Menu
-                    directories={item.children}
-                    base={item.route}
-                    anchors={anchors}
-                />
+                <div className="flex border-l-2 ml-2 border-ensl-borderSecondary">
+                    <Menu
+                        directories={item.children}
+                        base={item.route}
+                        anchors={anchors}
+                    />
+                </div>
             </div>
         </li>
     );
@@ -166,7 +170,7 @@ export default function Sidebar({
     return (
         <aside
             className={cn(
-                'fixed h-screen bg-ensl-background dark:bg-ensd-backgroundSecondary flex-shrink-0 w-full md:w-64 xl:w-96 md:sticky z-20',
+                'pt-8 ml-8 flex-shrink-0 w-full md:w-64 xl:w-96 md:static mt-16',
                 menu ? '' : 'hidden',
                 mdShow ? 'md:block' : ''
             )}
