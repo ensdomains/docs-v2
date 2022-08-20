@@ -1,6 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { Select } from '@ensdomains/thorin';
-import { log } from 'console';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React from 'react';
