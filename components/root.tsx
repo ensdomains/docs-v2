@@ -11,8 +11,6 @@ const Wrapper = ({ children }) => {
 const Theme: FC<PropsWithChildren> = ({ children }) => {
     const theme = useTheme();
 
-    console.log(theme.theme);
-
     return (
         <ThemeProvider theme={theme.theme == 'dark' ? darkTheme : lightTheme}>
             {/* <ThorinGlobalStyles /> */}
