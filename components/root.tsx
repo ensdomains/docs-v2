@@ -6,8 +6,6 @@ import { ThemeProvider } from 'styled-components';
 export const Root: FC<PropsWithChildren> = ({ children }) => {
     const theme = useTheme();
 
-    console.log({ theme });
-
     return (
         <ThemeProvider theme={theme.theme == 'dark' ? darkTheme : lightTheme}>
             <ThorinGlobalStyles />
