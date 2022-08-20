@@ -399,3 +399,7 @@ pre .prism-code .token.tag:not(.script) {
 .nextra-container.rtl .sidebar {
   @apply md:border-l;
 }
+
+.noheadpats h1, .noheadpats h2, .noheadpats h3, .noheadpats h4 {
+  margin: 0;
+}

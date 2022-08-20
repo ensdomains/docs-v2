@@ -14,6 +14,7 @@ specifiers:
   cssnano: ^5.1.12
   eslint: ^8.20.0
   eslint-plugin-lvksh: ^1.4.1
+  feather-icons: ^4.29.0
   flexsearch: ^0.7.21
   github-slugger: ^1.4.0
   grapheme-splitter: ^1.0.4
@@ -43,6 +44,7 @@ dependencies:
   autoprefixer: 10.4.7_postcss@8.4.14
   classnames: 2.3.1
   cssnano: 5.1.12_postcss@8.4.14
+  feather-icons: 4.29.0
   flexsearch: 0.7.21
   github-slugger: 1.4.0
   grapheme-splitter: 1.0.4
@@ -1321,6 +1323,11 @@ packages:
     requiresBuild: true
     dev: true
 
+  /core-js/3.24.1:
+    resolution: {integrity: sha512-0QTBSYSUZ6Gq21utGzkfITDylE8jWC9Ne1D2MrhvlsZBI1x39OdDIVbzSqtgMndIy6BlHxBXpMGqzZmnztg2rg==}
+    requiresBuild: true
+    dev: false
+
   /core-util-is/1.0.3:
     resolution: {integrity: sha512-ZQBvi1DcpJ4GDqanjucZ2Hj3wEO5pZDS89BWbkcrvdxksJorwUDDZamX9ldFkp9aw2lmBDLgkObEA4DWNJ9FYQ==}
     dev: false
@@ -2142,6 +2149,13 @@ packages:
     resolution: {integrity: sha512-cE1qsB/VwyQozZ+q1dGxR8LBYNZeofhEdUNGSMbQD3Gw2lAzX9Zb3uIU6Ebc/Fmyjo9AWWfnn0AUCHqtevs/8g==}
     dependencies:
       pend: 1.2.0
+    dev: false
+
+  /feather-icons/4.29.0:
+    resolution: {integrity: sha512-Y7VqN9FYb8KdaSF0qD1081HCkm0v4Eq/fpfQYQnubpqi0hXx14k+gF9iqtRys1SIcTEi97xDi/fmsPFZ8xo0GQ==}
+    dependencies:
+      classnames: 2.3.1
+      core-js: 3.24.1
     dev: false
 
   /file-entry-cache/6.0.1:

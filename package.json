@@ -20,6 +20,7 @@
         "autoprefixer": "^10.4.7",
         "classnames": "^2.3.1",
         "cssnano": "^5.1.12",
+        "feather-icons": "^4.29.0",
         "flexsearch": "^0.7.21",
         "github-slugger": "^1.4.0",
         "grapheme-splitter": "^1.0.4",

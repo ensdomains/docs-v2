@@ -5,9 +5,11 @@
         "hidden": true,
         "theme": {}
     },
-    "governance": {
-        "title": "Governance",
-        "type": "nav"
+    "about": {
+        "title": "About ENS",
+        "type": "docs",
+        "hidden": true,
+        "theme": {}
     },
     "user": {
         "title": "User",
@@ -20,5 +22,13 @@
     "technical": {
         "title": "Technical",
         "type": "nav"
+    },
+    "governance": {
+        "title": "Governance",
+        "type": "nav"
+    },
+    "raw": {
+        "title": "Raw",
+        "type": "hidden"
     }
 }
