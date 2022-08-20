@@ -15,7 +15,10 @@ export const Button = (properties: Props) => {
     return (
         <ThorinButton
             {...properties}
-            className={classNames(properties.className, 'no-underline')}
+            className={classNames(
+                properties.className,
+                'no-underline dark:shadow-none'
+            )}
         />
     );
 };
