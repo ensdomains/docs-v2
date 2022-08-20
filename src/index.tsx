@@ -9,6 +9,7 @@ import innerText from 'react-innertext';
 
 import Head from '../components/Header';
 import Navbar from '../components/Navbar';
+import { Root } from '../components/root';
 import Footer, { NavLinks } from './footer';
 import { ActiveAnchor } from './misc/active-anchor';
 import defaultConfig from './misc/default.config';
@@ -18,7 +19,6 @@ import ToC from './toc';
 import { getFSRoute } from './utils/get-fs-route';
 import { MenuContext } from './utils/menu-context';
 import normalizePages from './utils/normalize-pages';
-import { Root } from '../components/root';
 
 const titleType = new Set(['h1', 'h2', 'h3', 'h4', 'h5', 'h6']);
 

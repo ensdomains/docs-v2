@@ -11,7 +11,7 @@ export default function ThemeSwitch() {
     // @TODO: system theme
     const toggleTheme = () => {
         setTheme(theme === 'dark' ? 'light' : 'dark');
-        setTheme
+        setTheme;
     };
 
     return (
