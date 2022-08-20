@@ -34,8 +34,8 @@ ENS is deployed on the Ethereum main network and on several test networks. If yo
 You can try ENS out for yourself now by using the [ENS Manager App](https://app.ens.domains), or by using any of the many ENS enabled applications on [our homepage](https://ens.domains).
 
 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-    <Button suffix={<ExternalLink />} size="small" variant="action" href="https://app.ens.domains" target="_blank">Go to ENS Manager</Button>
-    <Button suffix={<ExternalLink />} size="small" variant="secondary" href="https://alpha.ens.domains" target="_blank">ENS Alpha Manager</Button>
+    <Button as="a" suffix={<ExternalLink />} size="small" variant="action" href="https://app.ens.domains" target="_blank">Go to ENS Manager</Button>
+    <Button as="a" suffix={<ExternalLink />} size="small" variant="secondary" href="https://alpha.ens.domains" target="_blank">ENS Alpha Manager</Button>
 </div>
 
 ## How to navigate
@@ -50,9 +50,11 @@ ENS has documentation for a variety of audiences, including dapp developers and 
         ['🏛️', 'Governance', 'governance'],
     ].map((a) => (
         <Link href={a[2]} key={a[2]}>
-            <Button variant="secondary" href={a[2]}>
-                <span className="text-3xl">{a[0]}</span>
-                <div className="font-bold">{a[1]}</div>
+            <Button as="a" variant="secondary" href={a[2]}>
+                <div className="flex flex-col items-center gap-1">
+                    <span className="text-3xl">{a[0]}</span>
+                    <div className="font-bold">{a[1]}</div>
+                </div>
             </Button>
         </Link>
     ))}

@@ -1,4 +1,3 @@
-import logo from './assets/ens_docs_logo.svg';
 import ogPreview from './assets/og_preview.png';
 
 export default {
@@ -7,7 +6,7 @@ export default {
     titleSuffix: ' — ENS Documentation',
     logo: (
         <>
-            <img src={logo.src} alt="ENS Docs" className="h-full" />
+            <img src="/ens_docs_logo.svg" alt="ENS Docs" className="h-full" />
         </>
     ),
     head: (
