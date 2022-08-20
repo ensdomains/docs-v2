@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { Select } from '@ensdomains/thorin';
+import { log } from 'console';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React from 'react';
@@ -58,8 +59,6 @@ export default function Navbar({
                                 governance: '🏛️',
                             };
 
-                            console.log(page);
-
                             return {
                                 value: page.name,
                                 label: page.title,
@@ -89,7 +88,8 @@ export default function Navbar({
                             flatPageDirectories.find((page) => {
                                 if (page.hidden) return;
 
-                                if (page.route === activeRoute) return true;
+                                if (activeRoute.startsWith(page.route))
+                                    return true;
 
                                 return false;
                             })?.name
@@ -107,7 +107,6 @@ export default function Navbar({
                                 }
                             )?.route;
 
-                            console.log(findRoute);
                             router.push(findRoute);
                         }}
                         style={{ zIndex: 101 }}
