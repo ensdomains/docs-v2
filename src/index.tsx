@@ -3,7 +3,6 @@ import 'focus-visible';
 // import { SkipNavContent } from '@reach/skip-nav';
 import cn from 'classnames';
 import { useRouter } from 'next/router';
-import { ThemeProvider } from 'next-themes';
 import React, { useMemo, useState } from 'react';
 import innerText from 'react-innertext';
 
@@ -113,65 +112,6 @@ const Layout = ({ filename, config: _config, pageMap, meta, children }) => {
 
     const [menu, setMenu] = useState(false);
 
-    if (activeType === 'nav') {
-        return (
-            <React.Fragment>
-                <Head
-                    config={config}
-                    title={title}
-                    locale={locale}
-                    meta={meta}
-                />
-                <MenuContext.Provider
-                    value={{
-                        menu,
-                        setMenu,
-                        //@ts-ignore
-                        defaultMenuCollapsed: !!config.defaultMenuCollapsed,
-                    }}
-                >
-                    <div
-                        className={cn(
-                            'nextra-container main-container flex flex-col',
-                            {
-                                rtl: isRTL,
-                                page: true,
-                            }
-                        )}
-                    >
-                        <Navbar
-                            config={config}
-                            isRTL={isRTL}
-                            flatDirectories={flatDirectories}
-                            flatPageDirectories={flatPageDirectories}
-                        />
-                        <ActiveAnchor>
-                            <div className="flex flex-1 h-full">
-                                <Sidebar
-                                    directories={flatPageDirectories}
-                                    flatDirectories={flatDirectories}
-                                    fullDirectories={directories}
-                                    mdShow={false}
-                                    config={config}
-                                />
-                                <Body
-                                    meta={meta}
-                                    config={config}
-                                    filepathWithName={filepathWithName}
-                                    navLinks={undefined}
-                                    toc={undefined}
-                                >
-                                    {children}
-                                </Body>
-                            </div>
-                        </ActiveAnchor>
-                    </div>
-                </MenuContext.Provider>
-            </React.Fragment>
-        );
-    }
-
-    // Docs layout
     return (
         <React.Fragment>
             <Head config={config} title={title} locale={locale} meta={meta} />
@@ -238,10 +178,8 @@ const Layout = ({ filename, config: _config, pageMap, meta, children }) => {
 
 export default (options, config) => (properties) => {
     return (
-        <ThemeProvider attribute="class">
-            <Root>
-                <Layout config={config} {...options} {...properties} />
-            </Root>
-        </ThemeProvider>
+        <Root>
+            <Layout config={config} {...options} {...properties} />
+        </Root>
     );
 };
