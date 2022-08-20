@@ -28,39 +28,39 @@ export default {
             <meta name="og:title" content="ENS Domains Documentation" />
             <meta name="og:image" content={ogPreview.src} />
             <meta name="apple-mobile-web-app-title" content="Nextra" />
-            <link
+            {/* <link
                 rel="apple-touch-icon"
                 sizes="180x180"
-                href="/apple-icon-180x180.png"
+                href="/favicons/apple-icon-180x180.png"
             />
             <link
                 rel="icon"
                 type="image/png"
                 sizes="192x192"
-                href="/android-icon-192x192.png"
-            />
+                href="/favicons/android-icon-192x192.png"
+            /> */}
             <link
                 rel="icon"
                 type="image/png"
                 sizes="32x32"
-                href="/favicon-32x32.png"
+                href="/favicons/favicon-32x32.png"
             />
-            <link
+            {/* <link
                 rel="icon"
                 type="image/png"
                 sizes="96x96"
-                href="/favicon-96x96.png"
-            />
+                href="/favicons/favicon-96x96.png"
+            /> */}
             <link
                 rel="icon"
                 type="image/png"
                 sizes="16x16"
-                href="/favicon-16x16.png"
+                href="/favicons/favicon-16x16.png"
             />
-            <meta
+            {/* <meta
                 name="msapplication-TileImage"
-                content="/ms-icon-144x144.png"
-            />
+                content="/favicons/ms-icon-144x144.png"
+            /> */}
         </>
     ),
     search: true,
@@ -69,5 +69,4 @@ export default {
     footer: true,
     footerEditLink: 'Edit this page on GitHub',
     footerText: <>GPLv3 {new Date().getFullYear()} © ENS Labs</>,
-    unstable_faviconGlyph: 'X',
 };
