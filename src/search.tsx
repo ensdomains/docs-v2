@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import cn from 'classnames';
-import matchSorter from 'match-sorter';
+import { matchSorter } from 'match-sorter';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, {
