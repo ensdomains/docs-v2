@@ -1,16 +1,3 @@
 {
-    "parser": "@typescript-eslint/parser",
-    "parserOptions": {
-        "ecmaVersion": 2021
-    },
-    "extends": ["plugin:lvksh/recommended", "plugin:@next/next/recommended"],
-    "ignorePatterns": ["!**/*"],
-    "plugins": ["lvksh"],
-    "env": {
-        "browser": true
-    },
-    "rules": {
-        "number-literal-case": "off",
-        "no-nested-ternary": "off"
-    }
+  "extends": "next/core-web-vitals"
 }

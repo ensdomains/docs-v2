@@ -1,0 +1,19 @@
+:root {
+  --shiki-color-text: theme('colors.white');
+  --shiki-token-constant: theme('colors.ens.300');
+  --shiki-token-string: theme('colors.ens.300');
+  --shiki-token-comment: theme('colors.zinc.500');
+  --shiki-token-keyword: theme('colors.sky.300');
+  --shiki-token-parameter: theme('colors.pink.300');
+  --shiki-token-function: theme('colors.violet.300');
+  --shiki-token-string-expression: theme('colors.ens.300');
+  --shiki-token-punctuation: theme('colors.zinc.200');
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.card {
+  @apply my-6 overflow-hidden rounded-2xl border border-zinc-900/10 shadow-md bg-white dark:bg-zinc-900 dark:ring-1 dark:ring-white/10;
+}
