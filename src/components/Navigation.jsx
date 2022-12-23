@@ -185,28 +185,31 @@ function NavigationGroup({ group, className }) {
 
 export const navigation = [
   {
-    title: 'Guides',
+    title: 'Docs',
     links: [
       { title: 'Introduction', href: '/' },
       { title: 'What is ENS?', href: '/foreword' },
-      { title: 'Picking a library', href: '/libraries' },
-      { title: 'Identity in your dApps', href: '/quickstart-dapp' },
-      // { title: 'Quickstart', href: '/quickstart' },
-      // { title: 'SDKs', href: '/sdks' },
-      // { title: 'Authentication', href: '/authentication' },
-      // { title: 'Pagination', href: '/pagination' },
-      // { title: 'Errors', href: '/errors' },
-      // { title: 'Webhooks', href: '/webhooks' },
+      { title: 'Libraries', href: '/libraries' },
+      { title: 'Forward Resolution', href: '/forward-resolution' },
+      { title: 'Reverse Resolution', href: '/reverse-resolution' },
+      { title: 'Writing a Resolver', href: '/writing-a-resolver' },
+      { title: 'Cross Chain Interoperability Protocol', href: '/ccip' },
+      { title: 'DNS on ENS', href: '/dnssec' },
+      { title: 'Subdomains', href: '/subdomains' },
     ],
+  },
+  {
+    title: 'Guides',
+    links: [
+      { title: 'Identity in your dApps', href: '/quickstart-dapp' },
+    ]
   },
   {
     title: 'Resources',
     links: [
-      { title: 'Contacts', href: '/contacts' },
-      { title: 'Conversations', href: '/conversations' },
-      { title: 'Messages', href: '/messages' },
-      { title: 'Groups', href: '/groups' },
-      { title: 'Attachments', href: '/attachments' },
+      { title: 'Discord', href: 'https://chat.ens.domains/?ref=ensdocs' },
+      { title: 'Governance Forum', href: 'https://discuss.ens.domains/?ref=ensdocs' },
+      { title: 'Support Docs', href: 'https://support.ens.domains/?ref=ensdocs' },
     ],
   },
 ]

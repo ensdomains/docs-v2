@@ -116,7 +116,7 @@ function CodePanelHeader({ tag, label }) {
   )
 }
 
-function CodePanel({ tag, label, code, children }) {
+function CodePanel({ tag, label, code, hideCopy, children }) {
   let child = Children.only(children)
 
   return (
@@ -127,7 +127,7 @@ function CodePanel({ tag, label, code, children }) {
       />
       <div className="relative">
         <pre className="overflow-x-auto p-4 text-xs text-white">{children}</pre>
-        <CopyButton code={child.props.code ?? code} />
+        { child.props.hideCopy || <CopyButton code={child.props.code ?? code} /> }
       </div>
     </div>
   )

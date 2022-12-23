@@ -36,62 +36,178 @@ pip install web3.py
 
 <div className="not-prose">
   <Button
-    href="/sdks"
+    href="/libraries"
     variant="text"
     arrow="right"
-    children="Check out our list of first-party SDKs"
+    children="Check out our list of first-party Libraries"
   />
 </div>
 
-## Making your first API request
+## Showing Profile
 
-After picking your preferred client, you are ready to make your first call to the Protocol API. Below, you can see how to send a GET request to the Conversations endpoint to get a list of all your conversations. In the cURL example, results are limited to ten conversations, the default page length for each client.
+When users sign-in to your dApp using Ethereum they expect to be able to see what account they have signed in with. Usually this is shown in the top-right, or top-left (on RTL devices) and look something like this.
 
-<CodeGroup tag="GET" label="/v1/conversations">
+<div>
 
-```bash {{ title: 'cURL' }}
-curl -G https://api.protocol.chat/v1/conversations \
-  -H "Authorization: Bearer {token}" \
-  -d limit=10
-```
+</div>
 
-```js
-import ApiClient from '@example/protocol-api'
+<CodeGroup>
 
-const client = new ApiClient(token)
+<div title="Preview" className="not-prose flex justify-center items-center" hideCopy={true}>
+    <div className="flex items-center gap-2 py-4">
+      <div className="w-10 h-10 rounded-full overflow-hidden">
+        <img src="https://metadata.ens.domains/mainnet/avatar/luc.computer" className="w-full h-full object-contain" />
+      </div>
+      <div className="flex flex-col font-sans">
+        <p className="font-extrabold">luc.computer</p>
+        <p className="leading-3">0x225...c3b5</p>
+      </div>
+    </div>
+</div>
 
-await client.conversations.list()
-```
+```tsx {{ title: 'Code', language: 'tsx' }}
+import { FC } from 'react';
+import { useAccount, useEnsName, useEnsAvatar } from 'wagmi';
 
-```python
-from protocol_api import ApiClient
+const shortenAddress = (address: string) => address.slice(0, 5) + '...' + address.slice(-4);
 
-client = ApiClient(token)
+export const App: FC = () => {
+    const { address } = useAccount();
+    const { data: ensName } = useEnsName({ address });
+    const { data: ensAvatar } = useEnsAvatar({ address });
 
-client.conversations.list()
-```
-
-```php
-$client = new \Protocol\ApiClient($token);
-
-$client->conversations->list();
+    return (
+        <div className="flex items-center gap-4">
+            <div className="w-10 h-10 rounded-full overflow-hidden">
+                <img src={ensAvatar} className="w-full h-full object-contain" />
+            </div>
+            <div className="flex flex-col font-sans">
+                <p className="font-extrabold">{ ensName }</p>
+                <p className="leading-3">{ shortenAddress(address) }</p>
+            </div>
+        </div>
+    );
+};
 ```
 
 </CodeGroup>
 
+## Finding Users
+
+When your users search for other users, they can enter either addresses or ens names, to be able to resolve a name to an address we make use of <a href="/forward-resolution">Forward Resolution</a>.
+
 <div className="not-prose">
   <Button
-    href="/conversations"
+    href="/forward-resolution"
     variant="text"
     arrow="right"
-    children="Read the docs for the Conversations endpoint"
+    children="Check out Forward Resolution"
   />
 </div>
 
-## What's next?
+<CodeGroup>
 
-Great, you're now set up with an API client and have made your first request to the API. Here are a few links that might be handy as you venture further into the Protocol API:
+<div title="Preview" className="not-prose flex justify-center items-center" hideCopy={true}>
+       <div>
+      <label htmlFor="email" className="block text-sm font-medium text-zinc-200">
+        ENS
+      </label>
+      <div className="relative mt-1 rounded-md shadow-sm">
+        <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center">
+          <img src="https://metadata.ens.domains/mainnet/avatar/luc.computer" className="w-full h-full object-contain" />
+        </div>
+        <input
+          type="ens"
+          name="ens"
+          id="ens"
+          className="block text-lg w-full rounded-md bg-zinc-500/10 border-zinc-800/10 pl-10 focus:border-zinc-500 focus:ring-zinc-500"
+          placeholder="luc.computer"
+        />
+      </div>
+    </div>
+    <div className="flex items-center gap-2 py-4">
+      <div className="w-10 h-10 rounded-full overflow-hidden">
+      </div>
+      <div className="flex flex-col font-sans">
+      </div>
+    </div>
+</div>
 
-- [Grab your API key from the Protocol dashboard](#)
-- [Check out the Conversations endpoint](/conversations)
-- [Learn about the different error messages in Protocol](/errors)
+```tsx {{ title: 'Code', language: 'tsx' }}
+import { FC } from 'react';
+import { useAccount, useEnsName, useEnsAvatar } from 'wagmi';
+
+const shortenAddress = (address: string) => address.slice(0, 5) + '...' + address.slice(-4);
+
+export const App: FC = () => {
+    const { address } = useAccount();
+    const { data: ensName } = useEnsName({ address });
+    const { data: ensAvatar } = useEnsAvatar({ address });
+
+    return (
+        <div className="flex items-center gap-4">
+            <div className="w-10 h-10 rounded-full overflow-hidden">
+                <img src={ensAvatar} className="w-full h-full object-contain" />
+            </div>
+            <div className="flex flex-col font-sans">
+                <p className="font-extrabold">{ ensName }</p>
+                <p className="leading-3">{ shortenAddress(address) }</p>
+            </div>
+        </div>
+    );
+};
+```
+
+</CodeGroup>
+
+## Reverse Resolution
+
+When you are showing data to the user you might want to translate addresses to ENS names where applicable. So instead of showing addresses everywhere you could show names and profile pictures.
+
+<div className="not-prose">
+  <Button
+    href="/reverse-resolution"
+    variant="text"
+    arrow="right"
+    children="Check out Reverse Resolution"
+  />
+</div>
+
+<CodeGroup>
+
+<div title="Preview" className="not-prose flex justify-center items-center" hideCopy={true}>
+    <div className="flex items-center gap-2 py-4">
+      <div className="w-10 h-10 rounded-full overflow-hidden">
+        <img src="https://metadata.ens.domains/mainnet/avatar/luc.computer" className="w-full h-full object-contain" />
+      </div>
+      <div className="flex flex-col font-sans">
+        <p className="font-extrabold">luc.computer</p>
+      </div>
+    </div>
+</div>
+
+```tsx {{ title: 'Code', language: 'tsx' }}
+import { FC } from 'react';
+import { useAccount, useEnsName, useEnsAvatar } from 'wagmi';
+
+const shortenAddress = (address: string) => address.slice(0, 5) + '...' + address.slice(-4);
+
+export const User: FC<{address: string}> = ({ address }) => {
+    const { data: ensName } = useEnsName({ address });
+    const { data: ensAvatar } = useEnsAvatar({ address });
+
+    return (
+        <div className="flex items-center gap-4">
+            <div className="w-10 h-10 rounded-full overflow-hidden">
+                <img src={ensAvatar} className="w-full h-full object-contain" />
+            </div>
+            <div className="flex flex-col font-sans">
+                <p className="font-extrabold">{ ensName }</p>
+            </div>
+        </div>
+    );
+};
+```
+
+</CodeGroup>
+

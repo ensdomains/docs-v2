@@ -103,7 +103,7 @@ ENS also supports importing in DNS names through the use of DNSSEC. This allows 
       '.pl',
       '.md',
     ].map((a) => (
-      <span class="cursor-pointer hover:drop-shadow">{a}</span>
+      <span class="cursor-pointer hover:drop-shadow" key={a}>{a}</span>
     ))}
     <span class="text-blue-500/50">
       and any other DNSSEC-compatible domain...
