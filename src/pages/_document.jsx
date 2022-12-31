@@ -40,6 +40,7 @@ export default function Document() {
     <Html lang="en">
       <Head>
         <script dangerouslySetInnerHTML={{ __html: modeScript }} />
+        <meta name="theme-color" content="#5298FF"></meta>
       </Head>
       <body className="bg-white antialiased dark:bg-zinc-900">
         <Main />
