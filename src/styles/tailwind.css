@@ -17,3 +17,7 @@
 .card {
   @apply my-6 overflow-hidden rounded-2xl border border-zinc-900/10 shadow-md bg-white dark:bg-zinc-900 dark:ring-1 dark:ring-white/10;
 }
+
+html.dark {
+  color-scheme: dark;
+}
