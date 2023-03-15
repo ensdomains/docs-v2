@@ -190,7 +190,7 @@ module.exports = ({ theme }) => ({
         fontWeight: '600',
         fontSize: theme('fontSize.lg')[0],
         ...theme('fontSize.lg')[1],
-        marginTop: theme('spacing.16'),
+        marginTop: theme('spacing.12'),
         marginBottom: theme('spacing.2'),
       },
       h3: {

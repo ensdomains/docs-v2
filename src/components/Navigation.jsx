@@ -238,7 +238,8 @@ Import a DNS name
 Identity in your dApps
 Subdomains for everyone
 The Magic of Multichain
- *  */
+
+*/
 
 export const navigation = [
     {
@@ -253,8 +254,8 @@ export const navigation = [
     {
         title: 'Web / Querying',
         links: [
-            { title: 'Tools and Libraries', href: '/web3' },
-            { title: 'Quickstart', href: '/quickstart' },
+            { title: 'Tools and Libraries', href: '/web/libraries' },
+            { title: 'Quickstart', href: '/quickstart-dapp' },
             { title: 'Interfacing with ENS Contracts', href: '/interfacing' },
             { title: 'Getting Avatars', href: '/avatars' },
             { title: 'Sign In With Ethereum (SIWE)', href: '/siwe' },

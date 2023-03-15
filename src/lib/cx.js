@@ -1,5 +1,16 @@
 export const cx = (all, light, dark) => {
-    return [all, light, dark.split(' ').map(a => `dark:${a}`).join(' ')].join(' ');
+    return [
+        all,
+        light,
+        dark
+            .split(' ')
+            .map((a) => `dark:${a}`)
+            .join(' '),
+    ].join(' ');
+};
+
+export const ccx = (...all) => {
+    return all.filter((f) => !!f).join(' ');
 };
 
 // cx(

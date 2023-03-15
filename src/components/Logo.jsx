@@ -39,9 +39,9 @@ export function Logo(props) {
             y2="-330.785"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#44BCF0" />
-            <stop offset="0.378795" stop-color="#7298F8" />
-            <stop offset="1" stop-color="#A099FF" />
+            <stop stopColor="#44BCF0" />
+            <stop offset="0.378795" stopColor="#7298F8" />
+            <stop offset="1" stopColor="#A099FF" />
           </linearGradient>
           <linearGradient
             id="paint1_linear_1_24"
@@ -51,9 +51,9 @@ export function Logo(props) {
             y2="-377.581"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#44BCF0" />
-            <stop offset="0.378795" stop-color="#7298F8" />
-            <stop offset="1" stop-color="#A099FF" />
+            <stop stopColor="#44BCF0" />
+            <stop offset="0.378795" stopColor="#7298F8" />
+            <stop offset="1" stopColor="#A099FF" />
           </linearGradient>
           <linearGradient
             id="paint2_linear_1_24"
@@ -63,9 +63,9 @@ export function Logo(props) {
             y2="-377.581"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#44BCF0" />
-            <stop offset="0.378795" stop-color="#7298F8" />
-            <stop offset="1" stop-color="#A099FF" />
+            <stop stopColor="#44BCF0" />
+            <stop offset="0.378795" stopColor="#7298F8" />
+            <stop offset="1" stopColor="#A099FF" />
           </linearGradient>
           <linearGradient
             id="paint3_linear_1_24"
@@ -75,9 +75,9 @@ export function Logo(props) {
             y2="-377.581"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#44BCF0" />
-            <stop offset="0.378795" stop-color="#7298F8" />
-            <stop offset="1" stop-color="#A099FF" />
+            <stop stopColor="#44BCF0" />
+            <stop offset="0.378795" stopColor="#7298F8" />
+            <stop offset="1" stopColor="#A099FF" />
           </linearGradient>
         </defs>
       </svg>
@@ -114,9 +114,9 @@ export function HLogo(props) {
             y2="-330.785"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#44BCF0" />
-            <stop offset="0.378795" stop-color="#7298F8" />
-            <stop offset="1" stop-color="#A099FF" />
+            <stop stopColor="#44BCF0" />
+            <stop offset="0.378795" stopColor="#7298F8" />
+            <stop offset="1" stopColor="#A099FF" />
           </linearGradient>
         </defs>
       </svg>
