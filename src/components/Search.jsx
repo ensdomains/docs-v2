@@ -143,8 +143,8 @@ function LoadingIcon(props) {
           y2="15"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stopColor="currentColor" />
-          <stop offset="1" stopColor="currentColor" stopOpacity="0" />
+          <stop stop-color="currentColor" />
+          <stop offset="1" stop-color="currentColor" stopOpacity="0" />
         </linearGradient>
       </defs>
     </svg>
