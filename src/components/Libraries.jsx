@@ -55,6 +55,13 @@ export const ensLibraries = [
         tags: ['typescript', 'javascript'],
     },
     {
+        href: 'https://ethers.rs/',
+        name: 'Ethers.rs',
+        description: 'Etherem library for Rust.',
+        logo: undefined,
+        tags: ['verified'],
+    },
+    {
         href: 'https://github.com/Nethereum/Nethereum/',
         name: 'Nethereum',
         description:

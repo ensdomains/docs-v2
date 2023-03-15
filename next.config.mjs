@@ -24,6 +24,27 @@ const nextConfig = {
   redirects() {
     return [
       {
+        source: '/quickstart',
+        destination: '/web/quickstart',
+        permanent: false
+      },
+      {
+        source: '/namewrapper',
+        destination: '/subnames/wrapper',
+        permanent: false
+      },
+      {
+        source: '/ccip',
+        destination: '/learn/ccip',
+        permanent: false
+      },
+      {
+        source: '/resolvers',
+        destination: '/resolvers/quickstart',
+        permanent: false
+      },
+      // Backwards Compatibility with v1
+      {
         source: '/terminology',
         destination: '/',
         permanent: false

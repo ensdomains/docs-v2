@@ -243,61 +243,66 @@ The Magic of Multichain
 
 export const navigation = [
     {
+        title: '',
+        links: [
+            { title: 'Welcome', href: '/' },
+        ]
+    },
+    {
         title: 'Learn',
         links: [
-            { title: 'The Protocol', href: '/' },
-            { title: 'Resolution', href: '/resolution' },
-            { title: 'CCIP Cross Chain Interoperability Protocol', href: '/ccip' },
-            { title: 'DNS-Compatability', href: '/dnssec' },
+            { title: 'The Protocol', href: '/learn/protocol' },
+            { title: 'Resolution', href: '/learn/resolution' },
+            { title: 'CCIP Cross Chain Interoperability Protocol', href: '/learn/ccip' },
+            { title: 'DNS-Compatability', href: '/learn/dnssec' },
           ],
     },
     {
         title: 'Web / Querying',
         links: [
             { title: 'Tools and Libraries', href: '/web/libraries' },
-            { title: 'Quickstart', href: '/quickstart-dapp' },
-            { title: 'Interfacing with ENS Contracts', href: '/interfacing' },
-            { title: 'Getting Avatars', href: '/avatars' },
-            { title: 'Sign In With Ethereum (SIWE)', href: '/siwe' },
+            { title: 'Quickstart', href: '/web/quickstart' },
+            { title: 'Interfacing with ENS Contracts', href: '/web/interfacing' },
+            { title: 'Getting Avatars', href: '/web/avatars' },
+            { title: 'Sign In With Ethereum (SIWE)', href: '/web/siwe' },
         ],
     },
     {
         title: 'Resolvers',
         links: [
-            { title: 'Why Resolvers', href: '/resolvers' },
-            { title: 'Quickstart', href: '/quickstart-resolver' },
-            { title: 'Public Resolver', href: '/public-resolver' },
-            { title: 'Writing your own resolver', href: '/writing-a-resolver' },
-            { title: 'Cross Chain Resolution', href: '/cross-chain-resolution' },
+            { title: 'Why Resolvers', href: '/resolvers/about' },
+            { title: 'Quickstart', href: '/resolvers/quickstart' },
+            { title: 'Public Resolver', href: '/resolvers/public-resolver' },
+            { title: 'Writing your own resolver', href: '/resolvers/writing-a-resolver' },
+            { title: 'Cross Chain Resolution', href: '/resolvers/cross-chain-resolution' },
         ],
     },
     {
         title: 'Records',
         links: [
             { title: 'Record Types and Standards', href: '/records' },
-            { title: 'Quickstart', href: '/quickstart-records' },
-            { title: 'Modifying Records', href: '/modifying-records' },
+            { title: 'Quickstart', href: '/records/quickstart' },
+            { title: 'Modifying Records', href: '/records/modify' },
         ],
     },
     {
         title: 'Subnames',
         links: [
-            { title: 'Namewrapper', href: '/namewrapper' },
-            { title: 'Quickstart', href: '/quickstart-namewrapper' },
-            { title: 'Subdomain for every NFT Holder', href: '/subdomains' },
-            { title: 'Writing your own Subdomain System', href: '/writing-a-subdomain-system' },
+            { title: 'Namewrapper', href: '/subnames/wrapper' },
+            { title: 'Quickstart', href: '/subnames/quickstart' },
+            { title: 'Subdomain for every NFT Holder', href: '/subnames/nfts' },
+            { title: 'Writing your own Subdomain System', href: '/subnames/writing-a-subdomain-system' },
         ],
     },
     {
         title: 'Guides',
         links: [  
-            { title: 'Registering a .eth', href: '/registering-a-eth' },
-            { title: 'Import a DNS name', href: '/import-a-dns-name' },
-            { title: 'Identity in your dApps', href: '/quickstart-dapp' },
-            { title: 'Subdomains for everyone', href: '/subdomains-for-everyone' },
-            { title: 'The Magic of Multichain', href: '/the-magic-of-multichain' },
+            { title: 'Registering a .eth', href: 'https://support.ens.domains/docs/core/registration/registration-steps' },
+            { title: 'Import a DNS name', href: 'https://support.ens.domains/docs/howto/link-dns-name' },
+            { title: 'Identity in your dApps', href: '/web/quickstart' },
+            { title: 'Subdomains for everyone', href: '/subnames/quickstart' },
+            { title: 'The Magic of Multichain', href: '/learn/ccip' },
         ],
-
     },
     // {
     //     title: 'Docs',
