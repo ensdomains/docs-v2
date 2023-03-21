@@ -36,3 +36,15 @@
 html.dark {
   color-scheme: dark;
 }
+
+.lheader::-webkit-scrollbar {
+  @apply bg-transparent w-2;
+}
+
+.lheader::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.lheader:hover::-webkit-scrollbar-thumb {
+    @apply bg-zinc-900/10 rounded-full dark:bg-zinc-200/10;
+}
