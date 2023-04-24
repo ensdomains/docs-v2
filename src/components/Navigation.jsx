@@ -253,6 +253,7 @@ export const navigation = [
         links: [
             { title: 'The Protocol', href: '/learn/protocol' },
             { title: 'Resolution', href: '/learn/resolution' },
+            { title: 'Deployments', href: '/learn/deployments' },
             { title: 'CCIP Cross Chain Interoperability Protocol', href: '/learn/ccip' },
             { title: 'DNS-Compatability', href: '/learn/dnssec' },
           ],

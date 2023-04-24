@@ -1,1 +1,65 @@
-# Avatars
+# Avatar Resolution
+
+Names are cool, but avatars add a whole other level of personality to your site. Luckily most libraries make it truely painless to integrate. On this page you will find everything you need to setup avatars in your dApp, and a little more about how it works.
+
+## Quickstart
+
+To get avatars loading in your dApp most of the logic is abstracted away from you. This means all you have to do is call `getAvatar`, or the `useEnsAvatar` hook and pass in the name you want to resolve.
+
+<CodeGroup>
+    
+```tsx {{ title: 'Wagmi (TS)', language: 'javascript' }}
+import { useEnsAvatar } from 'wagmi';
+
+export const Profile: FC = () => {
+    const { data: avatar } = useEnsAvatar('luc.eth');
+
+    return (
+        <div>
+            <img src={avatar} />
+        </div>
+    );
+
+};
+
+```
+
+```tsx {{ title: 'Ethers (TS)', language: 'javascript' }}
+const avatar = await resolver.getAvatar('luc.eth');
+````
+
+</CodeGroup>
+
+And voila, you now have avatars running in your dApp! 🎉
+
+## Avatar Types
+
+Though the above code works, you might be fascinated by how it works, and what its doing behind the scenes.
+ENS Avatar records come in many shapes and sizes. Although partially standardized by [ENSIP-12](https://docs.ens.domains/ens-improvement-proposals/ensip-12-avatar-text-records), avatars could be of many origins and it is up to client libraries what they support.
+In general however you will encounter the following types of avatars:
+
+### IPFS
+
+-   `ipfs://` - An IPFS hash, which can be resolved by the IPFS gateway
+
+Example: `ipfs://`
+
+### Http(s)
+
+-   `http(s)://` - A URL, which can be resolved by the browser
+
+Example: `https://example.com/image.png`
+
+### Data
+
+-   `data:` - A base64 encoded image, which can be resolved by the browser
+
+Example: `data: `
+
+### EIP155 (NFT)
+
+-   `eip155:1/0x1234.../1` - A reference to a token on a specific chain following the standards defined in CAIP-22 and CAIP-29.
+
+Example: `eip155:1/0x1234.../1`
+
+The above types are all supported by the `resolveAvatar` function, and magically turned into browser-loadable urls before outputted to your app.
