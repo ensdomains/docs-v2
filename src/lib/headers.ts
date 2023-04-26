@@ -1,6 +1,6 @@
 /* eslint-disable sonarjs/no-duplicate-string */
 export const SubHeaders: [string, string, RegExp][] = [
-    ['Intro', '/learn/protocol', /\/learn(\/.*)?/],
+    ['Intro', '/learn/protocol', /\/(learn(\/.*)?)?$/],
     ['dApp Developer', '/web/quickstart', /\/web(\/.*)?/],
     ['Resolution', '/resolvers/quickstart', /\/(resolvers|subnames)(\/.*)?/],
     [
