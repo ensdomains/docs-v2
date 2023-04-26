@@ -133,14 +133,14 @@ function PageNavigation() {
         .findIndex((page) => page.href === router.pathname);
 
     if (currentPageIndex === -1) {
-        return null;
+        return;
     }
 
     const previousPage = allPages[currentPageIndex - 1];
     const nextPage = allPages[currentPageIndex + 1];
 
     if (!previousPage && !nextPage) {
-        return null;
+        return;
     }
 
     return (

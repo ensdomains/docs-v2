@@ -13,7 +13,10 @@
         "v3xlabs"
     ],
     "env": {
-        "node": true
+        "node": true,
+        "browser": true
     },
-    "rules": {}
+    "rules": {
+        "sonarjs/cognitive-complexity": ["warn", 20]
+    }
 }

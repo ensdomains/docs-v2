@@ -224,7 +224,7 @@ export function Libraries() {
                             </span>
                             <span className="flex gap-1">
                                 {library.tags
-                                    .map((tag) => tagLogos[tag] || null)
+                                    .map((tag) => tagLogos[tag] || undefined)
                                     .filter((a) => !!a)
                                     .map((tag) => (
                                         <div
@@ -234,6 +234,7 @@ export function Libraries() {
                                             <img
                                                 src={tag.src.src}
                                                 className="h-4 w-4"
+                                                alt={tag}
                                             />
                                         </div>
                                     ))}

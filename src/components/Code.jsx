@@ -97,7 +97,7 @@ function CopyButton({ code }) {
 
 function CodePanelHeader({ tag, label }) {
     if (!tag && !label) {
-        return null;
+        return;
     }
 
     return (
@@ -142,7 +142,7 @@ function CodeGroupHeader({ title, children, selectedIndex }) {
     const hasTabs = Children.count(children) > 1;
 
     if (!title && !hasTabs) {
-        return null;
+        return;
     }
 
     return (

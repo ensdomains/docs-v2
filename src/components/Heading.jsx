@@ -22,7 +22,7 @@ function AnchorIcon(properties) {
 
 function Eyebrow({ tag, label }) {
     if (!tag && !label) {
-        return null;
+        return;
     }
 
     return (

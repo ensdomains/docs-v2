@@ -151,7 +151,7 @@ function NavigationGroup({ group, className }) {
                         />
                     )}
                 </AnimatePresence>
-                <ul role="list" className="border-l border-transparent">
+                <ul className="border-l border-transparent">
                     {group.links.map((link) => (
                         <motion.li
                             key={link.href}
@@ -342,7 +342,7 @@ export function Navigation(properties) {
 
     return (
         <nav {...properties}>
-            <ul role="list">
+            <ul>
                 <TopLevelNavItem
                     href="https://eips.ethereum.org/EIPS/eip-137"
                     target="_blank"

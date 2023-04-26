@@ -228,7 +228,7 @@ function SearchResults({ autocomplete, query, collection }) {
     }
 
     return (
-        <ul role="list" {...autocomplete.getListProps()}>
+        <ul {...autocomplete.getListProps()}>
             {collection.items.map((result, resultIndex) => (
                 <SearchResult
                     key={result.objectID}
@@ -496,6 +496,7 @@ export function Search() {
     const [modifierKey, setModifierKey] = useState();
     const { buttonProps, dialogProps } = useSearchProperties();
 
+    // eslint-disable-next-line sonarjs/no-identical-functions
     useEffect(() => {
         setModifierKey(
             /(mac|iphone|ipod|ipad)/i.test(navigator.platform) ? '⌘' : 'Ctrl '
