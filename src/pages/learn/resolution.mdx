@@ -1,1 +1,1 @@
-## Resolution
+# Resolution

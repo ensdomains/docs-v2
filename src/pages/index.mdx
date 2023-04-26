@@ -5,34 +5,13 @@ import { HeroPattern } from '@/components/HeroPattern';
 export const description =
     'Learn everything about the Ethereum Name Service (ENS). How to integrate names into your dApp, issue subnames, and so much more!';
 
-export const sections = [
-    { title: 'Guides', id: 'guides' },
-    { title: 'Resources', id: 'resources' },
-];
-
 # Ethereum Name Service Documentation
 
 Use the Ethereum Name Service smart-contracts and api to access usernames, avatars, and have identity in your dApps. {{ className: 'lead' }}
 
+<VideoComponent src="https://v3x.space/ens-docs/intro1.mp4" />
+
 <div className="not-prose mb-16 mt-6 flex gap-3">
-    <Button href="/quickstart-dapp" arrow="right" children="Quickstart dApp" />
-    <Button href="/libraries" variant="outline" children="Explore Libraries" />
+    <Button href="/web/quickstart" arrow="right" children="Quickstart dApp" />
+    <Button href="/web/libraries" variant="outline" children="Explore Libraries" />
 </div>
-
-## Getting started {{ anchor: false }}
-
-You can easily integrate ENS into any app, dApp, or Wallet through the use of most Ethereum Libraries.
-If you're interested in learning more about how ENS works under the hood {{ className: 'lead' }}
-
-<div className="not-prose">
-    <Button
-        href="/foreword"
-        variant="text"
-        arrow="right"
-        children="Teach me everything"
-    />
-</div>
-
-<Guides />
-
-<Resources />

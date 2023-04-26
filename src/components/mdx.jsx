@@ -91,4 +91,5 @@ export function Property({ name, type, children }) {
     );
 }
 
+export { VideoComponent } from './VideoComponent';
 export { default as a } from 'next/link';
