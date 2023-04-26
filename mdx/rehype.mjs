@@ -1,10 +1,10 @@
+import { slugifyWithCounter } from '@sindresorhus/slugify';
+import * as acorn from 'acorn';
+import { toString } from 'mdast-util-to-string';
 import { mdxAnnotations } from 'mdx-annotations';
-import { visit } from 'unist-util-visit';
 import rehypeMdxTitle from 'rehype-mdx-title';
 import shiki from 'shiki';
-import { toString } from 'mdast-util-to-string';
-import * as acorn from 'acorn';
-import { slugifyWithCounter } from '@sindresorhus/slugify';
+import { visit } from 'unist-util-visit';
 
 function rehypeParseCodeBlocks() {
     return (tree) => {
@@ -25,25 +25,26 @@ function rehypeShiki() {
         //     lightHighlighter ??
         //     (await shiki.getHighlighter({ theme: 'min-light' }));
         highlighter =
-          highlighter ?? (await shiki.getHighlighter({ theme: 'css-variables' }))
+            highlighter ??
+            (await shiki.getHighlighter({ theme: 'css-variables' }));
 
         visit(tree, 'element', (node) => {
             if (
                 node.tagName === 'pre' &&
                 node.children[0]?.tagName === 'code'
             ) {
-                let codeNode = node.children[0];
-                let textNode = codeNode.children[0];
+                const codeNode = node.children[0];
+                const textNode = codeNode.children[0];
 
                 node.properties.code = textNode.value;
 
                 if (node.properties.language) {
-                    let lightTokens = highlighter.codeToThemedTokens(
+                    const lightTokens = highlighter.codeToThemedTokens(
                         textNode.value,
                         node.properties.language
                     );
 
-                    let renderLight = shiki.renderToHtml(lightTokens, {
+                    const renderLight = shiki.renderToHtml(lightTokens, {
                         elements: {
                             pre: ({ children }) => children,
                             code: ({ children }) => children,
@@ -60,7 +61,8 @@ function rehypeShiki() {
 
 function rehypeSlugify() {
     return (tree) => {
-        let slugify = slugifyWithCounter();
+        const slugify = slugifyWithCounter();
+
         visit(tree, 'element', (node) => {
             if (node.tagName === 'h2' && !node.properties.id) {
                 node.properties.id = slugify(toString(node));
@@ -71,10 +73,10 @@ function rehypeSlugify() {
 
 function rehypeAddMDXExports(getExports) {
     return (tree) => {
-        let exports = Object.entries(getExports(tree));
+        const exports = Object.entries(getExports(tree));
 
-        for (let [name, value] of exports) {
-            for (let node of tree.children) {
+        for (const [name, value] of exports) {
+            for (const node of tree.children) {
                 if (
                     node.type === 'mdxjsEsm' &&
                     new RegExp(`export\\s+const\\s+${name}\\s*=`).test(
@@ -85,13 +87,13 @@ function rehypeAddMDXExports(getExports) {
                 }
             }
 
-            let exportStr = `export const ${name} = ${value}`;
+            const exportString = `export const ${name} = ${value}`;
 
             tree.children.push({
                 type: 'mdxjsEsm',
-                value: exportStr,
+                value: exportString,
                 data: {
-                    estree: acorn.parse(exportStr, {
+                    estree: acorn.parse(exportString, {
                         sourceType: 'module',
                         ecmaVersion: 'latest',
                     }),
@@ -102,9 +104,9 @@ function rehypeAddMDXExports(getExports) {
 }
 
 function getSections(node) {
-    let sections = [];
+    const sections = [];
 
-    for (let child of node.children ?? []) {
+    for (const child of node.children ?? []) {
         if (child.type === 'element' && child.tagName === 'h2') {
             sections.push(`{
         title: ${JSON.stringify(toString(child))},
@@ -128,7 +130,7 @@ export const rehypePlugins = [
     [
         rehypeAddMDXExports,
         (tree) => ({
-            sections: `[${getSections(tree).join()}]`,
+            sections: `[${getSections(tree).join(',')}]`,
         }),
     ],
 ];

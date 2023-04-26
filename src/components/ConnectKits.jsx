@@ -1,11 +1,9 @@
 import Image from 'next/image';
 
-import { Button } from '@/components/Button';
-import { Heading } from '@/components/Heading';
 import ConnectKitLogo from '@/images/logos/connectkit.png';
 import RainbowkitLogo from '@/images/logos/rainbow.svg';
 import Web3Modalv2Logo from '@/images/logos/walletconnect.svg';
-import { ccx, cx } from '@/lib/cx';
+import { ccx } from '@/lib/cx';
 
 export const ensLibraries = [
     {
@@ -58,7 +56,12 @@ export const ConnectKits = () => {
                         <div className="pt-4 font-bold">{library.name}</div>
                         <p className="w-32 text-zinc-500">
                             by{' '}
-                            <a href={library.creator_url} className="text-zinc-700 dark:text-zinc-100">{library.creator}</a>
+                            <a
+                                href={library.creator_url}
+                                className="text-zinc-700 dark:text-zinc-100"
+                            >
+                                {library.creator}
+                            </a>
                         </p>
                     </a>
                 ))}

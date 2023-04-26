@@ -1,4 +1,4 @@
-import { Head, Html, Main, NextScript } from 'next/document'
+import { Head, Html, Main, NextScript } from 'next/document';
 
 const modeScript = `
   let darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
@@ -33,19 +33,19 @@ const modeScript = `
     disableTransitionsTemporarily()
     updateMode()
   }
-`
+`;
 
 export default function Document() {
-  return (
-    <Html lang="en">
-      <Head>
-        <script dangerouslySetInnerHTML={{ __html: modeScript }} />
-        <meta name="theme-color" content="#5298FF"></meta>
-      </Head>
-      <body className="bg-white antialiased dark:bg-zinc-900">
-        <Main />
-        <NextScript />
-      </body>
-    </Html>
-  )
+    return (
+        <Html lang="en">
+            <Head>
+                <script dangerouslySetInnerHTML={{ __html: modeScript }} />
+                <meta name="theme-color" content="#5298FF"></meta>
+            </Head>
+            <body className="bg-[#f7f7f7] antialiased dark:bg-zinc-900">
+                <Main />
+                <NextScript />
+            </body>
+        </Html>
+    );
 }

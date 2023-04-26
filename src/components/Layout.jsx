@@ -1,12 +1,11 @@
-import Link from 'next/link';
 import { motion } from 'framer-motion';
 
 import { Footer } from '@/components/Footer';
 import { Header } from '@/components/Header';
-import { Logo } from '@/components/Logo';
-import { Navigation } from '@/components/Navigation';
 import { Prose } from '@/components/Prose';
 import { SectionProvider } from '@/components/SectionProvider';
+
+import { Navigation } from './Navigation';
 
 export function Layout({ children, sections = [] }) {
     return (
@@ -17,6 +16,7 @@ export function Layout({ children, sections = [] }) {
                     className="lheader fixed inset-0 top-14 left-0 z-40 contents w-72 overflow-y-auto border-r-0 border-zinc-900/10 px-6 pt-2 pb-8 dark:border-white/10 lg:block xl:w-80"
                 >
                     <Header />
+                    {/* // TODO: */}
                     <Navigation className="hidden lg:mt-8 lg:block" />
                 </motion.header>
                 <div className="relative px-4 pt-14 sm:px-6 lg:px-8">

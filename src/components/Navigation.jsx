@@ -1,17 +1,19 @@
-import { useRef } from 'react';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
 import clsx from 'clsx';
 import { AnimatePresence, motion, useIsPresent } from 'framer-motion';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { useRef } from 'react';
 
 import { Button } from '@/components/Button';
 import { useIsInsideMobileNavigation } from '@/components/MobileNavigation';
 import { useSectionStore } from '@/components/SectionProvider';
 import { Tag } from '@/components/Tag';
+import { navigation } from '@/lib/headers';
 import { remToPx } from '@/lib/remToPx';
 
 function useInitialValue(value, condition = true) {
-    let initialValue = useRef(value).current;
+    const initialValue = useRef(value).current;
+
     return condition ? initialValue : value;
 }
 
@@ -52,7 +54,7 @@ function NavLink({ href, tag, active, isAnchorLink = false, children }) {
 }
 
 function VisibleSectionHighlight({ group, pathname }) {
-    let [sections, visibleSections] = useInitialValue(
+    const [sections, visibleSections] = useInitialValue(
         [
             useSectionStore((s) => s.sections),
             useSectionStore((s) => s.visibleSections),
@@ -60,18 +62,18 @@ function VisibleSectionHighlight({ group, pathname }) {
         useIsInsideMobileNavigation()
     );
 
-    let isPresent = useIsPresent();
-    let firstVisibleSectionIndex = Math.max(
+    const isPresent = useIsPresent();
+    const firstVisibleSectionIndex = Math.max(
         0,
         [{ id: '_top' }, ...sections].findIndex(
             (section) => section.id === visibleSections[0]
         )
     );
-    let itemHeight = remToPx(2);
-    let height = isPresent
+    const itemHeight = remToPx(2);
+    const height = isPresent
         ? Math.max(1, visibleSections.length) * itemHeight
         : itemHeight;
-    let top =
+    const top =
         group.links.findIndex((link) => link.href === pathname) * itemHeight +
         firstVisibleSectionIndex * itemHeight;
 
@@ -88,12 +90,12 @@ function VisibleSectionHighlight({ group, pathname }) {
 }
 
 function ActivePageMarker({ group, pathname }) {
-    let itemHeight = remToPx(2);
-    let offset = remToPx(0.25);
-    let activePageIndex = group.links.findIndex(
+    const itemHeight = remToPx(2);
+    const offset = remToPx(0.25);
+    const activePageIndex = group.links.findIndex(
         (link) => link.href === pathname
     );
-    let top = offset + activePageIndex * itemHeight;
+    const top = offset + activePageIndex * itemHeight;
 
     return (
         <motion.div
@@ -111,13 +113,13 @@ function NavigationGroup({ group, className }) {
     // If this is the mobile navigation then we always render the initial
     // state, so that the state does not change during the close animation.
     // The state will still update when we re-open (re-render) the navigation.
-    let isInsideMobileNavigation = useIsInsideMobileNavigation();
-    let [router, sections] = useInitialValue(
+    const isInsideMobileNavigation = useIsInsideMobileNavigation();
+    const [router, sections] = useInitialValue(
         [useRouter(), useSectionStore((s) => s.sections)],
         isInsideMobileNavigation
     );
 
-    let isActiveGroup =
+    const isActiveGroup =
         group.links.findIndex((link) => link.href === router.pathname) !== -1;
 
     return (
@@ -241,106 +243,105 @@ The Magic of Multichain
 
 */
 
-export const navigation = [
-    {
-        title: '',
-        links: [
-            { title: 'Welcome', href: '/' },
-        ]
-    },
-    {
-        title: 'Learn',
-        links: [
-            { title: 'The Protocol', href: '/learn/protocol' },
-            { title: 'Resolution', href: '/learn/resolution' },
-            { title: 'CCIP Cross Chain Interoperability Protocol', href: '/learn/ccip' },
-            { title: 'DNS-Compatability', href: '/learn/dnssec' },
-          ],
-    },
-    {
-        title: 'Web / Querying',
-        links: [
-            { title: 'Tools and Libraries', href: '/web/libraries' },
-            { title: 'Quickstart', href: '/web/quickstart' },
-            { title: 'Interfacing with ENS Contracts', href: '/web/interfacing' },
-            { title: 'Getting Avatars', href: '/web/avatars' },
-            { title: 'Sign In With Ethereum (SIWE)', href: '/web/siwe' },
-        ],
-    },
-    {
-        title: 'Resolvers',
-        links: [
-            { title: 'Why Resolvers', href: '/resolvers/about' },
-            { title: 'Quickstart', href: '/resolvers/quickstart' },
-            { title: 'Public Resolver', href: '/resolvers/public-resolver' },
-            { title: 'Writing your own resolver', href: '/resolvers/writing-a-resolver' },
-            { title: 'Cross Chain Resolution', href: '/resolvers/cross-chain-resolution' },
-        ],
-    },
-    {
-        title: 'Records',
-        links: [
-            { title: 'Record Types and Standards', href: '/records' },
-            { title: 'Quickstart', href: '/records/quickstart' },
-            { title: 'Modifying Records', href: '/records/modify' },
-        ],
-    },
-    {
-        title: 'Subnames',
-        links: [
-            { title: 'Namewrapper', href: '/subnames/wrapper' },
-            { title: 'Quickstart', href: '/subnames/quickstart' },
-            { title: 'Subdomain for every NFT Holder', href: '/subnames/nfts' },
-            { title: 'Writing your own Subdomain System', href: '/subnames/writing-a-subdomain-system' },
-        ],
-    },
-    {
-        title: 'Guides',
-        links: [  
-            { title: 'Registering a .eth', href: 'https://support.ens.domains/docs/core/registration/registration-steps' },
-            { title: 'Import a DNS name', href: 'https://support.ens.domains/docs/howto/link-dns-name' },
-            { title: 'Identity in your dApps', href: '/web/quickstart' },
-            { title: 'Subdomains for everyone', href: '/subnames/quickstart' },
-            { title: 'The Magic of Multichain', href: '/learn/ccip' },
-        ],
-    },
-    // {
-    //     title: 'Docs',
-    //     links: [
-    //         { title: 'Introduction', href: '/' },
-    //         { title: 'What is ENS?', href: '/foreword' },
-    //         { title: 'Libraries', href: '/libraries' },
-    //         { title: 'Forward Resolution', href: '/forward-resolution' },
-    //         { title: 'Reverse Resolution', href: '/reverse-resolution' },
-    //         { title: 'Writing a Resolver', href: '/writing-a-resolver' },
-    //         { title: 'Cross Chain Interoperability Protocol', href: '/ccip' },
-    //         { title: 'DNS on ENS', href: '/dnssec' },
-    //         { title: 'Subdomains', href: '/subdomains' },
-    //     ],
-    // },
-    // {
-    //     title: 'Guides',
-    //     links: [{ title: 'Identity in your dApps', href: '/quickstart-dapp' }],
-    // },
-    // {
-    //     title: 'Resources',
-    //     links: [
-    //         { title: 'Discord', href: 'https://chat.ens.domains/?ref=ensdocs' },
-    //         {
-    //             title: 'Governance Forum',
-    //             href: 'https://discuss.ens.domains/?ref=ensdocs',
-    //         },
-    //         {
-    //             title: 'Support Docs',
-    //             href: 'https://support.ens.domains/?ref=ensdocs',
-    //         },
-    //     ],
-    // },
-];
+// export const navigation = [
+//     {
+//         title: '',
+//         links: [{ title: 'Welcome', href: '/' }],
+//     },
+//     {
+//         title: 'Learn',
+//         links: [
+//             { title: 'The Protocol', href: '/learn/protocol' },
+//             { title: 'Resolution', href: '/learn/resolution' },
+//             {
+//                 title: 'CCIP Cross Chain Interoperability Protocol',
+//                 href: '/learn/ccip',
+//             },
+//             { title: 'DNS-Compatability', href: '/learn/dnssec' },
+//         ],
+//     },
+//     {
+//         title: 'Web / Querying',
+//         links: [
+//             { title: 'Tools and Libraries', href: '/web/libraries' },
+//             { title: 'Quickstart', href: '/web/quickstart' },
+//             {
+//                 title: 'Interfacing with ENS Contracts',
+//                 href: '/web/interfacing',
+//             },
+//             { title: 'Getting Avatars', href: '/web/avatars' },
+//             { title: 'Sign In With Ethereum (SIWE)', href: '/web/siwe' },
+//         ],
+//     },
+//     {
+//         title: 'Resolvers',
+//         links: [
+//             { title: 'Why Resolvers', href: '/resolvers/about' },
+//             { title: 'Quickstart', href: '/resolvers/quickstart' },
+//             { title: 'Public Resolver', href: '/resolvers/public-resolver' },
+//             {
+//                 title: 'Writing your own resolver',
+//                 href: '/resolvers/writing-a-resolver',
+//             },
+//             {
+//                 title: 'Cross Chain Resolution',
+//                 href: '/resolvers/cross-chain-resolution',
+//             },
+//         ],
+//     },
+//     {
+//         title: 'Records',
+//         links: [
+//             { title: 'Record Types and Standards', href: '/records' },
+//             { title: 'Quickstart', href: '/records/quickstart' },
+//             { title: 'Modifying Records', href: '/records/modify' },
+//         ],
+//     },
+//     {
+//         title: 'Subnames',
+//         links: [
+//             { title: 'Namewrapper', href: '/subnames/wrapper' },
+//             { title: 'Quickstart', href: '/subnames/quickstart' },
+//             { title: 'Subdomain for every NFT Holder', href: '/subnames/nfts' },
+//             {
+//                 title: 'Writing your own Subdomain System',
+//                 href: '/subnames/writing-a-subdomain-system',
+//             },
+//         ],
+//     },
+//     {
+//         title: 'Guides',
+//         links: [
+//             {
+//                 title: 'Registering a .eth',
+//                 href: 'https://support.ens.domains/docs/core/registration/registration-steps',
+//             },
+//             {
+//                 title: 'Import a DNS name',
+//                 href: 'https://support.ens.domains/docs/howto/link-dns-name',
+//             },
+//             { title: 'Identity in your dApps', href: '/web/quickstart' },
+//             { title: 'Subdomains for everyone', href: '/subnames/quickstart' },
+//             { title: 'The Magic of Multichain', href: '/learn/ccip' },
+//         ],
+//     },
+// ];
 
-export function Navigation(props) {
+export function Navigation(properties) {
+    const { pathname } = useRouter();
+
+    const foundNavigation = navigation.find(
+        ([url, group]) => pathname.match(url) && group
+    );
+
+    if (!foundNavigation) {
+        return;
+    }
+
+    const [, activeNavigation] = foundNavigation;
+
     return (
-        <nav {...props}>
+        <nav {...properties}>
             <ul role="list">
                 <TopLevelNavItem
                     href="https://eips.ethereum.org/EIPS/eip-137"
@@ -355,13 +356,14 @@ export function Navigation(props) {
                 >
                     Support
                 </TopLevelNavItem>
-                {navigation.map((group, groupIndex) => (
-                    <NavigationGroup
-                        key={group.title}
-                        group={group}
-                        className={groupIndex === 0 && 'md:mt-0'}
-                    />
-                ))}
+                {activeNavigation &&
+                    activeNavigation.map((group, groupIndex) => (
+                        <NavigationGroup
+                            key={group.title}
+                            group={group}
+                            className={groupIndex === 0 && 'md:mt-0'}
+                        />
+                    ))}
                 <li className="sticky bottom-0 z-10 mt-6 min-[416px]:hidden">
                     <Button href="#" variant="filled" className="w-full">
                         Sign in

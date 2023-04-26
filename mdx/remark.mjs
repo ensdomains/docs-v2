@@ -1,3 +1,3 @@
-import { mdxAnnotations } from 'mdx-annotations'
+import { mdxAnnotations } from 'mdx-annotations';
 
-export const remarkPlugins = [mdxAnnotations.remark]
+export const remarkPlugins = [mdxAnnotations.remark];

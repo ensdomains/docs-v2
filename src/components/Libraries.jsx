@@ -2,23 +2,22 @@ import Image from 'next/image';
 
 import { Button } from '@/components/Button';
 import { Heading } from '@/components/Heading';
+import logoENSjs from '@/images/logos/ensjs.svg';
+import logoEthers from '@/images/logos/ethers.svg';
 import logoGo from '@/images/logos/go.svg';
+import logoJavascript from '@/images/logos/javascript.svg';
+import logoKEthereum from '@/images/logos/kotlin.svg';
 import logoNode from '@/images/logos/node.svg';
+import logoNuGet from '@/images/logos/nuget.svg';
 import logoPhp from '@/images/logos/php.svg';
 import logoPython from '@/images/logos/python.svg';
-import logoRuby from '@/images/logos/ruby.svg';
 import logoReact from '@/images/logos/react.svg';
-import logoNuGet from '@/images/logos/nuget.svg';
-import logoWagmi from '@/images/logos/wagmi.svg';
-import logoEthers from '@/images/logos/ethers.svg';
-import logoWeb3js from '@/images/logos/web3js.svg';
-import logoENSjs from '@/images/logos/ensjs.svg';
+import logoRuby from '@/images/logos/ruby.svg';
 import logoTypescript from '@/images/logos/typescript.svg';
 import logoVerified from '@/images/logos/verified.svg';
-import logoJavascript from '@/images/logos/javascript.svg';
+import logoWagmi from '@/images/logos/wagmi.svg';
 import logoWeb3j from '@/images/logos/web3j.png';
-import logoKEthereum from '@/images/logos/kotlin.svg';
-import { FaceSmileIcon } from './icons/FaceSmileIcon';
+import logoWeb3js from '@/images/logos/web3js.svg';
 
 export const ensLibraries = [
     {

@@ -27,11 +27,11 @@ const guides = [
             'Explore the CCIP, the protocol that allows your ENS resolvers to be off-chain or on other chains.',
     },
     {
-      href: '/dnssec',
-      name: 'DNSSEC',
-      description:
-          'Discover the DNSSEC functionality and use your DNS name in the world of ENS.',
-  },
+        href: '/dnssec',
+        name: 'DNSSEC',
+        description:
+            'Discover the DNSSEC functionality and use your DNS name in the world of ENS.',
+    },
     // {
     //   href: '/pagination',
     //   name: 'Pagination',
