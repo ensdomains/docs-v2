@@ -22,7 +22,6 @@ export const VideoComponent = ({ src }) => {
 
     return (
         <video
-            src={src}
             autoPlay
             crossOrigin="anonymous"
             width="full"
@@ -31,6 +30,9 @@ export const VideoComponent = ({ src }) => {
             ref={v}
             muted={muted}
         >
+            <source src={src + '.mp4'} type="video/mp4" />
+            <source src={src + '.webm'} type="video/webm" />
+            <source src={src + '.mkv'} type="video/mkv" />
             Your browser does not support the video tag.
         </video>
     );
