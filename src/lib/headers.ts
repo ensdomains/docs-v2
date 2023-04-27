@@ -58,15 +58,33 @@ export const navigation: [pathMatches, routeGroup[]][] = [
                 links: [
                     { title: 'Tools and Libraries', href: '/web/libraries' },
                     { title: 'Quickstart', href: '/web/quickstart' },
-                    {
-                        title: 'Interfacing with ENS Contracts',
-                        href: '/web/interfacing',
-                    },
                     { title: 'Getting Avatars', href: '/web/avatars' },
+                    { title: 'Getting Primary Names', href: '/web/reverse' },
                     {
                         title: 'Sign In With Ethereum (SIWE)',
                         href: '/web/siwe',
                     },
+                ],
+            },
+            {
+                title: 'Advanced',
+                links: [
+                    {
+                        title: 'Naming Smart-contracts',
+                        href: '/web/naming-contracts',
+                    },
+                    {
+                        title: 'Interfacing with ENS Contracts',
+                        href: '/web/interfacing',
+                    },
+                ],
+            },
+            {
+                title: 'Design Guidelines',
+                links: [
+                    // eslint-disable-next-line quotes
+                    { title: "Do's and Don'ts", href: '/web/design' },
+                    { title: 'Media kit', href: '/web/design' },
                 ],
             },
         ],
