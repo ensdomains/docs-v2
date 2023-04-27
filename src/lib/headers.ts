@@ -85,7 +85,10 @@ export const navigation: [pathMatches, routeGroup[]][] = [
                 links: [
                     // eslint-disable-next-line quotes
                     { title: "Do's and Don'ts", href: '/web/design' },
-                    { title: 'Media kit', href: '/web/design' },
+                    {
+                        title: 'Media kit',
+                        href: 'https://github.com/ensdomains/media-kit',
+                    },
                 ],
             },
         ],
