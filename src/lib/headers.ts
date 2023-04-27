@@ -189,6 +189,19 @@ export const navigation: [pathMatches, routeGroup[]][] = [
                 links: [{ title: 'Welcome', href: '/dao/proposals' }],
             },
             {
+                title: 'Good to know',
+                links: [
+                    {
+                        title: 'Submit Proposal',
+                        href: '/dao/proposals/submit',
+                    },
+                    {
+                        title: 'Voting Procedure',
+                        href: '/dao/governance#passing-a-proposal',
+                    },
+                ],
+            },
+            {
                 title: 'Proposals Term 3',
                 links: [
                     {
