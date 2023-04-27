@@ -50,6 +50,10 @@ module.exports = {
                     800: '#0044A9',
                     900: '#002E71',
                 },
+                'ens-dao': {
+                    400: '#AD76FF', // Core
+                    500: '#8F54FF',
+                },
                 'ens-red': {
                     DEFAULT: '#FF2D55',
                     50: '#FFE5EA',

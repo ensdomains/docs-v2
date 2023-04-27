@@ -2,6 +2,7 @@ import clsx from 'clsx';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { forwardRef } from 'react';
 import { FaGithub } from 'react-icons/fa';
 
@@ -14,6 +15,7 @@ import { useMobileNavigationStore } from '@/components/MobileNavigation';
 import { MobileSearch, Search } from '@/components/Search';
 import logo from '@/images/logo.svg';
 import mark from '@/images/mark.svg';
+import markDao from '@/images/mark_dao.svg';
 
 import { SubHeader } from './SubHeader';
 
@@ -34,10 +36,13 @@ function TopLevelNavItem({ href, children, ...properties }) {
 export const Header = forwardRef(({ className }, reference) => {
     const { isOpen: mobileNavIsOpen } = useMobileNavigationStore();
     const isInsideMobileNavigation = useIsInsideMobileNavigation();
+    const { pathname } = useRouter();
 
     const { scrollY } = useScroll();
     const bgOpacityLight = useTransform(scrollY, [0, 72], [0.5, 0.9]);
     const bgOpacityDark = useTransform(scrollY, [0, 72], [0.2, 0.8]);
+
+    const isDao = pathname.match(/\/dao(\/.*)?/);
 
     return (
         <motion.div
@@ -69,10 +74,10 @@ export const Header = forwardRef(({ className }, reference) => {
                 </Link>
             </div>
             <div className="hidden lg:flex w-fit">
-                <Link href="/" aria-label="Home">
+                <Link href={isDao ? '/dao' : '/'} aria-label="Home">
                     <Image
-                        src={mark}
-                        className="h-8 ml-1"
+                        src={isDao ? markDao : mark}
+                        className="h-8 ml-1 fill-ens-dao-400"
                         alt="ENS Logo"
                         height={'32'}
                     />
@@ -94,8 +99,17 @@ export const Header = forwardRef(({ className }, reference) => {
                         target="_blank"
                         variant="primary"
                     >
-                        Open App
+                        App
                     </Button>
+                    {isDao ? (
+                        <Button href="/" variant="primary" className="">
+                            Protocol Docs
+                        </Button>
+                    ) : (
+                        <Button href="/dao" variant="primary" className="">
+                            DAO Docs
+                        </Button>
+                    )}
                 </div>
                 {/* <nav className="hidden md:block">
                     <ul role="list" className="flex items-center gap-4">

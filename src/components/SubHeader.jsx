@@ -7,9 +7,19 @@ import { SubHeaders } from '@/lib/headers';
 export const SubHeader = () => {
     const { pathname } = useRouter();
 
+    const isDao = pathname.match(/\/dao(\/.*)?/);
+    const [_, subHeaders] = SubHeaders.find(([match, config]) =>
+        pathname.match(match)
+    );
+
     return (
-        <div className="absolute hidden md:flex top-full left-0 right-0 bg-ens-500 text-white px-4">
-            {SubHeaders.map(([label, url, urlMatch]) => (
+        <div
+            className={ccx(
+                'absolute hidden md:flex top-full left-0 right-0 text-white px-4',
+                isDao ? 'bg-ens-dao-400' : 'bg-ens-500'
+            )}
+        >
+            {subHeaders.map(([label, url, urlMatch]) => (
                 <Link
                     href={url}
                     className={ccx(
