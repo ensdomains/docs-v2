@@ -198,7 +198,7 @@ export const navigation: [pathMatches, routeGroup[]][] = [
                 links: [{ title: '👋 Welcome', href: '/dao/proposals' }],
             },
             {
-                title: 'Good to know',
+                title: '🧠 Good to know',
                 links: [
                     {
                         title: 'Submit Proposal',
@@ -211,7 +211,7 @@ export const navigation: [pathMatches, routeGroup[]][] = [
                 ],
             },
             {
-                title: 'Proposals Term 3',
+                title: '📖 Proposals Term 3',
                 links: [
                     {
                         title: '3.5 - [Executable] Activate new .eth Controller and Reverse Registrar',
@@ -244,7 +244,7 @@ export const navigation: [pathMatches, routeGroup[]][] = [
                 ],
             },
             {
-                title: 'Proposals Term 2',
+                title: '📙 Proposals Term 2',
                 links: [
                     {
                         title: '2.2.5 - [Social] Selection of an ENS endowment fund manager',
@@ -273,7 +273,7 @@ export const navigation: [pathMatches, routeGroup[]][] = [
                 ],
             },
             {
-                title: 'Proposals Term 1',
+                title: '📗 Proposals Term 1',
                 links: [
                     {
                         title: '1.9 - [Executable] Fund the Protocol Guild pilot with 200,000 $ENS',
@@ -330,7 +330,7 @@ export const navigation: [pathMatches, routeGroup[]][] = [
                 ],
             },
             {
-                title: 'Proposals Term 0',
+                title: '📘 Proposals Term 0',
                 links: [
                     {
                         title: '0.4 - [Social] Proposal: Creation of Foundational Working Groups and Working Group Rules',
@@ -360,15 +360,15 @@ export const navigation: [pathMatches, routeGroup[]][] = [
                 links: [{ title: '👋 Welcome', href: '/dao' }],
             },
             {
-                title: 'The interesting bits',
+                title: '🧑‍🎓 The interesting bits',
                 links: [
-                    { title: 'Constitution', href: '/dao/constitution' },
-                    { title: 'Foundation', href: '/dao/foundation' },
-                    { title: 'Airdrop', href: '/dao/airdrop' },
+                    { title: '📜 Constitution', href: '/dao/constitution' },
+                    { title: '🏛️ Foundation', href: '/dao/foundation' },
+                    { title: '🪂 Airdrop', href: '/dao/airdrop' },
                 ],
             },
             {
-                title: 'Links',
+                title: '🔗 Links',
                 links: [
                     {
                         title: 'Discourse',
