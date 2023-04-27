@@ -1,9 +1,10 @@
 import clsx from 'clsx';
 import Link from 'next/link';
+import { FC } from 'react';
 
-import { cx } from '@/lib/cx';
+import { ccx, cx } from '@/lib/cx';
 
-function ArrowIcon(properties) {
+const ArrowIcon: FC = (properties) => {
     return (
         <svg viewBox="0 0 20 20" fill="none" aria-hidden="true" {...properties}>
             <path
@@ -14,7 +15,7 @@ function ArrowIcon(properties) {
             />
         </svg>
     );
-}
+};
 
 const variantStyles = {
     primary: cx(
@@ -35,13 +36,13 @@ const variantStyles = {
     text: 'text-ens-500 hover:text-ens-600 dark:text-ens-400 dark:hover:text-ens-500',
 };
 
-export function Button({
+export const Button = ({
     variant = 'primary',
     className,
     children,
     arrow,
     ...properties
-}) {
+}) => {
     const Component = properties.href ? Link : 'button';
 
     className = clsx(
@@ -52,7 +53,8 @@ export function Button({
 
     const arrowIcon = (
         <ArrowIcon
-            className={clsx(
+            // @ts-ignore
+            className={ccx(
                 'mt-0.5 h-5 w-5',
                 variant === 'text' && 'relative top-px',
                 arrow === 'left' && '-ml-1 rotate-180',
@@ -62,10 +64,10 @@ export function Button({
     );
 
     return (
-        <Component className={className} {...properties}>
+        <Component href={properties.href} className={className} {...properties}>
             {arrow === 'left' && arrowIcon}
             {children}
             {arrow === 'right' && arrowIcon}
         </Component>
     );
-}
+};
