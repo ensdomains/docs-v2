@@ -19,13 +19,9 @@ export const SubHeaders: [RegExp, SubHeaderConfig[]][] = [
     [
         /.*/,
         [
-            ['Intro', '/learn/protocol', /\/(learn(\/.*)?)?$/],
-            ['dApp Developer', '/web/quickstart', /\/web(\/.*)?/],
-            [
-                'Resolution',
-                '/resolvers/quickstart',
-                /\/(resolvers|subnames)(\/.*)?/,
-            ],
+            ['Intro', '/', /\/(learn(\/.*)?)?$/],
+            ['dApp Developer', '/web', /\/web(\/.*)?/],
+            ['Resolution', '/resolvers', /\/(resolvers|subnames)(\/.*)?/],
             [
                 'Records & Standardization',
                 '/standards',
@@ -53,6 +49,10 @@ export const navigation: [pathMatches, routeGroup[]][] = [
     [
         /\/web(\/.*)?/,
         [
+            {
+                title: '',
+                links: [{ title: '👋 Welcome', href: '/web' }],
+            },
             {
                 title: '🌐 Web / Querying',
                 links: [
@@ -93,6 +93,10 @@ export const navigation: [pathMatches, routeGroup[]][] = [
     [
         /\/(resolvers|subnames)(\/.*)?/,
         [
+            {
+                title: '',
+                links: [{ title: '👋 Welcome', href: '/resolvers' }],
+            },
             {
                 title: '🗺️ Resolvers',
                 links: [
@@ -179,9 +183,16 @@ export const navigation: [pathMatches, routeGroup[]][] = [
         /\/dao\/governance(\/.*)?/,
         [
             {
+                title: '',
+                links: [{ title: '👋 Welcome', href: '/dao/governance' }],
+            },
+            {
                 title: 'Governance Process',
                 links: [
-                    { title: 'Governance Process', href: '/dao/governance' },
+                    {
+                        title: 'Governance Process',
+                        href: '/dao/governance/process',
+                    },
                     {
                         title: 'Moderator Checklist',
                         href: '/dao/governance/moderator',
@@ -398,7 +409,7 @@ export const navigation: [pathMatches, routeGroup[]][] = [
                 links: [{ title: '👋 Welcome', href: '/' }],
             },
             {
-                title: 'Learn',
+                title: '🧑‍🎓 Learn',
                 links: [
                     { title: 'The Protocol', href: '/learn/protocol' },
                     { title: 'Resolution', href: '/learn/resolution' },
@@ -409,28 +420,31 @@ export const navigation: [pathMatches, routeGroup[]][] = [
                     { title: 'DNS-Compatability', href: '/learn/dnssec' },
                 ],
             },
-            // {
-            //     title: 'Guides',
-            //     links: [
-            //         {
-            //             title: 'Registering a .eth',
-            //             href: 'https://support.ens.domains/docs/core/registration/registration-steps',
-            //         },
-            //         {
-            //             title: 'Import a DNS name',
-            //             href: 'https://support.ens.domains/docs/howto/link-dns-name',
-            //         },
-            //         {
-            //             title: 'Identity in your dApps',
-            //             href: '/web/quickstart',
-            //         },
-            //         {
-            //             title: 'Subdomains for everyone',
-            //             href: '/subnames/quickstart',
-            //         },
-            //         { title: 'The Magic of Multichain', href: '/learn/ccip' },
-            //     ],
-            // },
+            {
+                title: '📚 Guides',
+                links: [
+                    {
+                        title: 'Registering a .eth',
+                        href: 'https://support.ens.domains/docs/core/registration/registration-steps',
+                    },
+                    {
+                        title: 'Import a DNS name',
+                        href: 'https://support.ens.domains/dnstoens/importguide/connect-dns-to-ens',
+                    },
+                    {
+                        title: 'Identity in your dApps',
+                        href: '/web/quickstart',
+                    },
+                    {
+                        title: 'Subdomains for everyone',
+                        href: '/subnames/quickstart',
+                    },
+                    {
+                        title: 'The Magic of Multichain',
+                        href: '/resolvers/cross-chain-resolution',
+                    },
+                ],
+            },
         ],
     ],
 ];
