@@ -28,7 +28,7 @@ export const SubHeaders: [RegExp, SubHeaderConfig[]][] = [
             ],
             [
                 'Records & Standardization',
-                '/records/quickstart',
+                '/standards',
                 /\/(records|standards|ensip)(\/.*)?/,
             ],
         ],
@@ -54,20 +54,21 @@ export const navigation: [pathMatches, routeGroup[]][] = [
         /\/web(\/.*)?/,
         [
             {
-                title: 'Web / Querying',
+                title: '🌐 Web / Querying',
                 links: [
-                    { title: 'Tools and Libraries', href: '/web/libraries' },
-                    { title: 'Quickstart', href: '/web/quickstart' },
-                    { title: 'Getting Avatars', href: '/web/avatars' },
-                    { title: 'Getting Primary Names', href: '/web/reverse' },
+                    { title: '⚡ Quickstart', href: '/web/quickstart' },
+                    { title: '🛠️ Tools and Libraries', href: '/web/libraries' },
+                    { title: '🔍 Address', href: '/web/resolution' },
+                    { title: '🔍 Avatars', href: '/web/avatars' },
+                    { title: '🔍 Primary Names', href: '/web/reverse' },
                     {
-                        title: 'Sign In With Ethereum (SIWE)',
+                        title: '✍️ Sign In With Ethereum (SIWE)',
                         href: '/web/siwe',
                     },
                 ],
             },
             {
-                title: 'Advanced',
+                title: '⚙️ Advanced',
                 links: [
                     {
                         title: 'Naming Smart-contracts',
@@ -80,7 +81,7 @@ export const navigation: [pathMatches, routeGroup[]][] = [
                 ],
             },
             {
-                title: 'Design Guidelines',
+                title: '🖼️ Design Guidelines',
                 links: [
                     // eslint-disable-next-line quotes
                     { title: "Do's and Don'ts", href: '/web/design' },
@@ -93,35 +94,35 @@ export const navigation: [pathMatches, routeGroup[]][] = [
         /\/(resolvers|subnames)(\/.*)?/,
         [
             {
-                title: 'Resolvers',
+                title: '🗺️ Resolvers',
                 links: [
-                    { title: 'Why Resolvers', href: '/resolvers/about' },
-                    { title: 'Quickstart', href: '/resolvers/quickstart' },
+                    { title: '⚡ Quickstart', href: '/resolvers/quickstart' },
+                    { title: '🤷‍♀️ Why Resolvers', href: '/resolvers/about' },
                     {
-                        title: 'Public Resolver',
+                        title: '🏛️ Public Resolver',
                         href: '/resolvers/public-resolver',
                     },
                     {
-                        title: 'Writing your own resolver',
+                        title: '✍️ Writing your own resolver',
                         href: '/resolvers/writing-a-resolver',
                     },
                     {
-                        title: 'Cross Chain Resolution',
+                        title: '⛓️ Cross Chain Resolution',
                         href: '/resolvers/cross-chain-resolution',
                     },
                 ],
             },
             {
-                title: 'Subnames',
+                title: '📰 Subnames',
                 links: [
-                    { title: 'Namewrapper', href: '/subnames/wrapper' },
-                    { title: 'Quickstart', href: '/subnames/quickstart' },
+                    { title: '⚡ Quickstart', href: '/subnames/quickstart' },
+                    { title: '🎁 Namewrapper', href: '/subnames/wrapper' },
                     {
-                        title: 'Subdomain for every NFT Holder',
+                        title: '🫂 Subdomain for every NFT Holder',
                         href: '/subnames/nfts',
                     },
                     {
-                        title: 'Writing your own Subdomain System',
+                        title: '✍️ Writing your own Subdomain System',
                         href: '/subnames/writing-a-subdomain-system',
                     },
                 ],
@@ -132,16 +133,24 @@ export const navigation: [pathMatches, routeGroup[]][] = [
         /\/(records|standards|ensip)(\/.*)?/,
         [
             {
-                title: 'Records',
+                title: '',
+                links: [{ title: '👋 Welcome', href: '/standards' }],
+            },
+            {
+                title: '💾 Records',
                 links: [
-                    { title: 'Record Types and Standards', href: '/records' },
-                    { title: 'Quickstart', href: '/records/quickstart' },
-                    { title: 'Modifying Records', href: '/records/modify' },
+                    { title: '⚡ Quickstart', href: '/records/quickstart' },
+                    {
+                        title: '💾 Record Types and Standards',
+                        href: '/records',
+                    },
+                    { title: '✍️ Modifying Records', href: '/records/modify' },
                 ],
             },
             {
-                title: 'Improvement Proposals (ENSIPs)',
+                title: '📖 Improvement Proposals (ENSIPs)',
                 links: [
+                    { title: '🧑‍🏫 Explained', href: '/ensip' },
                     { title: '1 - ENS', href: '/ensip/1' },
                     { title: '2 - Hash Registrar', href: '/ensip/2' },
                     { title: '3 - Reverse Resolution', href: '/ensip/3' },
@@ -186,7 +195,7 @@ export const navigation: [pathMatches, routeGroup[]][] = [
         [
             {
                 title: '',
-                links: [{ title: 'Welcome', href: '/dao/proposals' }],
+                links: [{ title: '👋 Welcome', href: '/dao/proposals' }],
             },
             {
                 title: 'Good to know',
@@ -348,7 +357,7 @@ export const navigation: [pathMatches, routeGroup[]][] = [
         [
             {
                 title: '',
-                links: [{ title: 'Welcome', href: '/dao' }],
+                links: [{ title: '👋 Welcome', href: '/dao' }],
             },
             {
                 title: 'The interesting bits',
@@ -386,7 +395,7 @@ export const navigation: [pathMatches, routeGroup[]][] = [
         [
             {
                 title: '',
-                links: [{ title: 'Welcome', href: '/' }],
+                links: [{ title: '👋 Welcome', href: '/' }],
             },
             {
                 title: 'Learn',

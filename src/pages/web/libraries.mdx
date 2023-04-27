@@ -4,17 +4,6 @@ import { ConnectKits } from '@/components/ConnectKits';
 export const description =
     'In this guide, we\'ll look at how authentication works. Protocol offers two ways to authenticate your API requests: Basic authentication and OAuth2 with a token.';
 
-export const sections = [
-    {
-        title: 'Quickstart Kits',
-        id: 'quickstart-kits',
-    },
-    ensLibraries.map((library) => ({
-        title: library.name,
-        id: library.name.toLowerCase().replace('-', '').replace('.', ''),
-    })),
-];
-
 # Libraries
 
 <VideoComponent src="https://v3x.space/ens-docs/libraries" />
@@ -29,7 +18,7 @@ There are a few plug-and-play kits that you can use to jumpstart your project. T
 
 <ConnectKits />
 
-## Libraries <span className="text-zinc-500">All the languages...</span>
+## Libraries
 
 There are many ways to interface with the ENS Ethereum smart contracts, indexers, and metadata services. Whether you're building a dApp, a backend service, or interacting with ENS from your smart contract, there's a library out there to help you get started.
 
