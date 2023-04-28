@@ -1,6 +1,13 @@
 import { useId } from 'react';
 
-export function GridPattern({ width, height, x, y, squares, ...properties }) {
+export const GridPattern = ({
+    width,
+    height,
+    x,
+    y,
+    squares,
+    ...properties
+}) => {
     const patternId = useId();
 
     return (
@@ -39,4 +46,4 @@ export function GridPattern({ width, height, x, y, squares, ...properties }) {
             )}
         </svg>
     );
-}
+};
