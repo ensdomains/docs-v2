@@ -1,12 +1,18 @@
 import { Transition } from '@headlessui/react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { forwardRef, Fragment, useState } from 'react';
+import {
+    FormEventHandler,
+    ForwardedRef,
+    forwardRef,
+    Fragment,
+    useState,
+} from 'react';
 
 import { Button } from '@/components/Button';
 import { navigation } from '@/lib/headers';
 
-function CheckIcon(properties) {
+export const CheckIcon = (properties) => {
     return (
         <svg viewBox="0 0 20 20" aria-hidden="true" {...properties}>
             <circle cx="10" cy="10" r="10" strokeWidth="0" />
@@ -19,7 +25,7 @@ function CheckIcon(properties) {
             />
         </svg>
     );
-}
+};
 
 function FeedbackButton(properties) {
     return (
@@ -31,38 +37,45 @@ function FeedbackButton(properties) {
     );
 }
 
-const FeedbackForm = forwardRef(({ onSubmit }, reference) => {
-    return (
-        <form
-            ref={reference}
-            onSubmit={onSubmit}
-            className="absolute inset-0 flex items-center justify-center gap-6 md:justify-start"
-        >
-            <p className="text-sm text-zinc-600 dark:text-zinc-400">
-                Was this page helpful?
-            </p>
-            <div className="group grid h-8 grid-cols-[1fr,1px,1fr] overflow-hidden rounded-full border border-zinc-900/10 dark:border-white/10">
-                <FeedbackButton data-response="yes">Yes</FeedbackButton>
-                <div className="bg-zinc-900/10 dark:bg-white/10" />
-                <FeedbackButton data-response="no">No</FeedbackButton>
-            </div>
-        </form>
-    );
-});
+const FeedbackForm = forwardRef(
+    (
+        { onSubmit }: { onSubmit: FormEventHandler<HTMLFormElement> },
+        reference: ForwardedRef<HTMLFormElement>
+    ) => {
+        return (
+            <form
+                ref={reference}
+                onSubmit={onSubmit}
+                className="absolute inset-0 flex items-center justify-center gap-6 md:justify-start"
+            >
+                <p className="text-sm text-zinc-600 dark:text-zinc-400">
+                    Was this page helpful?
+                </p>
+                <div className="group grid h-8 grid-cols-[1fr,1px,1fr] overflow-hidden rounded-full border border-zinc-900/10 dark:border-white/10">
+                    <FeedbackButton data-response="yes">Yes</FeedbackButton>
+                    <div className="bg-zinc-900/10 dark:bg-white/10" />
+                    <FeedbackButton data-response="no">No</FeedbackButton>
+                </div>
+            </form>
+        );
+    }
+);
 
-const FeedbackThanks = forwardRef((_properties, reference) => {
-    return (
-        <div
-            ref={reference}
-            className="absolute inset-0 flex justify-center md:justify-start"
-        >
-            <div className="flex items-center gap-3 rounded-full bg-ens-50/50 py-1 pr-3 pl-1.5 text-sm text-ens-900 ring-1 ring-inset ring-ens-500/20 dark:bg-ens-500/5 dark:text-ens-200 dark:ring-ens-500/30">
-                <CheckIcon className="h-5 w-5 flex-none fill-ens-500 stroke-white dark:fill-ens-200/20 dark:stroke-ens-200" />
-                Thanks for your feedback!
+const FeedbackThanks = forwardRef(
+    (_properties, reference: ForwardedRef<HTMLDivElement>) => {
+        return (
+            <div
+                ref={reference}
+                className="absolute inset-0 flex justify-center md:justify-start"
+            >
+                <div className="flex items-center gap-3 rounded-full bg-ens-50/50 py-1 pr-3 pl-1.5 text-sm text-ens-900 ring-1 ring-inset ring-ens-500/20 dark:bg-ens-500/5 dark:text-ens-200 dark:ring-ens-500/30">
+                    <CheckIcon className="h-5 w-5 flex-none fill-ens-500 stroke-white dark:fill-ens-200/20 dark:stroke-ens-200" />
+                    Thanks for your feedback!
+                </div>
             </div>
-        </div>
-    );
-});
+        );
+    }
+);
 
 function Feedback() {
     const [submitted, setSubmitted] = useState(false);
@@ -108,6 +121,7 @@ function PageLink({ label, page, previous = false }) {
                 aria-label={`${label}: ${page.title}`}
                 variant="secondary"
                 arrow={previous ? 'left' : 'right'}
+                className={''}
             >
                 {label}
             </Button>
@@ -126,7 +140,7 @@ function PageLink({ label, page, previous = false }) {
 function PageNavigation() {
     const router = useRouter();
     const allPages = navigation
-        .find(([path, group]) => router.pathname.match(path) && group)
+        .find(([path, group]) => router.pathname.match(path) && group)[1]
         .flatMap((group) => group.links);
     const currentPageIndex = allPages
         .filter((a) => a)
