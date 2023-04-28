@@ -1,4 +1,4 @@
-export function remToPx(remValue) {
+export const remToPx = (remValue) => {
     const rootFontSize =
         typeof window === 'undefined'
             ? 16
@@ -7,4 +7,4 @@ export function remToPx(remValue) {
               );
 
     return Number.parseFloat(remValue) * rootFontSize;
-}
+};

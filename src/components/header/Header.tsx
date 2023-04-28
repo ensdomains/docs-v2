@@ -20,7 +20,7 @@ import {
 import { MobileSearch, Search } from '../Search';
 import { SubHeader } from '../SubHeader';
 
-export const Header = forwardRef<HTMLDivElement, { className: string }>(
+export const Header = forwardRef<HTMLDivElement, { className?: string }>(
     ({ className }, reference) => {
         const { isOpen: mobileNavIsOpen } = useMobileNavigationStore();
         const isInsideMobileNavigation = useIsInsideMobileNavigation();

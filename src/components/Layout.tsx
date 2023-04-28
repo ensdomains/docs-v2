@@ -7,7 +7,7 @@ import { SectionProvider } from '@/components/SectionProvider';
 
 import { Navigation } from './Navigation';
 
-export function Layout({ children, sections = [] }) {
+export const Layout = ({ children, sections = [] }) => {
     return (
         <SectionProvider sections={sections}>
             <div className="lg:ml-72 xl:ml-80">
@@ -21,11 +21,11 @@ export function Layout({ children, sections = [] }) {
                 </motion.header>
                 <div className="relative px-4 pt-14 sm:px-6 lg:px-8">
                     <main className="py-16">
-                        <Prose as="article">{children}</Prose>
+                        <Prose>{children}</Prose>
                     </main>
                     <Footer />
                 </div>
             </div>
         </SectionProvider>
     );
-}
+};

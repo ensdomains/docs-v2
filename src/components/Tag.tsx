@@ -34,11 +34,11 @@ const valueColorMap = {
     delete: 'rose',
 };
 
-export function Tag({
+export const Tag = ({
     children,
     variant = 'medium',
     color = valueColorMap[children.toLowerCase()] ?? 'emerald',
-}) {
+}) => {
     return (
         <span
             className={clsx(
@@ -50,4 +50,4 @@ export function Tag({
             {children}
         </span>
     );
-}
+};
