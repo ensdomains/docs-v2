@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 
-import { Heading } from '@/components/Heading';
+import { Heading } from '@/components/prose/heading';
 
 export { Button } from '@/components/Button';
 export { Code as code, CodeGroup, Pre as pre } from '@/components/Code';

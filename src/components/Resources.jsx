@@ -2,11 +2,11 @@ import { motion, useMotionTemplate, useMotionValue } from 'framer-motion';
 import Link from 'next/link';
 
 import { GridPattern } from '@/components/GridPattern';
-import { Heading } from '@/components/Heading';
 import { ChatBubbleIcon } from '@/components/icons/ChatBubbleIcon';
 import { EnvelopeIcon } from '@/components/icons/EnvelopeIcon';
 import { UserIcon } from '@/components/icons/UserIcon';
 import { UsersIcon } from '@/components/icons/UsersIcon';
+import { Heading } from '@/components/prose/heading';
 
 const resources = [
     {
