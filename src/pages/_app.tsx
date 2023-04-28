@@ -17,7 +17,7 @@ Router.events.on('hashChangeStart', onRouteChange);
 Router.events.on('routeChangeComplete', onRouteChange);
 Router.events.on('routeChangeError', onRouteChange);
 
-export default function App({ Component, pageProps }) {
+const App = ({ Component, pageProps }) => {
     const router = useRouter();
 
     return (
@@ -30,11 +30,13 @@ export default function App({ Component, pageProps }) {
                 )}
                 <meta name="description" content={pageProps.description} />
             </Head>
-            <MDXProvider components={mdxComponents}>
+            <MDXProvider components={mdxComponents as any}>
                 <Layout {...pageProps}>
                     <Component {...pageProps} />
                 </Layout>
             </MDXProvider>
         </>
     );
-}
+};
+
+export default App;
