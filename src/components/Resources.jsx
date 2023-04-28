@@ -6,7 +6,7 @@ import { ChatBubbleIcon } from '@/components/icons/ChatBubbleIcon';
 import { EnvelopeIcon } from '@/components/icons/EnvelopeIcon';
 import { UserIcon } from '@/components/icons/UserIcon';
 import { UsersIcon } from '@/components/icons/UsersIcon';
-import { Heading } from '@/components/prose/heading';
+import { Heading } from '@/components/mdx/heading';
 
 const resources = [
     {

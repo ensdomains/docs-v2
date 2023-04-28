@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 import { Footer } from '@/components/Footer';
 import { Header } from '@/components/header/Header';
-import { Prose } from '@/components/prose/Prose';
+import { Prose } from '@/components/mdx/Prose';
 import { SectionProvider } from '@/components/SectionProvider';
 
 import { Navigation } from './Navigation';

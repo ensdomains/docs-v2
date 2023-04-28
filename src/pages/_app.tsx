@@ -6,7 +6,7 @@ import Head from 'next/head';
 import { Router, useRouter } from 'next/router';
 
 import { Layout } from '@/components/Layout';
-import * as mdxComponents from '@/components/mdx';
+import { mdxComponents } from '@/components/mdx/index';
 import { useMobileNavigationStore } from '@/components/MobileNavigation';
 
 function onRouteChange() {
@@ -30,7 +30,7 @@ const App = ({ Component, pageProps }) => {
                 )}
                 <meta name="description" content={pageProps.description} />
             </Head>
-            <MDXProvider components={mdxComponents as any}>
+            <MDXProvider components={mdxComponents}>
                 <Layout {...pageProps}>
                     <Component {...pageProps} />
                 </Layout>
