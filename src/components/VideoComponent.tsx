@@ -2,15 +2,12 @@ import { useEffect, useRef, useState } from 'react';
 
 /* eslint-disable jsx-a11y/media-has-caption */
 export const VideoComponent = ({ src }) => {
-    const v = useRef();
+    const v = useRef<HTMLVideoElement>();
     const [muted, setMuted] = useState(true);
     const [hasAutoPlayed, setHasAutoPlayed] = useState(false);
 
     useEffect(() => {
         if (v.current && !hasAutoPlayed) {
-            console.log('hooking to vid');
-            console.log(v.current.controller);
-            // v.current.play();
             v.current.addEventListener('play', () => {
                 setTimeout(() => {
                     setHasAutoPlayed(true);
