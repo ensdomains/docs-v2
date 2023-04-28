@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 
 import { Footer } from '@/components/Footer';
-import { Header } from '@/components/Header';
+import { Header } from '@/components/header/Header';
 import { Prose } from '@/components/Prose';
 import { SectionProvider } from '@/components/SectionProvider';
 

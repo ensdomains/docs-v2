@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-    content: ['./{src,mdx}/**/*.{js,mjs,jsx,mdx}'],
+    content: ['./{src,mdx}/**/*.{js,mjs,jsx,mdx,tsx}'],
     darkMode: 'class',
     theme: {
         fontSize: {

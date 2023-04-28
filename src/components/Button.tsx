@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import Link from 'next/link';
-import { FC } from 'react';
+import { FC, PropsWithChildren } from 'react';
 
 import { ccx, cx } from '@/lib/cx';
 
@@ -36,13 +36,15 @@ const variantStyles = {
     text: 'text-ens-500 hover:text-ens-600 dark:text-ens-400 dark:hover:text-ens-500',
 };
 
-export const Button = ({
-    variant = 'primary',
-    className,
-    children,
-    arrow,
-    ...properties
-}) => {
+export const Button: FC<
+    {
+        variant: string;
+        className?: string;
+        arrow?: 'left' | 'right';
+        href?: string;
+        target?: string;
+    } & PropsWithChildren
+> = ({ variant = 'primary', className, children, arrow, ...properties }) => {
     const Component = properties.href ? Link : 'button';
 
     className = clsx(
@@ -64,7 +66,12 @@ export const Button = ({
     );
 
     return (
-        <Component href={properties.href} className={className} {...properties}>
+        <Component
+            href={properties.href}
+            target={properties.target}
+            className={className}
+            {...properties}
+        >
             {arrow === 'left' && arrowIcon}
             {children}
             {arrow === 'right' && arrowIcon}

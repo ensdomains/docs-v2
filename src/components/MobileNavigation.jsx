@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { createContext, Fragment, useContext } from 'react';
 import create from 'zustand';
 
-import { Header } from '@/components/Header';
+import { Header } from '@/components/header/Header';
 import { Navigation } from '@/components/Navigation';
 
 function MenuIcon(properties) {
