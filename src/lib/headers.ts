@@ -36,6 +36,7 @@ type SubHeaderConfig = [string, string, RegExp];
 type routeLink = {
     title: string;
     href: string;
+    external?: boolean;
 };
 
 type routeGroup = {
@@ -387,18 +388,22 @@ export const navigation: [pathMatches, routeGroup[]][] = [
                     {
                         title: 'Discourse',
                         href: 'https://discuss.ens.domains',
+                        external: true,
                     },
                     {
                         title: 'Snapshot',
                         href: 'https://snapshot.org/#/ens.eth',
+                        external: true,
                     },
                     {
                         title: 'Tally',
                         href: 'https://www.withtally.com/governance/ens',
+                        external: true,
                     },
                     {
                         title: 'Sybil',
                         href: 'https://sybil.org/#/delegates/ens',
+                        external: true,
                     },
                 ],
             },
@@ -429,10 +434,12 @@ export const navigation: [pathMatches, routeGroup[]][] = [
                     {
                         title: 'Registering a .eth',
                         href: 'https://support.ens.domains/docs/core/registration/registration-steps',
+                        external: true,
                     },
                     {
                         title: 'Import a DNS name',
                         href: 'https://support.ens.domains/dnstoens/importguide/connect-dns-to-ens',
+                        external: true,
                     },
                     {
                         title: 'Identity in your dApps',

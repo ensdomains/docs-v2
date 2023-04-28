@@ -3,6 +3,7 @@ import { AnimatePresence, motion, useIsPresent } from 'framer-motion';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useRef } from 'react';
+import { FiExternalLink } from 'react-icons/fi';
 
 import { Button } from '@/components/Button';
 import { useIsInsideMobileNavigation } from '@/components/MobileNavigation';
@@ -43,7 +44,7 @@ function NavLink({ href, tag, active, isAnchorLink = false, children }) {
                     : 'text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white'
             )}
         >
-            <span className="truncate">{children}</span>
+            <span className="truncate flex gap-1 items-center">{children}</span>
             {tag && (
                 <Tag variant="small" color="zinc">
                     {tag}
@@ -162,7 +163,8 @@ function NavigationGroup({ group, className }) {
                                 href={link.href}
                                 active={link.href === router.pathname}
                             >
-                                {link.title}
+                                <span>{link.title}</span>
+                                {link.external && <FiExternalLink />}
                             </NavLink>
                             <AnimatePresence mode="popLayout" initial={false}>
                                 {link.href === router.pathname &&
