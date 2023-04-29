@@ -89,6 +89,7 @@ export const navigation: [pathMatches, routeGroup[]][] = [
                     {
                         title: 'Media kit',
                         href: 'https://github.com/ensdomains/media-kit',
+                        external: true,
                     },
                 ],
             },
