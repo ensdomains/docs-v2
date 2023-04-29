@@ -15,6 +15,7 @@ export const Heading: FC<
         tag?: string;
         label?: string;
         anchor?: boolean;
+        className?: string;
     }
 > = ({ level = 2, children, id, tag, label, anchor = true, ...properties }) => {
     const Component = `h${level}`;
@@ -42,6 +43,7 @@ export const Heading: FC<
                 ref={reference}
                 id={anchor ? id : undefined}
                 className={ccx(
+                    properties.className,
                     'mt-8 scroll-mt-32',
                     'flex justify-between items-center w-full'
                 )}
