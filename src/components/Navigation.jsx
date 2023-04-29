@@ -5,7 +5,6 @@ import { useRouter } from 'next/router';
 import { useRef } from 'react';
 import { FiExternalLink } from 'react-icons/fi';
 
-import { Button } from '@/components/Button';
 import { useIsInsideMobileNavigation } from '@/components/MobileNavigation';
 import { useSectionStore } from '@/components/SectionProvider';
 import { Tag } from '@/components/Tag';
@@ -219,19 +218,6 @@ export function Navigation(properties) {
     return (
         <nav {...properties}>
             <ul>
-                <TopLevelNavItem
-                    href="https://eips.ethereum.org/EIPS/eip-137"
-                    target="_blank"
-                >
-                    Whitepaper
-                </TopLevelNavItem>
-                <TopLevelNavItem href="/">Documentation</TopLevelNavItem>
-                <TopLevelNavItem
-                    href="https://support.ens.domains/?ref=docs"
-                    target="_blank"
-                >
-                    Support
-                </TopLevelNavItem>
                 {activeNavigation &&
                     activeNavigation.map((group, groupIndex) => (
                         <NavigationGroup
@@ -240,11 +226,6 @@ export function Navigation(properties) {
                             className={groupIndex === 0 && 'md:mt-0'}
                         />
                     ))}
-                <li className="sticky bottom-0 z-10 mt-6 min-[416px]:hidden">
-                    <Button href="#" variant="filled" className="w-full">
-                        Sign in
-                    </Button>
-                </li>
             </ul>
         </nav>
     );
