@@ -20,7 +20,11 @@ export const Heading: FC<
 > = ({ level = 2, children, id, tag, label, anchor = true, ...properties }) => {
     const Component = `h${level}`;
     const reference = useRef();
-    const registerHeading = useSectionStore((s) => s.registerHeading);
+    const registerHeading = useSectionStore((s) => s.registerHeading) as (_v: {
+        id: string;
+        ref: any;
+        offsetRem: number;
+    }) => void;
 
     const inView = useInView(reference, {
         margin: `${remToPx(-3.5)}px 0px 0px 0px`,
