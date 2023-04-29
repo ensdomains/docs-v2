@@ -4,6 +4,7 @@ import { Button } from '../Button';
 import { VideoComponent } from '../VideoComponent';
 import { Code as code, CodeGroup, Pre as pre } from './Code';
 import { Col } from './Col';
+import { EmbedLink } from './EmbedLink';
 import { h2 } from './h2';
 import { Note } from './Note';
 import { Properties } from './Properties';
@@ -24,4 +25,5 @@ export const mdxComponents = {
     Button,
     VideoComponent,
     a,
+    EmbedLink,
 };

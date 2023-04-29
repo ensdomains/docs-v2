@@ -1,7 +1,6 @@
 import Image from 'next/image';
 
 import { Button } from '@/components/Button';
-import { Heading } from '@/components/Heading';
 import logoENSjs from '@/images/logos/ensjs.svg';
 import logoEthers from '@/images/logos/ethers.svg';
 import logoGo from '@/images/logos/go.svg';
@@ -18,6 +17,8 @@ import logoVerified from '@/images/logos/verified.svg';
 import logoWagmi from '@/images/logos/wagmi.svg';
 import logoWeb3j from '@/images/logos/web3j.png';
 import logoWeb3js from '@/images/logos/web3js.svg';
+
+import { Heading } from './mdx/heading';
 
 export const ensLibraries = [
     {
@@ -182,7 +183,7 @@ export function Libraries() {
                         className="not-prose flex flex-col ring-1 ring-black/20 dark:ring-white/20 rounded-xl p-4 bg-zinc-100 dark:bg-zinc-800"
                     >
                         <Heading
-                            level={2}
+                            level={3}
                             id={library.name
                                 .toLowerCase()
                                 .replace('-', '')
@@ -198,10 +199,10 @@ export function Libraries() {
                                         unoptimized
                                     />
                                 )) || (
-                                    <div>
-                                        <div className="rounded-lg border border-zinc-300/10 p-4"></div>
-                                    </div>
-                                )}
+                                        <div>
+                                            <div className="rounded-lg border border-zinc-300/10 p-4"></div>
+                                        </div>
+                                    )}
                                 <span className="flex flex-col">
                                     <span className="flex flex-row">
                                         <span className="font-bold text-black dark:text-white">

@@ -1,5 +1,5 @@
 import { useInView } from 'framer-motion';
-import { useEffect, useRef } from 'react';
+import { FC, PropsWithChildren, useEffect, useRef } from 'react';
 
 import { useSectionStore } from '@/components/SectionProvider';
 import { remToPx } from '@/lib/remToPx';
@@ -7,15 +7,15 @@ import { remToPx } from '@/lib/remToPx';
 import { Anchor } from './Anchor';
 import { Eyebrow } from './Eyebrow';
 
-export const Heading = ({
-    level = 2,
-    children,
-    id,
-    tag,
-    label,
-    anchor = true,
-    ...properties
-}) => {
+export const Heading: FC<
+    PropsWithChildren & {
+        level?: 2 | 3 | 4 | 5 | 6;
+        id: string;
+        tag?: string;
+        label?: string;
+        anchor?: boolean;
+    }
+> = ({ level = 2, children, id, tag, label, anchor = true, ...properties }) => {
     const Component = `h${level}`;
     const reference = useRef();
     const registerHeading = useSectionStore((s) => s.registerHeading);

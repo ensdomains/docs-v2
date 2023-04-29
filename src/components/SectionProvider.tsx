@@ -1,5 +1,6 @@
 import {
     createContext,
+    RefObject,
     useContext,
     useEffect,
     useLayoutEffect,
@@ -9,8 +10,25 @@ import { createStore, StoreApi, useStore } from 'zustand';
 
 import { remToPx } from '@/lib/remToPx';
 
-function createSectionStore(sections) {
-    return createStore((set) => ({
+export const createSectionStore = (sections) => {
+    return createStore<{
+        sections: {
+            id: string;
+            headingRef: RefObject<HTMLElement>;
+            offsetRem: number;
+        }[];
+        visibleSections: string[];
+        setVisibleSections: (visibleSections: string[]) => void;
+        registerHeading: ({
+            id,
+            ref,
+            offsetRem,
+        }: {
+            id: string;
+            ref: RefObject<HTMLElement>;
+            offsetRem: number;
+        }) => void;
+    }>((set) => ({
         sections,
         visibleSections: [],
         setVisibleSections: (visibleSections) =>
@@ -36,7 +54,7 @@ function createSectionStore(sections) {
                 };
             }),
     }));
-}
+};
 
 function useVisibleSections(sectionStore: StoreApi<any>) {
     const setVisibleSections = useStore(
