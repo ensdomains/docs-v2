@@ -45,10 +45,12 @@ export const Header = forwardRef<HTMLDivElement, { className?: string }>(
                         ? 'bg-white dark:bg-zinc-900'
                         : 'bg-white/[var(--bg-opacity-light)] dark:bg-zinc-900/[var(--bg-opacity-dark)]'
                 )}
-                style={{
-                    '--bg-opacity-light': bgOpacityLight,
-                    '--bg-opacity-dark': bgOpacityDark,
-                }}
+                style={
+                    {
+                        '--bg-opacity-light': bgOpacityLight,
+                        '--bg-opacity-dark': bgOpacityDark,
+                    } as any
+                }
             >
                 <SubHeader />
                 <div className="flex items-center gap-5 lg:hidden">
