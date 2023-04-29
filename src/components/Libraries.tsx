@@ -199,10 +199,10 @@ export function Libraries() {
                                         unoptimized
                                     />
                                 )) || (
-                                        <div>
-                                            <div className="rounded-lg border border-zinc-300/10 p-4"></div>
-                                        </div>
-                                    )}
+                                    <div>
+                                        <div className="rounded-lg border border-zinc-300/10 p-4"></div>
+                                    </div>
+                                )}
                                 <span className="flex flex-col">
                                     <span className="flex flex-row">
                                         <span className="font-bold text-black dark:text-white">
