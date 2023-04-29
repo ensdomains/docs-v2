@@ -1,8 +1,8 @@
 import { motion } from 'framer-motion';
 
 import { Footer } from '@/components/Footer';
-import { Header } from '@/components/header/Header';
 import { Prose } from '@/components/mdx/Prose';
+import { Header } from '@/components/navigation/header/header';
 import { SectionProvider } from '@/components/SectionProvider';
 
 import { Navigation } from './Navigation';
