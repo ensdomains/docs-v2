@@ -5,7 +5,7 @@ import {
     useLayoutEffect,
     useState,
 } from 'react';
-import { createStore, useStore } from 'zustand';
+import { createStore, StoreApi, useStore } from 'zustand';
 
 import { remToPx } from '@/lib/remToPx';
 
@@ -38,7 +38,7 @@ function createSectionStore(sections) {
     }));
 }
 
-function useVisibleSections(sectionStore) {
+function useVisibleSections(sectionStore: StoreApi<any>) {
     const setVisibleSections = useStore(
         sectionStore,
         (s) => s.setVisibleSections
@@ -98,7 +98,7 @@ function useVisibleSections(sectionStore) {
     }, [setVisibleSections, sections]);
 }
 
-const SectionStoreContext = createContext();
+const SectionStoreContext = createContext(undefined);
 
 const useIsomorphicLayoutEffect =
     typeof window === 'undefined' ? useEffect : useLayoutEffect;
