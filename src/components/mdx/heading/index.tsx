@@ -2,6 +2,7 @@ import { useInView } from 'framer-motion';
 import { FC, PropsWithChildren, useEffect, useRef } from 'react';
 
 import { useSectionStore } from '@/components/SectionProvider';
+import { ccx } from '@/lib/cx';
 import { remToPx } from '@/lib/remToPx';
 
 import { Anchor } from './Anchor';
@@ -37,11 +38,13 @@ export const Heading: FC<
 
     return (
         <>
-            <Eyebrow tag={tag} label={label} />
             <Component
                 ref={reference}
                 id={anchor ? id : undefined}
-                className={tag || label ? 'mt-2 scroll-mt-32' : 'scroll-mt-24'}
+                className={ccx(
+                    'mt-8 scroll-mt-32',
+                    'flex justify-between items-center w-full'
+                )}
                 {...properties}
             >
                 {anchor ? (
@@ -51,6 +54,9 @@ export const Heading: FC<
                 ) : (
                     children
                 )}
+                <div>
+                    <Eyebrow tag={tag} label={label} />
+                </div>
             </Component>
         </>
     );

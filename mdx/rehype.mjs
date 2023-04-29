@@ -111,6 +111,7 @@ function getSections(node) {
         if (child.type === 'element' && child.tagName === 'h2') {
             sections.push(`{
         title: ${JSON.stringify(toString(child))},
+        navtitle: ${JSON.stringify(child.properties.navtitle ?? '')},
         id: ${JSON.stringify(child.properties.id)},
         ...${child.properties.annotation}
       }`);

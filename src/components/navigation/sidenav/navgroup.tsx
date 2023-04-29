@@ -188,7 +188,8 @@ export const NavigationGroup = ({ group, className }) => {
                                                         tag={section.tag}
                                                         isAnchorLink
                                                     >
-                                                        {section.title}
+                                                        {section.navtitle ||
+                                                            section.title}
                                                     </NavLink>
                                                 </li>
                                             ))}
