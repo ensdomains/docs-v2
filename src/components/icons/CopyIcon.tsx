@@ -1,17 +1,17 @@
-export function BookIcon(properties) {
+export const CopyIcon = (properties) => {
     return (
         <svg viewBox="0 0 20 20" aria-hidden="true" {...properties}>
             <path
                 fill="none"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                d="m10 5.5-7.5-3v12l7.5 3m0-12 7.5-3v12l-7.5 3m0-12v12"
+                d="M14.5 5.5v-1a2 2 0 0 0-2-2h-8a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h1"
             />
             <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                d="m17.5 2.5-7.5 3v12l7.5-3v-12Z"
+                d="M5.5 7.5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-8a2 2 0 0 1-2-2v-8Z"
             />
         </svg>
     );
-}
+};

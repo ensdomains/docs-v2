@@ -1,4 +1,4 @@
-export function UsersIcon(properties) {
+export const UsersIcon = (properties) => {
     return (
         <svg viewBox="0 0 20 20" aria-hidden="true" {...properties}>
             <path
@@ -25,4 +25,4 @@ export function UsersIcon(properties) {
             />
         </svg>
     );
-}
+};

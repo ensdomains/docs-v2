@@ -1,4 +1,4 @@
-export function FaceSmileIcon(properties) {
+export const FaceSmileIcon = (properties) => {
     return (
         <svg viewBox="0 0 20 20" aria-hidden="true" {...properties}>
             <path
@@ -14,4 +14,4 @@ export function FaceSmileIcon(properties) {
             />
         </svg>
     );
-}
+};

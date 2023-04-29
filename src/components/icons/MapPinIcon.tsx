@@ -1,4 +1,4 @@
-export function MapPinIcon(properties) {
+export const MapPinIcon = (properties) => {
     return (
         <svg viewBox="0 0 20 20" aria-hidden="true" {...properties}>
             <path
@@ -16,4 +16,4 @@ export function MapPinIcon(properties) {
             <circle cx="10" cy="8" r="1.5" fill="none" />
         </svg>
     );
-}
+};

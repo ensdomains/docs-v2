@@ -1,17 +1,17 @@
-export function ListIcon(properties) {
+export const EnvelopeIcon = (properties) => {
     return (
         <svg viewBox="0 0 20 20" aria-hidden="true" {...properties}>
-            <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M2.5 4.5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2h-11a2 2 0 0 1-2-2v-11Z"
-            />
             <path
                 fill="none"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                d="M6.5 6.5h7M6.5 13.5h7M6.5 10h7"
+                d="M2.5 5.5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v8a3 3 0 0 1-3 3h-9a3 3 0 0 1-3-3v-8Z"
+            />
+            <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M10 10 4.526 5.256c-.7-.607-.271-1.756.655-1.756h9.638c.926 0 1.355 1.15.655 1.756L10 10Z"
             />
         </svg>
     );
-}
+};

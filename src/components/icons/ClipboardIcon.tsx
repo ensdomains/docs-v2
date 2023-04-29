@@ -1,4 +1,4 @@
-export function ClipboardIcon(properties) {
+export const ClipboardIcon = (properties) => {
     return (
         <svg viewBox="0 0 20 20" aria-hidden="true" {...properties}>
             <path
@@ -14,4 +14,4 @@ export function ClipboardIcon(properties) {
             />
         </svg>
     );
-}
+};

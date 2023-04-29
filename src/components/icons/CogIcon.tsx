@@ -1,4 +1,4 @@
-export function CogIcon(properties) {
+export const CogIcon = (properties) => {
     return (
         <svg viewBox="0 0 20 20" aria-hidden="true" {...properties}>
             <path
@@ -16,4 +16,4 @@ export function CogIcon(properties) {
             <circle cx="10" cy="10" r="2.5" fill="none" />
         </svg>
     );
-}
+};

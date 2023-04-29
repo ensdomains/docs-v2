@@ -1,17 +1,17 @@
-export function CopyIcon(properties) {
+export const PaperAirplaneIcon = (properties) => {
     return (
         <svg viewBox="0 0 20 20" aria-hidden="true" {...properties}>
             <path
                 fill="none"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                d="M14.5 5.5v-1a2 2 0 0 0-2-2h-8a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h1"
+                d="M17 3L1 9L8 12M17 3L11 19L8 12M17 3L8 12"
             />
             <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                d="M5.5 7.5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-8a2 2 0 0 1-2-2v-8Z"
+                d="M11 19L8 12L17 3L11 19Z"
             />
         </svg>
     );
-}
+};

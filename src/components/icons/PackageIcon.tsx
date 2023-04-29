@@ -1,4 +1,4 @@
-export function PackageIcon(properties) {
+export const PackageIcon = (properties) => {
     return (
         <svg viewBox="0 0 20 20" aria-hidden="true" {...properties}>
             <path
@@ -13,4 +13,4 @@ export function PackageIcon(properties) {
             />
         </svg>
     );
-}
+};

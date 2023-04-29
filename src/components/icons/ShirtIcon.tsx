@@ -1,4 +1,4 @@
-export function ShirtIcon(properties) {
+export const ShirtIcon = (properties) => {
     return (
         <svg viewBox="0 0 20 20" aria-hidden="true" {...properties}>
             <path
@@ -8,4 +8,4 @@ export function ShirtIcon(properties) {
             />
         </svg>
     );
-}
+};

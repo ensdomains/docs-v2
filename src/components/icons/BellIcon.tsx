@@ -1,17 +1,17 @@
-export function ShapesIcon(properties) {
+export const BellIcon = (properties) => {
     return (
         <svg viewBox="0 0 20 20" aria-hidden="true" {...properties}>
+            <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M4.438 8.063a5.563 5.563 0 0 1 11.125 0v2.626c0 1.182.34 2.34.982 3.332L17.5 15.5h-15l.955-1.479c.641-.993.982-2.15.982-3.332V8.062Z"
+            />
             <path
                 fill="none"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                d="M2.5 7.5v-4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1ZM11.5 16.5v-4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1Z"
-            />
-            <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="m2.5 17.5 3-6 3 6h-6ZM14.5 2.5a3 3 0 1 1 0 6 3 3 0 0 1 0-6Z"
+                d="M7.5 15.5v0a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v0"
             />
         </svg>
     );
-}
+};

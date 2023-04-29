@@ -1,17 +1,17 @@
-export function SquaresPlusIcon(properties) {
+export const DocumentIcon = (properties) => {
     return (
         <svg viewBox="0 0 20 20" aria-hidden="true" {...properties}>
             <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                d="M8.5 4.5v2a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2v-2a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2ZM8.5 13.5v2a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2v-2a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2ZM17.5 4.5v2a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2v-2a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2Z"
+                d="M3.5 4.5v11a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2v-8h-5v-5h-6a2 2 0 0 0-2 2Z"
             />
             <path
                 fill="none"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                d="M14.5 11.5v6M17.5 14.5h-6"
+                d="m11.5 2.5 5 5"
             />
         </svg>
     );
-}
+};

@@ -1,4 +1,4 @@
-export function CartIcon(properties) {
+export const CartIcon = (properties) => {
     return (
         <svg viewBox="0 0 20 20" aria-hidden="true" {...properties}>
             <path
@@ -12,4 +12,4 @@ export function CartIcon(properties) {
             />
         </svg>
     );
-}
+};

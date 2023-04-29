@@ -1,17 +1,17 @@
-export function DocumentIcon(properties) {
+export const ChatBubbleIcon = (properties) => {
     return (
         <svg viewBox="0 0 20 20" aria-hidden="true" {...properties}>
             <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                d="M3.5 4.5v11a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2v-8h-5v-5h-6a2 2 0 0 0-2 2Z"
+                d="M10 16.5c4.142 0 7.5-3.134 7.5-7s-3.358-7-7.5-7c-4.142 0-7.5 3.134-7.5 7 0 1.941.846 3.698 2.214 4.966L3.5 17.5c2.231 0 3.633-.553 4.513-1.248A8.014 8.014 0 0 0 10 16.5Z"
             />
             <path
                 fill="none"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                d="m11.5 2.5 5 5"
+                d="M7.5 8.5h5M8.5 11.5h3"
             />
         </svg>
     );
-}
+};

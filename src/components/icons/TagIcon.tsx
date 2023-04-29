@@ -1,4 +1,4 @@
-export function TagIcon(properties) {
+export const TagIcon = (properties) => {
     return (
         <svg viewBox="0 0 20 20" aria-hidden="true" {...properties}>
             <path
@@ -16,4 +16,4 @@ export function TagIcon(properties) {
             <circle cx="7" cy="7" r="1.5" fill="none" />
         </svg>
     );
-}
+};
