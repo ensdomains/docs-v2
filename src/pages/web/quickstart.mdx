@@ -1,6 +1,6 @@
 # Quickstart
 
-Hey there 👋, this is the quickstart guide. If you want to learn more please read through the rest of the documentation.
+Hey there 👋, this is the quickstart guide. If you want to learn the process checkout [everything about ENS in dApps](/web/).
 
 This quickstart guide assumes you have a basic understanding of **react, ethers, wagmi, tailwindcss, and web3**.
 
@@ -9,8 +9,22 @@ This quickstart guide assumes you have a basic understanding of **react, ethers,
 The below codesnippet demonstrates how you can create a basic UserProfile section that shows the users ENS name and avatar.
 The snippet leverages the [useAccount](https://wagmi.sh/react/hooks/useAccount), [useEnsName](https://wagmi.sh/react/hooks/useEnsName), and [useEnsAvatar](https://wagmi.sh/react/hooks/useEnsAvatar) hooks from wagmi.
 
+<div className="card h-24 flex items-center justify-center">
+    <div className="flex items-center gap-2">
+        <img
+            src="https://v3x.space/ens-docs/nick.webp"
+            className="w-8 h-8 rounded-full"
+        />
+        <div className="flex flex-col gap-0 leading-3 pr-10">
+            <span className="font-bold">luc.eth</span>
+            <span>0x123...456</span>
+        </div>
+    </div>
+</div>
+
 ```tsx focus=1,4:9
 import { useAccount, useEnsName, useEnsAvatar } from 'wagmi';
+import { formatAddress } from 'ens-tools';
 
 export const UserProfile: FC = () => {
     const { address } = useAccount();
@@ -22,12 +36,15 @@ export const UserProfile: FC = () => {
     });
 
     return (
-        <div className="flex">
-            <div>{ensName}</div>
+        <div className="flex items-center gap-2">
             <img
                 src={ensAvatar || 'https://v3x.space/ens-docs/pfp.webp'}
                 className="w-8 h-8 rounded-full"
             />
+            <div className="flex flex-col gap-0 leading-3 pr-10">
+                {ensName && <span className="font-bold">{ensName}</span>}
+                <span>{formatAddress(address)}</span>
+            </div>
         </div>
     );
 };
