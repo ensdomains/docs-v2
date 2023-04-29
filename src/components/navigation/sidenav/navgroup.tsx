@@ -5,17 +5,10 @@ import { useRouter } from 'next/router';
 import { useRef } from 'react';
 import { FiExternalLink } from 'react-icons/fi';
 
-import { useIsInsideMobileNavigation } from '@/components/MobileNavigation';
 import { useSectionStore } from '@/components/SectionProvider';
 import { Tag } from '@/components/Tag';
-import { navigation } from '@/lib/headers';
+import { useIsInsideMobileNavigation } from '@/hooks/mobile';
 import { remToPx } from '@/lib/remToPx';
-
-function useInitialValue(value, condition = true) {
-    const initialValue = useRef(value).current;
-
-    return condition ? initialValue : value;
-}
 
 function TopLevelNavItem({ href, children }) {
     return (
@@ -51,6 +44,32 @@ function NavLink({ href, tag, active, isAnchorLink = false, children }) {
             )}
         </Link>
     );
+}
+
+function ActivePageMarker({ group, pathname }) {
+    const itemHeight = remToPx(2);
+    const offset = remToPx(0.25);
+    const activePageIndex = group.links.findIndex(
+        (link) => link.href === pathname
+    );
+    const top = offset + activePageIndex * itemHeight;
+
+    return (
+        <motion.div
+            layout
+            className="absolute left-2 h-6 w-px bg-ens-500"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1, transition: { delay: 0.2 } }}
+            exit={{ opacity: 0 }}
+            style={{ top }}
+        />
+    );
+}
+
+function useInitialValue(value, condition = true) {
+    const initialValue = useRef(value).current;
+
+    return condition ? initialValue : value;
 }
 
 function VisibleSectionHighlight({ group, pathname }) {
@@ -89,27 +108,7 @@ function VisibleSectionHighlight({ group, pathname }) {
     );
 }
 
-function ActivePageMarker({ group, pathname }) {
-    const itemHeight = remToPx(2);
-    const offset = remToPx(0.25);
-    const activePageIndex = group.links.findIndex(
-        (link) => link.href === pathname
-    );
-    const top = offset + activePageIndex * itemHeight;
-
-    return (
-        <motion.div
-            layout
-            className="absolute left-2 h-6 w-px bg-ens-500"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1, transition: { delay: 0.2 } }}
-            exit={{ opacity: 0 }}
-            style={{ top }}
-        />
-    );
-}
-
-function NavigationGroup({ group, className }) {
+export const NavigationGroup = ({ group, className }) => {
     // If this is the mobile navigation then we always render the initial
     // state, so that the state does not change during the close animation.
     // The state will still update when we re-open (re-render) the navigation.
@@ -159,6 +158,7 @@ function NavigationGroup({ group, className }) {
                             className="relative"
                         >
                             <NavLink
+                                tag={undefined}
                                 href={link.href}
                                 active={link.href === router.pathname}
                             >
@@ -183,6 +183,7 @@ function NavigationGroup({ group, className }) {
                                             {sections.map((section) => (
                                                 <li key={section.id}>
                                                     <NavLink
+                                                        active={undefined}
                                                         href={`${link.href}#${section.id}`}
                                                         tag={section.tag}
                                                         isAnchorLink
@@ -200,33 +201,4 @@ function NavigationGroup({ group, className }) {
             </div>
         </li>
     );
-}
-
-export function Navigation(properties) {
-    const { pathname } = useRouter();
-
-    const foundNavigation = navigation.find(
-        ([url, group]) => pathname.match(url) && group
-    );
-
-    if (!foundNavigation) {
-        return;
-    }
-
-    const [, activeNavigation] = foundNavigation;
-
-    return (
-        <nav {...properties}>
-            <ul>
-                {activeNavigation &&
-                    activeNavigation.map((group, groupIndex) => (
-                        <NavigationGroup
-                            key={group.title}
-                            group={group}
-                            className={groupIndex === 0 && 'md:mt-0'}
-                        />
-                    ))}
-            </ul>
-        </nav>
-    );
-}
+};

@@ -5,7 +5,7 @@ import { Prose } from '@/components/mdx/Prose';
 import { Header } from '@/components/navigation/header/header';
 import { SectionProvider } from '@/components/SectionProvider';
 
-import { Navigation } from './Navigation';
+import { Navigation } from './navigation/sidenav/sidenav';
 
 export const Layout = ({ children, sections = [] }) => {
     return (

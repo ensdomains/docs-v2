@@ -7,7 +7,7 @@ import { Router, useRouter } from 'next/router';
 
 import { Layout } from '@/components/Layout';
 import { mdxComponents } from '@/components/mdx/index';
-import { useMobileNavigationStore } from '@/components/MobileNavigation';
+import { useMobileNavigationStore } from '@/hooks/mobile';
 
 function onRouteChange() {
     useMobileNavigationStore.getState().close();

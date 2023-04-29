@@ -8,15 +8,16 @@ import { useRouter } from 'next/router';
 import { forwardRef } from 'react';
 import { FaGithub } from 'react-icons/fa';
 
+import {
+    useIsInsideMobileNavigation,
+    useMobileNavigationStore,
+} from '@/hooks/mobile';
+
 import logo from '../../../images/logo.svg';
 import mark from '../../../images/mark.svg';
 import markDao from '../../../images/mark_dao.svg';
 import { Button } from '../../Button';
-import {
-    MobileNavigation,
-    useIsInsideMobileNavigation,
-    useMobileNavigationStore,
-} from '../../MobileNavigation';
+import { MobileNavigation } from '../../MobileNavigation';
 import { MobileSearch, Search } from '../../Search';
 import { SubHeader } from '../../SubHeader';
 
@@ -39,7 +40,7 @@ export const Header = forwardRef<HTMLDivElement, { className?: string }>(
                     className,
                     'fixed inset-x-0 top-0 z-50 flex h-14 items-center justify-start gap-6 px-4 transition sm:px-6 lg:z-30 lg:px-4 md:shadow-2xl',
                     !isInsideMobileNavigation &&
-                    'backdrop-blur-sm dark:backdrop-blur left-0',
+                        'backdrop-blur-sm dark:backdrop-blur left-0',
                     isInsideMobileNavigation
                         ? 'bg-white dark:bg-zinc-900'
                         : 'bg-white/[var(--bg-opacity-light)] dark:bg-zinc-900/[var(--bg-opacity-dark)]'
@@ -75,7 +76,7 @@ export const Header = forwardRef<HTMLDivElement, { className?: string }>(
                     className={clsx(
                         'absolute inset-x-0 top-full h-px transition',
                         (isInsideMobileNavigation || !mobileNavIsOpen) &&
-                        'bg-zinc-900/7.5 dark:bg-white/7.5'
+                            'bg-zinc-900/7.5 dark:bg-white/7.5'
                     )}
                 />
                 <Search />

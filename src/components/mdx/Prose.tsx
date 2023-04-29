@@ -4,6 +4,7 @@ import { FC } from 'react';
 export const Prose: FC<{
     as?: 'article';
     className?: string;
+    children?: any;
 }> = ({ as, className, ...properties }) => {
     return (
         <article

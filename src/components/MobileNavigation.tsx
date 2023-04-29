@@ -2,7 +2,6 @@ import { Dialog, Transition } from '@headlessui/react';
 import { motion } from 'framer-motion';
 import { Fragment } from 'react';
 
-import { Navigation } from '@/components/Navigation';
 import { Header } from '@/components/navigation/header/header';
 import {
     IsInsideMobileNavigationContext,
@@ -12,6 +11,7 @@ import {
 
 import { MenuIcon } from './icons/MenuIcon';
 import { XIcon } from './icons/XIcon';
+import { Navigation } from './navigation/sidenav/sidenav';
 
 export const MobileNavigation = () => {
     const isInsideMobileNavigation = useIsInsideMobileNavigation();
