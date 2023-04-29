@@ -4,6 +4,7 @@ import 'focus-visible';
 import { MDXProvider } from '@mdx-js/react';
 import Head from 'next/head';
 import { Router, useRouter } from 'next/router';
+import { FC } from 'react';
 
 import { Layout } from '@/components/Layout';
 import { mdxComponents } from '@/components/mdx/index';
@@ -30,7 +31,7 @@ const App = ({ Component, pageProps }) => {
                 )}
                 <meta name="description" content={pageProps.description} />
             </Head>
-            <MDXProvider components={mdxComponents}>
+            <MDXProvider components={mdxComponents as Record<string, FC>}>
                 <Layout {...pageProps}>
                     <Component {...pageProps} />
                 </Layout>
