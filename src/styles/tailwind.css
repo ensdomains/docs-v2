@@ -48,3 +48,7 @@ html.dark {
 .lheader:hover::-webkit-scrollbar-thumb {
     @apply bg-zinc-900/10 rounded-full dark:bg-zinc-200/10;
 }
+
+pre {
+  @apply bg-white;
+}

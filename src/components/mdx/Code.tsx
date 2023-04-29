@@ -3,14 +3,17 @@ import clsx from 'clsx';
 import {
     Children,
     createContext,
+    FC,
+    PropsWithChildren,
+    ReactElement,
     useContext,
     useEffect,
     useRef,
     useState,
 } from 'react';
-import create from 'zustand';
 
 import { Tag } from '@/components/Tag';
+import { usePreferredLanguageStore } from '@/hooks/preferredLanguage';
 
 const languageNames = {
     js: 'JavaScript',
@@ -117,8 +120,21 @@ function CodePanelHeader({ tag, label }) {
     );
 }
 
-function CodePanel({ tag, label, code, hideCopy, children }) {
-    const child = Children.only(children);
+type CodePanelProperties = {
+    tag?: string;
+    label?: string;
+    code?: string;
+    hideCopy?: boolean;
+};
+
+const CodePanel: FC<CodePanelProperties & PropsWithChildren> = ({
+    tag,
+    label,
+    code,
+    hideCopy,
+    children,
+}) => {
+    const child = Children.only(children) as ReactElement;
 
     return (
         <div className="group dark:bg-white/2.5">
@@ -136,9 +152,16 @@ function CodePanel({ tag, label, code, hideCopy, children }) {
             </div>
         </div>
     );
-}
+};
 
-function CodeGroupHeader({ title, children, selectedIndex }) {
+type CodeGroupHeaderProperties = {
+    title?: string;
+    selectedIndex?: number;
+};
+
+export const CodeGroupHeader: FC<
+    PropsWithChildren & CodeGroupHeaderProperties
+> = ({ title, children, selectedIndex }) => {
     const hasTabs = Children.count(children) > 1;
 
     if (!title && !hasTabs) {
@@ -154,25 +177,31 @@ function CodeGroupHeader({ title, children, selectedIndex }) {
             )}
             {hasTabs && (
                 <Tab.List className="-mb-px flex gap-4 text-xs font-medium">
-                    {Children.map(children, (child, childIndex) => (
-                        <Tab
-                            className={clsx(
-                                'border-b py-3 transition focus:[&:not(:focus-visible)]:outline-none',
-                                childIndex === selectedIndex
-                                    ? 'border-ens-500 text-ens-400'
-                                    : 'border-transparent text-zinc-400 hover:text-zinc-300'
-                            )}
-                        >
-                            {getPanelTitle(child.props)}
-                        </Tab>
-                    ))}
+                    {Children.map(
+                        children,
+                        (child: ReactElement, childIndex) => (
+                            <Tab
+                                className={clsx(
+                                    'border-b py-3 transition focus:[&:not(:focus-visible)]:outline-none',
+                                    childIndex === selectedIndex
+                                        ? 'border-ens-500 text-ens-400'
+                                        : 'border-transparent text-zinc-400 hover:text-zinc-300'
+                                )}
+                            >
+                                {getPanelTitle(child.props)}
+                            </Tab>
+                        )
+                    )}
                 </Tab.List>
             )}
         </div>
     );
-}
+};
 
-function CodeGroupPanels({ children, ...properties }) {
+const CodeGroupPanels: FC<PropsWithChildren> = ({
+    children,
+    ...properties
+}) => {
     const hasTabs = Children.count(children) > 1;
 
     if (hasTabs) {
@@ -188,48 +217,37 @@ function CodeGroupPanels({ children, ...properties }) {
     }
 
     return <CodePanel {...properties}>{children}</CodePanel>;
-}
+};
 
 function usePreventLayoutShift() {
-    const positionReference = useRef();
-    const rafReference = useRef();
+    const positionReference = useRef<HTMLDivElement>();
+    const rafReference = useRef<any>();
 
     useEffect(() => {
         return () => {
-            window.cancelAnimationFrame(rafReference.current);
+            window.cancelAnimationFrame(rafReference.current as any as number);
         };
     }, []);
 
     return {
         positionRef: positionReference,
         preventLayoutShift(callback) {
-            const initialTop =
-                positionReference.current.getBoundingClientRect().top;
-
-            callback();
-
-            rafReference.current = window.requestAnimationFrame(() => {
-                const newTop =
+            if (positionReference.current) {
+                const initialTop =
                     positionReference.current.getBoundingClientRect().top;
 
-                window.scrollBy(0, newTop - initialTop);
-            });
+                callback();
+
+                rafReference.current = window.requestAnimationFrame(() => {
+                    const newTop =
+                        positionReference.current?.getBoundingClientRect().top;
+
+                    window.scrollBy(0, newTop - initialTop);
+                }) as any;
+            }
         },
     };
 }
-
-const usePreferredLanguageStore = create((set) => ({
-    preferredLanguages: [],
-    addPreferredLanguage: (language) =>
-        set((state) => ({
-            preferredLanguages: [
-                ...state.preferredLanguages.filter(
-                    (preferredLanguage) => preferredLanguage !== language
-                ),
-                language,
-            ],
-        })),
-}));
 
 function useTabGroupProperties(availableLanguages) {
     const { preferredLanguages, addPreferredLanguage } =
@@ -263,8 +281,16 @@ function useTabGroupProperties(availableLanguages) {
 
 const CodeGroupContext = createContext(false);
 
-export function CodeGroup({ children, title, ...properties }) {
-    const languages = Children.map(children, (child) =>
+type CodeGroupProperties = {
+    title?: string;
+};
+
+export const CodeGroup: FC<PropsWithChildren & CodeGroupProperties> = ({
+    children,
+    title,
+    ...properties
+}) => {
+    const languages = Children.map(children, (child: ReactElement) =>
         getPanelTitle(child.props)
     );
 
@@ -289,7 +315,7 @@ export function CodeGroup({ children, title, ...properties }) {
             </Container>
         </CodeGroupContext.Provider>
     );
-}
+};
 
 export function Code({ children, ...properties }) {
     const isGrouped = useContext(CodeGroupContext);
@@ -306,7 +332,10 @@ export function Code({ children, ...properties }) {
     return <code {...properties}>{children}</code>;
 }
 
-export function Pre({ children, ...properties }) {
+export const Pre: FC<CodeGroupProperties & { children: ReactElement }> = ({
+    children,
+    ...properties
+}) => {
     const isGrouped = useContext(CodeGroupContext);
 
     if (isGrouped) {
@@ -314,4 +343,4 @@ export function Pre({ children, ...properties }) {
     }
 
     return <CodeGroup {...properties}>{children}</CodeGroup>;
-}
+};

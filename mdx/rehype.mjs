@@ -37,6 +37,7 @@ function rehypeShiki() {
                 const textNode = codeNode.children[0];
 
                 node.properties.code = textNode.value;
+                node.properties.meta = codeNode?.data?.meta;
 
                 if (node.properties.language) {
                     const lightTokens = highlighter.codeToThemedTokens(
@@ -48,7 +49,7 @@ function rehypeShiki() {
                         elements: {
                             pre: ({ children }) => children,
                             code: ({ children }) => children,
-                            line: ({ children }) => children,
+                            line: ({ children }) => `<span>${children}</span>`,
                         },
                     });
 

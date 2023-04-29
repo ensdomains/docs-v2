@@ -1,313 +1,40 @@
-export const description =
-    'This guide will get you all set up and ready to use the Protocol API. We’ll cover how to get started an API client and how to make your first API request.';
+# Quickstart
 
-# Quickstart for dApp Developers
+Hey there 👋, this is the quickstart guide. If you want to learn more please read through the rest of the documentation.
 
-This guide will walk you through how to implement the basics of ENS into your dApp. This quickstart guide assumes you are building with react
+This quickstart guide assumes you have a basic understanding of **react, ethers, wagmi, tailwindcss, and web3**.
 
-<Note>
-    Before you can look up on-chain ENS information, you will need to pick an
-    RPC provider to interface with Ethereum. Read more about picking an RPC
-    provider at [RPC](/libraries).
-</Note>
+## Showing the User Profile
 
-## Choose your client
+The below codesnippet demonstrates how you can create a basic UserProfile section that shows the users ENS name and avatar.
+The snippet leverages the `useAccount`, `useEnsName`, and `useEnsAvatar` hooks from wagmi.
 
-Before making your first request, you need to pick which library you will use.
-In the following example, you can see how to install each library.
-
-<CodeGroup>
-
-```bash {{ title: 'Wagmi (TS)', language: 'javascript' }}
-# Run this in your terminal
-npm install wagmi ethers
-```
-
-```bash {{ title: 'Ethers.js (TS)', language: 'javascript' }}
-# Run this in your terminal
-npm install ethers
-```
-
-```bash {{ title: 'Viem (TS)', language: 'javascript' }}
-# Run this in your terminal
-npm install viem
-```
-
-```bash {{ title: 'Web3.js', language: 'javascript' }}
-# Run this in your terminal
-npm install web3
-```
-
-```bash {{ title: 'web3.py', language: 'python' }}
-# Run this in your terminal
-pip install web3.py
-```
-
-```bash {{ title: 'Ethers.rs (Rust)', language: 'rust' }}
-# Put this in your Cargo.toml
-[dependencies]
-ethers = "2.0.0"
-```
-
-</CodeGroup>
-
-<div className="not-prose">
-    <Button
-        href="/libraries"
-        variant="text"
-        arrow="right"
-        children="Check out our list of first-party Libraries"
-    />
-</div>
-
-## Showing Profile
-
-When users sign-in to your dApp using Ethereum they expect to be able to see what account they have signed in with. Usually this is shown in the top-right, or top-left (on RTL devices) and look something like this.
-
-<div>
-
-</div>
-
-<Row>
-  <Col>
-    ### Example Profile Component
-
-    <CodeGroup>
-
-    <div title="Preview" className="not-prose flex justify-center items-center" hidecopy={true}>
-      <div className="flex items-center gap-2 py-4">
-        <div className="w-10 h-10 rounded-full overflow-hidden">
-          <img src="https://metadata.ens.domains/mainnet/avatar/luc.computer" className="w-full h-full object-contain" />
-        </div>
-        <div className="flex flex-col font-sans">
-          <p className="font-extrabold">luc.computer</p>
-          <p className="leading-3">0x225...c3b5</p>
-        </div>
-      </div>
-    </div>
-
-    </CodeGroup>
-
-    This endpoint allows you to retrieve a paginated list of all your conversations. By default, a maximum of ten conversations are shown per page.
-
-  </Col>
-  <Col sticky>
-
-    <CodeGroup title="Request" tag="Example" label="Address & Avatar">
-
-    ```ts {{ title: 'Ethers.js (TS)' }}
-    // Initialize the Ethers Provider
-    const provider = new JsonRpcProvider();
-
-    // Get the Address
-    const address = await provider.lookupAddress("luc.computer");
-
-    // Get the Avatar
-    const avatar = await provider.getAvatar("luc.computer");
-
-    // Celebrate 🎉
-    console.log(`Hello ${avatar}`);
-    ```
-
-    ```ts {{ title: 'Viem (TS)' }}
-    // Import viem.sh
-    import { normalize } from 'viem/ens'
-    import { publicClient } from './client'
-
-    // Get the Address
-    const ensAddress = await publicClient.getEnsAddress({
-        name: normalize('wagmi-dev.eth'),
-    })
-
-    //  Result:
-    // '0xd2135CfB216b74109775236E36d4b433F1DF507B'
-    ```
-
-    ```tsx {{ title: 'Wagmi (TS)', language: 'tsx' }}
-    import { useAccount, useEnsName, useEnsAvatar } from 'wagmi';
-    import { shortenAddress } from './lib';
-
-    const UserProfile = () => {
-        // Get the account address
-        const { address } = useAccount();
-        // Get the ENS name and avatar
-        const { data: ensName } = useEnsName({ address });
-        // Get the ENS avatar
-        const { data: ensAvatar } = useEnsAvatar({ address });
-
-        return (
-            <div className="flex items-center gap-4">
-                <div className="w-10 h-10 rounded-full overflow-hidden">
-                    <img src={ensAvatar} className="w-full h-full object-contain" />
-                </div>
-                <div className="flex flex-col font-sans">
-                    <p className="font-extrabold">{ensName}</p>
-                    <p className="leading-3">{shortenAddress(address)}</p>
-                </div>
-            </div>
-        );
-    };
-    ```
-
-    ```rust {{ title: 'Ethers.rs (Rust)' }}
-    use ethers::prelude::*;
-    use ethers::providers::{Provider, Http};
-    use ethers::utils::Address;
-
-    #[tokio::main]
-    fn main() -> Result<(), Box<dyn std::error::Error>> {
-        // Initialize the Ethers Provider
-        let provider = Provider::<Http>::try_from("https://mainnet.infura.io/v3/...")?;
-
-        // Get the Address
-        let address = provider.lookup_address("luc.computer").await?;
-
-        // Get the Avatar
-        let avatar = provider.get_avatar("luc.computer").await?;
-
-        // Celebrate 🎉
-        println!("Hello {}", address);
-        Ok(())
-    }
-    ```
-
-    </CodeGroup>
-
-  </Col>
-</Row>
-
-## Finding Users
-
-When your users search for other users, they can enter either addresses or ens names, to be able to resolve a name to an address we make use of <a href="/forward-resolution">Forward Resolution</a>.
-
-<div className="not-prose">
-    <Button
-        href="/forward-resolution"
-        variant="text"
-        arrow="right"
-        children="Check out Forward Resolution"
-    />
-</div>
-
-<CodeGroup>
-
-<div
-    title="Preview"
-    className="not-prose flex justify-center items-center"
-    hidecopy="true"
->
-    <div>
-        <label
-            htmlFor="email"
-            className="block text-sm font-medium text-zinc-200"
-        >
-            ENS
-        </label>
-        <div className="relative mt-1 rounded-md shadow-sm">
-            <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center">
-                <img
-                    src="https://metadata.ens.domains/mainnet/avatar/luc.computer"
-                    className="w-full h-full object-contain"
-                />
-            </div>
-            <input
-                type="ens"
-                name="ens"
-                id="ens"
-                className="block text-lg w-full rounded-md bg-zinc-500/10 border-zinc-800/10 pl-10 focus:border-zinc-500 focus:ring-zinc-500"
-                placeholder="luc.computer"
-            />
-        </div>
-    </div>
-    <div className="flex items-center gap-2 py-4">
-        <div className="w-10 h-10 rounded-full overflow-hidden"></div>
-        <div className="flex flex-col font-sans"></div>
-    </div>
-</div>
-
-```tsx {{ title: 'Code', language: 'tsx' }}
-import { FC } from 'react';
+```tsx focus=1,4:9
 import { useAccount, useEnsName, useEnsAvatar } from 'wagmi';
 
-const shortenAddress = (address: string) =>
-    address.slice(0, 5) + '...' + address.slice(-4);
-
-export const App: FC = () => {
+export const UserProfile: FC = () => {
     const { address } = useAccount();
-    const { data: ensName } = useEnsName({ address });
-    const { data: ensAvatar } = useEnsAvatar({ address });
+    const { data: ensName } = useEnsName({
+        address,
+    });
+    const { data: ensAvatar } = useEnsAvatar({
+        address,
+    });
 
     return (
-        <div className="flex items-center gap-4">
-            <div className="w-10 h-10 rounded-full overflow-hidden">
-                <img src={ensAvatar} className="w-full h-full object-contain" />
-            </div>
-            <div className="flex flex-col font-sans">
-                <p className="font-extrabold">{ensName}</p>
-                <p className="leading-3">{shortenAddress(address)}</p>
-            </div>
-        </div>
-    );
-};
-```
-
-</CodeGroup>
-
-## Reverse Resolution
-
-When you are showing data to the user you might want to translate addresses to ENS names where applicable. So instead of showing addresses everywhere you could show names and profile pictures.
-
-<div className="not-prose">
-    <Button
-        href="/reverse-resolution"
-        variant="text"
-        arrow="right"
-        children="Check out Reverse Resolution"
-    />
-</div>
-
-<CodeGroup>
-
-<div
-    title="Preview"
-    className="not-prose flex justify-center items-center"
-    hidecopy="true"
->
-    <div className="flex items-center gap-2 py-4">
-        <div className="w-10 h-10 rounded-full overflow-hidden">
+        <div className="flex">
+            <div>{ensName}</div>
             <img
-                src="https://metadata.ens.domains/mainnet/avatar/luc.computer"
-                className="w-full h-full object-contain"
+                src={ensAvatar || 'https://v3x.space/ens-docs/pfp.webp'}
+                className="w-8 h-8 rounded-full"
             />
         </div>
-        <div className="flex flex-col font-sans">
-            <p className="font-extrabold">luc.computer</p>
-        </div>
-    </div>
-</div>
-
-```tsx {{ title: 'Code', language: 'tsx' }}
-import { FC } from 'react';
-import { useAccount, useEnsName, useEnsAvatar } from 'wagmi';
-
-const shortenAddress = (address: string) =>
-    address.slice(0, 5) + '...' + address.slice(-4);
-
-export const User: FC<{ address: string }> = ({ address }) => {
-    const { data: ensName } = useEnsName({ address });
-    const { data: ensAvatar } = useEnsAvatar({ address });
-
-    return (
-        <div className="flex items-center gap-4">
-            <div className="w-10 h-10 rounded-full overflow-hidden">
-                <img src={ensAvatar} className="w-full h-full object-contain" />
-            </div>
-            <div className="flex flex-col font-sans">
-                <p className="font-extrabold">{ensName}</p>
-            </div>
-        </div>
     );
 };
 ```
 
-</CodeGroup>
+## Name Lookups
+
+```ts
+
+````
