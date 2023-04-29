@@ -18,8 +18,10 @@ export const Heading: FC<
         className?: string;
     }
 > = ({ level = 2, children, id, tag, label, anchor = true, ...properties }) => {
-    const Component = `h${level}`;
-    const reference = useRef();
+    const Component = `h${level}` as any as FC<
+        PropsWithChildren & { ref: any; id: any; className: any }
+    >;
+    const reference = useRef<any>();
     const registerHeading = useSectionStore((s) => s.registerHeading) as (_v: {
         id: string;
         ref: any;
@@ -51,19 +53,24 @@ export const Heading: FC<
                     'mt-8 scroll-mt-32',
                     'flex justify-between items-center w-full'
                 )}
+                children={
+                    (
+                        <>
+                            {anchor ? (
+                                <Anchor id={id} inView={inView}>
+                                    {children}
+                                </Anchor>
+                            ) : (
+                                children
+                            )}
+                            <div>
+                                <Eyebrow tag={tag} label={label} />
+                            </div>
+                        </>
+                    ) as any
+                }
                 {...properties}
-            >
-                {anchor ? (
-                    <Anchor id={id} inView={inView}>
-                        {children}
-                    </Anchor>
-                ) : (
-                    children
-                )}
-                <div>
-                    <Eyebrow tag={tag} label={label} />
-                </div>
-            </Component>
+            />
         </>
     );
 };
