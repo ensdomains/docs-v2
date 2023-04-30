@@ -169,11 +169,7 @@ const CodePanel: FC<CodePanelProperties & PropsWithChildren> = ({
         [...(preReference.current.children[0].children as any)].map(
             (node, index) => {
                 if (focus.includes(index)) {
-                    node.classList.add(
-                        'bg-ens-400/5',
-                        'w-full',
-                        'inline-block'
-                    );
+                    node.classList.add('focus-code');
                 } else {
                     node.classList.add(
                         'opacity-40',
@@ -263,7 +259,12 @@ const CodeGroupPanels: FC<PropsWithChildren> = ({
             <Tab.Panels>
                 {Children.map(children, (child) => (
                     <Tab.Panel>
-                        <CodePanel {...properties}>{child}</CodePanel>
+                        <CodePanel
+                            {...properties}
+                            meta={child['props']['meta']}
+                        >
+                            {child}
+                        </CodePanel>
                     </Tab.Panel>
                 ))}
             </Tab.Panels>

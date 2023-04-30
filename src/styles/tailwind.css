@@ -52,3 +52,12 @@ html.dark {
 pre {
   @apply bg-white;
 }
+
+.focus-code {
+  @apply w-full;
+}
+
+.focus-code::before {
+  content: "";
+  @apply absolute left-0 right-0 h-[24px] bg-ens-400/5;
+}
