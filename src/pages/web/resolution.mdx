@@ -26,7 +26,7 @@ The simplest thing you can do with ENS is to get the users Ethereum address. Thi
 ```tsx {{ title: 'Wagmi (React)', language: 'tsx', meta: 'focus=4:9' }}
 import { useAccount, useEnsName, useEnsAvatar } from 'wagmi';
 
-const Name = () => {
+export const Name = () => {
     const { data: ensName } = useEnsAddress({
         address: 'luc.eth', // The name to lookup
         chainId: 1, // The chainId to lookup on
@@ -78,10 +78,10 @@ The standardization of multichain addresses was first introduced in [ENSIP-9](/e
 
 <CodeGroup title="Multichain Address Lookup">
 
-```tsx {{ title: 'Wagmi (React)', language: 'tsx' }}
+```tsx {{ title: 'Wagmi (React)', language: 'tsx', meta: 'focus=4:9' }}
 import { useEnsMultichainAddress } from 'ens-tools/react';
 
-const BitcoinAddress = () => {
+export const BitcoinAddress = () => {
     const { address: btcAddress, chainId } = useEnsMultichainAddress({
         name: 'luc.eth',
         coinType: 1, // BTC
@@ -110,10 +110,10 @@ The reverse lookup method allows us to easily get the ENS name of an address. Th
 
 <CodeGroup title="Reverse Lookup">
 
-```tsx {{ title: 'Wagmi (React)', language: 'tsx' }}
+```tsx {{ title: 'Wagmi (React)', language: 'tsx', meta: 'focus=4:8' }}
 import { useEnsName } from 'wagmi';
 
-const BitcoinAddress = () => {
+export const Name = () => {
     const { data: name, chainId } = useEnsName({
         address: '0x225f137127d9067788314bc7fcc1f36746a3c3B5',
     });
