@@ -107,7 +107,7 @@
             },
             {
                 "pattern": "^/dapp-developer-guide/working-with-ens$",
-                "destination": "/libraries"
+                "destination": "/web/libraries"
             },
             {
                 "pattern": "^/dapp-developer-guide/resolving-names$",
