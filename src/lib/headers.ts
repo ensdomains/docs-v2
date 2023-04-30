@@ -1,35 +1,35 @@
 /* eslint-disable sonarjs/no-duplicate-string */
 export const SubHeaders: [RegExp, SubHeaderConfig[]][] = [
     [
-        /\/dao(\/.*)?/,
+        /^\/dao(\/.*)?/,
         [
             [
                 'About',
                 '/dao',
-                /\/dao(\/|(\/(foundation|airdrop|constitution)))?$/,
+                /^\/dao(\/|(\/(foundation|airdrop|constitution)))?$/,
             ],
             [
                 'Governance Process',
                 '/dao/governance',
-                /\/dao\/governance(\/.*)?/,
+                /^\/dao\/governance(\/.*)?/,
             ],
-            ['Proposals', '/dao/proposals', /\/dao\/proposals(\/.*)?/],
+            ['Proposals', '/dao/proposals', /^\/dao\/proposals(\/.*)?/],
         ],
     ],
     [
         /.*/,
         [
-            ['Intro', '/', /\/(learn(\/.*)?)?$/],
-            ['dApp Developer', '/web', /\/web(\/.*)?/],
+            ['Intro', '/', /^\/(learn(\/.*)?)?$/],
+            ['dApp Developer', '/web', /^\/web(\/.*)?/],
             [
                 'Resolution',
                 '/resolvers',
-                /\/(resolvers|subnames|registry|resolution)(\/.*)?/,
+                /^\/(resolvers|subnames|registry|resolution)(\/.*)?/,
             ],
             [
                 'Records & Standardization',
                 '/standards',
-                /\/(records|standards|ensip)(\/.*)?/,
+                /^\/(records|standards|ensip)(\/.*)?/,
             ],
         ],
     ],
@@ -52,7 +52,7 @@ type pathMatches = RegExp;
 
 export const navigation: [pathMatches, routeGroup[]][] = [
     [
-        /\/web(\/.*)?/,
+        /^\/web(\/.*)?/,
         [
             {
                 title: '',
@@ -104,7 +104,7 @@ export const navigation: [pathMatches, routeGroup[]][] = [
         ],
     ],
     [
-        /\/(resolvers|subnames|registry|resolution)(\/.*)?/,
+        /^\/(resolvers|subnames|registry|resolution)(\/.*)?/,
         [
             {
                 title: '',
@@ -179,7 +179,7 @@ export const navigation: [pathMatches, routeGroup[]][] = [
         ],
     ],
     [
-        /\/(records|standards|ensip)(\/.*)?/,
+        /^\/(records|standards|ensip)(\/.*)?/,
         [
             {
                 title: '',
@@ -225,7 +225,7 @@ export const navigation: [pathMatches, routeGroup[]][] = [
         ],
     ],
     [
-        /\/dao\/governance(\/.*)?/,
+        /^\/dao\/governance(\/.*)?/,
         [
             {
                 title: '',
@@ -247,7 +247,7 @@ export const navigation: [pathMatches, routeGroup[]][] = [
         ],
     ],
     [
-        /\/dao\/proposals(\/.*)?/,
+        /^\/dao\/proposals(\/.*)?/,
         [
             {
                 title: '',
@@ -409,7 +409,7 @@ export const navigation: [pathMatches, routeGroup[]][] = [
         ],
     ],
     [
-        /\/dao(\/.*)?/,
+        /^\/dao(\/.*)?/,
         [
             {
                 title: '',
@@ -451,7 +451,7 @@ export const navigation: [pathMatches, routeGroup[]][] = [
         ],
     ],
     [
-        /\/\.*/,
+        /^\/\.*/,
         [
             {
                 title: '',
