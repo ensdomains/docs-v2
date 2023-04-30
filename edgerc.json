@@ -27,7 +27,7 @@
             },
             {
                 "pattern": "/permanent-registrar-faq",
-                "destination": "#"
+                "destination": "/dissapeared"
             },
             {
                 "pattern": "/deploying-ens-on-a-private-chain",
