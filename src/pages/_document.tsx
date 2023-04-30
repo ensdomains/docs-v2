@@ -35,13 +35,15 @@ import { Head, Html, Main, NextScript } from 'next/document';
 //   }
 // `;
 
-const Document = () => {
-    window.localStorage.isDarkMode = 'false';
+const modeScript = `
+  window.localStorage.isDarkMode = 'false';
+`;
 
+const Document = () => {
     return (
         <Html lang="en">
             <Head>
-                {/* <script dangerouslySetInnerHTML={{ __html: modeScript }} /> */}
+                <script dangerouslySetInnerHTML={{ __html: modeScript }} />
                 <meta name="theme-color" content="#5298FF"></meta>
             </Head>
             <body className="bg-[#f7f7f7] antialiased dark:bg-zinc-900">
