@@ -1,3 +1,4 @@
+/* eslint-disable sonarjs/no-duplicate-string */
 import nextMDX from '@next/mdx';
 
 import { recmaPlugins } from './mdx/recma.mjs';
@@ -39,20 +40,15 @@ const nextConfig = {
                 destination: '/learn/ccip',
                 permanent: false,
             },
-            {
-                source: '/resolvers',
-                destination: '/resolvers/quickstart',
-                permanent: false,
-            },
             // Backwards Compatibility with v1
             {
                 source: '/terminology',
-                destination: '/',
+                destination: '/glossary',
                 permanent: false,
             },
             {
                 source: '/frequently-asked-questions',
-                destination: '#',
+                destination: '/faq',
                 permanent: false,
             },
             {
@@ -67,32 +63,97 @@ const nextConfig = {
             },
             {
                 source: '/deploying-ens-on-a-private-chain',
-                destination: '#',
+                destination: '/dissapeared',
                 permanent: false,
             },
             {
                 source: '/dns-registrar-guide',
-                destination: '#',
+                destination: '/_/dns-registrar-guide',
                 permanent: false,
             },
             {
                 source: '/bug-bounty-program',
-                destination: '#',
+                destination: '/bugs',
                 permanent: false,
             },
             {
                 source: '/ens-improvement-proposals/ensip-1-ens',
-                destination: '#',
+                destination: '/ensip/1',
+                permanent: false,
+            },
+            {
+                source: '/ens-improvement-proposals/ensip-2-initial-hash-registrar',
+                destination: '/ensip/2',
+                permanent: false,
+            },
+            {
+                source: '/ens-improvement-proposals/ensip-3-reverse-resolution',
+                destination: '/ensip/3',
+                permanent: false,
+            },
+            {
+                source: '/ens-improvement-proposals/ensip-4-support-for-contract-abis',
+                destination: '/ensip/4',
+                permanent: false,
+            },
+            {
+                source: '/ens-improvement-proposals/ensip-5-text-records',
+                destination: '/ensip/5',
+                permanent: false,
+            },
+            {
+                source: '/ens-improvement-proposals/ensip-6-dns-in-ens',
+                destination: '/ensip/6',
+                permanent: false,
+            },
+            {
+                source: '/ens-improvement-proposals/ensip-7-contenthash-field',
+                destination: '/ensip/7',
+                permanent: false,
+            },
+            {
+                source: '/ens-improvement-proposals/ensip-8-interface-discovery',
+                destination: '/ensip/8',
+                permanent: false,
+            },
+            {
+                source: '/ens-improvement-proposals/ensip-9-multichain-address-resolution',
+                destination: '/ensip/9',
+                permanent: false,
+            },
+            {
+                source: '/ens-improvement-proposals/ensip-10-wildcard-resolution',
+                destination: '/ensip/10',
+                permanent: false,
+            },
+            {
+                source: '/ens-improvement-proposals/ensip-11-evmchain-address-resolution',
+                destination: '/ensip/11',
+                permanent: false,
+            },
+            {
+                source: '/ens-improvement-proposals/ensip-12-avatar-text-records',
+                destination: '/ensip/12',
+                permanent: false,
+            },
+            {
+                source: '/ens-improvement-proposals/ensip-13-secondary-authentication-for-ens',
+                destination: '/ensip/13',
+                permanent: false,
+            },
+            {
+                source: '/ens-improvement-proposals/ensip-14-platform-source-parameter',
+                destination: '/ensip/14',
                 permanent: false,
             },
             {
                 source: '/dapp-developer-guide/ens-enabling-your-dapp',
-                destination: '/guides/dapp-quickstart',
+                destination: '/web/quickstart',
                 permanent: false,
             },
             {
                 source: '/dapp-developer-guide/ens-libraries',
-                destination: '/libraries',
+                destination: '/web/libraries',
                 permanent: false,
             },
             {
@@ -102,32 +163,156 @@ const nextConfig = {
             },
             {
                 source: '/dapp-developer-guide/resolving-names',
-                destination: '/forward-resolution',
+                destination: '/web/resolution',
                 permanent: false,
             },
             {
                 source: '/dapp-developer-guide/managing-names',
-                destination: '/modify-name',
+                destination: '/resolvers/interacting',
                 permanent: false,
             },
             {
                 source: '/dapp-developer-guide/registering-and-renewing-names',
-                destination: '#',
+                destination: '/registry/interacting',
                 permanent: false,
             },
             {
                 source: '/dapp-developer-guide/front-end-design-guidelines',
-                destination: '/design-guidelines',
+                destination: '/web/design',
                 permanent: false,
             },
             {
                 source: '/dapp-developer-guide/ens-as-nft',
-                destination: '#',
+                destination: '/registry/about',
                 permanent: false,
             },
             {
                 source: '/dapp-developer-guide/ens-l2-offchain',
-                destination: '/ccip',
+                destination: '/resolvers/ccip',
+                permanent: false,
+            },
+            {
+                source: '/dapp-developer-guide/ens-data-guide',
+                destination: '/web/libraries',
+                permanent: false,
+            },
+            {
+                source: '/contract-api-reference/name-processing',
+                destination: '/resolution/names',
+                permanent: false,
+            },
+            {
+                source: '/contract-api-reference/ens',
+                destination: '/registry/about',
+                permanent: false,
+            },
+            {
+                source: '/contract-api-reference/reverseregistrar',
+                destination: '/registry/reverse',
+                permanent: false,
+            },
+            {
+                source: '/contract-api-reference/testregistrar',
+                destination: '/registry/test',
+                permanent: false,
+            },
+            {
+                source: '/contract-api-reference/publicresolver',
+                destination: '/resolvers/public',
+                permanent: false,
+            },
+            {
+                source: '/contract-api-reference/.eth-permanent-registrar',
+                destination: '/registry/eth',
+                permanent: false,
+            },
+            {
+                source: '/contract-api-reference/subgraphdata',
+                destination: '/web/subgraph',
+                permanent: false,
+            },
+            {
+                source: '/contract-api-reference/subgraphdata/entities',
+                destination: '/web/subgraph',
+                permanent: false,
+            },
+            {
+                source: '/contract-api-reference/subgraphdata/queries',
+                destination: '/web/subgraph',
+                permanent: false,
+            },
+            {
+                source: '/contract-developer-guide/resolving-names-on-chain',
+                destination: '/dissapeared',
+            },
+            {
+                source: '/contract-developer-guide/writing-a-resolver',
+                destination: '/resolvers/writing',
+                permanent: false,
+            },
+            {
+                source: '/contract-developer-guide/writing-a-registrar',
+                destination: '/registry/writing',
+                permanent: false,
+            },
+            {
+                source: '/ens-migration-february-2020/guide-for-dapp-developers',
+                destination: '/dissapeared',
+                permanent: false,
+            },
+            {
+                source: '/ens-migration-february-2020/technical-description',
+                destination: '/dissapeared',
+                permanent: false,
+            },
+            {
+                source: '/v/governance/',
+                destination: '/dao',
+                permanent: false,
+            },
+            {
+                source: '/v/governance/process',
+                destination: '/dao/governance/process',
+                permanent: false,
+            },
+            {
+                source: '/v/governance/process/moderator-checklists',
+                destination: '/dao/governance/moderator',
+                permanent: false,
+            },
+            {
+                source: '/v/governance/ens-dao-constitution',
+                destination: '/dao/constitution',
+                permanent: false,
+            },
+            {
+                source: '/v/governance/the-ens-foundation',
+                destination: '/dao/foundation',
+                permanent: false,
+            },
+            {
+                source: '/v/governance/governance-proposals',
+                destination: '/dao/proposals',
+                permanent: false,
+            },
+            {
+                source: '/v/governance/governance-proposals/term-0',
+                destination: '/dao/proposals',
+                permanent: false,
+            },
+            {
+                source: '/v/governance/governance-proposals/term-1',
+                destination: '/dao/proposals',
+                permanent: false,
+            },
+            {
+                source: '/v/governance/governance-proposals/term-2',
+                destination: '/dao/proposals',
+                permanent: false,
+            },
+            {
+                source: '/v/governance/governance-proposals/term-3',
+                destination: '/dao/proposals',
                 permanent: false,
             },
             {

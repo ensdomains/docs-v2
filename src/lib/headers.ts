@@ -21,7 +21,11 @@ export const SubHeaders: [RegExp, SubHeaderConfig[]][] = [
         [
             ['Intro', '/', /\/(learn(\/.*)?)?$/],
             ['dApp Developer', '/web', /\/web(\/.*)?/],
-            ['Resolution', '/resolvers', /\/(resolvers|subnames)(\/.*)?/],
+            [
+                'Resolution',
+                '/resolvers',
+                /\/(resolvers|subnames|registry|resolution)(\/.*)?/,
+            ],
             [
                 'Records & Standardization',
                 '/standards',
@@ -79,6 +83,10 @@ export const navigation: [pathMatches, routeGroup[]][] = [
                         title: 'Interfacing with ENS Contracts',
                         href: '/web/interfacing',
                     },
+                    {
+                        title: 'Subgraph',
+                        href: '/web/subgraph',
+                    },
                 ],
             },
             {
@@ -96,28 +104,60 @@ export const navigation: [pathMatches, routeGroup[]][] = [
         ],
     ],
     [
-        /\/(resolvers|subnames)(\/.*)?/,
+        /\/(resolvers|subnames|registry|resolution)(\/.*)?/,
         [
             {
                 title: '',
                 links: [{ title: '👋 Welcome', href: '/resolvers' }],
             },
             {
+                title: '🌐 Resolution',
+                links: [
+                    { title: '✨ Start Here', href: '/resolution/quickstart' },
+                    { title: '⚙️ Name Processing', href: '/resolution/names' },
+                ],
+            },
+            {
+                title: '🏛️ Registries',
+                links: [
+                    { title: '✨ Start Here', href: '/registry/quickstart' },
+                    { title: '🗒️ ETH Registrar', href: '/registry/eth' },
+                    { title: '🗒️ DNS Registrar', href: '/registry/dns' },
+                    { title: '🗒️ Test Registrar', href: '/registry/test' },
+                    {
+                        title: '🗒️ Reverse Registrar',
+                        href: '/registry/reverse',
+                    },
+                    {
+                        title: '👉 Interacting with registry',
+                        href: '/registry/interacting',
+                    },
+                    {
+                        title: '✍️ Authoring a registry',
+                        href: '/registry/writing',
+                    },
+                ],
+            },
+            {
                 title: '🗺️ Resolvers',
                 links: [
-                    { title: '⚡ Quickstart', href: '/resolvers/quickstart' },
+                    { title: '✨ Start Here', href: '/resolvers/quickstart' },
                     { title: '🤷‍♀️ Why Resolvers', href: '/resolvers/about' },
                     {
                         title: '🏛️ Public Resolver',
-                        href: '/resolvers/public-resolver',
+                        href: '/resolvers/public',
                     },
                     {
                         title: '✍️ Writing your own resolver',
-                        href: '/resolvers/writing-a-resolver',
+                        href: '/resolvers/writing',
                     },
                     {
-                        title: '⛓️ Cross Chain Resolution',
-                        href: '/resolvers/cross-chain-resolution',
+                        title: '👉 Interacting with a resolver',
+                        href: '/resolvers/interacting',
+                    },
+                    {
+                        title: '⛓️ Cross Chain Gateway',
+                        href: '/resolvers/ccip',
                     },
                 ],
             },
@@ -436,6 +476,7 @@ export const navigation: [pathMatches, routeGroup[]][] = [
                 links: [
                     { title: '📝 Changelog', href: '/changelog' },
                     { title: '🪲 Bug Bounties', href: '/bugs' },
+                    { title: '📓 Glossary', href: '/glossary' },
                 ],
             },
             {
