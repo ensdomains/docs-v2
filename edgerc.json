@@ -35,7 +35,7 @@
             },
             {
                 "pattern": "/dns-registrar-guide",
-                "destination": "/_/dns-registrar-guide"
+                "destination": "/dissapeared"
             },
             {
                 "pattern": "/bug-bounty-program",
