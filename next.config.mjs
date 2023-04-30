@@ -58,7 +58,7 @@ const nextConfig = {
             },
             {
                 source: '/permanent-registrar-faq',
-                destination: '#',
+                destination: '/dissapeared',
                 permanent: false,
             },
             {
@@ -68,7 +68,7 @@ const nextConfig = {
             },
             {
                 source: '/dns-registrar-guide',
-                destination: '/_/dns-registrar-guide',
+                destination: '/dissapeared',
                 permanent: false,
             },
             {
