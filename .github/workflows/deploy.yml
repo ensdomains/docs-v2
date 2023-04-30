@@ -55,6 +55,14 @@ jobs:
           echo "::set-output name=tag_name::${TAG_NAME}"
           echo "::set-output name=deploy_tag_name::deploy-${TAG_NAME}"
 
+      - name: Edgeserver Upload
+        uses: lvkdotsh/edgeserver-action@v0.1.2-pre.4
+        with:
+          app_id: "175441159005409280"
+          server: https://api.edgeserver.io
+          token: ${{ secrets.EDGESERVER_TOKEN }}
+          directory: out
+
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
@@ -63,11 +71,3 @@ jobs:
           tag_name: ${{ steps.prepare_tag.outputs.deploy_tag_name }}
           tag_message: 'Deployment ${{ steps.prepare_tag.outputs.tag_name }}'
           cname: alpha.ens.build
-
-      - name: Edgeserver Upload
-        uses: lvkdotsh/edgeserver-action@v0.1.1
-        with:
-          app_id: "175441159005409280"
-          server: https://api.edgeserver.io
-          token: ${{ secrets.EDGESERVER_TOKEN }}
-          directory: out
