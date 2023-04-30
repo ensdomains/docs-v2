@@ -420,13 +420,22 @@ export const navigation: [pathMatches, routeGroup[]][] = [
             {
                 title: '🧑‍🎓 Learn',
                 links: [
-                    { title: 'The Protocol', href: '/learn/protocol' },
-                    { title: 'Resolution', href: '/learn/resolution' },
+                    { title: '📖 The Protocol', href: '/learn/protocol' },
+                    { title: '📰 Deployments', href: '/learn/deployments' },
+                    { title: '🔍 Resolution', href: '/learn/resolution' },
+                    { title: '⛓️ Multichain', href: '/learn/multichain' },
+                    { title: '🌐 DNS-Compatability', href: '/learn/dns' },
                     {
-                        title: 'CCIP Cross Chain Interoperability Protocol',
+                        title: '🔗 EIP-3668 (CCIP)',
                         href: '/learn/ccip',
                     },
-                    { title: 'DNS-Compatability', href: '/learn/dnssec' },
+                ],
+            },
+            {
+                title: '📰 A brief history',
+                links: [
+                    { title: '📝 Changelog', href: '/changelog' },
+                    { title: '🪲 Bug Bounties', href: '/bugs' },
                 ],
             },
             {

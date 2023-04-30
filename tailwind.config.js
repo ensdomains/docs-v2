@@ -21,6 +21,9 @@ module.exports = {
         },
         typography: require('./typography'),
         extend: {
+            blur: {
+                xs: '0.8px',
+            },
             boxShadow: {
                 glow: '0 0 4px rgb(0 0 0 / 0.1)',
             },

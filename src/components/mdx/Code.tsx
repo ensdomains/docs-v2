@@ -8,6 +8,7 @@ import {
     ReactElement,
     useContext,
     useEffect,
+    useMemo,
     useRef,
     useState,
 } from 'react';
@@ -125,6 +126,7 @@ type CodePanelProperties = {
     label?: string;
     code?: string;
     hideCopy?: boolean;
+    meta?: string;
 };
 
 const CodePanel: FC<CodePanelProperties & PropsWithChildren> = ({
@@ -133,8 +135,57 @@ const CodePanel: FC<CodePanelProperties & PropsWithChildren> = ({
     code,
     hideCopy,
     children,
+    meta,
 }) => {
+    const preReference = useRef<HTMLPreElement>(null);
     const child = Children.only(children) as ReactElement;
+
+    const focus = useMemo<number[]>(() => {
+        if (!meta || !meta.includes('focus=')) return [];
+
+        const focus = meta.split('focus=')[1].split(',');
+
+        return focus.reduce((accumulator, part) => {
+            const range = part.split(':');
+
+            if (range.length === 1) {
+                accumulator.push(Number.parseInt(range[0]) - 1);
+            } else {
+                const start = Number.parseInt(range[0]) - 1;
+                const end = Number.parseInt(range[1]);
+
+                for (let index = start; index < end; index++) {
+                    accumulator.push(index);
+                }
+            }
+
+            return accumulator;
+        }, [] as number[]);
+    }, [meta]);
+
+    useEffect(() => {
+        if (focus.length === 0 || !preReference.current) return;
+
+        [...(preReference.current.children[0].children as any)].map(
+            (node, index) => {
+                if (focus.includes(index)) {
+                    node.classList.add(
+                        'bg-ens-400/5',
+                        'w-full',
+                        'inline-block'
+                    );
+                } else {
+                    node.classList.add(
+                        'opacity-40',
+                        'blur-xs',
+                        'group-hover:blur-0',
+                        'group-hover:opacity-100',
+                        'transition-all'
+                    );
+                }
+            }
+        );
+    }, [focus]);
 
     return (
         <div className="group dark:bg-white/2.5">
@@ -143,7 +194,10 @@ const CodePanel: FC<CodePanelProperties & PropsWithChildren> = ({
                 label={child.props.label ?? label}
             />
             <div className="relative">
-                <pre className="overflow-x-auto p-4 text-xs text-black">
+                <pre
+                    className="overflow-x-auto p-4 text-xs text-black"
+                    ref={preReference}
+                >
                     {children}
                 </pre>
                 {child.props.hideCopy || (

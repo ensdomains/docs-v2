@@ -57,7 +57,7 @@ const nextConfig = {
             },
             {
                 source: '/ens-deployments',
-                destination: '#',
+                destination: '/learn/deployments',
                 permanent: false,
             },
             {

@@ -1,0 +1,53 @@
+# Deployments
+
+<Note>
+    This page contains information that is only relevant to developers who would
+    like to interact with the contract manually. Most libraries will handle this
+    for you.
+</Note>
+
+The root ENS contracts are deployed on mainnet, goerli, ropsten, rinkeby, and kovan.
+
+## Mainnet {{ tag: "Production" }}
+
+| Network | Contract          | Address                                    |
+| ------- | ----------------- | ------------------------------------------ |
+| Mainnet | ENS Registry      | 0x314159265dD8dbb310642f98f50C066173C1259b |
+| Mainnet | Reverse Registrar |                                            |
+| Mainnet | Public Resolver   | 0x4976fb03C32e5B8cfe2b6cCB31c09Ba78EBaBa41 |
+
+## Goerli {{ tag: "Testnet" }}
+
+| Network | Contract          | Address                                    |
+| ------- | ----------------- | ------------------------------------------ |
+| Mainnet | ENS Registry      | 0x112234455c3a32fd11230c42e7bccd4a84e02010 |
+| Mainnet | Reverse Registrar |                                            |
+| Mainnet | Public Resolver   |                                            |
+
+## Ropsten {{ tag: "Testnet" }}
+
+| Network | Contract          | Address |
+| ------- | ----------------- | ------- |
+| Mainnet | ENS Registry      |         |
+| Mainnet | Reverse Registrar |         |
+| Mainnet | Public Resolver   |         |
+
+## But what about multichain? {{ tag: "Multichain" }}
+
+The ENS Protocol can be used on/for any chain! If you are building a dApp and want to use ENS you might have to add a [Mainnet RPC to your Wagmi config](/web/libraries).
+This allows tools like wagmi to access mainnet, and load ENS information!
+
+To enable this, simply specify `chainId: 1` in your config like so:
+
+```tsx focus=6
+import { useAccount, useEnsName, useEnsAvatar } from 'wagmi';
+
+const Name = () => {
+    const { data: ensName } = useEnsAddress({
+        address: 'luc.eth',
+        chainId: 1, // (1 = Ethereum, 4 = Goerli)
+    });
+
+    return <div>{ensName || address}</div>;
+};
+```
