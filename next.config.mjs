@@ -244,6 +244,7 @@ const nextConfig = {
             {
                 source: '/contract-developer-guide/resolving-names-on-chain',
                 destination: '/dissapeared',
+                permanent: false,
             },
             {
                 source: '/contract-developer-guide/writing-a-resolver',

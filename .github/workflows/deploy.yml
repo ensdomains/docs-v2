@@ -63,3 +63,11 @@ jobs:
           tag_name: ${{ steps.prepare_tag.outputs.deploy_tag_name }}
           tag_message: 'Deployment ${{ steps.prepare_tag.outputs.tag_name }}'
           cname: alpha.ens.build
+
+      - name: Edgeserver Upload
+        uses: lvkdotsh/edgeserver-action@v0.1.1
+        with:
+          app_id: "175441159005409280"
+          server: https://api.edgeserver.io
+          token: ${{ secrets.EDGESERVER_TOKEN }}
+          directory: out
