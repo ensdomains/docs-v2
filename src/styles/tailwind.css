@@ -30,7 +30,7 @@
 @tailwind utilities;
 
 .card {
-  @apply my-6 overflow-hidden rounded-lg bg-white shadow-sm dark:shadow-md ring-1 ring-black/10 dark:ring-white/10 hover:shadow-md transition-all;
+  @apply my-6 overflow-hidden rounded-lg bg-white shadow-sm dark:shadow-md ring-1 ring-black/10 dark:ring-white/10;
 }
 
 html.dark {
