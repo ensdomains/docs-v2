@@ -6,9 +6,14 @@
     for you.
 </Note>
 
-The root ENS contracts are deployed on mainnet, goerli, ropsten, rinkeby, and kovan.
+Though ENS is a platform-agnostic (read more [here](/learn/multichain)), the ENS Protocol smart-contracts are deployed on Ethereum mainnet, aswell as the most popular test-networks, such as goerli, ropsten, rinkeby, and kovan.
+Listed below you will find a list of latest deployments of registries, resolvers, and more.
+If you are looking for our legacy contracts please refer to the [changelog section](/changelog).
 
 ## Mainnet {{ tag: "Production" }}
+
+This section contains the contracts for Ethereum mainnet.
+These should be considered the source of truth for any chain unless it is a testnet.
 
 | Network | Contract          | Address                                    |
 | ------- | ----------------- | ------------------------------------------ |
@@ -37,17 +42,8 @@ The root ENS contracts are deployed on mainnet, goerli, ropsten, rinkeby, and ko
 The ENS Protocol can be used on/for any chain! If you are building a dApp and want to use ENS you might have to add a [Mainnet RPC to your Wagmi config](/web/libraries).
 This allows tools like wagmi to access mainnet, and load ENS information!
 
-To enable this, simply specify `chainId: 1` in your config like so:
-
-```tsx focus=6
-import { useAccount, useEnsName, useEnsAvatar } from 'wagmi';
-
-const Name = () => {
-    const { data: ensName } = useEnsAddress({
-        address: 'luc.eth',
-        chainId: 1, // (1 = Ethereum, 4 = Goerli)
-    });
-
-    return <div>{ensName || address}</div>;
-};
-```
+<EmbedLink
+    title="⛓️ Multichain"
+    description="Learn more about multichain ENS"
+    href="/learn/multichain"
+/>

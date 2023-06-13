@@ -1,3 +1,81 @@
 # Resolution
 
-This document aims to provide a brief overview of how resolution works, to read more about resolution checkout the [dedicated Resolution Section]().
+<Note>
+    This document aims to provide a brief overview of how resolution works, to
+    read more about resolution checkout the [dedicated Resolution
+    Section](/resolution).
+</Note>
+
+One of the major parts of the ENS protocol is the resolution process. The Resolution process at its core is the process of converting a human-redable name to a machine-readable address.
+
+Though there is a lot of magic under the hood, the ENS system consists of two main directions:
+
+-   [Forward Resolution](#forward-resolution)
+-   [Reverse Resolution](#reverse-resolution)
+
+## Forward Resolution
+
+Forwards resolution is the process of going **from name to address**. Aswell as to load the records associated to a users name.
+These records include but are not limited to **discord**, **twitter**, **github**, **email**, **timezone**, and more.
+
+<div className="not-prose">
+  <div className="flex justify-center items-center gap-6">
+    <div className="card flex h-fit items-center gap-4 !rounded-lg pr-4">
+      <div className="aspect-square h-12 w-12 rounded-full shadow-lg">
+        <img src="https://metadata.ens.domains/mainnet/avatar/nick.eth" />
+      </div>
+      <div className="text-lg font-bold">nick.eth</div>
+    </div>
+    <div className="flex h-20 items-center">➡️</div>
+    <div className="flex flex-col gap-2 items-center">
+        <img src="/logo.svg" className="h-24 -mx-4 -mb-6" />
+        <div>ENS Magic</div>
+    </div>
+    <div className="flex h-20 items-center">➡️</div>
+    <div className="card p-4 !my-0 rounded-md w-64 whitespace-normal break-all">
+        <div>
+            <span className="font-extrabold">Address:</span> 0x225...c3B5
+        </div>
+        <div>
+            <span className="font-extrabold">Twitter:</span> @lucemansnl
+        </div>
+        <div>
+            <span className="font-extrabold">Discord:</span> lucemans#2066
+        </div>
+        <div>
+            <span className="font-extrabold">...</span>
+        </div>
+    </div>
+
+  </div>
+</div>
+
+## Reverse Resolution
+
+Reverse resolution is the process of going **from address to name**. Aswell as to load the records associated to a users name.
+
+This tends to be used for things like:
+
+-   Showing a user their name
+-   Showing a user their records
+-   Showing a user their avatar
+
+<div className="not-prose">
+    <div className="flex justify-center items-center gap-6">
+        <div className="card p-4 !my-0 rounded-md whitespace-normal break-all">
+            <div>0x225...c3B5</div>
+        </div>
+        <div className="flex h-20 items-center">➡️</div>
+        <div className="flex flex-col gap-2 items-center">
+            <img src="/logo.svg" className="h-24 -mx-4 -mb-6" />
+            <div>ENS Magic</div>
+        </div>
+        <div className="flex h-20 items-center">➡️</div>
+        <div className="card flex h-fit items-center gap-4 !rounded-lg pr-4">
+            <div className="aspect-square h-12 w-12 rounded-full shadow-lg">
+                <img src="https://metadata.ens.domains/mainnet/avatar/nick.eth" />
+            </div>
+            <div className="text-lg font-bold">nick.eth</div>
+        </div>
+    </div>
+</div>

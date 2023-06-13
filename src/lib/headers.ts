@@ -23,7 +23,7 @@ export const SubHeaders: [RegExp, SubHeaderConfig[]][] = [
             ['dApp Developer', '/web', /^\/web(\/.*)?/],
             [
                 'Resolution',
-                '/resolvers',
+                '/resolution',
                 /^\/(resolvers|subnames|registry|resolution)(\/.*)?/,
             ],
             [
@@ -108,7 +108,7 @@ export const navigation: [pathMatches, routeGroup[]][] = [
         [
             {
                 title: '',
-                links: [{ title: '👋 Welcome', href: '/resolvers' }],
+                links: [{ title: '👋 Welcome', href: '/resolution' }],
             },
             {
                 title: '🌐 Resolution',
