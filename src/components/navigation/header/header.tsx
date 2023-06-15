@@ -19,7 +19,7 @@ import markDao from '../../../images/mark_dao.svg';
 import { Button } from '../../Button';
 import { MobileNavigation } from '../../MobileNavigation';
 import { MobileSearch, Search } from '../../Search';
-import { SubHeader } from '../../SubHeader';
+import { SubHeader } from '../subheader/SubHeader';
 
 export const Header = forwardRef<HTMLDivElement, { className?: string }>(
     ({ className }, reference) => {
