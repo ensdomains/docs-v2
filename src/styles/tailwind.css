@@ -25,6 +25,12 @@
   --shiki-token-link: #0969da;
 }
 
+@media (min-width: 768px) {
+  :root {
+    font-size: 18px;
+  }
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
