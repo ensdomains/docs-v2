@@ -66,6 +66,7 @@ export const navigation: [pathMatches, routeGroup[]][] = [
                     { title: '🔍 Address', href: '/web/resolution' },
                     { title: '🔍 Avatars', href: '/web/avatars' },
                     { title: '🔍 Primary Names', href: '/web/reverse' },
+                    { title: '🔍 List Names', href: '/web/enumerate' },
                     {
                         title: '✍️ Sign In With Ethereum (SIWE)',
                         href: '/web/siwe',

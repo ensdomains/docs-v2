@@ -1,1 +1,69 @@
-# Reverse Records
+# Primary Names
+
+We can all agree 42-character long machine-optimized addresses (eg. 0x225...c3b5) are not aesthetically pleasing.
+In order to convert them to human-readable names, we use [the reverse registrar](/registry/reverse).
+
+The reverse registrar is a smart contract that allows users to register their preferred name, referred to as their "primary name" for simplicity purposes.
+
+<div className="card px-8 py-4">TODO: Address -> Name example here</div>
+
+## Getting a Primary Name
+
+To get a users preferred primary name is very simple. In most libraries you can do a simple lookup by address as shown below.
+
+<CodeGroup title="Reverse Lookup">
+
+```tsx {{ title: 'Wagmi (React)', language: 'tsx', meta: 'focus=4:8' }}
+import { useEnsName } from 'wagmi';
+
+export const Name = () => {
+    const { data: name, chainId } = useEnsName({
+        address: '0x225f137127d9067788314bc7fcc1f36746a3c3B5',
+    });
+
+    return <div>Name: {name}</div>;
+};
+```
+
+```ts {{ title: 'Ethers.js (TS)' }}
+// 0x225f137127d9067788314bc7fcc1f36746a3c3B5 -> luc.eth
+const name = await provider.lookupAddress(
+    '0x225f137127d9067788314bc7fcc1f36746a3c3B5'
+);
+```
+
+```ts {{ title: 'Viem (TS)' }}
+// 0x225f137127d9067788314bc7fcc1f36746a3c3B5 -> luc.eth
+import { publicClient } from './client';
+
+const ensName = await publicClient.getEnsName({
+    address: '0x225f137127d9067788314bc7fcc1f36746a3c3B5',
+});
+```
+
+</CodeGroup>
+
+And thats it!
+
+### Do's and Don'ts
+
+TODO: Insert excerpt of design guidelines for primary names here.
+
+## Setting Primary Names
+
+In some cases you might want to encourage users to set their primary name.
+This might be in the event you are issuing names, or want people to be part of a community.
+Most users are expected to do this through the ENS Manager, however it is totally doable from 3rd-party platforms aswell.
+
+<CodeGroup title="Reverse Lookup">
+
+```ts {{ title: 'Ethers.js (TS)' }}
+// TODO: Write Code Snippet
+```
+
+</CodeGroup>
+
+### Do's and Don'ts
+
+It must be noted that under no situation is it recommended to force a user to change their primary name, nor doing so without clearly notifying the user of what the transaction they are about to execute could modify.
+Doing so could be seen as hostile or undesired behaviour by end users and might degrade their experience with your app.
