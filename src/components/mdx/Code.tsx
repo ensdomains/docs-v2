@@ -117,6 +117,8 @@ const getCopiedLabel = (copyCount) => {
 import { AnimatePresence, motion } from 'framer-motion';
 import { FiPaperclip } from 'react-icons/fi';
 
+import { getCodeData } from './code/getCodeData';
+
 function CopyButton({ code }) {
     const [copyCount, setCopyCount] = useState(0);
     const copied = copyCount > 0;
@@ -308,29 +310,52 @@ export const CodeGroupHeader: FC<
     // );
 
     return (
-        <div className="flex min-h-[calc(theme(spacing.12)+1px)] flex-wrap items-start gap-x-4 border-b bg-neutral-50 border-zinc-700 dark:bg-zinc-800 px-4 dark:border-zinc-800 dark:bg-transparent">
+        <div className="flex min-h-[calc(theme(spacing.12)+1px)] flex-wrap items-start gap-x-4 border-b-4 bg-neutral-50 border-zinc-300 dark:bg-zinc-800 px-4 dark:border-zinc-800 dark:bg-transparent">
             {title && (
                 <h3 className="mr-auto pt-3 text-xs font-semibold text-black dark:text-white">
                     {title}
                 </h3>
             )}
             {hasTabs && (
-                <Tab.List className="-mb-px flex gap-4 text-xs font-medium">
+                <Tab.List className="-mb-[4px] flex gap-4 text-xs font-medium">
                     {Children.map(
                         children,
                         (child: ReactElement, childIndex) => (
                             <Tab
                                 className={clsx(
-                                    'flex items-center gap-2 border-b py-3 transition focus:[&:not(:focus-visible)]:outline-none',
+                                    'flex items-center relative px-0 gap-2 border-b-4 py-3 transition-all focus:[&:not(:focus-visible)]:outline-none',
                                     childIndex === selectedIndex
-                                        ? 'border-ens-500 text-ens-400'
+                                        ? 'border-ens-500 text-ens-400 px-3.5'
                                         : 'border-transparent text-zinc-400 hover:text-zinc-300'
                                 )}
                             >
-                                <LanguageIcon
-                                    language={getPanelLanguage(child.props)}
-                                />
-                                {getPanelTitle(child.props)}
+                                {childIndex === selectedIndex && (
+                                    <motion.div
+                                        className="absolute inset-0 bg-ens-500/10"
+                                        layoutId={`code-group-header-${childIndex}`}
+                                    />
+                                )}
+                                <div className="flex flex-col items-start">
+                                    <div>{getPanelTitle(child.props)}</div>
+                                    <div
+                                        className={clsx(
+                                            'flex transition-all',
+                                            '-space-x-2.5'
+                                        )}
+                                    >
+                                        {Array.from({ length: 5 }).map(
+                                            (_, index) => (
+                                                <div className="border-2 border-white bg-white rounded-full overflow-hidden">
+                                                    <LanguageIcon
+                                                        codeData={getCodeData(
+                                                            child.props
+                                                        )}
+                                                    />
+                                                </div>
+                                            )
+                                        )}
+                                    </div>
+                                </div>
                             </Tab>
                         )
                     )}
