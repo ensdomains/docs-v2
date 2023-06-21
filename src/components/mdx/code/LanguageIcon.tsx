@@ -14,14 +14,18 @@ const logoLookup = {
 };
 
 export const LanguageIcon: FC<{
-    language: { language: string; icon: string };
+    language: { language?: string; icon?: string };
 }> = ({ language: _language }) => {
     const { icon, language } = _language;
+
+    const iconURL = logoLookup[icon?.toLowerCase()];
+
+    if (!iconURL) return <></>;
 
     return (
         <div className="w-4 h-4 rounded-full bg-blue-50">
             <img
-                src={logoLookup[icon.toLowerCase()]}
+                src={logoLookup[icon?.toLowerCase()]}
                 x-h={icon}
                 className="w-full h-full object-contain"
                 alt={language}
