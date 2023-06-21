@@ -19,7 +19,7 @@ export const SubHeaders: [RegExp, SubHeaderConfig[]][] = [
     [
         /.*/,
         [
-            ['Intro', '/', /^\/(learn(\/.*)?)?$/],
+            ['Intro', '/', /^\/((learn|glossary|changelog|bugs)(\/.*)?)?$/],
             ['dApp Developer', '/web', /^\/web(\/.*)?/],
             [
                 'Resolution',
