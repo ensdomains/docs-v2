@@ -16,6 +16,8 @@ import {
 import { Tag } from '@/components/Tag';
 import { usePreferredLanguageStore } from '@/hooks/preferredLanguage';
 
+import { LanguageIcon } from './code/LanguageIcon';
+
 const languageNames = {
     js: 'JavaScript',
     ts: 'TypeScript',
@@ -29,6 +31,13 @@ const languageNames = {
 
 function getPanelTitle({ title, language }) {
     return title ?? languageNames[language] ?? 'Code';
+}
+
+function getPanelLanguage({ language, icon }) {
+    return {
+        language: languageNames[language] ?? language ?? 'Unknown',
+        icon: icon ?? language,
+    };
 }
 
 function ClipboardIcon(properties) {
@@ -47,6 +56,67 @@ function ClipboardIcon(properties) {
     );
 }
 
+const getCopiedLabel = (copyCount) => {
+    if (copyCount > 120) {
+        return 'Copied!';
+    }
+
+    if (copyCount > 100) {
+        // Writen by co-pilot
+        return 'Determination... I like it';
+    }
+
+    if (copyCount > 60) {
+        // Writen by co-pilot
+        return 'Sigh.... you are still copying?';
+    }
+
+    if (copyCount > 50) {
+        // Writen by co-pilot
+        return 'You are a mad lad';
+    }
+
+    if (copyCount > 45) {
+        // Writen by co-pilot
+        return 'Ok... you are just showing off now';
+    }
+
+    if (copyCount > 35) {
+        // Writen by co-pilot
+        return 'I hope you actually know what code youre copying 🤔';
+    }
+
+    if (copyCount > 30) {
+        // Writen by co-pilot
+        return 'BUILD BUILD BUILD BUILD BUILD BUILD!!!!';
+    }
+
+    if (copyCount > 25) {
+        return 'Coding Powers Unlocked 😎🚀';
+    }
+
+    if (copyCount > 20) {
+        return 'Seriously? You have got to be kidding right?!';
+    }
+
+    if (copyCount > 15) {
+        return 'Aaaaaaaaaaaaaaaaaaaaaaaaaaahhhhhhh!';
+    }
+
+    if (copyCount > 10) {
+        return 'Ok chill you have a copy!';
+    }
+
+    if (copyCount > 4) {
+        return 'Yes its Copied!';
+    }
+
+    return 'Copied!';
+};
+
+import { AnimatePresence, motion } from 'framer-motion';
+import { FiPaperclip } from 'react-icons/fi';
+
 function CopyButton({ code }) {
     const [copyCount, setCopyCount] = useState(0);
     const copied = copyCount > 0;
@@ -62,40 +132,54 @@ function CopyButton({ code }) {
     }, [copyCount]);
 
     return (
-        <button
-            type="button"
-            className={clsx(
-                'group/button absolute top-3.5 right-4 overflow-hidden rounded-full py-1 pl-2 pr-3 text-2xs font-medium opacity-0 backdrop-blur transition focus:opacity-100 group-hover:opacity-100',
-                copied
-                    ? 'bg-ens-400/10 ring-1 ring-inset ring-ens-400/20'
-                    : 'bg-white/5 hover:bg-white/7.5 dark:bg-white/2.5 dark:hover:bg-white/5'
-            )}
-            onClick={() => {
-                window.navigator.clipboard.writeText(code).then(() => {
-                    setCopyCount((count) => count + 1);
-                });
-            }}
-        >
-            <span
-                aria-hidden={copied}
+        <AnimatePresence>
+            <motion.button
+                type="button"
                 className={clsx(
-                    'pointer-events-none flex items-center gap-0.5 text-zinc-400 transition duration-300',
-                    copied && '-translate-y-1.5 opacity-0'
+                    'group/button absolute top-3.5 right-4 w-auto h-7 whitespace-nowrap overflow-hidden rounded-full py-1 pl-2 pr-3 text-2xs font-medium opacity-0 backdrop-blur transition focus:opacity-100 group-hover:opacity-100',
+                    copied
+                        ? 'bg-ens-400/10 ring-1 ring-inset ring-ens-400/20'
+                        : 'bg-white/5 hover:bg-white/7.5 dark:bg-white/2.5 dark:hover:bg-white/5'
                 )}
+                onClick={() => {
+                    window.navigator.clipboard.writeText(code).then(() => {
+                        setCopyCount((count) => count + 1);
+                    });
+                }}
+                initial={{ height: '1.75rem' }}
+                animate={{ width: 'auto', height: '1.75rem' }}
+                transition={{ bounce: 0 }}
             >
-                <ClipboardIcon className="h-5 w-5 fill-zinc-500/20 stroke-zinc-500 transition-colors group-hover/button:stroke-zinc-400" />
-                Copy
-            </span>
-            <span
-                aria-hidden={!copied}
-                className={clsx(
-                    'pointer-events-none absolute inset-0 flex items-center justify-center text-ens-400 transition duration-300',
-                    !copied && 'translate-y-1.5 opacity-0'
-                )}
-            >
-                Copied!
-            </span>
-        </button>
+                <AnimatePresence>
+                    <motion.span
+                        aria-hidden={copied}
+                        className={clsx(
+                            'pointer-events-none flex items-center gap-0.5 text-zinc-400 transition duration-300',
+                            copied && 'opacity-0'
+                        )}
+                        initial={{ y: 0 }}
+                        animate={{ y: copied ? '-100%' : 0 }}
+                        hidden={copied}
+                    >
+                        <ClipboardIcon className="h-5 w-5 fill-zinc-500/20 stroke-zinc-500 transition-colors group-hover/button:stroke-zinc-400" />
+                        Copy
+                    </motion.span>
+                    <motion.span
+                        aria-hidden={!copied}
+                        className={clsx(
+                            'pointer-events-none gap-1 w-full whitespace-nowrap flex items-center justify-end text-ens-400 transition duration-300',
+                            !copied && 'opacity-0'
+                        )}
+                        initial={{ y: 0 }}
+                        animate={{ y: copied ? '-100%' : 0 }}
+                        exit={{ y: '-200%' }}
+                        key={`copied-${getCopiedLabel(copyCount)}`}
+                    >
+                        <FiPaperclip /> {getCopiedLabel(copyCount)}
+                    </motion.span>
+                </AnimatePresence>
+            </motion.button>
+        </AnimatePresence>
     );
 }
 
@@ -218,6 +302,11 @@ export const CodeGroupHeader: FC<
         return;
     }
 
+    // TODO: Active Language Selector
+    // const language = Children.map(children, (child) =>
+    //     getPanelLanguage(child.props)
+    // );
+
     return (
         <div className="flex min-h-[calc(theme(spacing.12)+1px)] flex-wrap items-start gap-x-4 border-b bg-neutral-50 border-zinc-700 dark:bg-zinc-800 px-4 dark:border-zinc-800 dark:bg-transparent">
             {title && (
@@ -232,18 +321,24 @@ export const CodeGroupHeader: FC<
                         (child: ReactElement, childIndex) => (
                             <Tab
                                 className={clsx(
-                                    'border-b py-3 transition focus:[&:not(:focus-visible)]:outline-none',
+                                    'flex items-center gap-2 border-b py-3 transition focus:[&:not(:focus-visible)]:outline-none',
                                     childIndex === selectedIndex
                                         ? 'border-ens-500 text-ens-400'
                                         : 'border-transparent text-zinc-400 hover:text-zinc-300'
                                 )}
                             >
+                                <LanguageIcon
+                                    language={getPanelLanguage(child.props)}
+                                />
                                 {getPanelTitle(child.props)}
                             </Tab>
                         )
                     )}
                 </Tab.List>
             )}
+            <div className="flex items-center justify-end w-auto grow">
+                {/* TODO Active Language Selector */}
+            </div>
         </div>
     );
 };

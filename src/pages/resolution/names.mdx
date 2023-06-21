@@ -1,1 +1,41 @@
 # Name Processing
+
+When interacting with the ENS protocol smart-contracts directly it is important to note that names are not stored in their human readable format.
+Infact there are a few steps a name undergoes before it can be used by a smart-contract.
+
+When building a dApp most of the time you don't have to worry about name processing, as most [libraries](/web/libraries) will handle this for you.
+
+## Validating a Name ([UTS46](https://unicode.org/reports/tr46/)) {{ title: "Validation", id: "validation" }}
+
+ENS names are validated using the [UTS46](https://www.unicode.org/reports/tr46/) standard, which is a standard for internationalized domain names.
+Validating names against UTS46 ensures that names always produce consistent result, regardless of capitalization.
+
+To simplify the process []() provides
+
+## Converting to Namehash {{ title: "Namehash", id: "namehash" }}
+
+In order for us to interface with our nice readable names there needs to be a way we communicate them to smart-contracts.
+ENS stores names in a uint256 encoded format we call [a namehash](#namehash), this is done to optimize for gas, performance, and more.
+
+<CodeGroup>
+
+```jsx {{ title: "ens-namehash-py" }}
+https://github.com/ConsenSysMesh/ens-namehash-py
+
+```
+
+```jsx {{ title: "eth-name-hash" }}
+https://github.com/ConsenSysMesh/ens-namehash-py
+
+```
+
+```rust {{ title: "rust hash" }}
+https://github.com/ConsenSysMesh/ens-namehash-py
+
+```
+
+</CodeGroup>
+
+https://github.com/ConsenSysMesh/ens-namehash-py
+https://www.npmjs.com/package/eth-ens-namehash
+[@ensdomains/eth-ens-namehash](https://www.npmjs.com/package/@ensdomains/eth-ens-namehash)
