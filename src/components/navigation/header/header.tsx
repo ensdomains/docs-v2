@@ -20,6 +20,7 @@ import { Button } from '../../Button';
 import { MobileNavigation } from '../../MobileNavigation';
 import { MobileSearch, Search } from '../../Search';
 import { SubHeader } from '../subheader/SubHeader';
+import { PresetSettings } from './PresetSettings';
 
 export const Header = forwardRef<HTMLDivElement, { className?: string }>(
     ({ className }, reference) => {
@@ -40,7 +41,7 @@ export const Header = forwardRef<HTMLDivElement, { className?: string }>(
                     className,
                     'fixed inset-x-0 top-0 z-50 flex h-14 items-center justify-start gap-6 px-4 transition sm:px-6 lg:z-30 lg:px-4 md:shadow-2xl',
                     !isInsideMobileNavigation &&
-                        'backdrop-blur-sm dark:backdrop-blur left-0',
+                    'backdrop-blur-sm dark:backdrop-blur left-0',
                     isInsideMobileNavigation
                         ? 'bg-white dark:bg-zinc-900'
                         : 'bg-white/[var(--bg-opacity-light)] dark:bg-zinc-900/[var(--bg-opacity-dark)]'
@@ -78,12 +79,12 @@ export const Header = forwardRef<HTMLDivElement, { className?: string }>(
                     className={clsx(
                         'absolute inset-x-0 top-full h-px transition',
                         (isInsideMobileNavigation || !mobileNavIsOpen) &&
-                            'bg-zinc-900/7.5 dark:bg-white/7.5'
+                        'bg-zinc-900/7.5 dark:bg-white/7.5'
                     )}
                 />
                 <Search />
                 <div className="h-full w-auto grow"></div>
-                <div className="flex gap-4 items-center">
+                <div className="flex gap-4 items-center h-full">
                     <div className="hidden min-[786px]:flex gap-2">
                         <Button
                             href="https://app.ens.domains?ref=ens-docs-v2"
@@ -119,6 +120,8 @@ export const Header = forwardRef<HTMLDivElement, { className?: string }>(
                         </TopLevelNavItem>
                     </ul>
                 </nav> */}
+                    <div className="hidden md:block md:h-5 md:w-px md:bg-zinc-900/10 md:dark:bg-white/15" />
+                    <PresetSettings />
                     <div className="hidden md:block md:h-5 md:w-px md:bg-zinc-900/10 md:dark:bg-white/15" />
                     <div className="flex gap-4">
                         <MobileSearch />

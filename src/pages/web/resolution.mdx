@@ -23,7 +23,7 @@ The simplest thing you can do with ENS is to get the users Ethereum address. Thi
 
 <CodeGroup title="Request">
 
-```tsx {{ title: 'Wagmi (React)', language: 'tsx', meta: 'focus=4:9' }}
+```tsx {{ title: 'Wagmi (React)', language: 'tsx', meta: 'focus=4:9', variant: 'wagmi' }}
 import { useAccount, useEnsName, useEnsAvatar } from 'wagmi';
 
 export const Name = () => {
@@ -36,11 +36,11 @@ export const Name = () => {
 };
 ```
 
-```ts {{ title: 'Ethers.js (TS)' }}
+```ts {{ title: 'Ethers.js (TS)', variant: 'ethers' }}
 const address = await provider.lookupAddress('luc.eth');
 ```
 
-```ts {{ title: 'Viem (TS)' }}
+```ts {{ title: 'Viem (TS)', variant: 'viem' }}
 import { normalize } from 'viem/ens';
 import { publicClient } from './client';
 

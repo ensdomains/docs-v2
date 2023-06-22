@@ -1,27 +1,11 @@
+import { PresetConfig, presets } from '@/lib/presets';
+
 type IconKey = 'h' | 'b';
 
 export type CodeConfig = {
     icon: string;
     language: string;
     tags: string[];
-};
-
-const presets: Record<string, CodeConfig> = {
-    typescript: {
-        icon: '/icons/typescript.png',
-        language: 'typescript',
-        tags: ['ts', 'typescript', 'tsx', 'jsx'],
-    },
-    rust: {
-        icon: '/icons/react.svg',
-        language: 'rust',
-        tags: ['rust', 'rs'],
-    },
-    react: {
-        icon: '/icons/react.svg',
-        language: 'typescript',
-        tags: ['react'],
-    },
 };
 
 const aliases: Record<string, string> = {
@@ -31,20 +15,29 @@ const aliases: Record<string, string> = {
     rs: 'rust',
 };
 
-export const getCodeData = ({
-    icon,
-    language,
-    tag,
-}: {
+export const naiveGetVariant = (x: {
+    variant: string;
+    language: string;
+    icon: IconKey & (string & {});
+}): string => {
+    return aliases[x.variant] || x.variant || aliases[x.language] || x.language;
+};
+
+export const getCodeData = (x: {
     icon?: IconKey & (string & {});
     language?: string;
-    tag: string;
-}): CodeConfig => {
+    variant: string;
+}): PresetConfig => {
+    const { icon, language, variant } = x;
+
     const codeConfig =
-        presets[tag] ||
-        presets[aliases[tag]] ||
+        presets[variant] ||
+        presets[aliases[variant]] ||
         presets[language] ||
         presets[aliases[language]];
+
+    if (!codeConfig)
+        console.error('No code config found for variant: ' + variant);
 
     return (
         codeConfig ?? {

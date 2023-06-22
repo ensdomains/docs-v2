@@ -2,10 +2,6 @@ import { FC } from 'react';
 
 import { CodeConfig } from './getCodeData';
 
-const typescriptIcon = '/icons/typescript.png';
-const reactIcon = '/icons/react.svg';
-const rustIcon = '/icons/rust.svg';
-
 export const LanguageIcon: FC<{
     codeData: CodeConfig;
 }> = ({ codeData: { icon, language, tags } }) => {

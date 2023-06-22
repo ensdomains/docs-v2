@@ -2,7 +2,8 @@ import { default as a } from 'next/link';
 
 import { Button } from '../Button';
 import { VideoComponent } from '../VideoComponent';
-import { Code as code, CodeGroup, Pre as pre } from './Code';
+import { Code as code, Pre as pre } from './Code';
+import { CodeGroup } from './code/CodeGroup';
 import { Col } from './Col';
 import { EmbedLink } from './EmbedLink';
 import { h2 } from './h2';
