@@ -8,6 +8,7 @@ import {
     FC,
     PropsWithChildren,
     ReactElement,
+    ReactNode,
     useEffect,
     useMemo,
     useRef,
@@ -151,6 +152,10 @@ function CodePanelHeader({ tag, label }) {
     );
 }
 
+const onlyChild = (children: unknown | unknown[]) => {
+    return Array.isArray(children) ? children[0] : children;
+};
+
 const CodePanel: FC<CodePanelProperties & PropsWithChildren> = ({
     tag,
     label,
@@ -160,7 +165,7 @@ const CodePanel: FC<CodePanelProperties & PropsWithChildren> = ({
     meta,
 }) => {
     const preReference = useRef<HTMLPreElement>(null);
-    const child = Children.only(children) as ReactElement;
+    const child = onlyChild(children) as ReactElement;
 
     const focus = useMemo<number[]>(() => {
         if (!meta || !meta.includes('focus=')) return [];
@@ -350,23 +355,26 @@ function CopyButton({ code }) {
     );
 }
 
-export const CodeGroupPanels: FC<PropsWithChildren> = ({
-    children,
-    ...properties
-}) => {
-    const hasTabs = Children.count(children) > 1;
+export const CodeGroupPanels: FC<{
+    entries: {
+        variant: string;
+        element: ReactNode;
+        data: PresetConfig;
+    }[];
+}> = ({ entries, ...properties }) => {
+    const hasTabs = entries.length > 1;
     const { activePreset, config } = useActivePresetConfig();
 
     if (hasTabs) {
         return (
             <Tab.Panels>
-                {Children.map(children, (child) => (
+                {entries.map((child) => (
                     <Tab.Panel>
                         <CodePanel
                             {...properties}
-                            meta={child['props']['meta']}
+                            meta={child.element['props']['meta']}
                         >
-                            {child}
+                            {child.element}
                         </CodePanel>
                     </Tab.Panel>
                 ))}
@@ -374,7 +382,9 @@ export const CodeGroupPanels: FC<PropsWithChildren> = ({
         );
     }
 
-    return <CodePanel {...properties}>{children}</CodePanel>;
+    return (
+        <CodePanel {...properties}>{entries.map((v) => v.element)}</CodePanel>
+    );
 };
 
 export const CodeGroup: FC<PropsWithChildren & CodeGroupProperties> = ({
@@ -440,7 +450,7 @@ export const CodeGroup: FC<PropsWithChildren & CodeGroupProperties> = ({
                     title={title}
                     {...headerProperties}
                 />
-                <CodeGroupPanels {...properties}>{children}</CodeGroupPanels>
+                <CodeGroupPanels {...properties} entries={__children} />
             </Container>
         </CodeGroupContext.Provider>
     );
