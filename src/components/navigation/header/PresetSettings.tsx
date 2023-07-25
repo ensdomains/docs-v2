@@ -24,25 +24,32 @@ export const PresetSettings = () => {
                 </div>
                 <div>{config.name}</div>
             </div>
-            <div className="absolute top-full hidden flex-col group-hover:flex right-0 w-auto bg-white border rounded-b-md">
-                {availablePresets.map((preset) => {
-                    const data = getCodeData({ variant: preset });
+            <div className="absolute top-full hidden group-hover:block grid-cols-3 right-0 w-fit bg-white border rounded-b-md">
+                <ul
+                    className="grid w-fit gap-1 p-2"
+                    style={{ gridTemplateColumns: 'repeat(3, auto)' }}
+                >
+                    {availablePresets.map((preset) => {
+                        const data = getCodeData({ variant: preset });
 
-                    return (
-                        <button
-                            className={clsx(
-                                'flex items-center p-4 gap-2 hover:bg-gray-100',
-                                preset === activePreset && 'bg-gray-100'
-                            )}
-                            onClick={() => {
-                                setActivePreset(preset);
-                            }}
-                        >
-                            <LanguageIcon codeData={data} />
-                            <div className="">{data.name}</div>
-                        </button>
-                    );
-                })}
+                        return (
+                            <li key={preset} className="w-full">
+                                <button
+                                    className={clsx(
+                                        'w-full flex items-center px-1 gap-1 hover:bg-gray-100 text-base',
+                                        preset === activePreset && 'bg-gray-100'
+                                    )}
+                                    onClick={() => {
+                                        setActivePreset(preset);
+                                    }}
+                                >
+                                    <LanguageIcon codeData={data} />
+                                    <div className="">{data.name}</div>
+                                </button>
+                            </li>
+                        );
+                    })}
+                </ul>
             </div>
         </div>
     );

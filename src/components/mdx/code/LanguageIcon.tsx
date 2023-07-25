@@ -8,7 +8,7 @@ export const LanguageIcon: FC<{
     if (!icon) return <></>;
 
     return (
-        <div className="w-4 h-4 rounded-full bg-blue-50">
+        <div className="w-3 h-3 rounded-full bg-blue-50">
             <img
                 src={icon}
                 className="w-full h-full object-contain"

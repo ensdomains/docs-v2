@@ -2,36 +2,15 @@ import { Guides } from '@/components/Guides';
 import { Resources } from '@/components/Resources';
 
 export const description =
-  'Learn everything there is to know about the Protocol API and integrate Protocol into your product.'
-
-export const sections = [
-  {
-    title: 'On-Chain Registration',
-    id: 'on-chain-registration',
-  },
-  {
-    title: 'DNS on ENS',
-    id: 'dns-on-ens-through-dnssec',
-  },
-  {
-    title: 'Subnames',
-    id: 'subnames',
-  },
-]
+  'Learn about the Ethereum Name Service (ENS) protocol and how it enables decentralized naming on the Ethereum blockchain.'
 
 # What is the Ethereum Name Service?
 
 <VideoComponent src="https://v3x.space/ens-docs/placeholder" />
 
-The Ethereum Name Service (ENS) is a distributed, open, and extensible naming system based on the Ethereum blockchain. {{ className: 'lead' }}
+The Ethereum Name Service (ENS) is a distributed, open, and extensible naming system based on the Ethereum blockchain.
 
-<div className="card not-prose">
-  <div className="flex justify-center gap-4 p-4">
-    Some cool distributed graphic here
-  </div>
-</div>
-
-ENS's job is to map human-readable names like 'alice.eth' to machine-readable identifiers such as Ethereum addresses, other cryptocurrency addresses, content hashes, and metadata. ENS also supports 'reverse resolution', making it possible to associate metadata such as canonical names or interface descriptions with Ethereum addresses. {{ className: 'lead' }}
+ENS's job is to map human-readable names like 'alice.eth' to machine-readable identifiers such as Ethereum addresses, other cryptocurrency addresses, content hashes, and metadata. ENS also supports 'reverse resolution', making it possible to associate metadata such as canonical names or interface descriptions with Ethereum addresses.
 
 <div className="card not-prose">
   <div className="flex justify-center gap-4 p-4">
@@ -48,16 +27,19 @@ ENS's job is to map human-readable names like 'alice.eth' to machine-readable id
   </div>
 </div>
 
-ENS has similar goals to DNS, the Internet's Domain Name Service, but has significantly different architecture due to the capabilities and constraints provided by the Ethereum blockchain. Like DNS, ENS operates on a system of dot-separated hierarchical names called domains, with the owner of a domain having full control over subdomains. {{ className: 'lead' }}
-
 ## ETH Registrar
 
 Top-Level Domains (TLDs), like `.eth` and `.test`, are owned by smart contracts called <a>registrars</a>, which specify rules governing the allocation of their names.
-Anyone may, by following the rules imposed by these registrar contracts, obtain ownership of a domain for their own use. {{ className: 'lead' }}
+The [ETH Registrar](/registrars/eth-registrar) is the registrar for the `.eth` TLD, it allows for trustless decentralized names issued as tokens on the Ethereum Blockchain.
 
-## DNS on ENS (through DNSSEC)
+## What about DNS?
 
-ENS also supports importing in DNS names through the use of DNSSEC. This allows you to take your `.com`, `.xyz`, or `.art` into the ENS ecosystem. Read more about DNSSEC names [on this page](/learn/dns). {{ className: 'lead' }}
+ENS has similar goals to DNS, the Internet's Domain Name Service, and aims to extend its capability.
+Like DNS, ENS operates on a system of dot-separated hierarchical resolution process.
+
+### DNS on ENS (through DNSSEC)
+
+ENS also supports importing in DNS names through the use of DNSSEC. This allows you to take your `.com`, `.xyz`, or `.art` into the ENS ecosystem. Read more about DNSSEC names [on this page](/learn/dns).
 
 <div className="card not-prose">
   <div className="flex flex-wrap gap-3 p-4 pl-6 text-ens-500">
@@ -112,8 +94,11 @@ ENS also supports importing in DNS names through the use of DNSSEC. This allows 
 
 ## Subnames
 
-Because of the hierarchal nature of ENS, anyone who owns a domain at any level may configure subdomains - for themselves or others - as desired. For instance, if Alice owns 'alice.eth', she can create 'pay.alice.eth' and configure it as she wishes. {{ className: 'lead' }}
+Because of the hierarchal nature of ENS, anyone who owns a domain at any level may configure subdomains - for themselves or others - as desired. For instance, if Alice owns 'alice.eth', she can create 'pay.alice.eth' and configure it as she wishes.
 
-ENS is deployed on the Ethereum main network and on several test networks. If you use a library such as the ensjs Javascript library, or an end-user application, it will automatically detect the network you are interacting with and use the ENS deployment on that network. {{ className: 'lead' }}
+To read more about subdomains, check out the [Resolution](/resolution/quickstart) page.
 
-You can try ENS out for yourself now by using the ENS Manager App, or by using any of the many ENS enabled applications on our homepage. {{ className: 'lead' }}
+## ENS Manager App
+
+You can try ENS out for yourself now by using the [ENS Manager App](https://ens.app/), or by using any of the many ENS enabled applications on [our homepage](https://ens.domains/).
+
