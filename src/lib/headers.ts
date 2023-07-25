@@ -540,15 +540,16 @@ export const navigation: [pathMatches, routeGroup[]][] = [
                     {
                         title: '🔗 EIP-3668 (CCIP)',
                         href: '/learn/ccip',
+                        wip: true,
                     },
                 ],
             },
             {
                 title: '📰 A brief history',
                 links: [
-                    { title: '📝 Changelog', href: '/changelog' },
+                    { title: '📝 Changelog', href: '/changelog', wip: true },
                     { title: '🪲 Bug Bounties', href: '/bugs', wip: true },
-                    { title: '📓 Glossary', href: '/glossary' },
+                    { title: '📓 Glossary', href: '/glossary', wip: true },
                 ],
             },
             {
