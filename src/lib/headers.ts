@@ -41,6 +41,7 @@ type routeLink = {
     title: string;
     href: string;
     external?: boolean;
+    wip?: boolean;
 };
 
 type routeGroup = {
@@ -61,15 +62,28 @@ export const navigation: [pathMatches, routeGroup[]][] = [
             {
                 title: '🌐 Web / Querying',
                 links: [
-                    { title: '⚡ Quickstart', href: '/web/quickstart' },
+                    {
+                        title: '⚡ Quickstart',
+                        href: '/web/quickstart',
+                        wip: true,
+                    },
                     { title: '🛠️ Tools and Libraries', href: '/web/libraries' },
                     { title: '🔍 Address', href: '/web/resolution' },
                     { title: '🔍 Avatars', href: '/web/avatars' },
-                    { title: '🔍 Primary Names', href: '/web/reverse' },
-                    { title: '🔍 List Names', href: '/web/enumerate' },
+                    {
+                        title: '🔍 Primary Names',
+                        href: '/web/reverse',
+                        wip: true,
+                    },
+                    {
+                        title: '🔍 List Names',
+                        href: '/web/enumerate',
+                        wip: true,
+                    },
                     {
                         title: '✍️ Sign In With Ethereum (SIWE)',
                         href: '/web/siwe',
+                        wip: true,
                     },
                 ],
             },
@@ -79,14 +93,17 @@ export const navigation: [pathMatches, routeGroup[]][] = [
                     {
                         title: 'Naming Smart-contracts',
                         href: '/web/naming-contracts',
+                        wip: true,
                     },
                     {
                         title: 'Interfacing with ENS Contracts',
                         href: '/web/interfacing',
+                        wip: true,
                     },
                     {
                         title: 'Subgraph',
                         href: '/web/subgraph',
+                        wip: true,
                     },
                 ],
             },
@@ -94,7 +111,12 @@ export const navigation: [pathMatches, routeGroup[]][] = [
                 title: '🖼️ Design Guidelines',
                 links: [
                     // eslint-disable-next-line quotes
-                    { title: "Do's and Don'ts", href: '/web/design' },
+                    {
+                        // eslint-disable-next-line prettier/prettier
+                        title: 'Do\'s and Don\'ts',
+                        href: '/web/design',
+                        wip: true,
+                    },
                     {
                         title: 'Media kit',
                         href: 'https://github.com/ensdomains/media-kit',
@@ -114,27 +136,54 @@ export const navigation: [pathMatches, routeGroup[]][] = [
             {
                 title: '🌐 Resolution',
                 links: [
-                    { title: '✨ Start Here', href: '/resolution/quickstart' },
-                    { title: '⚙️ Name Processing', href: '/resolution/names' },
+                    {
+                        title: '✨ Start Here',
+                        href: '/resolution/quickstart',
+                        wip: true,
+                    },
+                    {
+                        title: '⚙️ Name Processing',
+                        href: '/resolution/names',
+                        wip: true,
+                    },
                 ],
             },
             {
                 title: '🏛️ Registries',
                 links: [
-                    { title: '✨ Start Here', href: '/registry/quickstart' },
-                    { title: '🗒️ ETH Registrar', href: '/registry/eth' },
-                    { title: '🗒️ DNS Registrar', href: '/registry/dns' },
-                    { title: '🗒️ Test Registrar', href: '/registry/test' },
+                    {
+                        title: '✨ Start Here',
+                        href: '/registry/quickstart',
+                        wip: true,
+                    },
+                    {
+                        title: '🗒️ ETH Registrar',
+                        href: '/registry/eth',
+                        wip: true,
+                    },
+                    {
+                        title: '🗒️ DNS Registrar',
+                        href: '/registry/dns',
+                        wip: true,
+                    },
+                    {
+                        title: '🗒️ Test Registrar',
+                        href: '/registry/test',
+                        wip: true,
+                    },
                     {
                         title: '🗒️ Reverse Registrar',
                         href: '/registry/reverse',
+                        wip: true,
                     },
                     {
                         title: '👉 Interacting with registry',
+                        wip: true,
                         href: '/registry/interacting',
                     },
                     {
                         title: '✍️ Authoring a registry',
+                        wip: true,
                         href: '/registry/writing',
                     },
                 ],
@@ -142,38 +191,60 @@ export const navigation: [pathMatches, routeGroup[]][] = [
             {
                 title: '🗺️ Resolvers',
                 links: [
-                    { title: '✨ Start Here', href: '/resolvers/quickstart' },
-                    { title: '🤷‍♀️ Why Resolvers', href: '/resolvers/about' },
+                    {
+                        title: '✨ Start Here',
+                        href: '/resolvers/quickstart',
+                        wip: true,
+                    },
+                    {
+                        title: '🤷‍♀️ Why Resolvers',
+                        href: '/resolvers/about',
+                        wip: true,
+                    },
                     {
                         title: '🏛️ Public Resolver',
                         href: '/resolvers/public',
+                        wip: true,
                     },
                     {
                         title: '✍️ Writing your own resolver',
                         href: '/resolvers/writing',
+                        wip: true,
                     },
                     {
                         title: '👉 Interacting with a resolver',
                         href: '/resolvers/interacting',
+                        wip: true,
                     },
                     {
                         title: '⛓️ Cross Chain Gateway',
                         href: '/resolvers/ccip',
+                        wip: true,
                     },
                 ],
             },
             {
                 title: '📰 Subnames',
                 links: [
-                    { title: '⚡ Quickstart', href: '/subnames/quickstart' },
-                    { title: '🎁 Namewrapper', href: '/subnames/wrapper' },
+                    {
+                        title: '⚡ Quickstart',
+                        href: '/subnames/quickstart',
+                        wip: true,
+                    },
+                    {
+                        title: '🎁 Namewrapper',
+                        href: '/subnames/wrapper',
+                        wip: true,
+                    },
                     {
                         title: '🫂 Subdomain for every NFT Holder',
                         href: '/subnames/nfts',
+                        wip: true,
                     },
                     {
                         title: '✍️ Writing your own Subdomain System',
                         href: '/subnames/writing-a-subdomain-system',
+                        wip: true,
                     },
                 ],
             },
@@ -200,7 +271,7 @@ export const navigation: [pathMatches, routeGroup[]][] = [
             {
                 title: '📖 Improvement Proposals (ENSIPs)',
                 links: [
-                    { title: '🧑‍🏫 Explained', href: '/ensip' },
+                    { title: '🧑‍🏫 Explained', href: '/ensip', wip: true },
                     { title: '1 - ENS', href: '/ensip/1' },
                     { title: '2 - Hash Registrar', href: '/ensip/2' },
                     { title: '3 - Reverse Resolution', href: '/ensip/3' },
@@ -476,7 +547,7 @@ export const navigation: [pathMatches, routeGroup[]][] = [
                 title: '📰 A brief history',
                 links: [
                     { title: '📝 Changelog', href: '/changelog' },
-                    { title: '🪲 Bug Bounties', href: '/bugs' },
+                    { title: '🪲 Bug Bounties', href: '/bugs', wip: true },
                     { title: '📓 Glossary', href: '/glossary' },
                 ],
             },

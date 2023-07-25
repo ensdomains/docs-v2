@@ -164,6 +164,11 @@ export const NavigationGroup = ({ group, className }) => {
                             >
                                 <span>{link.title}</span>
                                 {link.external && <FiExternalLink />}
+                                {link.wip && (
+                                    <div className="bg-slate-100 px-2 text-slate-500 text-2xs rounded-md border">
+                                        WIP
+                                    </div>
+                                )}
                             </NavLink>
                             <AnimatePresence mode="popLayout" initial={false}>
                                 {link.href === router.pathname &&
