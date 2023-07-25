@@ -1,9 +1,10 @@
 # DNS on ENS
 
-<>{/*TODO: User-friendly explanation of the fact that DNS names also work in the ENS system.*/}</>
+<>
+    {/*TODO: User-friendly explanation of the fact that DNS names also work in the ENS system.*/}
+</>
 
 The Ethereum Name Service is so much more then just `.eth` names. It is a general-purpose naming system that can be used for any kind of name. This includes DNS names.
-
 
 ## Importing a DNS name
 
@@ -14,66 +15,90 @@ To import a name, simply visit the [ENS Manager](https://ens.app), type in your 
 
 <div className="relative !bg-gray-100 flex justify-center w-full rounded-md card p-3 gap-3 flex-col sm:flex-row">
     <div>
-        <img src="/learn/dnssec/dnssec_1.png" alt="Importing a DNS name" className="flex-auto m-0" />
+        <img
+            src="/learn/dnssec/dnssec_1.png"
+            alt="Importing a DNS name"
+            className="flex-auto m-0"
+        />
     </div>
     <div>
-        <img src="/learn/dnssec/dnssec_2.png" alt="Importing a DNS name" className="flex-auto m-0" />
+        <img
+            src="/learn/dnssec/dnssec_2.png"
+            alt="Importing a DNS name"
+            className="flex-auto m-0"
+        />
     </div>
-    <div className="absolute bottom-0 right-0 bg-gray-100 border px-2">DNSSEC Import</div>
+    <div className="absolute bottom-0 right-0 bg-gray-100 border px-2">
+        DNSSEC Import
+    </div>
 </div>
 
 ## Why DNS on ENS?
 
 ENS aims to extend the existing functionality of the DNS system. This also means that existing DNS names (such as `.com`, `.org`, or `.xyz`)
 
-
 <div className="card not-prose">
-  <div className="flex flex-wrap gap-3 p-4 pl-6 text-ens-500">
-    {[
-      '.com',
-      '.xyz',
-      '.nl',
-      '.net',
-      '.org',
-      '.amsterdam',
-      '.pizza',
-      '.cash',
-      '.money',
-      '.so',
-      '.info',
-      '.contact',
-      '.domains',
-      '.be',
-      '.de',
-      '.co.uk',
-      '.se',
-      '.tv',
-      '.pl',
-      '.es',
-      '.me',
-      '.us',
-      '.id',
-      '.fr',
-      '.hr',
-      '.com.au',
-      '.camera',
-      '.wtf',
-      '.capital',
-      '.finance',
-      '.home',
-      '.limo',
-      '.link',
-      '.uk',
-      '.nz',
-      '.dev',
-      '.ax',
-      '.pl',
-      '.md',
-    ].map((a) => (
-      <span className="cursor-pointer hover:drop-shadow" key={a}>{a}</span>
-    ))}
-    <span className="text-blue-500/50">
-      and any other DNSSEC-compatible domain...
-    </span>
-  </div>
+    <div className="flex flex-wrap gap-3 p-4 pl-6 text-ens-500">
+        {[
+            '.com',
+            '.xyz',
+            '.nl',
+            '.net',
+            '.org',
+            '.amsterdam',
+            '.pizza',
+            '.cash',
+            '.money',
+            '.so',
+            '.info',
+            '.contact',
+            '.domains',
+            '.be',
+            '.de',
+            '.co.uk',
+            '.se',
+            '.tv',
+            '.pl',
+            '.es',
+            '.me',
+            '.us',
+            '.id',
+            '.fr',
+            '.hr',
+            '.com.au',
+            '.camera',
+            '.wtf',
+            '.capital',
+            '.finance',
+            '.home',
+            '.limo',
+            '.link',
+            '.uk',
+            '.nz',
+            '.dev',
+            '.ax',
+            '.pl',
+            '.md',
+        ].map((a) => (
+            <span className="cursor-pointer hover:drop-shadow" key={a}>
+                {a}
+            </span>
+        ))}
+        <span className="text-blue-500/50">
+            and any other DNSSEC-compatible domain...
+        </span>
+    </div>
 </div>
+
+## DNS Names in the wild
+
+ENS is already being used to resolve DNS names. This includes the following:
+
+<>{/* TODO: Insert examples of .lens.xyz, .argent.xyz, .cb.id, etc */}</>
+
+## Top-Level Domains
+
+In addition to allowing any DNSSEC enabled name to be imported, ENS also allows existing DNS TLDs to take control of their smart-contract resolution process.
+Resulting in even more seamless integration with the DNS system.
+
+<>{/* TODO: Insert examples of protocol.art .kred etc */}</>
