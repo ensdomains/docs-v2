@@ -1,3 +1,5 @@
+import { FiChevronRight } from 'react-icons/fi';
+
 # DNS on ENS
 
 <>
@@ -12,6 +14,7 @@ In the current state of things, DNS names need to be imported into ENS. This is 
 This proof is used to verify that the DNS name is actually owned by the person who is trying to claim it on-chain.
 
 To import a name, simply visit the [ENS Manager](https://ens.app), type in your name, and click "Import DNS". You will be prompted to provide a DNSSEC proof.
+If you would like to learn more, there is a guide to walk you through [importing your DNS name](https://support.ens.domains/en/articles/7882690-claim-your-dns-name).
 
 <div className="relative !bg-gray-100 flex justify-center w-full rounded-md card p-3 gap-3 flex-col sm:flex-row">
     <div>
@@ -35,7 +38,7 @@ To import a name, simply visit the [ENS Manager](https://ens.app), type in your 
 
 ## Why DNS on ENS?
 
-ENS aims to extend the existing functionality of the DNS system. This also means that existing DNS names (such as `.com`, `.org`, or `.xyz`)
+ENS aims to extend the existing functionality of the DNS system. This also means that existing DNS names (such as `.com`, `.org`, or `.xyz`) should be able to leverage the benefits of the ENS resolution process.
 
 <div className="card not-prose">
     <div className="flex flex-wrap gap-3 p-4 pl-6 text-ens-500">
@@ -92,9 +95,73 @@ ENS aims to extend the existing functionality of the DNS system. This also means
 
 ## DNS Names in the wild
 
-ENS is already being used to resolve DNS names. This includes the following:
+DNS names are widely used and many users may already have one without even realizing it. Some major platforms that issue subdomains of their DNS names include: 
 
-<>{/* TODO: Insert examples of .lens.xyz, .argent.xyz, .cb.id, etc */}</>
+<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 w-full not-prose" style={{gridAutoRows: '1fr'}}>
+    {[
+        [
+            'Lens',
+            'The Social Layer for Web3',
+            '.lens.xyz',
+            'https://www.lens.xyz/',
+            '/learn/dnssec/lens-logo.svg',
+            'rgb(255, 235, 184)',
+            'rgb(39, 46, 41)',
+        ],
+        [
+            'Coinbase Wallet',
+            'Self-custody crypto wallet built by Coinbase',
+            '.cb.id',
+            'https://cb.id/',
+            '/learn/dnssec/coinbase-wallet-logo.svg',
+            'rgb(20, 21, 25)',
+            'rgb(88, 138, 245)',
+        ],
+        [
+            'Argent',
+            'zk-sync & starknet powered smart-contract wallet',
+            '.argent.xyz',
+            'https://www.argent.xyz/',
+            '/learn/dnssec/argent-logo.svg',
+            '#000',
+            '#FF875B',
+        ],
+    ].map(([title, description, domain, link, logo, bgColor, fgColor], i) => (
+        <a
+            href={link}
+            key={i}
+            className="card p-2 w-full !m-0 px-4 pb-4 hover:outline flex flex-col"
+            style={{ border: `1px solid ${bgColor}`, background: `${bgColor}`, color: fgColor }}
+            target="_blank"
+            rel="nofollow"
+        >
+            <div className="flex justify-between mb-2">
+                <div className="w-8 aspect-square flex items-center">
+                    <img src={logo} alt={title} className="w-full" />
+                </div>
+                <div
+                    className="px-2 text-xs w-fit h-fit my-auto"
+                    style={{ background: fgColor, color: bgColor }}
+                >
+                    {domain}
+                </div>
+            </div>
+            <div className="font-bold">{title}</div>
+            <div className="leading-5">{description}</div>
+            <div className="text-right justify-end items-end flex grow">
+                <div className="items-center flex">
+                   read more <FiChevronRight />
+                </div>
+            </div>
+        </a>
+    ))}
+    <a
+        href="https://ens.domains/"
+        className="border h-auto grow rounded-md text-inherit p-2 w-full"
+    >
+        <div>And many more...</div>
+    </a>
+</div>
 
 ## Top-Level Domains
 
