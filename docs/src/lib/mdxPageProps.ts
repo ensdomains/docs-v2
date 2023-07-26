@@ -41,9 +41,11 @@ export const mdxPagePropsSchema = z
                     error.received === 'undefined'
                 ) {
                     return {
-                        message: `Missing filepath variable from recmaExportFilepath plugin`,
+                        message:
+                            'Missing filepath variable from recmaExportFilepath plugin',
                     };
                 }
+
                 return { message: ctx.defaultError };
             },
         }),

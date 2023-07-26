@@ -7,8 +7,12 @@ const ROOT_REPO = 'ensdomains/docs-v2';
 export const ContributeButton: FC<{ url?: string }> = ({ url }) => {
     if (!url) {
         const { asPath } = useRouter();
+
         url = `/pages${asPath}.mdx`;
-        console.warn("Failed to get url, defaulting back to asPath from useRouter", url);
+        console.warn(
+            'Failed to get url, defaulting back to asPath from useRouter',
+            url
+        );
     }
 
     return (
