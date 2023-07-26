@@ -33,3 +33,4 @@ export const mdxPagePropsSchema = z
     .passthrough();
 
 export type MdxPageProps = z.infer<typeof mdxPagePropsSchema>;
+export type MdxMetaProps = z.infer<typeof mdxPagePropsSchema['shape']['meta']>;
