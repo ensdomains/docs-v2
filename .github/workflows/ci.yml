@@ -1,0 +1,63 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  merge_group:
+  pull_request:
+    branches: [main]
+
+# Automatically cancel in-progress actions on the same branch
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event_name == 'pull_request_target' && github.head_ref || github.ref }}
+  cancel-in-progress: true
+
+env:
+  NODE_OPTIONS: "--max_old_space_size=8192"
+
+jobs:
+  typecheck:
+    name: Check for type issues with tsc
+    runs-on: ubuntu-20.04
+    env:
+      FORCE_COLOR: true
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install Tools & Dependencies
+        uses: ./.github/actions/install
+
+      - name: Run typecheck
+        working-directory: ./docs
+        run: pnpm run typecheck
+  eslint:
+    name: Check for linting issues with ESLint
+    runs-on: ubuntu-20.04
+    env:
+      FORCE_COLOR: true
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install Tools & Dependencies
+        uses: ./.github/actions/install
+
+      - name: Run eslint
+        working-directory: ./docs
+        run: pnpm run lint
+  build:
+    name: Build the docs
+    runs-on: ubuntu-20.04
+    env:
+      FORCE_COLOR: true
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install Tools & Dependencies
+        uses: ./.github/actions/install
+
+      - name: Build
+        working-directory: ./docs
+        run: pnpm run build
