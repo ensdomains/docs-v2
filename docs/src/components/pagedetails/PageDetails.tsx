@@ -3,6 +3,8 @@ import { FC } from 'react';
 import { MdxPageProps } from '@/lib/mdxPageProps';
 
 import { ContributorsSection } from '../contribute/ContributorsSection';
+import { TimeSince } from '../Timestamp';
+import { GitCommitLink } from './GitCommitLink';
 
 export const PageDetails: FC<{ mdxProperties: MdxPageProps }> = ({
     mdxProperties,
@@ -13,6 +15,10 @@ export const PageDetails: FC<{ mdxProperties: MdxPageProps }> = ({
         return <></>;
     }
 
+    const hasContributors = (mdxProperties.meta?.contributors?.length ?? 0) > 0;
+
+    const hasCommit = mdxProperties.commit && mdxProperties.filepath;
+
     return (
         <div className="pagedetails_wrapper">
             <div className="pagedetails">
@@ -21,7 +27,7 @@ export const PageDetails: FC<{ mdxProperties: MdxPageProps }> = ({
                         Details
                     </div>
                     <div className="leading-6">
-                        {mdxProperties.meta?.contributors && (
+                        {hasContributors && (
                             <div className="flex justify-between text-xs">
                                 <div>Contributors</div>
                                 <ContributorsSection
@@ -31,10 +37,30 @@ export const PageDetails: FC<{ mdxProperties: MdxPageProps }> = ({
                                 />
                             </div>
                         )}
-                        {/* <div className="flex justify-between text-xs">
-                            <div>Last Modified</div>
-                            <div>Yesterday</div>
-                        </div> */}
+                        {hasCommit && (
+                            <div className="flex items-center justify-between text-xs">
+                                <div>Hash</div>
+                                <GitCommitLink
+                                    file={mdxProperties.filepath}
+                                    hash={mdxProperties.commit.hash}
+                                >
+                                    {mdxProperties.commit.hash}
+                                </GitCommitLink>
+                            </div>
+                        )}
+                        {hasCommit && (
+                            <div className="flex items-center justify-between text-xs">
+                                <div>Last Modified</div>
+                                <GitCommitLink
+                                    file={mdxProperties.filepath}
+                                    hash={mdxProperties.commit.hash}
+                                >
+                                    <TimeSince
+                                        date={mdxProperties.commit.date}
+                                    />
+                                </GitCommitLink>
+                            </div>
+                        )}
                         {/* {mdxProperties.filepath && (
                             <div className="flex justify-between text-xs">
                                 <div>Path</div>
