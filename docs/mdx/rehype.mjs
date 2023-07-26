@@ -124,11 +124,32 @@ function getSections(node) {
 }
 
 export const rehypePlugins = [
+    /**
+     * Add support for annotations to MDX.
+     * An annotation is a JavaScript object associated with an MDX node. The object properties are passed to the resulting JSX element as props.
+     * @see https://www.npmjs.com/package/mdx-annotations
+     */
     mdxAnnotations.rehype,
+    /**
+     * Parse code blocks to add the language to the properties
+     */
     rehypeParseCodeBlocks,
+    /**
+     * Add syntax highlighting to code blocks
+     */
     rehypeShiki,
+    /**
+     * Add an id to h2 elements
+     */
     rehypeSlugify,
+    /**
+     * Adds export const title = '...'; to the top of the MDX file from the first h1 element
+     * @see https://github.com/remcohaszing/rehype-mdx-title
+     */
     rehypeMdxTitle,
+    /**
+     * Adds export const sections = [{...}, {...}, ...]; to the top of the MDX file from the h2 elements
+     */
     [
         rehypeAddMDXExports,
         (tree) => ({
