@@ -42,10 +42,10 @@ jobs:
             ${{ runner.os }}-pnpm-store-
 
       - name: Install dependencies
-        run: pnpm install
+        run: cd docs && pnpm install
 
-      - name: Some build
-        run: export NODE_OPTIONS="--max-old-space-size=8192" && pnpm build
+      - name: Build Docs
+        run: cd docs && export NODE_OPTIONS="--max-old-space-size=8192" && pnpm build
 
       - name: Prepare tag
         id: prepare_tag
@@ -61,13 +61,13 @@ jobs:
           app_id: "192287499052126208"
           server: https://api.edgeserver.io
           token: ${{ secrets.EDGESERVER_TOKEN }}
-          directory: out
+          directory: docs/out
 
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./out
-          tag_name: ${{ steps.prepare_tag.outputs.deploy_tag_name }}
-          tag_message: 'Deployment ${{ steps.prepare_tag.outputs.tag_name }}'
-          cname: alpha.ens.build
+      # - name: Deploy
+      #   uses: peaceiris/actions-gh-pages@v3
+      #   with:
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      #     publish_dir: ./docs/out
+      #     tag_name: ${{ steps.prepare_tag.outputs.deploy_tag_name }}
+      #     tag_message: 'Deployment ${{ steps.prepare_tag.outputs.tag_name }}'
+      #     cname: alpha.ens.build
