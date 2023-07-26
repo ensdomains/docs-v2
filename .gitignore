@@ -33,3 +33,6 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+# next and doesnt have to be in git cause gets auto-created
+next-env.d.ts
