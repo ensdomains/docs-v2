@@ -1,10 +1,9 @@
 'use client';
+import RelativeTime from '@yaireo/relative-time';
 import { FC } from 'react';
 
-const rtf = new Intl.RelativeTimeFormat('en', { style: 'short' });
+const format = new RelativeTime();
 
-export const TimeSince: FC<{ date: number }> = ({ date }) => {
-    const timeSince = rtf.format(date - Date.now(), 'seconds');
-
-    return <>{timeSince}</>;
-};
+export const TimeSince: FC<{ date: number }> = ({ date }) => (
+    <>{format.from(new Date(date))}</>
+);
