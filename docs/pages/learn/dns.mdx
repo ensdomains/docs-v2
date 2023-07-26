@@ -7,6 +7,7 @@ import { FiChevronRight } from 'react-icons/fi';
 </>
 
 The Ethereum Name Service is so much more then just `.eth` names. It is a general-purpose naming system that can be used for any kind of name. This includes DNS names.
+DNS functionality was originally introduced in [ENSIP-6](/ensip/6).
 
 ## Importing a DNS name
 
@@ -32,7 +33,7 @@ If you would like to learn more, there is a guide to walk you through [importing
         />
     </div>
     <div className="absolute bottom-0 right-0 bg-gray-100 border px-2">
-        DNSSEC Import
+        <span>DNSSEC Import</span>
     </div>
 </div>
 
@@ -95,9 +96,12 @@ ENS aims to extend the existing functionality of the DNS system. This also means
 
 ## DNS Names in the wild
 
-DNS names are widely used and many users may already have one without even realizing it. Some major platforms that issue subdomains of their DNS names include: 
+DNS names are widely used and many users may already have one without even realizing it. Some major platforms that issue subdomains of their DNS names include:
 
-<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 w-full not-prose" style={{gridAutoRows: '1fr'}}>
+<div
+    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 w-full not-prose"
+    style={{ gridAutoRows: '1fr' }}
+>
     {[
         [
             'Lens',
@@ -130,8 +134,13 @@ DNS names are widely used and many users may already have one without even reali
         <a
             href={link}
             key={i}
-            className="card p-2 w-full !m-0 px-4 pb-4 hover:outline flex flex-col"
-            style={{ border: `1px solid ${bgColor}`, background: `${bgColor}`, color: fgColor }}
+            className="card p-2 w-full !m-0 px-4 pb-4 hover:outline focus:outline focus:outline-4 flex flex-col"
+            style={{    
+                borderColor: bgColor,
+                outlineColor: fgColor,
+                background: `${bgColor}`,
+                color: fgColor,
+            }}
             target="_blank"
             rel="nofollow"
         >
@@ -150,17 +159,24 @@ DNS names are widely used and many users may already have one without even reali
             <div className="leading-5">{description}</div>
             <div className="text-right justify-end items-end flex grow">
                 <div className="items-center flex">
-                   read more <FiChevronRight />
+                    read more <FiChevronRight />
                 </div>
             </div>
         </a>
     ))}
-    <a
-        href="https://ens.domains/"
-        className="border h-auto grow rounded-md text-inherit p-2 w-full"
+    <div
+        className="border h-auto grow rounded-md text-inherit p-4 w-full flex flex-col"
     >
-        <div>And many more...</div>
-    </a>
+        <div className="leading-5">
+            <span>And many more...</span>
+            <span>See <a href="https://ens.domains/" target="_blank" className="underline">our integrations</a></span>
+        </div>
+        <a href="https://ens.domains/" target="_blank" className="text-right justify-end items-end flex grow">
+            <div className="items-center flex">
+                <span>read more</span> <FiChevronRight />
+            </div>
+        </a>
+    </div>
 </div>
 
 ## Top-Level Domains
