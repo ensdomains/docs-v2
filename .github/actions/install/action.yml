@@ -6,7 +6,6 @@ runs:
   steps:
     - name: Setup PNPM
       uses: pnpm/action-setup@v2.4.0
-      working-directory: ./docs
       with:
         run_install: false
         standalone: true
