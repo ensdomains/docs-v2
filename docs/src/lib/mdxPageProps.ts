@@ -34,6 +34,19 @@ export const mdxPagePropsSchema = z
                 id: z.string(),
             })
         ),
+        filepath: z.string({
+            errorMap: (error, ctx) => {
+                if (
+                    error.code === z.ZodIssueCode.invalid_type &&
+                    error.received === 'undefined'
+                ) {
+                    return {
+                        message: `Missing filepath variable from recmaExportFilepath plugin`,
+                    };
+                }
+                return { message: ctx.defaultError };
+            },
+        }),
     })
     .passthrough();
 

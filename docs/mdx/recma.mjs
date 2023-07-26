@@ -13,6 +13,35 @@ function recmaRemoveNamedExports() {
     };
 }
 
+/**
+ * @type {import('unified').Plugin<[], import('estree').Program>}
+ */
+const recmaExportFilepath = () => {
+    return (tree, file) => {
+        const relativePath = file.path.replace(file.cwd, '');
+        tree.body.push({
+            type: 'ExportNamedDeclaration',
+            declaration: {
+                type: 'VariableDeclaration',
+                kind: 'const',
+                declarations: [
+                    {
+                        type: 'VariableDeclarator',
+                        id: {
+                            type: 'Identifier',
+                            name: 'filepath',
+                        },
+                        init: {
+                            type: 'Literal',
+                            value: relativePath,
+                        },
+                    },
+                ],
+            },
+        });
+    }
+}
+
 export const recmaPlugins = [
     /**
      * Add support for annotations to MDX.
@@ -20,6 +49,10 @@ export const recmaPlugins = [
      * @see https://www.npmjs.com/package/mdx-annotations
      */
     mdxAnnotations.recma,
+    /**
+     * Add an `export const filepath` to MDX with the relative path to the file.
+     */
+    recmaExportFilepath,
     /**
      * Remove named exports from MDX.
      */
