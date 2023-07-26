@@ -24,10 +24,12 @@ const App = ({ Component, pageProps }) => {
     return (
         <>
             <Head>
-                {router.pathname === '/' ? (
-                    <title>ENS Dev Documentation</title>
+                {router.route == '/' ? (
+                    <title>ENS Documentation</title>
                 ) : (
-                    <title>{`${pageProps.title} - ENS Documentation`}</title>
+                    <title>{`${
+                        pageProps.custom_title || pageProps.title
+                    } | ENS Docs`}</title>
                 )}
                 <meta name="description" content={pageProps.description} />
             </Head>
