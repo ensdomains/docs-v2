@@ -1,4 +1,4 @@
-name: GitHub Pages Staging
+name: 🚚 Deploy
 
 on:
   push:
