@@ -28,7 +28,7 @@ export const Layout: FC<{
                     <main className="py-16">
                         <Prose>{children}</Prose>
                     </main>
-                    <Footer meta={mdxProperties.meta} />
+                    <Footer mdxProperties={mdxProperties} />
                 </div>
             </div>
         </SectionProvider>
