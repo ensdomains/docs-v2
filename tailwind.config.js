@@ -19,7 +19,7 @@ module.exports = {
             '8xl': ['6rem', { lineHeight: '1' }],
             '9xl': ['8rem', { lineHeight: '1' }],
         },
-        typography: require('./typography'),
+        typography: require('./src/typography'),
         extend: {
             blur: {
                 xs: '0.8px',

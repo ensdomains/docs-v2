@@ -1,3 +1,4 @@
+/* eslint-disable sonarjs/no-duplicate-string */
 module.exports = ({ theme }) => ({
     DEFAULT: {
         css: {

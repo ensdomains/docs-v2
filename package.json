@@ -4,7 +4,7 @@
     "private": true,
     "scripts": {
         "dev": "next dev",
-        "build": "next build && next export && cp ./edgerc.json ./out/edgerc.json",
+        "build": "next build && next export",
         "start": "next start",
         "lint": "eslint -c .eslintrc.json --ext .jsx ./src"
     },
