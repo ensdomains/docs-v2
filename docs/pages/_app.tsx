@@ -2,6 +2,7 @@ import '@/styles/tailwind.css';
 import 'focus-visible';
 
 import { MDXProvider } from '@mdx-js/react';
+import { AppProps } from 'next/app';
 import Head from 'next/head';
 import { Router, useRouter } from 'next/router';
 import { FC } from 'react';
@@ -9,6 +10,7 @@ import { FC } from 'react';
 import { Layout } from '@/components/Layout';
 import { mdxComponents } from '@/components/mdx/index';
 import { useMobileNavigationStore } from '@/hooks/mobile';
+import { mdxPagePropsSchema } from '@/lib/mdxPageProps';
 
 function onRouteChange() {
     useMobileNavigationStore.getState().close();
@@ -18,8 +20,13 @@ Router.events.on('hashChangeStart', onRouteChange);
 Router.events.on('routeChangeComplete', onRouteChange);
 Router.events.on('routeChangeError', onRouteChange);
 
-const App = ({ Component, pageProps }) => {
+const App = ({ Component, pageProps: rawPageProperties }: AppProps) => {
     const router = useRouter();
+
+    const pageProperties = mdxPagePropsSchema.parse(rawPageProperties);
+
+    if (!pageProperties.meta.title || pageProperties.meta.title == '')
+        pageProperties.meta.title = pageProperties.title;
 
     return (
         <>
@@ -27,15 +34,16 @@ const App = ({ Component, pageProps }) => {
                 {router.route == '/' ? (
                     <title>ENS Documentation</title>
                 ) : (
-                    <title>{`${
-                        pageProps.custom_title || pageProps.title
-                    } | ENS Docs`}</title>
+                    <title>{`${pageProperties.meta.title} | ENS Docs`}</title>
                 )}
-                <meta name="description" content={pageProps.description} />
+                <meta
+                    name="description"
+                    content={pageProperties.meta.description}
+                />
             </Head>
             <MDXProvider components={mdxComponents as Record<string, FC>}>
-                <Layout {...pageProps}>
-                    <Component {...pageProps} />
+                <Layout mdxProperties={pageProperties}>
+                    <Component {...pageProperties} />
                 </Layout>
             </MDXProvider>
         </>
