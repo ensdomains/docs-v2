@@ -5,13 +5,15 @@ import { recmaPlugins } from './mdx/recma.mjs';
 import { rehypePlugins } from './mdx/rehype.mjs';
 import { remarkPlugins } from './mdx/remark.mjs';
 
-const withMDX = nextMDX({
+/** @type {import('@next/mdx').NextMDXOptions} */
+const mdxOptions = {
     options: {
         remarkPlugins,
         rehypePlugins,
         recmaPlugins,
+        providerImportSource: '@mdx-js/react',
     },
-});
+};
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -24,5 +26,7 @@ const nextConfig = {
         unoptimized: true,
     },
 };
+
+const withMDX = nextMDX(mdxOptions);
 
 export default withMDX(nextConfig);

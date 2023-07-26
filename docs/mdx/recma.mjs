@@ -14,7 +14,19 @@ function recmaRemoveNamedExports() {
 }
 
 export const recmaPlugins = [
+    /**
+     * Add support for annotations to MDX.
+     * An annotation is a JavaScript object associated with an MDX node. The object properties are passed to the resulting JSX element as props.
+     * @see https://www.npmjs.com/package/mdx-annotations
+     */
     mdxAnnotations.recma,
+    /**
+     * Remove named exports from MDX.
+     */
     recmaRemoveNamedExports,
+    /**
+     * Add an `export const getStaticProps` to MDX with all top level identifiers.
+     * @see https://github.com/remcohaszing/recma-nextjs-static-props
+     */
     recmaNextjsStaticProps,
 ];
