@@ -23,7 +23,7 @@ export const VideoComponent = ({ src }) => {
 
     if (videoUnavailable) {
         return (
-            <div className="flex items-center mb-8 justify-center bg-gradient-to-br from-slate-800 to-slate-600 border shadow-sm text-white font-bold text-2xl w-full aspect-video rounded-lg">
+            <div className="flex items-center mb-4 justify-center bg-gradient-to-br from-slate-800 to-slate-600 border shadow-sm text-white font-bold text-2xl w-full aspect-video rounded-lg">
                 <div>SoonTM</div>
             </div>
         );
