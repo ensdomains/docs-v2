@@ -1,7 +1,7 @@
 export const WIP = () => {
     return (
-        <div className="border border-yellow-500 bg-yellow-50 rounded-md p-4 not-prose">
-            <h2 className="text-yellow-800 font-bold text-xl">
+        <div className="not-prose rounded-md border border-yellow-500 bg-yellow-50 p-4">
+            <h2 className="text-xl font-bold text-yellow-800">
                 🚧 This page is work in progress 🚧
             </h2>
             <p className="mt-2">

@@ -10,19 +10,6 @@ import { Tag } from '@/components/Tag';
 import { useIsInsideMobileNavigation } from '@/hooks/mobile';
 import { remToPx } from '@/lib/remToPx';
 
-function TopLevelNavItem({ href, children }) {
-    return (
-        <li className="md:hidden">
-            <Link
-                href={href}
-                className="block py-1 text-sm text-zinc-600 transition hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
-            >
-                {children}
-            </Link>
-        </li>
-    );
-}
-
 function NavLink({ href, tag, active, isAnchorLink = false, children }) {
     return (
         <Link
@@ -36,7 +23,7 @@ function NavLink({ href, tag, active, isAnchorLink = false, children }) {
                     : 'text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white'
             )}
         >
-            <span className="truncate flex gap-1 items-center">{children}</span>
+            <span className="flex items-center gap-1 truncate">{children}</span>
             {tag && (
                 <Tag variant="small" color="zinc">
                     {tag}
@@ -165,7 +152,7 @@ export const NavigationGroup = ({ group, className }) => {
                                 <span>{link.title}</span>
                                 {link.external && <FiExternalLink />}
                                 {link.wip && (
-                                    <div className="bg-slate-100 px-2 text-slate-500 text-2xs rounded-md border">
+                                    <div className="rounded-md border bg-slate-100 px-2 text-2xs text-slate-500">
                                         WIP
                                     </div>
                                 )}

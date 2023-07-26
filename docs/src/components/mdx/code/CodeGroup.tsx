@@ -136,7 +136,7 @@ function CodePanelHeader({ tag, label }) {
     }
 
     return (
-        <div className="flex h-9 items-center gap-2 border-y border-t-transparent border-b-white/7.5 bg-zinc-900 bg-white/2.5 px-4 dark:border-b-white/5 dark:bg-white/1">
+        <div className="border-b-white/7.5 bg-white/2.5 dark:bg-white/1 flex h-9 items-center gap-2 border-y border-t-transparent px-4 dark:border-b-white/5">
             {tag && (
                 <div className="dark flex">
                     <Tag variant="small">{tag}</Tag>
@@ -160,7 +160,7 @@ const CodePanel: FC<CodePanelProperties & PropsWithChildren> = ({
     tag,
     label,
     code,
-    hideCopy,
+    hideCopy: _hideCopy,
     children,
     meta,
 }) => {
@@ -211,7 +211,8 @@ const CodePanel: FC<CodePanelProperties & PropsWithChildren> = ({
     }, [focus]);
 
     return (
-        <div className="group dark:bg-white/2.5">
+        // eslint-disable-next-line tailwindcss/no-custom-classname
+        <div className="dark:bg-white/2.5 group">
             <CodePanelHeader
                 tag={child.props.tag ?? tag}
                 label={child.props.label ?? label}
@@ -308,10 +309,10 @@ function CopyButton({ code }) {
             <motion.button
                 type="button"
                 className={clsx(
-                    'group/button absolute top-3.5 right-4 w-auto h-7 whitespace-nowrap overflow-hidden rounded-full py-1 pl-2 pr-3 text-2xs font-medium opacity-0 backdrop-blur transition focus:opacity-100 group-hover:opacity-100',
+                    'group/button text-2xs absolute right-4 top-3.5 h-7 w-auto overflow-hidden whitespace-nowrap rounded-full py-1 pl-2 pr-3 font-medium opacity-0 backdrop-blur transition focus:opacity-100 group-hover:opacity-100',
                     copied
-                        ? 'bg-ens-400/10 ring-1 ring-inset ring-ens-400/20'
-                        : 'bg-white/5 hover:bg-white/7.5 dark:bg-white/2.5 dark:hover:bg-white/5'
+                        ? 'bg-ens-400/10 ring-ens-400/20 ring-1 ring-inset'
+                        : 'hover:bg-white/7.5 dark:bg-white/2.5 bg-white/5 dark:hover:bg-white/5'
                 )}
                 onClick={() => {
                     window.navigator.clipboard.writeText(code).then(() => {
@@ -339,7 +340,7 @@ function CopyButton({ code }) {
                     <motion.span
                         aria-hidden={!copied}
                         className={clsx(
-                            'pointer-events-none gap-1 w-full whitespace-nowrap flex items-center justify-end text-ens-400 transition duration-300',
+                            'text-ens-400 pointer-events-none flex w-full items-center justify-end gap-1 whitespace-nowrap transition duration-300',
                             !copied && 'opacity-0'
                         )}
                         initial={{ y: 0 }}
@@ -443,7 +444,7 @@ export const CodeGroup: FC<PropsWithChildren & CodeGroupProperties> = ({
         <CodeGroupContext.Provider value={true}>
             <Container
                 {...containerProperties}
-                className="not-prose my-6 overflow-hidden rounded-lg bg-[--var(--shiki-color-background)] shadow-sm dark:shadow-md ring-1 ring-black/10 dark:ring-white/10"
+                className="not-prose my-6 overflow-hidden rounded-lg bg-[--var(--shiki-color-background)] shadow-sm ring-1 ring-black/10 dark:shadow-md dark:ring-white/10"
             >
                 <CodeGroupHeader
                     children={__children}

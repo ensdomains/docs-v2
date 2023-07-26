@@ -39,9 +39,9 @@ export const Header = forwardRef<HTMLDivElement, { className?: string }>(
                 ref={reference}
                 className={clsx(
                     className,
-                    'fixed inset-x-0 top-0 z-50 flex h-14 items-center justify-start gap-6 px-4 transition sm:px-6 lg:z-30 lg:px-4 md:shadow-2xl',
+                    'fixed inset-x-0 top-0 z-50 flex h-14 items-center justify-start gap-6 px-4 transition sm:px-6 md:shadow-2xl lg:z-30 lg:px-4',
                     !isInsideMobileNavigation &&
-                        'backdrop-blur-sm dark:backdrop-blur left-0',
+                        'left-0 backdrop-blur-sm dark:backdrop-blur',
                     isInsideMobileNavigation
                         ? 'bg-white dark:bg-zinc-900'
                         : 'bg-white/[var(--bg-opacity-light)] dark:bg-zinc-900/[var(--bg-opacity-dark)]'
@@ -66,18 +66,18 @@ export const Header = forwardRef<HTMLDivElement, { className?: string }>(
                             />
                         </Link>
                     </div>
-                    <div className="hidden lg:flex w-fit">
+                    <div className="hidden w-fit lg:flex">
                         <Link href={isDao ? '/dao' : '/'} aria-label="Home">
                             <Image
                                 src={isDao ? markDao : mark}
-                                className="h-8 ml-1 fill-ens-dao-400"
+                                className="ml-1 h-8 fill-ens-dao-400"
                                 alt="ENS Logo"
                                 height={'32'}
                             />
                         </Link>
                     </div>
 
-                    <div className="bg-ens-500 text-white px-2 rounded-md text-xs font-bold">
+                    <div className="rounded-md bg-ens-500 px-2 text-xs font-bold text-white">
                         ALPHA
                     </div>
                 </div>
@@ -90,8 +90,8 @@ export const Header = forwardRef<HTMLDivElement, { className?: string }>(
                 />
                 <Search />
                 <div className="h-full w-auto grow"></div>
-                <div className="flex gap-4 items-center h-full">
-                    <div className="hidden min-[786px]:flex gap-2">
+                <div className="flex h-full items-center gap-4">
+                    <div className="hidden gap-2 min-[786px]:flex">
                         <Button
                             href="https://app.ens.domains?ref=ens-docs-v2"
                             target="_blank"

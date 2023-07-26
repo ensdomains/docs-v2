@@ -48,7 +48,7 @@ export const Button: FC<
     const Component = properties.href ? Link : 'button';
 
     className = clsx(
-        'inline-flex gap-0.5 justify-center overflow-hidden text-sm font-medium transition',
+        'inline-flex justify-center gap-0.5 overflow-hidden text-sm font-medium transition',
         variantStyles[variant],
         className
     );

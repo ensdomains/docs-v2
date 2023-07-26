@@ -10,11 +10,11 @@ export const SubHeader = () => {
     const { pathname } = useRouter();
 
     const isDao = pathname.match(/\/dao(\/.*)?/);
-    const [_, subHeaders] = SubHeaders.find(([match, config]) =>
+    const [_, subHeaders] = SubHeaders.find(([match, _config]) =>
         pathname.match(match)
     );
 
-    const activePredicate = subHeaders.find(([label, url, urlMatch]) =>
+    const activePredicate = subHeaders.find(([_label, url, urlMatch]) =>
         pathname.match(urlMatch || url)
     );
 
@@ -24,7 +24,7 @@ export const SubHeader = () => {
 
     return (
         <>
-            <div className="absolute top-full left-0 right-0 md:hidden">
+            <div className="absolute inset-x-0 top-full md:hidden">
                 <button
                     className={ccx(
                         'w-full flex text-white items-center justify-between',

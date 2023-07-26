@@ -28,7 +28,7 @@ export const getCodeData = (x: {
     language?: string;
     variant: string;
 }): PresetConfig => {
-    const { icon, language, variant } = x;
+    const { icon: _icon, language, variant } = x;
 
     const codeConfig =
         presets[variant] ||

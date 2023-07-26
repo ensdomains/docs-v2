@@ -13,18 +13,18 @@ export const PresetSettings = () => {
     const { activePreset, config } = useActivePresetConfig();
 
     return (
-        <div className="relative h-full group flex items-center px-2">
+        <div className="group relative flex h-full items-center px-2">
             <div className="flex items-center gap-2">
-                <div className="w-6 h-6 flex items-center">
+                <div className="flex h-6 w-6 items-center">
                     <img
                         src={config.icon}
                         alt=""
-                        className="w-full h-full object-contain"
+                        className="h-full w-full object-contain"
                     />
                 </div>
                 <div>{config.name}</div>
             </div>
-            <div className="absolute top-full hidden group-hover:block grid-cols-3 right-0 w-fit bg-white border rounded-b-md">
+            <div className="absolute right-0 top-full hidden w-fit grid-cols-3 rounded-b-md border bg-white group-hover:block">
                 <ul
                     className="grid w-fit gap-1 p-2"
                     style={{ gridTemplateColumns: 'repeat(3, auto)' }}
@@ -36,7 +36,7 @@ export const PresetSettings = () => {
                             <li key={preset} className="w-full">
                                 <button
                                     className={clsx(
-                                        'w-full flex items-center px-1 gap-1 hover:bg-gray-100 text-base',
+                                        'flex w-full items-center gap-1 px-1 text-base hover:bg-gray-100',
                                         preset === activePreset && 'bg-gray-100'
                                     )}
                                     onClick={() => {

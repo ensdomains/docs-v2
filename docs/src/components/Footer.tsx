@@ -5,6 +5,8 @@ import { FormEventHandler, ForwardedRef, forwardRef, useState } from 'react';
 import { Button } from '@/components/Button';
 import { navigation } from '@/lib/headers';
 
+import { ContributeButton } from './contribute/ContributeButton';
+
 export const CheckIcon = (properties) => {
     return (
         <svg viewBox="0 0 20 20" aria-hidden="true" {...properties}>
@@ -61,7 +63,7 @@ const FeedbackThanks = forwardRef(
                 ref={reference}
                 className="flex justify-center md:justify-start"
             >
-                <div className="flex h-fit overflow-hidden items-top gap-3 rounded-lg bg-ens-50/50 py-3 pr-4 pl-3 text-sm text-ens-900 ring-1 ring-inset ring-ens-500/20 dark:bg-ens-500/5 dark:text-ens-200 dark:ring-ens-500/30">
+                <div className="items-top flex h-fit gap-3 overflow-hidden rounded-lg bg-ens-50/50 py-3 pl-3 pr-4 text-sm text-ens-900 ring-1 ring-inset ring-ens-500/20 dark:bg-ens-500/5 dark:text-ens-200 dark:ring-ens-500/30">
                     <CheckIcon className="h-5 w-5 flex-none fill-ens-500 stroke-white dark:fill-ens-200/20 dark:stroke-ens-200" />
                     <div className="leading-5">
                         <div>Thanks for your feedback!</div>
@@ -230,9 +232,7 @@ export function Footer() {
         <footer className="w-full space-y-4 pb-16">
             <div className="flex justify-between">
                 <div className="w-fit">
-                    <Link href="/">
-                        This page was written by valuable contributors
-                    </Link>
+                    <ContributeButton />
                 </div>
                 <div className="w-fit">
                     <Feedback key={router.pathname} />

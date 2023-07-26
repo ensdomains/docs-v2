@@ -176,11 +176,11 @@ const tagLogos = {
 export function Libraries() {
     return (
         <div className="xl:max-w-none">
-            <div className="grid grid-cols-1 gap-x-4 gap-y-4 sm:grid-cols-2 2xl:grid-cols-3">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 2xl:grid-cols-3">
                 {ensLibraries.map((library) => (
                     <div
                         key={library.name}
-                        className="not-prose flex flex-col ring-1 ring-black/20 dark:ring-white/20 rounded-xl p-4 bg-zinc-100 dark:bg-zinc-800"
+                        className="not-prose flex flex-col rounded-xl bg-zinc-100 p-4 ring-1 ring-black/20 dark:bg-zinc-800 dark:ring-white/20"
                     >
                         <Heading
                             level={3}

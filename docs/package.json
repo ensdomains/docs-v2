@@ -6,7 +6,7 @@
         "dev": "next dev",
         "build": "next build && next export",
         "start": "next start",
-        "lint": "eslint -c .eslintrc.json --ext .jsx ./src"
+        "lint": "eslint -c .eslintrc.json --ext .jsx,.mdx,.tsx ./src"
     },
     "browserslist": "defaults, not ie <= 11",
     "dependencies": {
@@ -35,7 +35,6 @@
         "rehype-mdx-title": "^2.0.0",
         "remark-gfm": "^3.0.1",
         "shiki": "^0.11.1",
-        "tailwindcss": "^3.2.4",
         "unist-util-visit": "^4.1.1",
         "zustand": "^4.1.4"
     },
@@ -44,11 +43,12 @@
         "@types/react": "^18.2.0",
         "@types/react-icons": "^3.0.0",
         "@typescript-eslint/parser": "^5.59.1",
-        "eslint": "8.26.0",
+        "eslint": "8.45.0",
         "eslint-config-next": "13.0.2",
-        "eslint-plugin-v3xlabs": "^1.6.0",
+        "eslint-plugin-tailwindcss": "^3.13.0",
+        "eslint-plugin-v3xlabs": "^1.6.1",
         "prettier": "^2.7.1",
-        "prettier-plugin-tailwindcss": "^0.1.13",
+        "tailwindcss": "^3.3.3",
         "typescript": "^5.0.4"
     }
 }

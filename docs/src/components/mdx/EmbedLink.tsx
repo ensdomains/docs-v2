@@ -11,13 +11,13 @@ export const EmbedLink: FC<{
     return (
         <Link
             href={href}
-            className="card p-4 flex items-center not-prose text-black hover:text-black no-underline hover:outline-2 outline-blue-500 hover:shadow-md transition-all"
+            className="card not-prose flex items-center p-4 text-black no-underline outline-blue-500 transition-all hover:text-black hover:shadow-md hover:outline-2"
         >
-            <span className="flex flex-col w-full">
+            <span className="flex w-full flex-col">
                 <span className="font-bold">
                     {title}
                     {tag && (
-                        <span className="ml-2 text-xs bg-yellow-100 border-yellow-300 border text-yellow-400 rounded-full px-2 py-1">
+                        <span className="ml-2 rounded-full border border-yellow-300 bg-yellow-100 px-2 py-1 text-xs text-yellow-400">
                             {tag}
                         </span>
                     )}
