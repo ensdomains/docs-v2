@@ -245,8 +245,8 @@ export const Footer: FC<{
         <footer className="w-full space-y-4 pb-16">
             <div className="flex items-end justify-between">
                 <div className="w-fit">
-                    <ContributeButton url={mdxProperties.filepath} />
                     <ContributorsSection contributors={mdxProperties.meta.contributors} />
+                    <ContributeButton url={mdxProperties.filepath} />
                 </div>
                 <div className="w-fit">
                     <Feedback key={router.pathname} />
