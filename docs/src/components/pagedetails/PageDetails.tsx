@@ -3,6 +3,8 @@ import { FC } from 'react';
 import { MdxPageProps } from '@/lib/mdxPageProps';
 
 import { ContributorsSection } from '../contribute/ContributorsSection';
+import { TimeSince } from '../Timestamp';
+import { GitCommitLink } from './GitCommitLink';
 
 export const PageDetails: FC<{ mdxProperties: MdxPageProps }> = ({
     mdxProperties,
@@ -31,10 +33,30 @@ export const PageDetails: FC<{ mdxProperties: MdxPageProps }> = ({
                                 />
                             </div>
                         )}
-                        {/* <div className="flex justify-between text-xs">
-                            <div>Last Modified</div>
-                            <div>Yesterday</div>
-                        </div> */}
+                        {mdxProperties.commit && (
+                            <div className="flex items-center justify-between text-xs">
+                                <div>Hash</div>
+                                <GitCommitLink
+                                    file={mdxProperties.filepath}
+                                    hash={mdxProperties.commit.hash}
+                                >
+                                    {mdxProperties.commit.hash}
+                                </GitCommitLink>
+                            </div>
+                        )}
+                        {mdxProperties.commit && (
+                            <div className="flex items-center justify-between text-xs">
+                                <div>Last Modified</div>
+                                <GitCommitLink
+                                    file={mdxProperties.filepath}
+                                    hash={mdxProperties.commit.hash}
+                                >
+                                    <TimeSince
+                                        date={mdxProperties.commit.date}
+                                    />
+                                </GitCommitLink>
+                            </div>
+                        )}
                         {/* {mdxProperties.filepath && (
                             <div className="flex justify-between text-xs">
                                 <div>Path</div>
