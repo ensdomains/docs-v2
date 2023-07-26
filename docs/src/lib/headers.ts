@@ -149,6 +149,41 @@ export const navigation: [pathMatches, routeGroup[]][] = [
                 ],
             },
             {
+                title: '🗺️ Resolvers',
+                links: [
+                    {
+                        title: '✨ Start Here',
+                        href: '/resolvers/quickstart',
+                        wip: true,
+                    },
+                    {
+                        title: '🤷‍♀️ Why Resolvers',
+                        href: '/resolvers/about',
+                        wip: true,
+                    },
+                    {
+                        title: '🏛️ Public Resolver',
+                        href: '/resolvers/public',
+                        wip: true,
+                    },
+                    {
+                        title: '✍️ Writing your own resolver',
+                        href: '/resolvers/writing',
+                        wip: true,
+                    },
+                    {
+                        title: '👉 Interacting with a resolver',
+                        href: '/resolvers/interacting',
+                        wip: true,
+                    },
+                    {
+                        title: '⛓️ Cross Chain Gateway',
+                        href: '/resolvers/ccip',
+                        wip: true,
+                    },
+                ],
+            },
+            {
                 title: '🏛️ Registries',
                 links: [
                     {
@@ -185,41 +220,6 @@ export const navigation: [pathMatches, routeGroup[]][] = [
                         title: '✍️ Authoring a registry',
                         wip: true,
                         href: '/registry/writing',
-                    },
-                ],
-            },
-            {
-                title: '🗺️ Resolvers',
-                links: [
-                    {
-                        title: '✨ Start Here',
-                        href: '/resolvers/quickstart',
-                        wip: true,
-                    },
-                    {
-                        title: '🤷‍♀️ Why Resolvers',
-                        href: '/resolvers/about',
-                        wip: true,
-                    },
-                    {
-                        title: '🏛️ Public Resolver',
-                        href: '/resolvers/public',
-                        wip: true,
-                    },
-                    {
-                        title: '✍️ Writing your own resolver',
-                        href: '/resolvers/writing',
-                        wip: true,
-                    },
-                    {
-                        title: '👉 Interacting with a resolver',
-                        href: '/resolvers/interacting',
-                        wip: true,
-                    },
-                    {
-                        title: '⛓️ Cross Chain Gateway',
-                        href: '/resolvers/ccip',
-                        wip: true,
                     },
                 ],
             },
