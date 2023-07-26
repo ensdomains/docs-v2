@@ -1,4 +1,4 @@
-[![readme](./assets/readme.png)](https://alpha-docs.ens.domains/?ref=github-banner)
+[![readme](./.github/readme.png)](https://alpha-docs.ens.domains/?ref=github-banner)
 
 > This is a work-in-progress documentation rewrite. A nightly version is available at [alpha-docs.ens.domains](https://alpha-docs.ens.domains).
 
