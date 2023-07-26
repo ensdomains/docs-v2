@@ -54,26 +54,32 @@ export const Header = forwardRef<HTMLDivElement, { className?: string }>(
                 }
             >
                 <SubHeader />
-                <div className="flex items-center gap-5 lg:hidden">
-                    <MobileNavigation />
-                    <Link href="/" aria-label="Home">
-                        <Image
-                            src={logo}
-                            className="h-8"
-                            alt="ENS Logo"
-                            height={'32'}
-                        />
-                    </Link>
-                </div>
-                <div className="hidden lg:flex w-fit">
-                    <Link href={isDao ? '/dao' : '/'} aria-label="Home">
-                        <Image
-                            src={isDao ? markDao : mark}
-                            className="h-8 ml-1 fill-ens-dao-400"
-                            alt="ENS Logo"
-                            height={'32'}
-                        />
-                    </Link>
+                <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-5 lg:hidden">
+                        <MobileNavigation />
+                        <Link href="/" aria-label="Home">
+                            <Image
+                                src={logo}
+                                className="h-8"
+                                alt="ENS Logo"
+                                height={'32'}
+                            />
+                        </Link>
+                    </div>
+                    <div className="hidden lg:flex w-fit">
+                        <Link href={isDao ? '/dao' : '/'} aria-label="Home">
+                            <Image
+                                src={isDao ? markDao : mark}
+                                className="h-8 ml-1 fill-ens-dao-400"
+                                alt="ENS Logo"
+                                height={'32'}
+                            />
+                        </Link>
+                    </div>
+
+                    <div className="bg-ens-500 text-white px-2 rounded-md text-xs font-bold">
+                        ALPHA
+                    </div>
                 </div>
                 <div
                     className={clsx(
