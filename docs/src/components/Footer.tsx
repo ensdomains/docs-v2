@@ -4,18 +4,17 @@ import {
     FC,
     FormEventHandler,
     ForwardedRef,
-    ReactNode,
     forwardRef,
+    ReactNode,
     useState,
 } from 'react';
 
 import { Button } from '@/components/Button';
 import { navigation } from '@/lib/headers';
-import { MdxMetaProps } from '@/lib/mdxPageProps';
+import { MdxPageProps } from '@/lib/mdxPageProps';
 
 import { ContributeButton } from './contribute/ContributeButton';
 import { ContributorsSection } from './contribute/ContributorsSection';
-import { MdxPageProps } from '@/lib/mdxPageProps';
 
 export const CheckIcon = (properties) => {
     return (
@@ -245,7 +244,9 @@ export const Footer: FC<{
         <footer className="w-full space-y-4 pb-16">
             <div className="flex items-end justify-between">
                 <div className="w-fit">
-                    <ContributorsSection contributors={mdxProperties.meta.contributors} />
+                    <ContributorsSection
+                        contributors={mdxProperties.meta.contributors}
+                    />
                     <ContributeButton url={mdxProperties.filepath} />
                 </div>
                 <div className="w-fit">
