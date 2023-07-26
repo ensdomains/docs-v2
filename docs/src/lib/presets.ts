@@ -69,7 +69,7 @@ export const presets = {
         icon: '/icons/wagmi.svg',
         name: 'Wagmi',
         language: 'typescript',
-        tags: ['react', 'ethers', 'typescript', 'javascript'],
+        tags: ['react', 'viem', 'typescript', 'javascript'],
     },
     rainbowkit: {
         icon: '/icons/rainbow.svg',
