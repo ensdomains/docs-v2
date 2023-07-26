@@ -1,13 +1,6 @@
-import { Transition } from '@headlessui/react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import {
-    FormEventHandler,
-    ForwardedRef,
-    forwardRef,
-    Fragment,
-    useState,
-} from 'react';
+import { FormEventHandler, ForwardedRef, forwardRef, useState } from 'react';
 
 import { Button } from '@/components/Button';
 import { navigation } from '@/lib/headers';
@@ -46,7 +39,7 @@ const FeedbackForm = forwardRef(
             <form
                 ref={reference}
                 onSubmit={onSubmit}
-                className="absolute inset-0 flex items-center justify-center gap-6 md:justify-start"
+                className="flex items-center justify-center gap-6 md:justify-start"
             >
                 <p className="text-sm text-zinc-600 dark:text-zinc-400">
                     Was this page helpful?
@@ -66,11 +59,19 @@ const FeedbackThanks = forwardRef(
         return (
             <div
                 ref={reference}
-                className="absolute inset-0 flex justify-center md:justify-start"
+                className="flex justify-center md:justify-start"
             >
-                <div className="flex items-center gap-3 rounded-full bg-ens-50/50 py-1 pr-3 pl-1.5 text-sm text-ens-900 ring-1 ring-inset ring-ens-500/20 dark:bg-ens-500/5 dark:text-ens-200 dark:ring-ens-500/30">
+                <div className="flex h-fit overflow-hidden items-top gap-3 rounded-lg bg-ens-50/50 py-3 pr-4 pl-3 text-sm text-ens-900 ring-1 ring-inset ring-ens-500/20 dark:bg-ens-500/5 dark:text-ens-200 dark:ring-ens-500/30">
                     <CheckIcon className="h-5 w-5 flex-none fill-ens-500 stroke-white dark:fill-ens-200/20 dark:stroke-ens-200" />
-                    Thanks for your feedback!
+                    <div className="leading-5">
+                        <div>Thanks for your feedback!</div>
+                        <a
+                            href="mailto:info@ens.domains"
+                            className="block underline"
+                        >
+                            I have more feedback
+                        </a>
+                    </div>
                 </div>
             </div>
         );
@@ -91,24 +92,11 @@ function Feedback() {
 
     return (
         <div className="relative h-8">
-            <Transition
-                show={!submitted}
-                as={Fragment}
-                leaveFrom="opacity-100"
-                leaveTo="opacity-0"
-                leave="pointer-events-none duration-300"
-            >
-                <FeedbackForm onSubmit={onSubmit} />
-            </Transition>
-            <Transition
-                show={submitted}
-                as={Fragment}
-                enterFrom="opacity-0"
-                enterTo="opacity-100"
-                enter="delay-150 duration-300"
-            >
+            {submitted ? (
                 <FeedbackThanks />
-            </Transition>
+            ) : (
+                <FeedbackForm onSubmit={onSubmit} />
+            )}
         </div>
     );
 }
@@ -239,8 +227,17 @@ export function Footer() {
     const router = useRouter();
 
     return (
-        <footer className="w-full space-y-10 pb-16">
-            <Feedback key={router.pathname} />
+        <footer className="w-full space-y-4 pb-16">
+            <div className="flex justify-between">
+                <div className="w-fit">
+                    <Link href="/">
+                        This page was written by valuable contributors
+                    </Link>
+                </div>
+                <div className="w-fit">
+                    <Feedback key={router.pathname} />
+                </div>
+            </div>
             {/* <PageNavigation /> */}
             <SmallPrint />
         </footer>
