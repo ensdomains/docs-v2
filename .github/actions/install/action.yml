@@ -10,6 +10,7 @@ runs:
         run_install: false
         standalone: true
         package_json_file: docs/package.json
+        version: 8
 
     - name: Setup Node
       uses: actions/setup-node@v3
