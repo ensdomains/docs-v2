@@ -32,7 +32,7 @@ jobs:
         working-directory: ./docs
         run: pnpm run typecheck
   eslint:
-    name: 🔎 Linting
+    name: 👕 Linting
     runs-on: ubuntu-20.04
     env:
       FORCE_COLOR: true
