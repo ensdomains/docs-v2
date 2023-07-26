@@ -2,10 +2,11 @@ import { Guides } from '@/components/Guides';
 import { Resources } from '@/components/Resources';
 import { QuickBannerLink } from '@/components/home/QuickLink';
 
-export const description =
-    'Learn everything about the Ethereum Name Service (ENS). How to integrate names into your dApp, issue subnames, and so much more!';
-
-export const title = "ENS Documentation";
+{/** @type {import('@/lib/mdxPageProps').MdxMetaProps} */}
+export const meta = {
+    description: 'Learn everything about the Ethereum Name Service (ENS). How to integrate names into your dApp, issue subnames, and so much more!',
+    title: 'ENS Documentation'
+};
 
 <VideoComponent src="https://v3x.space/ens-docs/intro5" />
 

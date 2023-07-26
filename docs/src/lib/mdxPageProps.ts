@@ -6,7 +6,7 @@ export const mdxPagePropsSchema = z
         /**
          * Auto generated title from first h1 element
          */
-        title: z.string(),
+        title: z.string().optional(),
         /**
          * Meta data
          */
