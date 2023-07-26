@@ -4,6 +4,7 @@ import {
     FC,
     FormEventHandler,
     ForwardedRef,
+    ReactNode,
     forwardRef,
     useState,
 } from 'react';
@@ -14,6 +15,7 @@ import { MdxMetaProps } from '@/lib/mdxPageProps';
 
 import { ContributeButton } from './contribute/ContributeButton';
 import { ContributorsSection } from './contribute/ContributorsSection';
+import { MdxPageProps } from '@/lib/mdxPageProps';
 
 export const CheckIcon = (properties) => {
     return (
@@ -233,15 +235,18 @@ function SmallPrint() {
     );
 }
 
-export const Footer: FC<{ meta: MdxMetaProps }> = ({ meta }) => {
+export const Footer: FC<{
+    children?: ReactNode;
+    mdxProperties: MdxPageProps;
+}> = ({ children, mdxProperties }) => {
     const router = useRouter();
 
     return (
         <footer className="w-full space-y-4 pb-16">
             <div className="flex items-end justify-between">
                 <div className="w-fit">
-                    <ContributorsSection contributors={meta.contributors} />
-                    <ContributeButton />
+                    <ContributorsSection contributors={mdxProperties.meta.contributors} />
+                    <ContributeButton url={mdxProperties.filepath} />
                 </div>
                 <div className="w-fit">
                     <Feedback key={router.pathname} />
