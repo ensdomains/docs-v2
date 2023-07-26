@@ -1,15 +1,20 @@
 import { motion } from 'framer-motion';
+import { FC, ReactNode } from 'react';
 
 import { Footer } from '@/components/Footer';
 import { Prose } from '@/components/mdx/Prose';
 import { Header } from '@/components/navigation/header/header';
 import { SectionProvider } from '@/components/SectionProvider';
+import { MdxPageProps } from '@/lib/mdxPageProps';
 
 import { Navigation } from './navigation/sidenav/sidenav';
 
-export const Layout = ({ children, sections = [] }) => {
+export const Layout: FC<{
+    children: ReactNode;
+    mdxProperties: MdxPageProps;
+}> = ({ children, mdxProperties }) => {
     return (
-        <SectionProvider sections={sections}>
+        <SectionProvider sections={mdxProperties.sections}>
             <div className="lg:ml-72 xl:ml-80">
                 <motion.header
                     layoutScroll
