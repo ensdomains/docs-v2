@@ -17,6 +17,10 @@ export const mdxPagePropsSchema = z
             title: z.string().default(''),
             description: z.string(),
             /**
+             * Wether or not to show the details section
+             */
+            showDetailsSection: z.boolean().default(true),
+            /**
              * Optional list of github usernames of contributors
              * @example ['lucemans', 'svemat01']
              */

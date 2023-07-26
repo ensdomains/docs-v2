@@ -8,6 +8,7 @@ import { SectionProvider } from '@/components/SectionProvider';
 import { MdxPageProps } from '@/lib/mdxPageProps';
 
 import { Navigation } from './navigation/sidenav/sidenav';
+import { PageDetails } from './pagedetails/PageDetails';
 
 export const Layout: FC<{
     children: ReactNode;
@@ -25,8 +26,10 @@ export const Layout: FC<{
                     <Navigation className="hidden lg:mt-8 lg:block" />
                 </motion.header>
                 <div className="relative px-4 pt-14 sm:px-6 lg:px-8">
-                    <main className="py-16">
+                    <main className="relative py-16">
                         <Prose>{children}</Prose>
+
+                        <PageDetails mdxProperties={mdxProperties} />
                     </main>
                     <Footer mdxProperties={mdxProperties} />
                 </div>

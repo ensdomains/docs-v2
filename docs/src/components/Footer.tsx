@@ -5,7 +5,6 @@ import {
     FormEventHandler,
     ForwardedRef,
     forwardRef,
-    ReactNode,
     useState,
 } from 'react';
 
@@ -235,18 +234,20 @@ function SmallPrint() {
 }
 
 export const Footer: FC<{
-    children?: ReactNode;
     mdxProperties: MdxPageProps;
-}> = ({ children, mdxProperties }) => {
+}> = ({ mdxProperties }) => {
     const router = useRouter();
 
     return (
         <footer className="w-full space-y-4 pb-16">
             <div className="flex items-end justify-between">
                 <div className="w-fit">
-                    <ContributorsSection
-                        contributors={mdxProperties.meta.contributors}
-                    />
+                    <div className="mb-2">
+                        <ContributorsSection
+                            contributors={mdxProperties.meta.contributors}
+                            expandSingle
+                        />
+                    </div>
                     <ContributeButton url={mdxProperties.filepath} />
                 </div>
                 <div className="w-fit">
