@@ -1,11 +1,19 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { FormEventHandler, ForwardedRef, forwardRef, useState } from 'react';
+import {
+    FC,
+    FormEventHandler,
+    ForwardedRef,
+    forwardRef,
+    useState,
+} from 'react';
 
 import { Button } from '@/components/Button';
 import { navigation } from '@/lib/headers';
+import { MdxMetaProps } from '@/lib/mdxPageProps';
 
 import { ContributeButton } from './contribute/ContributeButton';
+import { ContributorsSection } from './contribute/ContributorsSection';
 
 export const CheckIcon = (properties) => {
     return (
@@ -26,7 +34,7 @@ function FeedbackButton(properties) {
     return (
         <button
             type="submit"
-            className="px-3 text-sm font-medium text-zinc-600 transition hover:bg-zinc-900/2.5 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-white/5 dark:hover:text-white"
+            className="hover:bg-zinc-900/2.5 px-3 text-sm font-medium text-zinc-600 transition hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-white/5 dark:hover:text-white"
             {...properties}
         />
     );
@@ -63,8 +71,8 @@ const FeedbackThanks = forwardRef(
                 ref={reference}
                 className="flex justify-center md:justify-start"
             >
-                <div className="items-top flex h-fit gap-3 overflow-hidden rounded-lg bg-ens-50/50 py-3 pl-3 pr-4 text-sm text-ens-900 ring-1 ring-inset ring-ens-500/20 dark:bg-ens-500/5 dark:text-ens-200 dark:ring-ens-500/30">
-                    <CheckIcon className="h-5 w-5 flex-none fill-ens-500 stroke-white dark:fill-ens-200/20 dark:stroke-ens-200" />
+                <div className="items-top bg-ens-50/50 text-ens-900 ring-ens-500/20 dark:bg-ens-500/5 dark:text-ens-200 dark:ring-ens-500/30 flex h-fit gap-3 overflow-hidden rounded-lg py-3 pl-3 pr-4 text-sm ring-1 ring-inset">
+                    <CheckIcon className="fill-ens-500 dark:fill-ens-200/20 dark:stroke-ens-200 h-5 w-5 flex-none stroke-white" />
                     <div className="leading-5">
                         <div>Thanks for your feedback!</div>
                         <a
@@ -93,7 +101,7 @@ function Feedback() {
     }
 
     return (
-        <div className="relative h-8">
+        <div className="relative">
             {submitted ? (
                 <FeedbackThanks />
             ) : (
@@ -225,13 +233,14 @@ function SmallPrint() {
     );
 }
 
-export function Footer() {
+export const Footer: FC<{ meta: MdxMetaProps }> = ({ meta }) => {
     const router = useRouter();
 
     return (
         <footer className="w-full space-y-4 pb-16">
-            <div className="flex justify-between">
+            <div className="flex items-end justify-between">
                 <div className="w-fit">
+                    <ContributorsSection contributors={meta.contributors} />
                     <ContributeButton />
                 </div>
                 <div className="w-fit">
@@ -242,4 +251,4 @@ export function Footer() {
             <SmallPrint />
         </footer>
     );
-}
+};

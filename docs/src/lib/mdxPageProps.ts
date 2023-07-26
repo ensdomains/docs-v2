@@ -20,7 +20,12 @@ export const mdxPagePropsSchema = z
              * Optional list of github usernames of contributors
              * @example ['lucemans', 'svemat01']
              */
-            contributors: z.array(z.string()).optional(),
+            contributors: z
+                .array(
+                    // Validate using github username regex (source: https://github.com/shinnn/github-username-regex/blob/master/index.js)
+                    z.string().regex(/^[\da-z](?:[\da-z]|-(?=[\da-z])){0,38}$/i)
+                )
+                .optional(),
         }),
         sections: z.array(
             z.object({
