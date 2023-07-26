@@ -1,5 +1,7 @@
 [![readme](./public/readme.png)](https://docs.ens.domains/?ref=github-banner)
 
+>>> This is a work-in-progress documentation rewrite. A nightly version is available at [alpha-docs.ens.domains](https://alpha-docs.ens.domains).
+
 The Ethereum Name Service (ENS) is a distributed, open, and extensible naming system based on the Ethereum blockchain.
 
 ## 🗒️ Documentation
