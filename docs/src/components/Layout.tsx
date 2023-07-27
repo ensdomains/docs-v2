@@ -9,11 +9,13 @@ import { MdxPageProps } from '@/lib/mdxPageProps';
 
 import { Navigation } from './navigation/sidenav/sidenav';
 import { PageDetails } from './pagedetails/PageDetails';
+import { ProposalData, SnapshotDetails } from './pagedetails/SnapshotDetails';
 
 export const Layout: FC<{
     children: ReactNode;
     mdxProperties: MdxPageProps;
-}> = ({ children, mdxProperties }) => {
+    snapshotData?: ProposalData;
+}> = ({ children, mdxProperties, snapshotData }) => {
     return (
         <SectionProvider sections={mdxProperties.sections}>
             <div className="lg:ml-72 xl:ml-80">
@@ -29,7 +31,21 @@ export const Layout: FC<{
                     <main className="relative py-16">
                         <Prose>{children}</Prose>
 
-                        <PageDetails mdxProperties={mdxProperties} />
+                        <div className="pagedetails_wrapper">
+                            <div className="pagedetails">
+                                <div className="pagedetails_inner">
+                                    <PageDetails
+                                        mdxProperties={mdxProperties}
+                                    />
+                                    {mdxProperties.meta.proposal && (
+                                        <SnapshotDetails
+                                            snapshotData={snapshotData}
+                                            data={mdxProperties.meta.proposal}
+                                        />
+                                    )}
+                                </div>
+                            </div>
+                        </div>
                     </main>
                     <Footer mdxProperties={mdxProperties} />
                 </div>

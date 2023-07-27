@@ -90,5 +90,5 @@ pre {
 }
 
 .pagedetails_inner {
-    @apply w-full h-fit;
+    @apply w-full h-fit space-y-4;
 }

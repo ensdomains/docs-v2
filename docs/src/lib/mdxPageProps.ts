@@ -30,6 +30,31 @@ export const mdxPagePropsSchema = z
                     z.string().regex(/^[\da-z](?:[\da-z]|-(?=[\da-z])){0,38}$/i)
                 )
                 .optional(),
+            /**
+             * ENSIP Additional Context
+             */
+            ensip: z
+                .object({
+                    created: z.string().optional(),
+                    status: z.enum(['draft', 'final', 'obsolete']).optional(),
+                })
+                .optional(),
+            /**
+             * DAO Proposal Additional Context
+             */
+            proposal: z
+                .object({
+                    created: z.string().optional(),
+                    type: z.enum(['social', 'executable']).optional(),
+                    status: z.enum(['draft', 'final']).optional(),
+                    // Discourse Topic ID (ex 12345)
+                    discourse: z.string().optional(),
+                    // Snapshot Proposal ID (ex 0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef)
+                    snapshot: z.string().optional(),
+                    // Tally Proposal ID (ex )
+                    tally: z.string().optional(),
+                })
+                .optional(),
         }),
         sections: z.array(
             z.object({
@@ -79,3 +104,9 @@ export const mdxPagePropsSchema = z
 
 export type MdxPageProps = z.infer<typeof mdxPagePropsSchema>;
 export type MdxMetaProps = z.infer<typeof mdxPagePropsSchema['shape']['meta']>;
+export type MdxENSIPProps = z.infer<
+    typeof mdxPagePropsSchema['shape']['meta']['shape']['ensip']
+>;
+export type MdxDAOProposalProps = z.infer<
+    typeof mdxPagePropsSchema['shape']['meta']['shape']['proposal']
+>;

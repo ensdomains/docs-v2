@@ -1,17 +1,18 @@
 {/** @type {import('@/lib/mdxPageProps').MdxMetaProps} */}
 export const meta = {
-    description: 'Introduces new overloads for the `addr` field for ENS resolvers, which permit resolution of addresses for other blockchains via ENS (formerly EIP-2304).',
+    description: 'Introduces new overloads for the addr field for ENS resolvers, which permit resolution of addresses for other blockchains via ENS (formerly EIP-2304).',
     contributors: [
         'arachnid'
-    ]
+    ],
+    ensip: {
+        created: '2019-09-09',
+        status: 'final'
+    }
 };
 
-# ENSIP-9: Multichain Address Resolution
+# ENSIP-9: Multichain Address resolution
 
-| **Author**    | Nick Johnson \<nick@ens.domains> |
-| ------------- | -------------------------------- |
-| **Status**    | Final                            |
-| **Submitted** | 2019-09-09                       |
+Introduces new overloads for the `addr` field for ENS resolvers, which permit resolution of addresses for other blockchains via ENS (formerly [EIP-2304](https://eips.ethereum.org/EIPS/eip-2304)).
 
 ## Motivation
 

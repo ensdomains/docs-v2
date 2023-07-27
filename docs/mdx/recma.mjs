@@ -119,6 +119,17 @@ const recmaExportCommit = () => {
     };
 };
 
+// /**
+//  * @type {import('unified').Plugin<[], import('estree').Program>}
+//  */
+// export const recmaSnapshotPlugin = () => {
+//     return (tree, file) => {
+
+//         if (tree.)
+
+//     };
+// };
+
 export const recmaPlugins = [
     /**
      * Add support for annotations to MDX.
