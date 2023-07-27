@@ -1,6 +1,6 @@
 // eslint-disable-next-line unicorn/prefer-node-protocol
 import crypto from 'crypto';
-import { useRouter } from 'next/router';
+import { usePathname } from 'next/navigation';
 import { FC, PropsWithChildren } from 'react';
 
 import { ccx } from '@/lib/cx';
@@ -15,8 +15,8 @@ export const GitCommitLink: FC<
         .createHash('sha256')
         .update(prefix + file)
         .digest('hex');
-    const { route } = useRouter();
-    const isDAO = route.startsWith('/dao');
+    const pathname = usePathname();
+    const isDAO = pathname.startsWith('/dao');
 
     return (
         <a

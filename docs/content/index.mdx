@@ -1,0 +1,45 @@
+import { Guides } from '@/components/Guides';
+import { Resources } from '@/components/Resources';
+import { QuickBannerLink } from '@/components/home/QuickLink';
+
+{/** @type {import('@/lib/mdxPageProps').MdxMetaProps} */}
+export const meta = {
+    description: 'Learn everything about the Ethereum Name Service (ENS). How to integrate names into your dApp, issue subnames, and so much more!',
+    title: 'ENS Documentation',
+    showDetailsSection: false,
+    contributors: [
+        'lucemans'
+    ]
+};
+
+<VideoComponent src="https://v3x.space/ens-docs/intro5" />
+
+<div className="grid grid-cols-2 gap-x-3 gap-y-3">
+<QuickBannerLink
+    title="Im building a dApp"
+    description="Learn how to integrate ENS into your dApp"
+    href="/web"
+    image="/home/grid_link_1.png"
+/>
+
+<QuickBannerLink
+    title="Im here to learn about resolution"
+    description="Learn how ENS works under the hood, register, renew, resolvers, registries, and much more!"
+    href="/resolution"
+    image="/home/grid_link_2.png"
+/>
+
+<QuickBannerLink
+    title="Im looking for the DAO Governance Docs"
+    description="Everything about the ENS DAO you find here!"
+    href="/dao"
+    image="/home/grid_link_3.png"
+/>
+
+<QuickBannerLink
+    title="Im not a developer how did I get here?"
+    description="The support knowledgebase is a wondeful resource for any questions you might have!"
+    href="https://support.ens.domains/"
+    image="/home/grid_link_4.png"
+/>
+</div>

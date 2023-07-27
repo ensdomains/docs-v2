@@ -1,4 +1,5 @@
-import { useRouter } from 'next/router';
+'use client';
+import { usePathname } from 'next/navigation';
 import { FC } from 'react';
 import { FiClock, FiGitCommit } from 'react-icons/fi';
 
@@ -16,8 +17,8 @@ export const PageDetails: FC<{ mdxProperties: MdxPageProps }> = ({
 }) => {
     const shouldShowPageDetails = mdxProperties.meta?.showDetailsSection;
 
-    const { route } = useRouter();
-    const isDAO = route.startsWith('/dao');
+    const pathname = usePathname();
+    const isDAO = pathname.startsWith('/dao');
 
     if (!shouldShowPageDetails) {
         return <></>;

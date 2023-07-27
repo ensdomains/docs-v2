@@ -1,3 +1,4 @@
+'use client';
 import { Dialog, Transition } from '@headlessui/react';
 import { motion } from 'framer-motion';
 import { Fragment } from 'react';

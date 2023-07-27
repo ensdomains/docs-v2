@@ -72,8 +72,6 @@ const recmaExportCommit = () => {
     return async (tree, file) => {
         const filePath = file.path;
 
-        console.log({ filePath });
-
         if (!git) git = simpleGit();
 
         const log = await git
@@ -83,8 +81,7 @@ const recmaExportCommit = () => {
                 format: { hash: '%h', date: '%at' },
             })
             .then((log) => {
-                if (log.total === 0)
-                    return { hash: undefined, date: undefined };
+                if (log.total === 0) return { hash: 'undefined', date: 0 };
 
                 return {
                     hash: log.latest.hash,
@@ -94,8 +91,10 @@ const recmaExportCommit = () => {
             .catch((error) => {
                 console.error(error);
 
-                return { hash: undefined, date: undefined };
+                return { hash: 'undefined', date: 0 };
             });
+
+        console.log({ filePath, log });
 
         tree.body.push({
             type: 'ExportNamedDeclaration',
@@ -167,10 +166,10 @@ export const recmaPlugins = [
      * Add an `export const filepath` to MDX with the relative path to the file.
      */
     recmaExportFilepath,
-    // /**
-    //  * Add an `export const commit` to MDX with the latest commit hash and date.
-    //  */
-    // recmaExportCommit,
+    /**
+     * Add an `export const commit` to MDX with the latest commit hash and date.
+     */
+    recmaExportCommit,
     // /**
     //  * Remove named exports from MDX.
     //  */

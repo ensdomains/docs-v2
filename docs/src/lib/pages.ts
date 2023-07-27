@@ -1,22 +1,22 @@
+import { MDXProps } from 'mdx/types';
 import fs from 'node:fs';
 import { join } from 'node:path';
+import { JSX } from 'react';
+
+import {
+    MdxPageProps as MdxPageProperties,
+    mdxPagePropsSchema as mdxPagePropertiesSchema,
+} from './mdxPageProps';
 
 const contentDirectory = join(process.cwd(), 'content');
 
-export type Post = {
-    slug: string;
-};
-
 export const getAllPagesSlug = () => {
-    // Walk thru the content directory on all levels to get all the slugs. They should be relative to the content directory. and without the mdx extension. It should only include the files, not the directories.
-    // const allPages = fs
-    //     .readdirSync(contentDirectory, { withFileTypes: true })
-    //     .filter((dirent) => dirent.isFile())
-    //     .map((dirent) => dirent.name.replace(/\.mdx$/, ''));
-
-    // The code above only does one level. We need to do all levels. So we need to use a recursive function.
     const walkSync = (directory: string, filelist: string[] = []) => {
         for (const file of fs.readdirSync(directory)) {
+            if (directory === contentDirectory && file === 'index.mdx')
+                continue;
+
+            console.log({ file, directory });
             filelist = fs.statSync(join(directory, file)).isDirectory()
                 ? walkSync(join(directory, file), filelist)
                 : filelist.concat(
@@ -30,18 +30,32 @@ export const getAllPagesSlug = () => {
         return filelist;
     };
 
-    // return walkSync(contentDirectory);
-    // running the above will give the full path. We only want the relative path. So we need to remove the contentDirectory part.
     return walkSync(contentDirectory).map((file) =>
         file.replace(`${contentDirectory}/`, '')
     );
 };
 
-export const getPageBySlug = async (slug: string): Promise<Post> => {
+export const getPageBySlug = async (
+    slug: string
+): Promise<{
+    Page: (properties: MDXProps) => JSX.Element;
+    pageProperties: MdxPageProperties;
+}> => {
     const pageModule = await import(`../../content/${slug}.mdx`);
+    const { default: Page, ...rawPageProperties } = (await import(
+        `../../content/${slug}.mdx`
+    )) as MdxPageProperties & {
+        default: (properties: MDXProps) => JSX.Element;
+    };
+
+    const pageProperties = mdxPagePropertiesSchema.parse(rawPageProperties);
+
+    if (!pageProperties.meta.title || pageProperties.meta.title == '')
+        pageProperties.meta.title = pageProperties.title;
 
     return {
-        slug,
+        pageProperties,
+        Page,
     };
 };
 

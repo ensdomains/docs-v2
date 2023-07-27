@@ -1,5 +1,6 @@
+'use client';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { FiChevronDown, FiChevronRight } from 'react-icons/fi';
 
@@ -7,7 +8,7 @@ import { ccx } from '@/lib/cx';
 import { SubHeaders } from '@/lib/headers';
 
 export const SubHeader = () => {
-    const { pathname } = useRouter();
+    const pathname = usePathname();
 
     const isDao = pathname.match(/\/dao(\/.*)?/);
     const [_, subHeaders] = SubHeaders.find(([match, _config]) =>

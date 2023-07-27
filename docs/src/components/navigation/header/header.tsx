@@ -4,7 +4,7 @@ import { useTransform } from 'framer-motion';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { usePathname } from 'next/navigation';
 import { forwardRef } from 'react';
 import { FaGithub } from 'react-icons/fa';
 
@@ -27,7 +27,7 @@ export const Header = forwardRef<HTMLDivElement, { className?: string }>(
     ({ className }, reference) => {
         const { isOpen: mobileNavIsOpen } = useMobileNavigationStore();
         const isInsideMobileNavigation = useIsInsideMobileNavigation();
-        const { pathname } = useRouter();
+        const pathname = usePathname();
 
         const { scrollY } = useScroll();
         const bgOpacityLight = useTransform(scrollY, [0, 72], [0.5, 0.9]);

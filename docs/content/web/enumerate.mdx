@@ -1,0 +1,68 @@
+{/** @type {import('@/lib/mdxPageProps').MdxMetaProps} */}
+export const meta = {
+    description: '',
+    contributors: [
+        'lucemans'
+    ]
+};
+
+# Listing a Users Names
+
+In a fair bit of cases you might want to show off all names that a user has. Due to the nature of how the ENS Protocol works under the hood this might be a slightly more difficult task.
+Luckily tooling has been written to accomodate for this and to make it easier.
+
+<div className="card px-4">
+TODO: Visual Demonstration of name enumeration
+</div>
+
+## Why not all names? {{ title: "Enumeration", id: "enumeration" }}
+
+ENS Resolution ([read more here](/resolution)) relies on smart-contracts & external logic to resolve from name to address.
+This means that ahead of time we don't know what names a user has. Notable exceptions include [first-layer](/glossary#first-layer) [.eth names](/registry/eth), and [wrapped names](/subnames/wrapper), these are on-chain, and indexable through scanning events on the appropriate contracts.
+Below you will find APIs for querying these names.
+
+## Guidelines
+
+When using one of the methods described below it is generally recommended to allow users to input a name using an [input box](todo-link) and to verify it resolves to the correct address upon user-completion.
+
+## Alchemy ([read more](todo-link)) {{ title: "Alchemy" }}
+
+The Alchemy platform has provided several endpoints for interacting with ENS names aswell as to query a list of names a user has.
+
+<CodeGroup title="Alchemy ENS">
+
+```tsx {{ title: 'Wagmi (React)', language: 'tsx' }}
+TODO: Code Snippet for the Graph
+```
+
+</CodeGroup>
+
+## The Graph ([read more](todo-link)) {{ title: "The Graph" }}
+
+The ENS Team has worked together closely with the graph to provide the [ENS Subgraph](todo-link). This subgraph indexes ENS name registrations & basic record info for names that are part of the [ETH Registrar]
+
+For more information see [why not all names are showing up](#enumeration).
+
+
+<CodeGroup title="Querying the Subgraph">
+
+```tsx {{ title: 'Wagmi (React)', language: 'tsx' }}
+TODO: Code Snippet for the Graph
+```
+
+</CodeGroup>
+
+
+## Basement.xyz ([read more](todo-link)) {{ title: "Basement" }}
+
+Something cool about basement here.
+
+For more information see [why not all names are showing up](#enumeration).
+
+<CodeGroup title="Querying Basement">
+
+```tsx {{ title: 'Wagmi (React)', language: 'tsx' }}
+TODO: Code Snippet for the Graph
+```
+
+</CodeGroup>

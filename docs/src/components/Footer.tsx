@@ -1,5 +1,6 @@
+'use client';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { usePathname } from 'next/navigation';
 import {
     FC,
     FormEventHandler,
@@ -136,13 +137,13 @@ function PageLink({ label, page, previous = false }) {
 }
 
 function PageNavigation() {
-    const router = useRouter();
+    const pathname = usePathname();
     const allPages = navigation
-        .find(([path, group]) => router.pathname.match(path) && group)[1]
+        .find(([path, group]) => pathname.match(path) && group)[1]
         .flatMap((group) => group.links);
     const currentPageIndex = allPages
         .filter((a) => a)
-        .findIndex((page) => page.href === router.pathname);
+        .findIndex((page) => page.href === pathname);
 
     if (currentPageIndex === -1) {
         return;
@@ -236,7 +237,7 @@ function SmallPrint() {
 export const Footer: FC<{
     mdxProperties: MdxPageProps;
 }> = ({ mdxProperties }) => {
-    const router = useRouter();
+    const pathname = usePathname();
 
     return (
         <footer className="w-full space-y-4 pb-16">
@@ -251,7 +252,7 @@ export const Footer: FC<{
                     <ContributeButton url={mdxProperties.filepath} />
                 </div>
                 <div className="w-fit">
-                    <Feedback key={router.pathname} />
+                    <Feedback key={pathname} />
                 </div>
             </div>
             {/* <PageNavigation /> */}

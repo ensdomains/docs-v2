@@ -1,0 +1,136 @@
+{/** @type {import('@/lib/mdxPageProps').MdxMetaProps} */}
+export const meta = {
+    description: '',
+    showDetailsSection: false,
+    contributors: [
+        'lucemans'
+    ]
+};
+
+# Quickstart
+
+Hey there 👋, this is the quickstart guide. If you want to learn the process checkout [everything about ENS in dApps](/web/).
+
+This quickstart guide assumes you have a basic understanding of **react, ethers, wagmi, tailwindcss, and web3**.
+
+## Setup
+
+<CodeGroup>
+
+```sh {{ title: "Connectkit", variant: "connectkit" }}
+npm install connectkit wagmi viem
+```
+
+```sh {{ title: "Rainbowkit", variant: "rainbowkit" }}
+npm install @rainbow-me/rainbowkit wagmi viem
+```
+
+```tsx {{ title: "Wagmi", variant: "wagmi" }}
+npm install wagmi viem
+```
+
+```tsx {{ title: "Ethers", variant: "ethers" }}
+npm install ethers
+```
+
+```tsx {{ title: "Viem", variant: "viem" }}
+npm install viem
+```
+
+```tsx {{ title: "Ethers.rs", variant: "rust" }}
+cargo add ethers
+```
+
+```tsx {{ title: "Go", variant: "go" }}
+go get 
+```
+
+</CodeGroup>
+
+## Showing the User Profile
+
+The below codesnippet demonstrates how you can create a basic UserProfile section that shows the users ENS name and avatar.
+The snippet leverages the [useAccount](https://wagmi.sh/react/hooks/useAccount), [useEnsName](https://wagmi.sh/react/hooks/useEnsName), and [useEnsAvatar](https://wagmi.sh/react/hooks/useEnsAvatar) hooks from wagmi.
+
+<div className="card h-24 flex items-center justify-center">
+    <div className="flex items-center gap-2">
+        <img
+            src="https://v3x.space/ens-docs/pfp.webp"
+            className="w-8 h-8 rounded-full"
+        />
+        <div className="flex flex-col gap-0 leading-3 pr-10">
+            <span className="font-bold">luc.eth</span>
+            <span>0x123...456</span>
+        </div>
+    </div>
+</div>
+
+<CodeGroup>
+
+```tsx {{ meta: "", variant: "rainbowkit" }}
+do thing
+```
+
+```tsx {{ meta: "focus=5:11" }}
+import { useAccount, useEnsName, useEnsAvatar } from 'wagmi';
+import { formatAddress } from 'ens-tools';
+
+export const UserProfile: FC = () => {
+    const { address } = useAccount();
+    const { data: ensName } = useEnsName({
+        address,
+    });
+    const { data: ensAvatar } = useEnsAvatar({
+        address,
+    });
+
+    return (
+        <div className="flex items-center gap-2">
+            <img
+                src={ensAvatar || 'https://v3x.space/ens-docs/pfp.webp'}
+                className="w-8 h-8 rounded-full"
+            />
+            <div className="flex flex-col gap-0 leading-3 pr-10">
+                {ensName && <span className="font-bold">{ensName}</span>}
+                <span>{formatAddress(address)}</span>
+            </div>
+        </div>
+    );
+};
+```
+
+</CodeGroup>
+
+## Name Lookups
+
+<div className="card w-full flex items-center justify-center flex-col p-4 not-prose">
+    <div className="flex flex-col">
+        <span>Find user</span>
+        <input
+            className="shadow-xl pl-2 rounded-md border"
+            placeholder="luc.eth"
+            value="luc.eth"
+        />
+        <div className="flex gap-1 mt-2 items-center h-fit">
+            <img
+                src="https://v3x.space/ens-docs/pfp.webp"
+                className="w-6 h-6 rounded-full"
+            />
+            <span>0x225...c3B5</span>
+        </div>
+    </div>
+</div>
+
+```ts
+
+```
+
+### Still not sure?
+
+Try reading the regular [docs](/web/) instead.
+
+<EmbedLink
+    title="Everything about ENS in dApps"
+    href="/web/"
+    description="Learn how to use ENS in your dApp, including how to Name and Avatars, lookuping up names, and how to use names in your smart contracts."
+/>

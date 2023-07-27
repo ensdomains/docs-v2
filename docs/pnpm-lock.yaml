@@ -47,6 +47,9 @@ dependencies:
   clsx:
     specifier: ^1.2.0
     version: 1.2.1
+  deepmerge-ts:
+    specifier: ^5.1.0
+    version: 5.1.0
   ens-tools:
     specifier: ^0.0.14
     version: 0.0.14(@wagmi/core@0.10.17)(ethers@5.7.2)(react@18.2.0)(swr@2.2.0)(wagmi@0.12.19)
@@ -2787,6 +2790,11 @@ packages:
   /deep-is@0.1.4:
     resolution: {integrity: sha512-oIPzksmTg4/MriiaYGO+okXDT7ztn/w3Eptv/+gSIdMdKsJo0u4CfYNFJPy+4SKMuCqGw2wxnA+URMg3t8a/bQ==}
     dev: true
+
+  /deepmerge-ts@5.1.0:
+    resolution: {integrity: sha512-eS8dRJOckyo9maw9Tu5O5RUi/4inFLrnoLkBe3cPfDMx3WZioXtmOew4TXQaxq7Rhl4xjDtR7c6x8nNTxOvbFw==}
+    engines: {node: '>=16.0.0'}
+    dev: false
 
   /define-properties@1.1.4:
     resolution: {integrity: sha512-uckOqKcfaVvtBdsVkdPv3XjveQJsNQqmhXgRi8uhvWWuPYZCNlzT8qAyblUgNoXdHdjMTzAqeGjAoli8f+bzPA==}

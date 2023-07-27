@@ -1,0 +1,140 @@
+{/** @type {import('@/lib/mdxPageProps').MdxMetaProps} */}
+export const meta = {
+    description: '',
+    contributors: [
+        'lucemans'
+    ]
+};
+
+# Getting Started
+
+The ENS Protocol aims to make it easy to use Ethereum. It does this to providing a simple way to use human-readable names to subsitute for long machine-redable addresses.
+
+On this page you will find everything it takes to get started with ENS, replace all addresses with ens names in your app, and allow finding users by name!
+
+<EmbedLink
+    href="/resolvers/"
+    title="In-Depth Resolution"
+    tag="Advanced"
+    description="To learn more about the resolution process, please read the Resolution section."
+/>
+
+## Getting the users Ethereum Address {{ navtitle: 'Ethereum Address', id: 'address', tag: 'Forward Lookup' }}
+
+The simplest thing you can do with ENS is to get the users Ethereum address. This is done by using the forward lookup method, which takes an ENS name and returns the address. You might use this for input boxes, 
+
+<div className="card px-8 py-4 flex justify-center gap-2">
+    <span>luc.eth</span>
+    <span>➡️</span>
+    <span>0x225...c3B5</span>
+</div>
+
+<CodeGroup title="Request">
+
+```tsx {{ title: 'Wagmi (React)', language: 'tsx', meta: 'focus=4:9', variant: 'wagmi' }}
+import { useAccount, useEnsName, useEnsAvatar } from 'wagmi';
+
+export const Name = () => {
+    const { data: ensName } = useEnsAddress({
+        address: 'luc.eth', // The name to lookup
+        chainId: 1, // The chainId to lookup on
+    });
+
+    return <div>{ensName || address}</div>;
+};
+```
+
+```ts {{ title: 'Ethers.js (TS)', variant: 'ethers' }}
+const address = await provider.lookupAddress('luc.eth');
+```
+
+```ts {{ title: 'Viem (TS)', variant: 'viem' }}
+import { normalize } from 'viem/ens';
+import { publicClient } from './client';
+
+const ensAddress = await publicClient.getEnsAddress({
+    name: normalize('luc.eth'),
+});
+```
+
+```rust {{ title: 'Ethers.rs (Rust)' }}
+let provider = Provider::<Http>::try_from("https://mainnet.infura.io/v3/...")?;
+
+let address = provider.lookup_address("luc.eth").await?;
+```
+
+</CodeGroup>
+
+## Multi-Chain Addresses (BTC, LTC, etc) {{ navtitle: 'Multi-Chain Addresses', label: 'Multi-Chain', id: 'multi-chain', tag: '', }}
+
+ENS Addresses arent just limited to Ethereum Addresses, instead it supports [SLIP-0044](https://github.com/satoshilabs/slips/blob/master/slip-0044.md), meaning you can also get other addresses such as BTC, LTC, etc.
+The standardization of multichain addresses was first introduced in [ENSIP-9](/ensips/ensip-9), and also [EIP-2304](https://eips.ethereum.org/EIPS/eip-2304).
+
+| Chain           | ID  |
+| --------------- | --- |
+| BTC             | 0   |
+| LTC             | 2   |
+| DOGE            | 3   |
+| Solana          | 501 |
+| Optimism        | 614 |
+| Polygon (Matic) | 966 |
+
+<div className="w-full flex items-center justify-center gap-1 -mt-14">
+    ... and many many more following
+    [SLIP-0044](https://github.com/satoshilabs/slips/blob/master/slip-0044.md)
+</div>
+
+<CodeGroup title="Multichain Address Lookup">
+
+```tsx {{ title: 'Wagmi (React)', language: 'tsx', meta: 'focus=4:9' }}
+import { useEnsMultichainAddress } from 'ens-tools/react';
+
+export const BitcoinAddress = () => {
+    const { address: btcAddress, chainId } = useEnsMultichainAddress({
+        name: 'luc.eth',
+        coinType: 1, // BTC
+    });
+
+    return <div>BTC: {btcAddress}</div>;
+};
+```
+
+```ts {{ title: 'Ethers.js (TS)' }}
+const resolver = await provider.getResolver('luc.eth');
+const btcAddress = await resolver?.getAddress(1);
+```
+
+</CodeGroup>
+
+## Reverse Lookup (Name ➡️ Address) {{ navtitle: 'Reverse Lookup', id: 'reverse-lookup', tag: 'Reverse Lookup' }}
+
+The reverse lookup method allows us to easily get the ENS name of an address. This removes the need for your app to have verbose addresses everywhere and allows you to simply show the users name!
+
+<div className="card px-8 py-4 flex justify-center gap-2">
+    <span className="w-fit">0x225...c3B5</span>
+    <span>➡️</span>
+    <span>luc.eth</span>
+</div>
+
+<CodeGroup title="Reverse Lookup">
+
+```tsx {{ title: 'Wagmi (React)', language: 'tsx', meta: 'focus=4:8' }}
+import { useEnsName } from 'wagmi';
+
+export const Name = () => {
+    const { data: name, chainId } = useEnsName({
+        address: '0x225f137127d9067788314bc7fcc1f36746a3c3B5',
+    });
+
+    return <div>Name: {name}</div>;
+};
+```
+
+```ts {{ title: 'Ethers.js (TS)' }}
+// 0x225f137127d9067788314bc7fcc1f36746a3c3B5 -> luc.eth
+const name = await provider.lookupAddress(
+    '0x225f137127d9067788314bc7fcc1f36746a3c3B5'
+);
+```
+
+</CodeGroup>

@@ -1,3 +1,5 @@
+'use client';
+// TODO: Move motion.header into a separate component to remove use client for the whole layout
 import { motion } from 'framer-motion';
 import { FC, ReactNode } from 'react';
 

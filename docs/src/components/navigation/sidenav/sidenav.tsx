@@ -1,11 +1,11 @@
-import { useRouter } from 'next/router';
+import { usePathname } from 'next/navigation';
 
 import { navigation } from '@/lib/headers';
 
 import { NavigationGroup } from './navgroup';
 
 export const Navigation = (properties) => {
-    const { pathname } = useRouter();
+    const pathname = usePathname();
 
     const foundNavigation = navigation.find(
         ([url, group]) => pathname.match(url) && group

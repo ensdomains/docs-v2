@@ -4,7 +4,7 @@
     "private": true,
     "scripts": {
         "dev": "next dev",
-        "build": "next build && next export",
+        "build": "next build",
         "start": "next start",
         "lint": "eslint -c .eslintrc.json --ext .jsx,.mdx,.tsx ./src",
         "typecheck": "tsc --noEmit"
@@ -25,6 +25,7 @@
         "astring": "^1.8.6",
         "autoprefixer": "^10.4.7",
         "clsx": "^1.2.0",
+        "deepmerge-ts": "^5.1.0",
         "ens-tools": "^0.0.14",
         "focus-visible": "^5.2.0",
         "framer-motion": "7.8.1",
