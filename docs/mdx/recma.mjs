@@ -62,8 +62,6 @@ const recmaExportCommit = () => {
                 console.error(error);
             });
 
-        console.log({ filePath, log });
-
         if (!log) return;
 
         tree.body.push({
