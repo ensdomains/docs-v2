@@ -1,20 +1,13 @@
-'use client';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import {
-    FC,
-    FormEventHandler,
-    ForwardedRef,
-    forwardRef,
-    useState,
-} from 'react';
+import { FC } from 'react';
 
 import { Button } from '@/components/Button';
-import { navigation } from '@/lib/headers';
+// import { navigation } from '@/lib/headers';
 import { MdxPageProps } from '@/lib/mdxPageProps';
 
-import { ContributeButton } from './contribute/ContributeButton';
-import { ContributorsSection } from './contribute/ContributorsSection';
+import { ContributeButton } from '../../contribute/ContributeButton';
+import { ContributorsSection } from '../../contribute/ContributorsSection';
+import { Feedback } from './Feedback';
 
 export const CheckIcon = (properties) => {
     return (
@@ -30,87 +23,6 @@ export const CheckIcon = (properties) => {
         </svg>
     );
 };
-
-function FeedbackButton(properties) {
-    return (
-        <button
-            type="submit"
-            className="px-3 text-sm font-medium text-zinc-600 transition hover:bg-zinc-900/2.5 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-white/5 dark:hover:text-white"
-            {...properties}
-        />
-    );
-}
-
-const FeedbackForm = forwardRef(
-    (
-        { onSubmit }: { onSubmit: FormEventHandler<HTMLFormElement> },
-        reference: ForwardedRef<HTMLFormElement>
-    ) => {
-        return (
-            <form
-                ref={reference}
-                onSubmit={onSubmit}
-                className="flex items-center justify-center gap-6 md:justify-start"
-            >
-                <p className="text-sm text-zinc-600 dark:text-zinc-400">
-                    Was this page helpful?
-                </p>
-                <div className="group grid h-8 grid-cols-[1fr,1px,1fr] overflow-hidden rounded-full border border-zinc-900/10 dark:border-white/10">
-                    <FeedbackButton data-response="yes">Yes</FeedbackButton>
-                    <div className="bg-zinc-900/10 dark:bg-white/10" />
-                    <FeedbackButton data-response="no">No</FeedbackButton>
-                </div>
-            </form>
-        );
-    }
-);
-
-const FeedbackThanks = forwardRef(
-    (_properties, reference: ForwardedRef<HTMLDivElement>) => {
-        return (
-            <div
-                ref={reference}
-                className="flex justify-center md:justify-start"
-            >
-                <div className="items-top flex h-fit gap-3 overflow-hidden rounded-lg bg-ens-50/50 py-3 pl-3 pr-4 text-sm text-ens-900 ring-1 ring-inset ring-ens-500/20 dark:bg-ens-500/5 dark:text-ens-200 dark:ring-ens-500/30">
-                    <CheckIcon className="h-5 w-5 flex-none fill-ens-500 stroke-white dark:fill-ens-200/20 dark:stroke-ens-200" />
-                    <div className="leading-5">
-                        <div>Thanks for your feedback!</div>
-                        <a
-                            href="mailto:info@ens.domains"
-                            className="block underline"
-                        >
-                            I have more feedback
-                        </a>
-                    </div>
-                </div>
-            </div>
-        );
-    }
-);
-
-function Feedback() {
-    const [submitted, setSubmitted] = useState(false);
-
-    function onSubmit(event) {
-        event.preventDefault();
-
-        // event.nativeEvent.submitter.dataset.response
-        // => "yes" or "no"
-
-        setSubmitted(true);
-    }
-
-    return (
-        <div className="relative">
-            {submitted ? (
-                <FeedbackThanks />
-            ) : (
-                <FeedbackForm onSubmit={onSubmit} />
-            )}
-        </div>
-    );
-}
 
 function PageLink({ label, page, previous = false }) {
     return (
@@ -136,41 +48,41 @@ function PageLink({ label, page, previous = false }) {
     );
 }
 
-function PageNavigation() {
-    const pathname = usePathname();
-    const allPages = navigation
-        .find(([path, group]) => pathname.match(path) && group)[1]
-        .flatMap((group) => group.links);
-    const currentPageIndex = allPages
-        .filter((a) => a)
-        .findIndex((page) => page.href === pathname);
+// function PageNavigation() {
+//     const pathname = usePathname();
+//     const allPages = navigation
+//         .find(([path, group]) => pathname.match(path) && group)[1]
+//         .flatMap((group) => group.links);
+//     const currentPageIndex = allPages
+//         .filter((a) => a)
+//         .findIndex((page) => page.href === pathname);
 
-    if (currentPageIndex === -1) {
-        return;
-    }
+//     if (currentPageIndex === -1) {
+//         return;
+//     }
 
-    const previousPage = allPages[currentPageIndex - 1];
-    const nextPage = allPages[currentPageIndex + 1];
+//     const previousPage = allPages[currentPageIndex - 1];
+//     const nextPage = allPages[currentPageIndex + 1];
 
-    if (!previousPage && !nextPage) {
-        return;
-    }
+//     if (!previousPage && !nextPage) {
+//         return;
+//     }
 
-    return (
-        <div className="flex">
-            {previousPage && (
-                <div className="flex flex-col items-start gap-3">
-                    <PageLink label="Previous" page={previousPage} previous />
-                </div>
-            )}
-            {nextPage && (
-                <div className="ml-auto flex flex-col items-end gap-3">
-                    <PageLink label="Next" page={nextPage} />
-                </div>
-            )}
-        </div>
-    );
-}
+//     return (
+//         <div className="flex">
+//             {previousPage && (
+//                 <div className="flex flex-col items-start gap-3">
+//                     <PageLink label="Previous" page={previousPage} previous />
+//                 </div>
+//             )}
+//             {nextPage && (
+//                 <div className="ml-auto flex flex-col items-end gap-3">
+//                     <PageLink label="Next" page={nextPage} />
+//                 </div>
+//             )}
+//         </div>
+//     );
+// }
 
 function TwitterIcon(properties) {
     return (
@@ -237,8 +149,6 @@ function SmallPrint() {
 export const Footer: FC<{
     mdxProperties: MdxPageProps;
 }> = ({ mdxProperties }) => {
-    const pathname = usePathname();
-
     return (
         <footer className="w-full space-y-4 pb-16">
             <div className="flex items-end justify-between">
@@ -252,7 +162,7 @@ export const Footer: FC<{
                     <ContributeButton url={mdxProperties.filepath} />
                 </div>
                 <div className="w-fit">
-                    <Feedback key={pathname} />
+                    <Feedback />
                 </div>
             </div>
             {/* <PageNavigation /> */}
