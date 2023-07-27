@@ -60,8 +60,6 @@ const recmaExportCommit = () => {
             })
             .catch((error) => {
                 console.error(error);
-
-                return;
             });
 
         console.log({ filePath, log });
