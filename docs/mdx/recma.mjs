@@ -51,7 +51,7 @@ const recmaExportCommit = () => {
                 format: { hash: '%h', date: '%at' },
             })
             .then((log) => {
-                if (log.total === 0) return { hash: 'undefined', date: 0 };
+                if (log.total === 0) return;
 
                 return {
                     hash: log.latest.hash,
@@ -61,10 +61,12 @@ const recmaExportCommit = () => {
             .catch((error) => {
                 console.error(error);
 
-                return { hash: 'undefined', date: 0 };
+                return;
             });
 
         console.log({ filePath, log });
+
+        if (!log) return;
 
         tree.body.push({
             type: 'ExportNamedDeclaration',

@@ -98,7 +98,7 @@ export const mdxPagePropsSchema = z
                     return { message: ctx.defaultError };
                 },
             }
-        ),
+        ).optional(),
     })
     .passthrough();
 
