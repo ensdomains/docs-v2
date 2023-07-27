@@ -11,7 +11,7 @@ export async function generateStaticParams() {
     console.log('pages', pages);
 
     return pages.map((slug) => ({
-        slug,
+        slug: [slug],
     }));
 }
 export default function Page({ params }: { params: { slug: string } }) {
