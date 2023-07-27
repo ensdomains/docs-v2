@@ -1,5 +1,5 @@
 // import { useEffect, useRef, useState } from 'react';
-
+'use client';
 import { useState } from 'react';
 
 /* eslint-disable jsx-a11y/media-has-caption */

@@ -1,3 +1,4 @@
+'use client';
 import { Tab } from '@headlessui/react';
 import clsx from 'clsx';
 import { motion } from 'framer-motion';

@@ -1,3 +1,4 @@
+'use client';
 import { useInView } from 'framer-motion';
 import { FC, PropsWithChildren, useEffect, useRef } from 'react';
 

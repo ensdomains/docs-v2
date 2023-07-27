@@ -1,5 +1,7 @@
+import { generate } from 'astring';
 import { mdxAnnotations } from 'mdx-annotations';
-import recmaNextjsStaticProps from 'recma-nextjs-static-props';
+import { writeFile } from 'node:fs/promises';
+// import recmaNextjsStaticProps from 'recma-nextjs-static-props';
 import { simpleGit } from 'simple-git';
 
 function recmaRemoveNamedExports() {
@@ -43,6 +45,23 @@ const recmaExportFilepath = () => {
         });
     };
 };
+
+/**
+ * @type {import('unified').Plugin<[], import('estree').Program>}
+ */
+const recmaExportFile = () => {
+    return async (tree, file) => {
+        const string = generate(tree);
+
+        console.log('mdx file', string);
+        // filepath example: file.path = '/home/jakob/dev/v3xlabs/docs-v2/docs/app/FILENAME.mdx';
+        // instruction: Save string to a file using fs/promises at file.path but change /app/ to /app-output/
+        // Write the code bellow
+
+        await writeFile(file.path.replace('/app/', '/app-output/'), string);
+    };
+};
+
 /** @type {import('simple-git').SimpleGit} */
 let git;
 
@@ -53,6 +72,8 @@ const recmaExportCommit = () => {
     return async (tree, file) => {
         const filePath = file.path;
 
+        console.log({ filePath });
+
         if (!git) git = simpleGit();
 
         const log = await git
@@ -61,10 +82,15 @@ const recmaExportCommit = () => {
                 maxCount: 1,
                 format: { hash: '%h', date: '%at' },
             })
-            .then((log) => ({
-                hash: log.latest.hash,
-                date: Number(log.latest.date) * 1000,
-            }))
+            .then((log) => {
+                if (log.total === 0)
+                    return { hash: undefined, date: undefined };
+
+                return {
+                    hash: log.latest.hash,
+                    date: Number(log.latest.date) * 1000,
+                };
+            })
             .catch((error) => {
                 console.error(error);
 
@@ -141,17 +167,18 @@ export const recmaPlugins = [
      * Add an `export const filepath` to MDX with the relative path to the file.
      */
     recmaExportFilepath,
-    /**
-     * Add an `export const commit` to MDX with the latest commit hash and date.
-     */
-    recmaExportCommit,
-    /**
-     * Remove named exports from MDX.
-     */
-    recmaRemoveNamedExports,
-    /**
-     * Add an `export const getStaticProps` to MDX with all top level identifiers.
-     * @see https://github.com/remcohaszing/recma-nextjs-static-props
-     */
-    recmaNextjsStaticProps,
+    // /**
+    //  * Add an `export const commit` to MDX with the latest commit hash and date.
+    //  */
+    // recmaExportCommit,
+    // /**
+    //  * Remove named exports from MDX.
+    //  */
+    // recmaRemoveNamedExports,
+    // /**
+    //  * Add an `export const getStaticProps` to MDX with all top level identifiers.
+    //  * @see https://github.com/remcohaszing/recma-nextjs-static-props
+    //  */
+    // recmaNextjsStaticProps,
+    // recmaExportFile,
 ];

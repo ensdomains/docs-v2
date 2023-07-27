@@ -11,7 +11,7 @@ const mdxOptions = {
         remarkPlugins,
         rehypePlugins,
         recmaPlugins,
-        providerImportSource: '@mdx-js/react',
+        // providerImportSource: '@mdx-js/react',
     },
 };
 
@@ -21,6 +21,7 @@ const nextConfig = {
     pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'mdx'],
     experimental: {
         scrollRestoration: true,
+        // mdxRs: true,
     },
     images: {
         unoptimized: true,
