@@ -1,20 +1,6 @@
-import { generate } from 'astring';
 import { mdxAnnotations } from 'mdx-annotations';
-import { writeFile } from 'node:fs/promises';
 // import recmaNextjsStaticProps from 'recma-nextjs-static-props';
 import { simpleGit } from 'simple-git';
-
-function recmaRemoveNamedExports() {
-    return (tree) => {
-        tree.body = tree.body.map((node) => {
-            if (node.type === 'ExportNamedDeclaration') {
-                return node.declaration;
-            }
-
-            return node;
-        });
-    };
-}
 
 /**
  * @type {import('unified').Plugin<[], import('estree').Program>}
@@ -43,22 +29,6 @@ const recmaExportFilepath = () => {
                 ],
             },
         });
-    };
-};
-
-/**
- * @type {import('unified').Plugin<[], import('estree').Program>}
- */
-const recmaExportFile = () => {
-    return async (tree, file) => {
-        const string = generate(tree);
-
-        console.log('mdx file', string);
-        // filepath example: file.path = '/home/jakob/dev/v3xlabs/docs-v2/docs/app/FILENAME.mdx';
-        // instruction: Save string to a file using fs/promises at file.path but change /app/ to /app-output/
-        // Write the code bellow
-
-        await writeFile(file.path.replace('/app/', '/app-output/'), string);
     };
 };
 
@@ -144,17 +114,6 @@ const recmaExportCommit = () => {
     };
 };
 
-// /**
-//  * @type {import('unified').Plugin<[], import('estree').Program>}
-//  */
-// export const recmaSnapshotPlugin = () => {
-//     return (tree, file) => {
-
-//         if (tree.)
-
-//     };
-// };
-
 export const recmaPlugins = [
     /**
      * Add support for annotations to MDX.
@@ -170,14 +129,4 @@ export const recmaPlugins = [
      * Add an `export const commit` to MDX with the latest commit hash and date.
      */
     recmaExportCommit,
-    // /**
-    //  * Remove named exports from MDX.
-    //  */
-    // recmaRemoveNamedExports,
-    // /**
-    //  * Add an `export const getStaticProps` to MDX with all top level identifiers.
-    //  * @see https://github.com/remcohaszing/recma-nextjs-static-props
-    //  */
-    // recmaNextjsStaticProps,
-    // recmaExportFile,
 ];
