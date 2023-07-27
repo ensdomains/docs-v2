@@ -45,7 +45,7 @@ function ActivePageMarker({ group, pathname }) {
     return (
         <motion.div
             layout
-            className="bg-ens-500 absolute left-2 h-6 w-px"
+            className="absolute left-2 h-6 w-px bg-ens-500"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1, transition: { delay: 0.2 } }}
             exit={{ opacity: 0 }}
@@ -90,7 +90,7 @@ function VisibleSectionHighlight({ group, pathname }) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1, transition: { delay: 0.2 } }}
             exit={{ opacity: 0 }}
-            className="bg-zinc-800/2.5 dark:bg-white/2.5 absolute inset-x-0 top-0 will-change-transform"
+            className="absolute inset-x-0 top-0 bg-zinc-800/2.5 will-change-transform dark:bg-white/2.5"
             style={{ borderRadius: 8, height, top }}
         />
     );
@@ -150,7 +150,7 @@ export const NavigationGroup = ({ group, className }) => {
                                 <span>{link.title}</span>
                                 {link.external && <FiExternalLink />}
                                 {link.wip && (
-                                    <div className="text-2xs rounded-md border bg-slate-100 px-2 text-slate-500">
+                                    <div className="rounded-md border bg-slate-100 px-2 text-2xs text-slate-500">
                                         WIP
                                     </div>
                                 )}

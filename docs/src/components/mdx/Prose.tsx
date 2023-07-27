@@ -5,7 +5,7 @@ export const Prose: FC<{
     as?: 'article';
     className?: string;
     children?: any;
-}> = ({ as, className, ...properties }) => {
+}> = ({ className, ...properties }) => {
     return (
         <article
             className={clsx(className, 'prose dark:prose-invert')}
