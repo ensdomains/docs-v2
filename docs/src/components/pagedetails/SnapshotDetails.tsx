@@ -70,13 +70,24 @@ export const SnapshotDetails: FC<{
         return <></>;
     }
 
-    console.log(snapshotData);
-
     return (
         <div>
-            <div className="border-ens-dao-400 mb-2 border-b font-bold">
-                Results
-            </div>
+            <a
+                href={
+                    'https://snapshot.org/#/ens.eth/proposal/' + data.snapshot
+                }
+                target="_blank"
+                className="border-ens-dao-400 mb-2 flex justify-between border-b font-bold"
+            >
+                <div>Results</div>
+                <div>
+                    <img
+                        src="/icons/snapshot.png"
+                        alt="snapshot"
+                        className="h-6"
+                    />
+                </div>
+            </a>
             <div className="text-xs leading-6">
                 <div className="flex items-center justify-between">
                     <div>Proposer</div>

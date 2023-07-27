@@ -10,6 +10,7 @@ import { MdxPageProps } from '@/lib/mdxPageProps';
 import { Navigation } from './navigation/sidenav/sidenav';
 import { PageDetails } from './pagedetails/PageDetails';
 import { ProposalData, SnapshotDetails } from './pagedetails/SnapshotDetails';
+import { TallyDetails } from './pagedetails/TallyDetails';
 
 export const Layout: FC<{
     children: ReactNode;
@@ -37,9 +38,13 @@ export const Layout: FC<{
                                     <PageDetails
                                         mdxProperties={mdxProperties}
                                     />
-                                    {mdxProperties.meta.proposal && (
+                                    {mdxProperties.meta?.proposal?.snapshot && (
                                         <SnapshotDetails
-                                            snapshotData={snapshotData}
+                                            data={mdxProperties.meta.proposal}
+                                        />
+                                    )}
+                                    {mdxProperties.meta?.proposal?.tally && (
+                                        <TallyDetails
                                             data={mdxProperties.meta.proposal}
                                         />
                                     )}
