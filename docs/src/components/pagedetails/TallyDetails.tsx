@@ -3,7 +3,7 @@
 
 import { formatAddress } from 'ens-tools';
 import { gql, request } from 'graphql-request';
-import { FC, useEffect, useState } from 'react';
+import { FC } from 'react';
 
 import { MdxDAOProposalProps } from '@/lib/mdxPageProps';
 
@@ -84,9 +84,10 @@ export type TallyProposalData = {
     voteStats: { percent: string; support: string; weight: string }[];
 };
 
-export const fetchTallyData = async (proposal?: string) =>
-    proposal &&
-    request<{ proposal: TallyProposalData }>(
+export const fetchTallyData = async (proposal?: string) => {
+    if (!proposal) return;
+
+    const data = await request<{ proposal: TallyProposalData }>(
         'https://api.tally.xyz/query',
         query,
         {
@@ -98,6 +99,9 @@ export const fetchTallyData = async (proposal?: string) =>
             'Api-Key': API_KEY,
         }
     );
+
+    return data.proposal;
+};
 
 const large2Smol = (x: number) => {
     let newValue = x;
@@ -114,14 +118,8 @@ const large2Smol = (x: number) => {
 
 export const TallyDetails: FC<{
     data: MdxDAOProposalProps;
-}> = ({ data }) => {
-    const [tallyData, setTallyData] = useState<TallyProposalData>();
-
-    useEffect(() => {
-        if (!tallyData) {
-            fetchTallyData(data.tally).then((v) => setTallyData(v.proposal));
-        }
-    }, [0]);
+}> = async ({ data }) => {
+    const tallyData = await fetchTallyData(data.tally);
 
     if (!tallyData) {
         return <></>;
@@ -132,7 +130,7 @@ export const TallyDetails: FC<{
             <a
                 href={'https://www.tally.xyz/gov/ens/proposal/' + data.tally}
                 target="_blank"
-                className="mb-2 flex justify-between border-b border-ens-dao-400 font-bold"
+                className="border-ens-dao-400 mb-2 flex justify-between border-b font-bold"
             >
                 <div>Results</div>
                 <div>

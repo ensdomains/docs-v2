@@ -1,11 +1,8 @@
-'use client';
-// TODO: Figure out how to make this happen server-side
-
-import { formatAddress } from 'ens-tools';
 import { gql, request } from 'graphql-request';
-import { FC, useEffect, useState } from 'react';
 
 import { MdxDAOProposalProps } from '@/lib/mdxPageProps';
+
+import { TruncatedAddress } from '../TruncatedAddress';
 
 // eslint-disable-next-line prettier/prettier, unicorn/template-indent
 const query = gql`
@@ -45,30 +42,26 @@ export type ProposalData = {
     scores_total: number;
 };
 
-export const fetchSnapshotData = async (proposal?: string) =>
-    proposal &&
-    request<{ proposals: ProposalData }>(
+export const fetchSnapshotData = async (proposal?: string) => {
+    if (!proposal) return;
+
+    const data = await request<{ proposals: ProposalData[] }>(
         'https://hub.snapshot.org/graphql',
         query,
         { proposal }
     );
 
-export const SnapshotDetails: FC<{
-    data: MdxDAOProposalProps;
-}> = ({ data }) => {
-    const [snapshotData, setSnapshotData] = useState<ProposalData>();
+    return data.proposals[0] as ProposalData;
+};
 
-    useEffect(() => {
-        if (!snapshotData) {
-            fetchSnapshotData(data.snapshot).then((v) =>
-                setSnapshotData(v.proposals[0])
-            );
-        }
-    }, [0]);
-
-    if (!snapshotData) {
-        return <></>;
-    }
+export const SnapshotDetails = async ({
+    data,
+}: // snapshotData,
+    {
+        data: MdxDAOProposalProps;
+        snapshotData: ProposalData;
+    }) => {
+    const snapshotData = await fetchSnapshotData(data.snapshot);
 
     return (
         <div>
@@ -77,7 +70,7 @@ export const SnapshotDetails: FC<{
                     'https://snapshot.org/#/ens.eth/proposal/' + data.snapshot
                 }
                 target="_blank"
-                className="mb-2 flex justify-between border-b border-ens-dao-400 font-bold"
+                className="border-ens-dao-400 mb-2 flex justify-between border-b font-bold"
             >
                 <div>Results</div>
                 <div>
@@ -92,7 +85,7 @@ export const SnapshotDetails: FC<{
                 <div className="flex items-center justify-between">
                     <div>Proposer</div>
                     <div className="truncate pl-4">
-                        {formatAddress(snapshotData?.author)}
+                        <TruncatedAddress address={snapshotData?.author} />
                     </div>
                 </div>
 
@@ -103,24 +96,22 @@ export const SnapshotDetails: FC<{
                                 <div>{choice}</div>
 
                                 <div>
-                                    {`${
-                                        Math.round(
-                                            (snapshotData.scores[index] /
-                                                snapshotData.scores_total) *
-                                                10_000
-                                        ) / 100
-                                    }%`}
+                                    {`${Math.round(
+                                        (snapshotData.scores[index] /
+                                            snapshotData.scores_total) *
+                                        10_000
+                                    ) / 100
+                                        }%`}
                                 </div>
                             </div>
                             <div className="h-2 w-full overflow-hidden rounded-md bg-gray-300">
                                 <div
                                     className="h-full w-0 bg-blue-500"
                                     style={{
-                                        width: `${
-                                            (snapshotData.scores[index] /
+                                        width: `${(snapshotData.scores[index] /
                                                 snapshotData.scores_total) *
                                             100
-                                        }%`,
+                                            }%`,
                                     }}
                                 ></div>
                             </div>

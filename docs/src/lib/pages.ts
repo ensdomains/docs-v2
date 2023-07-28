@@ -16,7 +16,7 @@ export const getAllPagesSlug = () => {
             if (directory === contentDirectory && file === 'index.mdx')
                 continue;
 
-            console.log({ file, directory });
+            // console.log({ file, directory });
             filelist = fs.statSync(join(directory, file)).isDirectory()
                 ? walkSync(join(directory, file), filelist)
                 : filelist.concat(

@@ -1,6 +1,7 @@
 import { ResolvingMetadata } from 'next';
 
 import { Layout } from '@/components/Layout';
+import { fetchSnapshotData } from '@/components/pagedetails/SnapshotDetails';
 import { createMetadata } from '@/lib/metadata';
 import { getPageBySlug } from '@/lib/pages';
 

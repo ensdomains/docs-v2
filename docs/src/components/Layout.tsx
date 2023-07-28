@@ -31,6 +31,7 @@ export const Layout: FC<{
                                     />
                                     {mdxProperties.meta?.proposal?.snapshot && (
                                         <SnapshotDetails
+                                            snapshotData={snapshotData}
                                             data={mdxProperties.meta.proposal}
                                         />
                                     )}

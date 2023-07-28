@@ -94,7 +94,7 @@ function useTabGroupProperties(
 
         if (shouldFocusOnIndex < 0) return;
 
-        console.log('PING CHANGE', shouldFocusOnIndex);
+        // console.log('PING CHANGE', shouldFocusOnIndex);
         setSelectedIndex(shouldFocusOnIndex);
     }, [activePreset, codes]);
 
@@ -104,7 +104,7 @@ function useTabGroupProperties(
         selectedIndex,
         onChange: (newSelectedIndex) => {
             preventLayoutShift(() => {
-                console.log({ v: codes[newSelectedIndex].variant }, codes);
+                // console.log({ v: codes[newSelectedIndex].variant }, codes);
                 setSelectedIndex(newSelectedIndex);
                 // setActivePreset(codes[newSelectedIndex].data.language);
                 // addPreferredLanguage(availableLanguages[newSelectedIndex])
@@ -407,7 +407,7 @@ export const CodeGroup: FC<PropsWithChildren & CodeGroupProperties> = ({
                 const indexOfBVariant = tags.indexOf(b.variant);
                 const indexOfAVariant = tags.indexOf(a.variant);
 
-                console.log(config.tags);
+                // console.log(config.tags);
 
                 if (indexOfAVariant == -1) return 1;
 
