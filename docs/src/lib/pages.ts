@@ -41,7 +41,6 @@ export const getPageBySlug = async (
     Page: (properties: MDXProps) => JSX.Element;
     pageProperties: MdxPageProperties;
 }> => {
-    const pageModule = await import(`../../content/${slug}.mdx`);
     const { default: Page, ...rawPageProperties } = (await import(
         `../../content/${slug}.mdx`
     )) as MdxPageProperties & {
