@@ -57,10 +57,10 @@ export const fetchSnapshotData = async (proposal?: string) => {
 export const SnapshotDetails = async ({
     data,
 }: // snapshotData,
-    {
-        data: MdxDAOProposalProps;
-        snapshotData: ProposalData;
-    }) => {
+{
+    data: MdxDAOProposalProps;
+    snapshotData: ProposalData;
+}) => {
     const snapshotData = await fetchSnapshotData(data.snapshot);
 
     return (
@@ -96,22 +96,24 @@ export const SnapshotDetails = async ({
                                 <div>{choice}</div>
 
                                 <div>
-                                    {`${Math.round(
-                                        (snapshotData.scores[index] /
-                                            snapshotData.scores_total) *
-                                        10_000
-                                    ) / 100
-                                        }%`}
+                                    {`${
+                                        Math.round(
+                                            (snapshotData.scores[index] /
+                                                snapshotData.scores_total) *
+                                                10_000
+                                        ) / 100
+                                    }%`}
                                 </div>
                             </div>
                             <div className="h-2 w-full overflow-hidden rounded-md bg-gray-300">
                                 <div
                                     className="h-full w-0 bg-blue-500"
                                     style={{
-                                        width: `${(snapshotData.scores[index] /
+                                        width: `${
+                                            (snapshotData.scores[index] /
                                                 snapshotData.scores_total) *
                                             100
-                                            }%`,
+                                        }%`,
                                     }}
                                 ></div>
                             </div>

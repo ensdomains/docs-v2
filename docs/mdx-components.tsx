@@ -1,6 +1,5 @@
 import type { MDXComponents } from 'mdx/types';
 import { default as a } from 'next/link';
-import { FC } from 'react';
 
 import { Button } from '@/components/Button';
 import { Code, Pre } from '@/components/mdx/Code';
@@ -19,7 +18,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     return {
         // Allows customizing built-in components, e.g. to add styling.
         // h1: ({ children }) => <h1 style={{ fontSize: "100px" }}>{children}</h1>,
-        a: a as FC,
+        a: a as any,
         h2,
         Note,
         Row,
@@ -27,12 +26,12 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         Properties,
         Property,
         code: Code,
-        CodeGroup,
-        pre: Pre,
-        button: Button,
-        Button,
+        CodeGroup: CodeGroup as any,
+        pre: Pre as any,
+        button: Button as any,
+        Button: Button as any,
         VideoComponent,
-        EmbedLink,
+        EmbedLink: EmbedLink as any,
         ...components,
     };
 }
