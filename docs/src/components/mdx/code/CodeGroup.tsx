@@ -1,3 +1,4 @@
+'use client';
 import { Tab } from '@headlessui/react';
 import clsx from 'clsx';
 import { motion } from 'framer-motion';
@@ -18,11 +19,7 @@ import { FiPaperclip } from 'react-icons/fi';
 
 import { ClipboardIcon } from '@/components/icons/ClipboardIcon';
 import { Tag } from '@/components/Tag';
-import {
-    PresetConfig,
-    useActivePreset,
-    useActivePresetConfig,
-} from '@/lib/presets';
+import { PresetConfig, useActivePresetConfig } from '@/lib/presets';
 
 import { CodeGroupHeader } from '../Code';
 import { getCodeData, naiveGetVariant } from './getCodeData';
@@ -85,8 +82,7 @@ function useTabGroupProperties(
         variant: string;
     }[]
 ) {
-    const { setActivePreset } = useActivePreset();
-    const { activePreset, config } = useActivePresetConfig();
+    const { activePreset } = useActivePresetConfig();
     const [selectedIndex, setSelectedIndex] = useState(0);
 
     const { positionRef, preventLayoutShift } = usePreventLayoutShift();
@@ -136,7 +132,7 @@ function CodePanelHeader({ tag, label }) {
     }
 
     return (
-        <div className="border-b-white/7.5 bg-white/2.5 dark:bg-white/1 flex h-9 items-center gap-2 border-y border-t-transparent px-4 dark:border-b-white/5">
+        <div className="flex h-9 items-center gap-2 border-y border-b-white/7.5 border-t-transparent bg-white/2.5 px-4 dark:border-b-white/5 dark:bg-white/1">
             {tag && (
                 <div className="dark flex">
                     <Tag variant="small">{tag}</Tag>
@@ -212,7 +208,7 @@ const CodePanel: FC<CodePanelProperties & PropsWithChildren> = ({
 
     return (
         // eslint-disable-next-line tailwindcss/no-custom-classname
-        <div className="dark:bg-white/2.5 group">
+        <div className="group dark:bg-white/2.5">
             <CodePanelHeader
                 tag={child.props.tag ?? tag}
                 label={child.props.label ?? label}
@@ -309,10 +305,10 @@ function CopyButton({ code }) {
             <motion.button
                 type="button"
                 className={clsx(
-                    'group/button text-2xs absolute right-4 top-3.5 h-7 w-auto overflow-hidden whitespace-nowrap rounded-full py-1 pl-2 pr-3 font-medium opacity-0 backdrop-blur transition focus:opacity-100 group-hover:opacity-100',
+                    'group/button absolute right-4 top-3.5 h-7 w-auto overflow-hidden whitespace-nowrap rounded-full py-1 pl-2 pr-3 text-2xs font-medium opacity-0 backdrop-blur transition focus:opacity-100 group-hover:opacity-100',
                     copied
-                        ? 'bg-ens-400/10 ring-ens-400/20 ring-1 ring-inset'
-                        : 'hover:bg-white/7.5 dark:bg-white/2.5 bg-white/5 dark:hover:bg-white/5'
+                        ? 'bg-ens-400/10 ring-1 ring-inset ring-ens-400/20'
+                        : 'bg-white/5 hover:bg-white/7.5 dark:bg-white/2.5 dark:hover:bg-white/5'
                 )}
                 onClick={() => {
                     window.navigator.clipboard.writeText(code).then(() => {
@@ -340,7 +336,7 @@ function CopyButton({ code }) {
                     <motion.span
                         aria-hidden={!copied}
                         className={clsx(
-                            'text-ens-400 pointer-events-none flex w-full items-center justify-end gap-1 whitespace-nowrap transition duration-300',
+                            'pointer-events-none flex w-full items-center justify-end gap-1 whitespace-nowrap text-ens-400 transition duration-300',
                             !copied && 'opacity-0'
                         )}
                         initial={{ y: 0 }}
@@ -364,7 +360,6 @@ export const CodeGroupPanels: FC<{
     }[];
 }> = ({ entries, ...properties }) => {
     const hasTabs = entries.length > 1;
-    const { activePreset, config } = useActivePresetConfig();
 
     if (hasTabs) {
         return (
@@ -393,10 +388,6 @@ export const CodeGroup: FC<PropsWithChildren & CodeGroupProperties> = ({
     title,
     ...properties
 }) => {
-    const languages = Children.map(children, (child: ReactElement) => {
-        return getPanelTitle(child.props);
-    });
-
     const { activePreset, config } = useActivePresetConfig();
 
     const __children = useMemo(

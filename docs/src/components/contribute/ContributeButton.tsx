@@ -1,4 +1,4 @@
-import { useRouter } from 'next/router';
+import { usePathname } from 'next/navigation';
 import { FC } from 'react';
 import { FiGithub } from 'react-icons/fi';
 
@@ -6,7 +6,7 @@ const ROOT_REPO = 'ensdomains/docs-v2';
 
 export const ContributeButton: FC<{ url?: string }> = ({ url }) => {
     if (!url) {
-        const { asPath } = useRouter();
+        const asPath = usePathname();
 
         url = `/pages${asPath}.mdx`;
         console.warn(

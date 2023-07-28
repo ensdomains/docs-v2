@@ -1,3 +1,4 @@
+'use client';
 import { Tab } from '@headlessui/react';
 import clsx from 'clsx';
 import { motion } from 'framer-motion';
@@ -46,13 +47,13 @@ export const CodeGroupHeader: FC<
                                 className={clsx(
                                     'relative flex items-center gap-2 border-b-4 px-0 py-3 transition-all focus:[&:not(:focus-visible)]:outline-none',
                                     childIndex === selectedIndex
-                                        ? 'border-ens-500 text-ens-400 px-3.5'
+                                        ? 'border-ens-500 px-3.5 text-ens-400'
                                         : 'border-transparent text-zinc-400 hover:text-zinc-300'
                                 )}
                             >
                                 {childIndex === selectedIndex && (
                                     <motion.div
-                                        className="bg-ens-500/10 absolute inset-0"
+                                        className="absolute inset-0 bg-ens-500/10"
                                         layoutId={`code-group-header-${codeIndex}`}
                                     />
                                 )}

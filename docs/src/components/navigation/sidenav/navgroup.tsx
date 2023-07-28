@@ -1,7 +1,8 @@
+'use client';
 import clsx from 'clsx';
 import { AnimatePresence, motion, useIsPresent } from 'framer-motion';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { usePathname } from 'next/navigation';
 import { useRef } from 'react';
 import { FiExternalLink } from 'react-icons/fi';
 
@@ -100,13 +101,13 @@ export const NavigationGroup = ({ group, className }) => {
     // state, so that the state does not change during the close animation.
     // The state will still update when we re-open (re-render) the navigation.
     const isInsideMobileNavigation = useIsInsideMobileNavigation();
-    const [router, sections] = useInitialValue(
-        [useRouter(), useSectionStore((s) => s.sections)],
+    const [pathname, sections] = useInitialValue(
+        [usePathname(), useSectionStore((s) => s.sections)],
         isInsideMobileNavigation
     );
 
     const isActiveGroup =
-        group.links.findIndex((link) => link.href === router.pathname) !== -1;
+        group.links.findIndex((link) => link.href === pathname) !== -1;
 
     return (
         <li className={clsx('relative mt-6', className)}>
@@ -121,7 +122,7 @@ export const NavigationGroup = ({ group, className }) => {
                     {isActiveGroup && (
                         <VisibleSectionHighlight
                             group={group}
-                            pathname={router.pathname}
+                            pathname={pathname}
                         />
                     )}
                 </AnimatePresence>
@@ -131,10 +132,7 @@ export const NavigationGroup = ({ group, className }) => {
                 />
                 <AnimatePresence initial={false}>
                     {isActiveGroup && (
-                        <ActivePageMarker
-                            group={group}
-                            pathname={router.pathname}
-                        />
+                        <ActivePageMarker group={group} pathname={pathname} />
                     )}
                 </AnimatePresence>
                 <ul className="border-l border-transparent">
@@ -147,7 +145,7 @@ export const NavigationGroup = ({ group, className }) => {
                             <NavLink
                                 tag={undefined}
                                 href={link.href}
-                                active={link.href === router.pathname}
+                                active={link.href === pathname}
                             >
                                 <span>{link.title}</span>
                                 {link.external && <FiExternalLink />}
@@ -158,7 +156,7 @@ export const NavigationGroup = ({ group, className }) => {
                                 )}
                             </NavLink>
                             <AnimatePresence mode="popLayout" initial={false}>
-                                {link.href === router.pathname &&
+                                {link.href === pathname &&
                                     sections.length > 0 && (
                                         <motion.ul
                                             role="list"

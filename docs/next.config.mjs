@@ -11,16 +11,18 @@ const mdxOptions = {
         remarkPlugins,
         rehypePlugins,
         recmaPlugins,
-        providerImportSource: '@mdx-js/react',
+        // providerImportSource: '@mdx-js/react',
     },
 };
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    output: 'export',
     reactStrictMode: true,
     pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'mdx'],
     experimental: {
-        scrollRestoration: true,
+        scrollRestoration: process.env.NODE_ENV === 'production',
+        // mdxRs: true,
     },
     images: {
         unoptimized: true,

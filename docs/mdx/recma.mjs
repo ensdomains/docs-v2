@@ -1,18 +1,6 @@
 import { mdxAnnotations } from 'mdx-annotations';
-import recmaNextjsStaticProps from 'recma-nextjs-static-props';
+// import recmaNextjsStaticProps from 'recma-nextjs-static-props';
 import { simpleGit } from 'simple-git';
-
-function recmaRemoveNamedExports() {
-    return (tree) => {
-        tree.body = tree.body.map((node) => {
-            if (node.type === 'ExportNamedDeclaration') {
-                return node.declaration;
-            }
-
-            return node;
-        });
-    };
-}
 
 /**
  * @type {import('unified').Plugin<[], import('estree').Program>}
@@ -43,6 +31,7 @@ const recmaExportFilepath = () => {
         });
     };
 };
+
 /** @type {import('simple-git').SimpleGit} */
 let git;
 
@@ -61,15 +50,19 @@ const recmaExportCommit = () => {
                 maxCount: 1,
                 format: { hash: '%h', date: '%at' },
             })
-            .then((log) => ({
-                hash: log.latest.hash,
-                date: Number(log.latest.date) * 1000,
-            }))
+            .then((log) => {
+                if (log.total === 0) return;
+
+                return {
+                    hash: log.latest.hash,
+                    date: Number(log.latest.date) * 1000,
+                };
+            })
             .catch((error) => {
                 console.error(error);
-
-                return { hash: undefined, date: undefined };
             });
+
+        if (!log) return;
 
         tree.body.push({
             type: 'ExportNamedDeclaration',
@@ -119,17 +112,6 @@ const recmaExportCommit = () => {
     };
 };
 
-// /**
-//  * @type {import('unified').Plugin<[], import('estree').Program>}
-//  */
-// export const recmaSnapshotPlugin = () => {
-//     return (tree, file) => {
-
-//         if (tree.)
-
-//     };
-// };
-
 export const recmaPlugins = [
     /**
      * Add support for annotations to MDX.
@@ -145,13 +127,4 @@ export const recmaPlugins = [
      * Add an `export const commit` to MDX with the latest commit hash and date.
      */
     recmaExportCommit,
-    /**
-     * Remove named exports from MDX.
-     */
-    recmaRemoveNamedExports,
-    /**
-     * Add an `export const getStaticProps` to MDX with all top level identifiers.
-     * @see https://github.com/remcohaszing/recma-nextjs-static-props
-     */
-    recmaNextjsStaticProps,
 ];

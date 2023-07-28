@@ -23,13 +23,20 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   },
   "include": [
     "src/next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"
-, "src/components/SectionProvider.jsx"  ],
+    "**/*.tsx",
+    "src/components/SectionProvider.jsx",
+    ".next/types/**/*.ts"
+  ],
   "exclude": [
     "node_modules"
   ]

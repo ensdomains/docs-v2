@@ -78,27 +78,29 @@ export const mdxPagePropsSchema = z
                 return { message: ctx.defaultError };
             },
         }),
-        commit: z.object(
-            {
-                hash: z.string().optional(),
-                date: z.number().optional(),
-            },
-            {
-                errorMap: (error, ctx) => {
-                    if (
-                        error.code === z.ZodIssueCode.invalid_type &&
-                        error.received === 'undefined'
-                    ) {
-                        return {
-                            message:
-                                'Missing commit variable from recmaExportCommit plugin',
-                        };
-                    }
-
-                    return { message: ctx.defaultError };
+        commit: z
+            .object(
+                {
+                    hash: z.string().optional(),
+                    date: z.number().optional(),
                 },
-            }
-        ),
+                {
+                    errorMap: (error, ctx) => {
+                        if (
+                            error.code === z.ZodIssueCode.invalid_type &&
+                            error.received === 'undefined'
+                        ) {
+                            return {
+                                message:
+                                    'Missing commit variable from recmaExportCommit plugin',
+                            };
+                        }
+
+                        return { message: ctx.defaultError };
+                    },
+                }
+            )
+            .optional(),
     })
     .passthrough();
 

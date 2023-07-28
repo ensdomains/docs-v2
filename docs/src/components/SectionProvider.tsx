@@ -1,3 +1,4 @@
+'use client';
 import {
     createContext,
     RefObject,
@@ -76,7 +77,7 @@ function useVisibleSections(sectionStore: StoreApi<any>) {
                 const { id, headingRef, offsetRem } = sections[sectionIndex];
                 const offset = remToPx(offsetRem);
                 const top =
-                    headingRef?.current.getBoundingClientRect().top + scrollY;
+                    headingRef?.current?.getBoundingClientRect().top + scrollY;
 
                 if (sectionIndex === 0 && top - offset > scrollY) {
                     newVisibleSections.push('_top');
@@ -84,7 +85,7 @@ function useVisibleSections(sectionStore: StoreApi<any>) {
 
                 const nextSection = sections[sectionIndex + 1];
                 const bottom =
-                    (nextSection?.headingRef?.current.getBoundingClientRect()
+                    (nextSection?.headingRef?.current?.getBoundingClientRect()
                         .top ?? Number.POSITIVE_INFINITY) +
                     scrollY -
                     remToPx(nextSection?.offsetRem ?? 0);
