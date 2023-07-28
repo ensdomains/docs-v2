@@ -21,7 +21,7 @@ const nextConfig = {
     reactStrictMode: true,
     pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'mdx'],
     experimental: {
-        scrollRestoration: true,
+        scrollRestoration: process.env.NODE_ENV === 'production',
         // mdxRs: true,
     },
     images: {

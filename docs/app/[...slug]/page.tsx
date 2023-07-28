@@ -36,6 +36,7 @@ export async function generateStaticParams() {
         slug: slug.split('/'),
     }));
 }
+
 export default async function Page({ params }: PageProperties) {
     const { Page, pageProperties } = await getPageBySlug(params.slug.join('/'));
 
