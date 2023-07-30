@@ -101,6 +101,21 @@ export const mdxPagePropsSchema = z
                 }
             )
             .optional(),
+        plainContent: z.string({
+            errorMap: (error, ctx) => {
+                if (
+                    error.code === z.ZodIssueCode.invalid_type &&
+                    error.received === 'undefined'
+                ) {
+                    return {
+                        message:
+                            'Missing plainContent variable from rehypeExportContent plugin',
+                    };
+                }
+
+                return { message: ctx.defaultError };
+            },
+        }),
     })
     .passthrough();
 
