@@ -29,7 +29,7 @@ import { useAccount, useEnsName, useEnsAvatar } from 'wagmi';
 const Name = () => {
     const { data: ensName } = useEnsAddress({
         address: 'luc.eth',
-        chainId: 1, // (1 = Ethereum, 4 = Goerli)
+        chainId: 1, // (1 = Ethereum, 5 = Goerli)
     });
 
     return <div>{ensName || address}</div>;
