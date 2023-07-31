@@ -123,6 +123,32 @@ function getSections(node) {
     return sections;
 }
 
+/**
+ * @type {import('unified').Plugin[]}
+ */
+const rehypeExportContent = () => {
+    return (tree) => {
+        const test = toString(tree, {
+            includeHtml: false,
+        }).replace(/\n/g, ' ');
+
+        const exportString = `export const plainContent = ${JSON.stringify(
+            test
+        )}`;
+
+        tree.children.push({
+            type: 'mdxjsEsm',
+            value: exportString,
+            data: {
+                estree: acorn.parse(exportString, {
+                    sourceType: 'module',
+                    ecmaVersion: 'latest',
+                }),
+            },
+        });
+    };
+};
+
 export const rehypePlugins = [
     /**
      * Add support for annotations to MDX.
@@ -130,6 +156,7 @@ export const rehypePlugins = [
      * @see https://www.npmjs.com/package/mdx-annotations
      */
     mdxAnnotations.rehype,
+    rehypeExportContent,
     /**
      * Parse code blocks to add the language to the properties
      */
