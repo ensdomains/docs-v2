@@ -46,10 +46,8 @@ jobs:
 
       - name: Index search.json
         shell: bash
-        env:
-          SEARCH_TOKEN: ${{ secrets.SEARCH_TOKEN }}
         run: |
-          curl --silent -X POST -H "Content-Type: application/json" -H "Authorization: Bearer ${{SEARCH_TOKEN}}" -d @docs/out/search.json https://search.v3x.systems/indexes/ens-docs/documents?primaryKey=slug
+          curl --silent -X POST -H "Content-Type: application/json" -H "Authorization: Bearer ${{secrets.SEARCH_TOKEN}}" -d @docs/out/search.json https://search.v3x.systems/indexes/ens-docs/documents?primaryKey=slug
 
       # - name: Deploy
       #   uses: peaceiris/actions-gh-pages@v3
