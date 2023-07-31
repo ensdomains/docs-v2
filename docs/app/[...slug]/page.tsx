@@ -37,7 +37,7 @@ export async function generateStaticParams() {
     }));
 }
 
-export default async function Page({ params }: PageProperties) {
+const Page = async ({ params }: PageProperties) => {
     const { Page, pageProperties } = await getPageBySlug(params.slug.join('/'));
 
     return (
@@ -45,4 +45,6 @@ export default async function Page({ params }: PageProperties) {
             <Page {...pageProperties} />
         </Layout>
     );
-}
+};
+
+export default Page;
