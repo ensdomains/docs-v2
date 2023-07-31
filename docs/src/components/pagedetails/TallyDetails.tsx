@@ -1,8 +1,9 @@
-import { formatAddress } from 'ens-tools';
 import { gql, request } from 'graphql-request';
 import { FC } from 'react';
 
 import { MdxDAOProposalProps } from '@/lib/mdxPageProps';
+
+import { TruncatedAddress } from '../TruncatedAddress';
 
 const API_KEY =
     'a0a4cd00bb6953720c9c201c010cdd36a563e65c97e926a36a8acdfcd1d1eeb7';
@@ -138,8 +139,11 @@ export const TallyDetails: FC<{
                 <div className="flex items-center justify-between">
                     <div>Proposer</div>
                     <div className="truncate pl-4">
-                        {tallyData.proposer.name ??
-                            formatAddress(tallyData.proposer.address)}
+                        {tallyData.proposer.name ?? (
+                            <TruncatedAddress
+                                address={tallyData.proposer.address}
+                            />
+                        )}
                     </div>
                 </div>
 
