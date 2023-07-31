@@ -1,6 +1,3 @@
-'use client';
-// TODO: Figure out how to make this happen server-side
-
 import { formatAddress } from 'ens-tools';
 import { gql, request } from 'graphql-request';
 import { FC } from 'react';
