@@ -96,8 +96,8 @@ export const navigation: [pathMatches, routeGroup[]][] = [
                         wip: true,
                     },
                     {
-                        title: 'Interfacing with ENS Contracts',
-                        href: '/web/interfacing',
+                        title: 'Issuing Subdomains',
+                        href: '/web/subdomains',
                         wip: true,
                     },
                     {
@@ -177,7 +177,7 @@ export const navigation: [pathMatches, routeGroup[]][] = [
                         wip: true,
                     },
                     {
-                        title: '⛓️ Cross Chain Gateway',
+                        title: '⛓️ Cross Chain Resolution',
                         href: '/resolvers/ccip',
                         wip: true,
                     },
