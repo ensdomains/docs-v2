@@ -19,24 +19,33 @@ export const SearchResults: FC<{ data: SearchResult }> = ({ data }) => {
                         <li className="hlem">
                             <Link
                                 href={'/' + hit.slug}
-                                className="z-10 block w-full px-4 py-1"
+                                className="z-10 flex w-full px-4 py-1"
                             >
-                                <div className="truncate font-bold">
-                                    ✨&nbsp;&nbsp;
+                                <span className="grow overflow-hidden">
+                                    <span className="w-full truncate font-bold">
+                                        ✨&nbsp;&nbsp;
+                                        <span
+                                            dangerouslySetInnerHTML={{
+                                                __html: hit._formatted.title,
+                                            }}
+                                        />
+                                    </span>
                                     <span
                                         dangerouslySetInnerHTML={{
-                                            __html: hit._formatted.title,
+                                            __html:
+                                                hit._formatted.content ??
+                                                hit._formatted.description,
                                         }}
+                                        className="block h-[2em] w-full truncate pl-8 text-[#3f3f46]"
                                     />
-                                </div>
-                                <div
-                                    dangerouslySetInnerHTML={{
-                                        __html:
-                                            hit._formatted.content ??
-                                            hit._formatted.description,
-                                    }}
-                                    className="h-[2em] truncate pl-8 text-[#3f3f46]"
-                                />
+                                </span>
+                                <span className="flex gap-2">
+                                    {hit.slug.startsWith('dao') && (
+                                        <span className="bg-ens-dao-400 h-fit rounded-md px-2 py-0.5 text-xs font-bold text-white">
+                                            DAO
+                                        </span>
+                                    )}
+                                </span>
                             </Link>
                         </li>
                     ))}
