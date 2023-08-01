@@ -18,6 +18,7 @@ export async function GET() {
 
     const data = posts.map((post) => ({
         ...post.pageProperties.meta,
+        id: post.slug.replace('/', '--').replace(/[^\w-]/g, ''),
         slug: post.slug,
         content: post.pageProperties.plainContent,
     }));
