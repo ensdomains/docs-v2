@@ -24,7 +24,25 @@ export const generateMetadata = async (
             path: params.slug.join('/'),
         },
         parentMetadata,
-        { openGraph: { type: 'article' } }
+        {
+            openGraph: {
+                type: 'article',
+                title: meta.title,
+                description: meta.description,
+                images: `/opengraph/${params.slug.join('/')}.png`,
+                tags: ['ENS', 'Ethereum Name Service', '.eth'],
+                authors: meta.contributors?.map(
+                    (contributor) => 'https://github.com/' + contributor
+                ),
+            },
+            twitter: {
+                card: 'summary_large_image',
+            },
+            authors: meta.contributors?.map((contributor) => ({
+                name: contributor,
+                url: 'https://github.com/' + contributor,
+            })),
+        }
     );
 };
 
