@@ -4,14 +4,7 @@ import { Layout } from '@/components/Layout';
 import { createMetadata } from '@/lib/metadata';
 import { getPageBySlug } from '@/lib/pages';
 
-type PageProperties = {
-    params: { slug: string[] };
-};
-
-export const generateMetadata = async (
-    { params }: PageProperties,
-    parent: ResolvingMetadata
-) => {
+export const generateMetadata = async (_x: any, parent: ResolvingMetadata) => {
     const {
         pageProperties: { meta },
     } = await getPageBySlug('index');
@@ -28,7 +21,7 @@ export const generateMetadata = async (
     );
 };
 
-export default async function Page({ params }: PageProperties) {
+export default async function Page() {
     const { Page, pageProperties } = await getPageBySlug('index');
 
     return (
