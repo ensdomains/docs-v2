@@ -13,7 +13,7 @@ export const searchFetcher: Fetcher<SearchResult, { search: string }> = async ({
             headers: {
                 'Content-Type': 'application/json',
                 Authorization:
-                    'Bearer c0d2602b5da01b4f1baacbc2a8391ddaa5ff2fe19727f8715900b882cc515661',
+                    'Bearer c8d13cd93144118c61d5cb355b4950e59ca4bd848f0220b39e807797b0af91b6',
             } as any,
             body: JSON.stringify({
                 q: search,
