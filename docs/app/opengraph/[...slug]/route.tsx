@@ -61,7 +61,7 @@ const fontScale = (length: number) => {
 
     return Math.max(
         min,
-        Math.min(max, Math.round(max - (max - min) * (length / 30)))
+        Math.min(max, Math.round(max - (max - min) * (length / 40)))
     );
 };
 
@@ -115,16 +115,17 @@ export async function GET(request: NextRequest) {
                     style={{
                         position: 'absolute',
                         display: 'flex',
-                        top: '2rem',
-                        left: '2rem',
+                        top: '4rem',
+                        left: '4rem',
                         alignItems: 'center',
                         gap: '0.5rem',
-                        fontSize: '1.5rem',
+                        fontSize: '3rem',
+                        fontWeight: 'bold',
                         color: 'rgb(82, 152, 255)',
                     }}
                 >
                     <svg
-                        style={{ width: '4rem', height: '4rem' }}
+                        style={{ width: '6rem', height: '6rem' }}
                         xmlns="http://www.w3.org/2000/svg"
                         width="328"
                         height="328"
@@ -162,7 +163,6 @@ export async function GET(request: NextRequest) {
                             </linearGradient>
                         </defs>
                     </svg>
-                    Documentation
                     {/* <img
                         src={''}
                         alt=""
@@ -298,7 +298,7 @@ export async function GET(request: NextRequest) {
                         style={{
                             display: 'flex',
                             width: '1100px',
-                            height: '360px',
+                            height: '340px',
                             background: 'white',
                             // border: '3px solid #c0c0c0',
                             borderTopLeftRadius: '2rem',
@@ -316,12 +316,6 @@ export async function GET(request: NextRequest) {
             height: 840,
             emoji: 'twemoji',
             fonts: [
-                // {
-                //     name: 'Inter',
-                //     data: await interSemiBold,
-                //     style: 'normal',
-                //     weight: 400,
-                // },
                 {
                     name: 'Satoshi',
                     data: await satoshiFont,
