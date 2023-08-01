@@ -17,7 +17,7 @@ export const Layout: FC<{
 }> = ({ children, mdxProperties, snapshotData }) => {
     return (
         <SectionProvider sections={mdxProperties.sections}>
-            <div className="lg:ml-72 xl:ml-80">
+            <div className="lg:ml-72 xl:ml-80" id="app">
                 <MotionHeader />
                 <div className="relative px-4 pt-14 sm:px-6 lg:px-8">
                     <main className="relative py-16">

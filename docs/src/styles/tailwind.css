@@ -92,3 +92,7 @@ pre {
 .pagedetails_inner {
     @apply w-full h-fit space-y-4;
 }
+
+.hlem em {
+    @apply bg-neutral-300/25 underline;
+}

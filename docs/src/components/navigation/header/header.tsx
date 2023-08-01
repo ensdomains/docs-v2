@@ -19,7 +19,7 @@ import mark from '../../../images/mark.svg';
 import markDao from '../../../images/mark_dao.svg';
 import { Button } from '../../Button';
 import { MobileNavigation } from '../../MobileNavigation';
-import { MobileSearch, Search } from '../../Search';
+import { MobileSearch, Search } from '../../search/SearchBar';
 import { SubHeader } from '../subheader/SubHeader';
 import { PresetSettings } from './PresetSettings';
 
@@ -54,7 +54,6 @@ export const Header = forwardRef<HTMLDivElement, { className?: string }>(
                     } as any
                 }
             >
-                <SubHeader />
                 <div className="flex items-center gap-2">
                     <div className="flex items-center gap-5 lg:hidden">
                         <MobileNavigation />
@@ -149,6 +148,7 @@ export const Header = forwardRef<HTMLDivElement, { className?: string }>(
                         {/* <ModeToggle /> */}
                     </div>
                 </div>
+                <SubHeader />
             </motion.div>
         );
     }
