@@ -4,6 +4,7 @@ export type SearchEntry = {
     slug: string;
     title: string;
     description: string;
+    emoji: string;
     _formatted: {
         content: string;
         slug: string;

@@ -23,7 +23,7 @@ export const SearchResults: FC<{ data: SearchResult }> = ({ data }) => {
                             >
                                 <span className="grow overflow-hidden">
                                     <span className="w-full truncate font-bold">
-                                        ✨&nbsp;&nbsp;
+                                        {hit.emoji || '✨'}&nbsp;&nbsp;
                                         <span
                                             dangerouslySetInnerHTML={{
                                                 __html: hit._formatted.title,

@@ -26,6 +26,7 @@ export const searchFetcher: Fetcher<SearchResult, { search: string }> = async ({
                     'description',
                     'authors',
                     'tags',
+                    'emoji',
                 ],
                 cropLength: 10,
                 attributesToHighlight: ['content', 'title'],

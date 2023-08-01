@@ -334,7 +334,7 @@ export const navigation: [pathMatches, routeGroup[]][] = [
                     },
                     {
                         title: 'Voting Procedure',
-                        href: '/dao/governance#passing-a-proposal',
+                        href: '/dao/proposals/voting',
                     },
                 ],
             },

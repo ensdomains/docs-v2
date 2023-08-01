@@ -17,6 +17,10 @@ export const mdxPagePropsSchema = z
             title: z.string().default(''),
             description: z.string(),
             /**
+             * Emoji for the Resource
+             */
+            emoji: z.string().default('📑'),
+            /**
              * Wether or not to show the details section
              */
             showDetailsSection: z.boolean().default(true),
