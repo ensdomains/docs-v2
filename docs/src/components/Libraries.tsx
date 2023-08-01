@@ -70,7 +70,7 @@ export const ensLibraries = [
         tags: ['nuget'],
     },
     {
-        href: 'https://github.com/ensdomains/ensjs-v3',
+        href: 'https://github.com/komputing/KEthereum',
         name: 'KEthereum',
         description: 'Kotlin library for Ethereum.',
         logo: logoKEthereum,
