@@ -27,6 +27,30 @@ export function Search() {
         );
     }, []);
 
+    useEffect(() => {
+        // Register keydown event
+        const onkeydown = (event: KeyboardEvent) => {
+            // If user is focusing textbox ignore
+            if (event.target instanceof HTMLInputElement) return;
+
+            if (
+                event.key === '/' ||
+                ((event.ctrlKey || event.metaKey) && event.key === 'k')
+            ) {
+                event.preventDefault();
+                setOpen(true);
+            }
+        };
+
+        // Register keyup event
+        document.addEventListener('keydown', onkeydown);
+
+        // Unregister keydown event
+        return () => {
+            document.removeEventListener('keydown', onkeydown);
+        };
+    }, [isOpen, setOpen]);
+
     return (
         <div className="hidden lg:block lg:max-w-md lg:flex-auto">
             <button

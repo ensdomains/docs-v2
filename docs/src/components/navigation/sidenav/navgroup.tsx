@@ -17,7 +17,7 @@ function NavLink({ href, tag, active, isAnchorLink = false, children }) {
             href={href}
             aria-current={active ? 'page' : undefined}
             className={clsx(
-                'flex justify-between gap-2 py-1 pr-3 text-sm transition',
+                'flex justify-between gap-2 py-1 pr-0 text-sm transition',
                 isAnchorLink ? 'pl-7' : 'pl-4',
                 active
                     ? 'text-zinc-900 dark:text-white'
@@ -45,7 +45,7 @@ function ActivePageMarker({ group, pathname }) {
     return (
         <motion.div
             layout
-            className="absolute left-2 h-6 w-px bg-ens-500"
+            className="bg-ens-500 absolute left-2 h-6 w-px"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1, transition: { delay: 0.2 } }}
             exit={{ opacity: 0 }}
@@ -90,7 +90,7 @@ function VisibleSectionHighlight({ group, pathname }) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1, transition: { delay: 0.2 } }}
             exit={{ opacity: 0 }}
-            className="absolute inset-x-0 top-0 bg-zinc-800/2.5 will-change-transform dark:bg-white/2.5"
+            className="bg-zinc-800/2.5 dark:bg-white/2.5 absolute inset-x-0 top-0 will-change-transform"
             style={{ borderRadius: 8, height, top }}
         />
     );
@@ -150,7 +150,7 @@ export const NavigationGroup = ({ group, className }) => {
                                 <span>{link.title}</span>
                                 {link.external && <FiExternalLink />}
                                 {link.wip && (
-                                    <div className="rounded-md border bg-slate-100 px-2 text-2xs text-slate-500">
+                                    <div className="text-2xs rounded-md border bg-slate-100 px-2 text-slate-500">
                                         WIP
                                     </div>
                                 )}

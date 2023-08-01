@@ -18,7 +18,7 @@ export const Navigation = (properties) => {
     const [, activeNavigation] = foundNavigation;
 
     return (
-        <nav {...properties}>
+        <nav className="lg:mt-4">
             <ul>
                 {activeNavigation &&
                     activeNavigation.map((group, groupIndex) => (

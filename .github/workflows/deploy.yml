@@ -3,7 +3,7 @@ name: 🚚 Deploy
 on:
   push:
     tags:
-      - 'v[0-9]+.[0-9]+.[0-9]+-[0-9]+'
+      - "v[0-9]+.[0-9]+.[0-9]+-[0-9]+"
 
 env:
   NODE_OPTIONS: "--max_old_space_size=8192"
@@ -48,12 +48,3 @@ jobs:
         shell: bash
         run: |
           curl --silent -X POST -H "Content-Type: application/json" -H "Authorization: Bearer ${{secrets.SEARCH_TOKEN}}" -d @docs/out/search.json https://search.v3x.systems/indexes/ens-docs/documents?primaryKey=id
-
-      # - name: Deploy
-      #   uses: peaceiris/actions-gh-pages@v3
-      #   with:
-      #     github_token: ${{ secrets.GITHUB_TOKEN }}
-      #     publish_dir: ./docs/out
-      #     tag_name: ${{ steps.prepare_tag.outputs.deploy_tag_name }}
-      #     tag_message: 'Deployment ${{ steps.prepare_tag.outputs.tag_name }}'
-      #     cname: alpha.ens.build
