@@ -53,14 +53,46 @@ To build using CCIP there are two steps:
 To write a gateway
 
 ### Template Repositories
-- [ensdomains/offchain-resolver](https://github.com/ensdomains/offchain-resolver)
-- [ensdomains/offchain-resolver-example](https://github.com/ensdomains/offchain-resolver-example)
-- [gskril/ens-offchain-resolver-read-from-api](https://github.com/gskril/ens-offchain-resolver-read-from-api)
+<Repository src="ensdomains/offchain-resolver" />
+<Repository src="ensdomains/offchain-resolver-example" />
+<Repository src="gskril/ens-offchain-resolver-read-from-api" />
 
 ### Loading data from a layer 2 or database
 
-### Verifying the data on-chain
+### Verifying the data on-chain (optional)
 
 ## Configuring Name {{ navtitle: 'Setting Resolver', id: 'set' }}
 
 Last but not least you need to instruct your name to use the gateway.
+
+```mermaid
+sequenceDiagram
+    participant Client
+    box Ethereum L1
+    participant ENS
+    participant Resolver
+    end
+    participant Gateway as Gateway<br />Service*
+    participant L2 as L2 or Database*<br />
+
+    Client->>ENS: get resolver for luc.eth
+    ENS->>Client: 
+    Client->>Resolver: get 'avatar' for hello.luc.eth 
+    rect rgb(82, 152, 255)
+    Resolver->>Client: revert with OffchainLookup(sender, urls, callData,<br />callbackFunction, extraData)
+    end
+
+    Client->>Gateway: get 'avatar' for hello.luc.eth
+    
+    opt Retrieve data from L2 or Database
+        Gateway->>L2: 
+        L2->>Gateway: 
+    end
+
+    Gateway->>Client: Return Results
+
+    opt Verify signature of gateway results
+        Client->>Resolver: Do these results look right?
+        Resolver->>Client: 
+    end
+```
