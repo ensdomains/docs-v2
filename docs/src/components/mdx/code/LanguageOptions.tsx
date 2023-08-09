@@ -41,7 +41,9 @@ export const LanguageOptions: FC<{
     identifier: string;
 }> = ({ snippets, identifier }) => {
     // Get active language from localstorage
-    const [activeLanguage, setActiveLanguage] = useState<string>();
+    const [activeLanguage, setActiveLanguage] = useState<string>(
+        snippets.at(0).preset
+    );
     const setPreset = useCallback(
         (preferred_preset_key: string) => {
             // eslint-disable-next-line prefer-destructuring
