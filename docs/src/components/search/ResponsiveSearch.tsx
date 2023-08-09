@@ -17,18 +17,22 @@ export const ResponsiveSearch = () => {
             keepPreviousData: true,
         }
     );
-
+    const [select, setSelect] = useState(-1);
     const showSearch = search.length > 0 && data;
 
     return (
-        <div className="w-full text-[#18181b]">
+        <div id="searchbar" className="w-full text-[#18181b]">
             <div className="relative z-10 overflow-hidden rounded-xl border bg-white">
                 <input
                     type="text"
+                    onClick={() => {
+                        setSelect(-1);
+                    }}
                     className="w-full rounded-xl py-2 pl-10 text-xl"
                     placeholder="Search for anything..."
                     // eslint-disable-next-line jsx-a11y/no-autofocus
                     autoFocus={true}
+                    id="search-input"
                     onChange={(event) => {
                         setSearch(event.target.value);
                     }}
@@ -42,7 +46,13 @@ export const ResponsiveSearch = () => {
             </div>
             <div className="w-full -translate-y-4">
                 <div className="w-full overflow-hidden rounded-b-xl">
-                    {showSearch && <SearchResults data={data} />}
+                    {showSearch && (
+                        <SearchResults
+                            data={data}
+                            select={select}
+                            setSelect={setSelect}
+                        />
+                    )}
                 </div>
             </div>
         </div>

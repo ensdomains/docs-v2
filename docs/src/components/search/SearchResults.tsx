@@ -1,9 +1,61 @@
+'use client';
 import Link from 'next/link';
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 
 import { SearchResult } from './types/result';
 
-export const SearchResults: FC<{ data: SearchResult }> = ({ data }) => {
+export const SearchResults: FC<{
+    data: SearchResult;
+    select: any;
+    setSelect: any;
+}> = ({ data, select, setSelect }) => {
+    useEffect(() => {
+        const thateventlistener = (event) => {
+            switch (event.key) {
+                case 'ArrowDown': {
+                    event.preventDefault();
+                    setSelect((select) => {
+                        return Math.min(select + 1, data.hits.length - 1);
+                    });
+
+                    break;
+                }
+                case 'ArrowUp': {
+                    event.preventDefault();
+                    setSelect((select) => {
+                        return Math.max(select - 1, -1);
+                    });
+
+                    break;
+                }
+            }
+        };
+
+        document.addEventListener('keydown', thateventlistener);
+
+        return () => {
+            document.removeEventListener('keydown', thateventlistener);
+        };
+    }, []);
+
+    useEffect(() => {
+        if (select !== -1) {
+            const element = document.querySelector(
+                '#search-result-link-' + select
+            );
+
+            if (element instanceof HTMLElement) {
+                element.focus();
+            }
+        } else {
+            const element = document.querySelector('#search-input');
+
+            if (element instanceof HTMLElement) {
+                element.focus();
+            }
+        }
+    }, [select]);
+
     return (
         <>
             <div className="w-full bg-neutral-50 pt-4">
@@ -15,10 +67,15 @@ export const SearchResults: FC<{ data: SearchResult }> = ({ data }) => {
                     </div>
                 )}
                 <ul className="bg-neutral-50 py-2">
-                    {data.hits.map((hit) => (
-                        <li className="hlem">
+                    {data.hits.map((hit, index) => (
+                        <li
+                            className="hlem focus:bg-red-400"
+                            id={'search-result-' + index}
+                            key={hit.slug}
+                        >
                             <Link
                                 href={'/' + hit.slug}
+                                id={'search-result-link-' + index}
                                 className="z-10 flex w-full px-4 py-1"
                             >
                                 <span className="grow overflow-hidden">
