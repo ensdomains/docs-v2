@@ -28,6 +28,12 @@ export const SearchResults: FC<{
 
                     break;
                 }
+                case 'Enter': {
+                    break;
+                }
+                default: {
+                    setSelect(-1);
+                }
             }
         };
 
@@ -69,7 +75,7 @@ export const SearchResults: FC<{
                 <ul className="bg-neutral-50 py-2">
                     {data.hits.map((hit, index) => (
                         <li
-                            className="hlem focus:bg-red-400"
+                            className="hlem outline-0 focus-within:bg-neutral-100"
                             id={'search-result-' + index}
                             key={hit.slug}
                         >

@@ -22,7 +22,7 @@ export const ResponsiveSearch = () => {
 
     return (
         <div id="searchbar" className="w-full text-[#18181b]">
-            <div className="relative z-10 overflow-hidden rounded-xl border bg-white">
+            <div className="relative z-10 overflow-hidden rounded-xl border-2 border-transparent bg-white focus-within:border-blue-700">
                 <input
                     type="text"
                     onClick={() => {
