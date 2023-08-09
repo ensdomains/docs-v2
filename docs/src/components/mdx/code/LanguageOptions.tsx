@@ -5,31 +5,11 @@ import { FC, useCallback, useEffect, useState } from 'react';
 import { CodeSnippetProperties } from './CodeGroup';
 import { sortLanguagesByPreset } from './getlanguage';
 
-const score = (a: number, b: number) => {
-    if (a > b) return 1;
-
-    if (b === a) return 0;
-
-    if (a < b) return -1;
-};
-
-const rankDependency = (dependencies: string[], dependency: string) => {
-    if (!dependency) return 0;
-
-    if (!dependencies) return 0;
-
-    const index = dependencies.indexOf(dependency);
-
-    if (index != -1) return dependencies.length - index;
-
-    return 0;
-};
-
-const EVENT = 'l-language';
+const EVENT = 'l-language-';
 
 class LLanguageEvent extends Event {
-    constructor(language: string) {
-        super(EVENT);
+    constructor(language: string, preset: string) {
+        super(EVENT + preset);
         this.language = language;
     }
 
@@ -39,7 +19,8 @@ class LLanguageEvent extends Event {
 export const LanguageOptions: FC<{
     snippets: CodeSnippetProperties[];
     identifier: string;
-}> = ({ snippets, identifier }) => {
+    presets: string;
+}> = ({ snippets, identifier, presets }) => {
     // Get active language from localstorage
     const [activeLanguage, setActiveLanguage] = useState<string>(
         snippets.at(0).preset
@@ -52,25 +33,26 @@ export const LanguageOptions: FC<{
                 preferred_preset_key
             );
 
-            console.log('Ranked Results', rankedPresets);
-
+            // eslint-disable-next-line prefer-destructuring
             const newPreset = rankedPresets[0];
 
-            //
             const entries = document.querySelectorAll(
                 '[data-code-group="' + identifier + '"]'
             );
 
             for (const entry of entries) {
-                // @ts-ignore
-                if (entry.dataset.codeVariant === newPreset.preset) {
+                if (
+                    // @ts-ignore
+                    entry.dataset.codeVariant === newPreset.preset ||
+                    // @ts-ignore
+                    entry.dataset.codeVariant === newPreset.title
+                ) {
                     entry.classList.remove('hidden');
                 } else {
                     entry.classList.add('hidden');
                 }
             }
 
-            console.log('Changing preset to ' + newPreset.preset);
             setActiveLanguage(newPreset.preset);
         },
         [setActiveLanguage]
@@ -78,20 +60,31 @@ export const LanguageOptions: FC<{
 
     useEffect(() => {
         // when page first load
-        console.log('loaded code segment ' + identifier);
+        // load query params
+        const urlParameters = new URLSearchParams(
+            (location as Location).search
+        );
 
-        setPreset(localStorage.getItem(EVENT));
+        // Prioritize query params
+        // Then localstorage
+        // Then default to first snippet
+        const default_preset =
+            urlParameters.get(presets) ??
+            localStorage.getItem(EVENT + presets) ??
+            snippets.at(0).preset;
+
+        setPreset(default_preset.toLowerCase());
 
         const hook = (language: LLanguageEvent) => {
             setPreset(language.language);
         };
 
         // @ts-ignore
-        document.addEventListener(EVENT, hook);
+        document.addEventListener(EVENT + presets, hook);
 
         return () => {
             // @ts-ignore
-            document.removeEventListener(EVENT, hook);
+            document.removeEventListener(EVENT + presets, hook);
         };
     }, []);
 
@@ -101,19 +94,20 @@ export const LanguageOptions: FC<{
         <div className="absolute left-auto right-2 top-2 w-fit text-right">
             <select
                 onChange={(event) => {
-                    console.log('changed to ' + event.target.value);
-                    localStorage.setItem(EVENT, event.target.value);
+                    localStorage.setItem(EVENT + presets, event.target.value);
+                    // Inform the other codeblocks
                     document.dispatchEvent(
-                        new LLanguageEvent(event.target.value)
+                        new LLanguageEvent(event.target.value, presets)
                     );
-                    // setPreset(event.target.value);
                 }}
                 value={activeLanguage}
             >
                 {snippets.map((snippet) => {
                     return (
                         <option value={snippet.preset} key={snippet.preset}>
-                            {snippet.config?.name}
+                            {snippet.title ??
+                                snippet.config?.name ??
+                                snippet.preset}
                         </option>
                     );
                 })}
