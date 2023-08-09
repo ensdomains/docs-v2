@@ -49,12 +49,12 @@ type RepositoryData = {
     labels_url: 'https://api.github.com/repos/ensdomains/docs-v2/labels{/name}';
     releases_url: 'https://api.github.com/repos/ensdomains/docs-v2/releases{/id}';
     deployments_url: 'https://api.github.com/repos/ensdomains/docs-v2/deployments';
-    created_at: '2022-07-28T08:06:56Z';
-    updated_at: '2023-08-01T22:47:02Z';
-    pushed_at: '2023-08-08T20:18:08Z';
-    git_url: 'git://github.com/ensdomains/docs-v2.git';
-    ssh_url: 'git@github.com:ensdomains/docs-v2.git';
-    clone_url: 'https://github.com/ensdomains/docs-v2.git';
+    created_at: string;
+    updated_at: string;
+    pushed_at: string;
+    git_url: string;
+    ssh_url: string;
+    clone_url: string;
     svn_url: string;
     homepage: string;
     size: number;
@@ -139,7 +139,6 @@ export const Repository: FC<{
         forks_count,
         is_template,
         stargazers_count,
-        
     } = await fetchRepositoryData(src);
 
     name = name || src;
