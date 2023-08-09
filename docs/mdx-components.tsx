@@ -2,7 +2,7 @@ import type { MDXComponents } from 'mdx/types';
 import { default as a } from 'next/link';
 
 import { Button } from '@/components/Button';
-import { Code, Pre } from '@/components/mdx/Code';
+import { Code, Pre } from '@/components/mdx/code/Code';
 import { CodeGroup } from '@/components/mdx/code/CodeGroup';
 import { Col } from '@/components/mdx/Col';
 import { EmbedLink } from '@/components/mdx/EmbedLink';

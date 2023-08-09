@@ -50,12 +50,55 @@ To build using CCIP there are two steps:
 
 ## Writing a Gateway
 
-To write a gateway
+A gateway must be implemented following the [Gateway Interface](https://eips.ethereum.org/EIPS/eip-3668#gateway-interface) as specified in EIP-3668.
+This entails it must expose an API served over https, and must return data in a specific format.
+This service can be a server, a serverless function, worker, etc.
+The URL for this gateway is determined by the `OffchainLookup` error, and is passed as a parameter to the error.
 
 ### Template Repositories
 <Repository src="ensdomains/offchain-resolver" description="CCIP Offchain ENS Resolver Cloudflare Workers"/>
 <Repository src="ensdomains/offchain-resolver-example" />
 <Repository src="gskril/ens-offchain-resolver-read-from-api" />
+
+### Endpoint Implementation {{ navtitle: 'Implement Gateway', id: 'endpoint' }}
+
+<Row>
+  <Col>
+    The endpoint gets hit 
+
+    #### Attributes
+
+    <Properties>
+      <Property name="sender" type="address">
+        Limit the number of conversations returned.
+      </Property>
+      <Property name="data" type="bytes">
+        Only show conversations that are muted when set to `true`.
+      </Property>
+    </Properties>
+
+  </Col>
+  <Col sticky>
+
+    <CodeGroup title="Request">
+
+    ```yaml {{ title: 'POST' }}
+    // URL includes '{data}' parameter
+    URL: https://example.com/gateway/{sender}.json
+    Method: POST
+    Body: data
+    ```
+
+    ```yaml {{ title: 'GET' }}
+    // URL includes '{data}' parameter
+    URL: https://example.com/gateway/{sender}/{data}.json
+    Method: GET
+    ```
+
+    </CodeGroup>
+
+  </Col>
+</Row>
 
 ### Loading data from a layer 2 or database
 
