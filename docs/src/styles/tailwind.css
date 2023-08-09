@@ -96,3 +96,14 @@ pre {
 .hlem em {
     @apply bg-neutral-300/25 underline;
 }
+
+.hidable-code + * {
+    display: none;
+}
+
+.hidable-code.hidden ~ * {
+    display: block;
+}
+.hidable-code.hidden ~ *.hidden {
+    display: none;
+}

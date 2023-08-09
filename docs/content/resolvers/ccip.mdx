@@ -15,7 +15,7 @@ export const meta = {
 {/* This document covers what it takes to write a gateway resolver. */}
 
 The source of truth for a name and its subdomains does not always have to be on-chain or on Ethereum L1 at all.
-By leveraging [EIP-3668](https://eips.ethereum.org/EIPs/3668), the Cross Chain Interoperability Protocol (CCIP for short), we can load information about a name (and its subnames) by hitting a so called "Gateway".
+By leveraging [EIP-3668](https://eips.ethereum.org/EIPS/eip-3668), the Cross Chain Interoperability Protocol (CCIP for short), we can load information about a name (and its subnames) by hitting a so called "Gateway".
 This enables for storing names, addresses, records, and more on other chains, or even off-chain.
 
 ## How does it work?
@@ -50,17 +50,92 @@ To build using CCIP there are two steps:
 
 ## Writing a Gateway
 
-To write a gateway
+A gateway must be implemented following the [Gateway Interface](https://eips.ethereum.org/EIPS/eip-3668#gateway-interface) as specified in EIP-3668.
+This entails it must expose an API served over https, and must return data in a specific format.
+This service can be a server, a serverless function, worker, etc.
+The URL for this gateway is determined by the `OffchainLookup` error, and is passed as a parameter to the error.
 
 ### Template Repositories
-- [ensdomains/offchain-resolver](https://github.com/ensdomains/offchain-resolver)
-- [ensdomains/offchain-resolver-example](https://github.com/ensdomains/offchain-resolver-example)
-- [gskril/ens-offchain-resolver-read-from-api](https://github.com/gskril/ens-offchain-resolver-read-from-api)
+<Repository src="ensdomains/offchain-resolver" description="CCIP Offchain ENS Resolver Cloudflare Workers"/>
+<Repository src="ensdomains/offchain-resolver-example" />
+<Repository src="gskril/ens-offchain-resolver-read-from-api" />
+
+### Endpoint Implementation {{ navtitle: 'Implement Gateway', id: 'endpoint' }}
+
+<Row>
+  <Col>
+    The endpoint gets hit 
+
+    #### Attributes
+
+    <Properties>
+      <Property name="sender" type="address">
+        Limit the number of conversations returned.
+      </Property>
+      <Property name="data" type="bytes">
+        Only show conversations that are muted when set to `true`.
+      </Property>
+    </Properties>
+
+  </Col>
+  <Col sticky>
+
+    <CodeGroup title="Request">
+
+    ```yaml {{ title: 'POST' }}
+    // URL includes '{data}' parameter
+    URL: https://example.com/gateway/{sender}.json
+    Method: POST
+    Body: data
+    ```
+
+    ```yaml {{ title: 'GET' }}
+    // URL includes '{data}' parameter
+    URL: https://example.com/gateway/{sender}/{data}.json
+    Method: GET
+    ```
+
+    </CodeGroup>
+
+  </Col>
+</Row>
 
 ### Loading data from a layer 2 or database
 
-### Verifying the data on-chain
+### Verifying the data on-chain (optional)
 
 ## Configuring Name {{ navtitle: 'Setting Resolver', id: 'set' }}
 
 Last but not least you need to instruct your name to use the gateway.
+
+```mermaid
+sequenceDiagram
+    participant Client
+    box Ethereum L1
+    participant ENS
+    participant Resolver
+    end
+    participant Gateway as Gateway<br />Service*
+    participant L2 as L2 or Database*<br />
+
+    Client->>ENS: get resolver for luc.eth
+    ENS->>Client: 
+    Client->>Resolver: get 'avatar' for hello.luc.eth 
+    rect rgb(82, 152, 255)
+    Resolver->>Client: revert with OffchainLookup(sender, urls, callData,<br />callbackFunction, extraData)
+    end
+
+    Client->>Gateway: get 'avatar' for hello.luc.eth
+    
+    opt Retrieve data from L2 or Database
+        Gateway->>L2: 
+        L2->>Gateway: 
+    end
+
+    Gateway->>Client: Return Results
+
+    opt Verify signature of gateway results
+        Client->>Resolver: Do these results look right?
+        Resolver->>Client: 
+    end
+```

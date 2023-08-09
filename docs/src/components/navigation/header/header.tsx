@@ -21,7 +21,6 @@ import { Button } from '../../Button';
 import { MobileNavigation } from '../../MobileNavigation';
 import { MobileSearch, Search } from '../../search/SearchBar';
 import { SubHeader } from '../subheader/SubHeader';
-import { PresetSettings } from './PresetSettings';
 
 export const Header = forwardRef<HTMLDivElement, { className?: string }>(
     ({ className }, reference) => {
@@ -131,8 +130,6 @@ export const Header = forwardRef<HTMLDivElement, { className?: string }>(
                         </TopLevelNavItem>
                     </ul>
                 </nav> */}
-                    <div className="md:dark:bg-white/15 hidden md:block md:h-5 md:w-px md:bg-zinc-900/10" />
-                    <PresetSettings />
                     <div className="md:dark:bg-white/15 hidden md:block md:h-5 md:w-px md:bg-zinc-900/10" />
                     <div className="flex gap-4">
                         <MobileSearch />
