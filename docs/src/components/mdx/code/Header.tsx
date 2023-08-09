@@ -10,7 +10,8 @@ export const CodeGroupHeader: FC<{
     }[];
     identifier: string;
     title: string;
-}> = ({ title, snippets, identifier }) => {
+    presets: string;
+}> = ({ title, snippets, identifier, presets }) => {
     const hasTabs = snippets.length > 1;
 
     if (!title && !hasTabs) {
@@ -28,6 +29,7 @@ export const CodeGroupHeader: FC<{
                 <LanguageOptions
                     snippets={snippets.map((entry) => entry.data)}
                     identifier={identifier}
+                    presets={presets}
                 />
             )}
         </div>

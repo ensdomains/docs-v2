@@ -19,6 +19,7 @@ export const CodePanel: FC<PropsWithChildren<CodePanelProperties>> = ({
     tag,
     label,
     code,
+    title,
     hideCopy: _hideCopy,
     language,
     variant,
@@ -75,7 +76,7 @@ export const CodePanel: FC<PropsWithChildren<CodePanelProperties>> = ({
     return (
         <div
             className="dark:bg-white/2.5 hidable-code group"
-            data-code-variant={variant}
+            data-code-variant={variant ?? title ?? language}
             data-code-group={identifier}
         >
             {isStandaloneCodeSnippet && preset && (

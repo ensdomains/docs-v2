@@ -80,16 +80,16 @@ The URL for this gateway is determined by the `OffchainLookup` error, and is pas
   </Col>
   <Col sticky>
 
-    <CodeGroup title="Request">
+    <CodeGroup title="Request" presets="method">
 
-    ```yaml {{ title: 'POST' }}
+    ```yaml {{ title: 'POST', variant: 'post' }}
     // URL includes '{data}' parameter
     URL: https://example.com/gateway/{sender}.json
     Method: POST
     Body: data
     ```
 
-    ```yaml {{ title: 'GET' }}
+    ```yaml {{ title: 'GET', variant: 'get' }}
     // URL includes '{data}' parameter
     URL: https://example.com/gateway/{sender}/{data}.json
     Method: GET

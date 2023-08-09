@@ -8,10 +8,13 @@ import { LanguageSettings } from './languagetypes';
 export type CodeGroupProperties = {
     title?: string;
     isChild?: boolean;
+    // Key for what type of presets to use
+    presets?: string;
 };
 
 export type CodeSnippetProperties = {
     language: string;
+    title?: string;
     preset?: string;
     config?: LanguageSettings;
 };
@@ -19,17 +22,23 @@ export type CodeSnippetProperties = {
 export const CodeGroup: FC<PropsWithChildren<CodeGroupProperties>> = ({
     children,
     title,
+    presets = 'code',
     ...properties
 }) => {
     const identifier = Math.round(Math.random() * 1000);
 
     const codeSnippets = Children.map(children, (child) => {
         //
-        const preset = child['props'].preset ?? child['props'].variant;
+        const preset =
+            child['props'].preset ??
+            child['props'].variant ??
+            child['props'].title ??
+            child['props'].language;
 
         return {
             element: child,
             data: {
+                title: child['props'].title,
                 language: child['props'].language,
                 preset,
                 config: getLanguage(preset || child['props'].language),
@@ -45,6 +54,7 @@ export const CodeGroup: FC<PropsWithChildren<CodeGroupProperties>> = ({
                 snippets={codeSnippets}
                 title={title}
                 identifier={identifier.toString()}
+                presets={presets}
             />
             {hasTabs ? (
                 <div className="">
@@ -53,6 +63,7 @@ export const CodeGroup: FC<PropsWithChildren<CodeGroupProperties>> = ({
                             isChild: true,
                             data: child.data,
                             identifier,
+                            title: child.data.title,
                         });
                     })}
                 </div>
