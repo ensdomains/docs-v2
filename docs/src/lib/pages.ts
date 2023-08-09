@@ -1,4 +1,5 @@
 import { MDXProps } from 'mdx/types';
+import { notFound } from 'next/navigation';
 import fs from 'node:fs';
 import { join } from 'node:path';
 import { JSX } from 'react';
@@ -41,6 +42,10 @@ export const getPageBySlug = async (
     Page: (properties: MDXProps) => JSX.Element;
     pageProperties: MdxPageProperties;
 }> => {
+    const exists = fs.existsSync(join(contentDirectory, `${slug}.mdx`));
+
+    if (!exists) return notFound();
+
     const { default: Page, ...rawPageProperties } = (await import(
         `../../content/${slug}.mdx`
     )) as MdxPageProperties & {
