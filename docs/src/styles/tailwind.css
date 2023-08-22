@@ -107,3 +107,21 @@ pre {
 .hidable-code.hidden ~ *.hidden {
     display: none;
 }
+.ReactModal__Content {
+    opacity: 0;
+    transform: translateY(32px);
+    scale: 0.9;
+    transition: all 200ms ease-in-out;
+}
+
+.ReactModal__Content--after-open {
+    opacity: 1;
+    scale: 1;
+    transform: translateY(0px);
+}
+
+.ReactModal__Content--before-close {
+    opacity: 0;
+    scale: 0.95;
+    transform: translateY(32px);
+}

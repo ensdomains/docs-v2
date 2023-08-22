@@ -15,7 +15,6 @@ export const SearchModal: FC<{ open: boolean; onClose: () => void }> = ({
         <ReactModal
             isOpen={open}
             onAfterOpen={() => {
-                console.log('x');
                 document.querySelector('html').style.overflow = 'hidden';
             }}
             onRequestClose={() => {
@@ -31,6 +30,7 @@ export const SearchModal: FC<{ open: boolean; onClose: () => void }> = ({
             style={{
                 overlay: {
                     backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                    backdropFilter: 'blur(2px)',
                     zIndex: 99,
                 },
                 content: {
