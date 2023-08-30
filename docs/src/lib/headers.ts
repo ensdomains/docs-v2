@@ -27,9 +27,9 @@ export const SubHeaders: [RegExp, SubHeaderConfig[]][] = [
                 /^\/(resolvers|subnames|registry|resolution)(\/.*)?/,
             ],
             [
-                'Records & Standardization',
+                'ENS Improvement Proposals',
                 '/standards',
-                /^\/(records|standards|ensip)(\/.*)?/,
+                /^\/(standards|ensip)(\/.*)?/,
             ],
         ],
     ],
@@ -69,6 +69,7 @@ export const navigation: [pathMatches, routeGroup[]][] = [
                     },
                     { title: '🛠️ Tools and Libraries', href: '/web/libraries' },
                     { title: '🔍 Address', href: '/web/resolution' },
+                    { title: '🔍 Records', href: '/web/records' },
                     { title: '🔍 Avatars', href: '/web/avatars' },
                     {
                         title: '🔍 Primary Names',
@@ -251,22 +252,11 @@ export const navigation: [pathMatches, routeGroup[]][] = [
         ],
     ],
     [
-        /^\/(records|standards|ensip)(\/.*)?/,
+        /^\/(standards|ensip)(\/.*)?/,
         [
             {
                 title: '',
                 links: [{ title: '👋 Welcome', href: '/standards' }],
-            },
-            {
-                title: '💾 Records',
-                links: [
-                    { title: '⚡ Quickstart', href: '/records/quickstart' },
-                    {
-                        title: '💾 Record Types and Standards',
-                        href: '/records',
-                    },
-                    { title: '✍️ Modifying Records', href: '/records/modify' },
-                ],
             },
             {
                 title: '📖 Improvement Proposals (ENSIPs)',

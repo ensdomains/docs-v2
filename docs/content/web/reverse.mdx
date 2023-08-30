@@ -10,15 +10,17 @@ export const meta = {
 # Primary Names
 
 We can all agree 42-character long machine-optimized addresses (eg. 0x225...c3b5) are not aesthetically pleasing.
-In order to convert them to human-readable names, we use [the reverse registrar](/registry/reverse).
+Fortunately, it is super easy to retrieve a user's preferred name, and this page will show you how.
 
+In order to convert them to human-readable names, we use [the reverse registrar](/registry/reverse).
 The reverse registrar is a smart contract that allows users to register their preferred name, referred to as their "primary name" for simplicity purposes.
 
-<div className="card px-8 py-4">TODO: Address -> Name example here</div>
+<div className="card px-8 py-4">TODO: Address -&gt; Name example here</div>
 
-## Getting a Primary Name
+## Getting a Primary Name {{ navtitle: 'Getting Primary Name', id: 'set' }}
 
-To get a users preferred primary name is very simple. In most libraries you can do a simple lookup by address as shown below.
+To get a users preferred primary name is very simple. In most libraries you will find a function to do a lookup by address as shown below.
+This allows us to turn any address into a human-readable name.
 
 <CodeGroup title="Reverse Lookup">
 
@@ -52,22 +54,28 @@ const ensName = await publicClient.getEnsName({
 
 </CodeGroup>
 
-And thats it!
+🎉 And thats it! Now you can turn all your pages from this, to this:
+
+<img src="/web/reverse/example1.png" className="w-full border rounded-lg" />
 
 ### Do's and Don'ts
 
 TODO: Insert excerpt of design guidelines for primary names here.
 
-## Setting Primary Names
+## Setting Primary Names {{ navtitle: 'Setting your Name', id: 'set' }}
 
 In some cases you might want to encourage users to set their primary name.
 This might be in the event you are issuing names, or want people to be part of a community.
 Most users are expected to do this through the ENS Manager, however it is totally doable from 3rd-party platforms aswell.
 
-<CodeGroup title="Reverse Lookup">
+<CodeGroup title="Setting Primary Name">
 
-```ts {{ title: 'Ethers.js (TS)' }}
+```tsx {{ title: 'Wagmi (React)', language: 'tsx', meta: 'focus=4:9', variant: 'wagmi' }}
 // TODO: Write Code Snippet
+```
+
+```ts {{ title: 'Ethers.js (TS)', variant: 'ethers' }}
+
 ```
 
 </CodeGroup>

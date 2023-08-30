@@ -9,9 +9,8 @@ export const meta = {
 
 # Avatars
 
-The ENS Protocol aims to make it easy to use Ethereum. It does this to providing a simple way to use human-readable names to subsitute for long machine-redable addresses.
-
-On this page you will find everything it takes to get started with ENS, replace all addresses with ens names in your app, and allow finding users by name!
+Personalization of profiles is what makes identity great.
+This page covers the very special "avatar" record that enables users to take their avatar with them across the web.
 
 ## Getting the users Avatar {{ navtitle: 'User Avatars ', id: 'avatars', tag: 'Avatar' }}
 
@@ -30,7 +29,7 @@ Simply add the codesnippet below to your app and you will be able to get any use
 
 <CodeGroup title="Request">
 
-```tsx {{ title: 'Wagmi (React)', language: 'tsx' }}
+```tsx {{ title: 'Wagmi (React)', language: 'tsx', variant: 'wagmi' }}
 import { useEnsAvatar } from 'wagmi';
 
 const Avatar = () => {
@@ -48,7 +47,7 @@ const Avatar = () => {
 };
 ```
 
-```ts {{ title: 'Ethers.js (TS)' }}
+```ts {{ title: 'Ethers.js (TS)', variant: 'ethers' }}
 const ensAvatar = await provider.getAvatar('luc.eth');
 ```
 
