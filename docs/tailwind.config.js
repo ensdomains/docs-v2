@@ -3,6 +3,9 @@ module.exports = {
     content: ['./{pages,app,content,src,mdx}/**/*.{js,mjs,jsx,mdx,tsx}'],
     darkMode: 'class',
     theme: {
+        fontFamily: {
+            sans: ['Inter'],
+        },
         fontSize: {
             '2xs': ['0.75rem', { lineHeight: '1.25rem' }],
             xs: ['0.8125rem', { lineHeight: '1.5rem' }],

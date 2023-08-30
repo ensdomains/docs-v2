@@ -1,17 +1,38 @@
 import { QuickBannerLink } from '@/components/home/QuickLink';
 
-{/** @type {import('@/lib/mdxPageProps').MdxMetaProps} */}
+{/* * @type {import('@/lib/mdxPageProps').MdxMetaProps} */}
 export const meta = {
-    description: 'Learn everything about the Ethereum Name Service (ENS). How to integrate names into your dApp, issue subnames, and so much more!',
-    title: 'ENS Documentation',
-    emoji: '👋',
-    showDetailsSection: false,
-    contributors: [
-        'lucemans'
-    ]
+description: 'Learn everything about the Ethereum Name Service (ENS). How to integrate names into your dApp, issue subnames, and so much more!',
+title: 'ENS Documentation',
+emoji: '👋',
+showDetailsSection: false,
+contributors: [
+'lucemans'
+]
 };
 
-<VideoComponent src="https://v3x.space/ens-docs/intro5" />
+<h1>Ethereum Name Service</h1>
+
+<p>Build applications with decentralized identity, </p>
+
+<div className="flex gap-x-3">
+    <div className="border p-4 rounded-lg border-gray-500 bg-gradient-to-r from-gray-500/20 to-gray-500/5 not-prose">
+        <h2 className="font-bold text-lg text-gray-900">⚡ Quick Start</h2>
+        <Button>Show me how!</Button>
+    </div>
+    <div className="grow border p-4 rounded-lg border-ens bg-gradient-to-r from-ens-500/20 to-ens-500/5 not-prose">
+        <h2 className="font-bold text-lg text-blue-900">
+            Add identity to your dApp, App, Wallet, or anything else!
+        </h2>
+        <Button variant="filled">Show me how!</Button>
+    </div>
+
+</div>
+
+<h2>Learn more</h2>
+<p>Try out ENS</p>
+
+{/* <VideoComponent src="https://v3x.space/ens-docs/intro5" /> */}
 
 <div className="grid grid-cols-2 gap-x-3 gap-y-3">
 <QuickBannerLink

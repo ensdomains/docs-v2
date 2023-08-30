@@ -25,6 +25,31 @@
     --shiki-token-link: #0969da;
 }
 
+/* @font-face {
+    font-family: 'Satoshi';
+    font-style: normal;
+    font-weight: normal;
+    font-display: swap;
+    src: url('/fonts/sans-serif/Satoshi-Medium.otf') format('opentype');
+}
+@font-face {
+    font-family: 'Satoshi';
+    font-style: normal;
+    font-weight: bold;
+    font-display: swap;
+    src: url('/fonts/sans-serif/Satoshi-Bold.otf') format('opentype');
+}
+@font-face {
+    font-family: 'Satoshi';
+    font-display: swap;
+    src: url('/fonts/sans-serif/Satoshi-Variable.ttf') format('truetype');
+} */
+@font-face {
+    font-family: 'Inter';
+    font-display: swap;
+    src: url('/fonts/sans-serif/inter/Inter-VariableFont_slnt,wght.ttf') format('truetype');
+}
+
 @media (min-width: 768px) {
     :root {
         font-size: 18px;
