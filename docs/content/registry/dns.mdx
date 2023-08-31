@@ -1,12 +1,18 @@
 import { WIP } from '@/components/wip/WIP';
 
-{/** @type {import('@/lib/mdxPageProps').MdxMetaProps} */}
+{/* * @type {import('@/lib/mdxPageProps').MdxMetaProps} */}
 export const meta = {
-    description: '',
-    emoji: '🗒️',
-    contributors: []
+description: '',
+emoji: '🗒️',
+contributors: []
 };
 
 # DNS Registrar
 
-<WIP />
+<WIP
+    missing={[
+        'Registration on L1',
+        'DNSSEC Verification on-chain',
+        'Gassless DNSSEC Using CCIP'
+    ]}
+/>
