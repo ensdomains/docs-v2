@@ -37,7 +37,7 @@ function NavLink({ href, tag, active, isAnchorLink = false, children }) {
 function ActivePageMarker({ group, pathname }) {
     const itemHeight = remToPx(2);
     const offset = remToPx(0.25);
-    const activePageIndex = group.links.findIndex(
+    const activePageIndex = group.links?.findIndex(
         (link) => link.href === pathname
     );
     const top = offset + activePageIndex * itemHeight;
@@ -81,7 +81,7 @@ function VisibleSectionHighlight({ group, pathname }) {
         ? Math.max(1, visibleSections.length) * itemHeight
         : itemHeight;
     const top =
-        group.links.findIndex((link) => link.href === pathname) * itemHeight +
+        group.links?.findIndex((link) => link.href === pathname) * itemHeight +
         firstVisibleSectionIndex * itemHeight;
 
     return (
@@ -107,17 +107,17 @@ export const NavigationGroup = ({ group, className }) => {
     );
 
     const isActiveGroup =
-        group.links.findIndex((link) => link.href === pathname) !== -1;
+        group.links?.findIndex((link) => link.href === pathname) !== -1;
 
     return (
-        <li className={clsx('relative mt-6', className)}>
+        <li className={clsx('relative mt-6 first:md:mt-0', className)}>
             <motion.h2
                 layout="position"
-                className="text-xs font-semibold text-zinc-900 dark:text-white"
+                className="pl-4 text-xs font-semibold text-zinc-900 dark:text-white"
             >
                 {group.title}
             </motion.h2>
-            <div className="relative mt-3 pl-2">
+            <div className="relative mt-3 pl-3">
                 <AnimatePresence initial={!isInsideMobileNavigation}>
                     {isActiveGroup && (
                         <VisibleSectionHighlight
@@ -136,7 +136,7 @@ export const NavigationGroup = ({ group, className }) => {
                     )}
                 </AnimatePresence>
                 <ul className="border-l border-transparent">
-                    {group.links.map((link) => (
+                    {group.links?.map((link) => (
                         <motion.li
                             key={link.href}
                             layout="position"

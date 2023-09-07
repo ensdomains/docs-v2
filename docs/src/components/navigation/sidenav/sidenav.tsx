@@ -1,5 +1,7 @@
 'use client';
 
+import clsx from 'clsx';
+import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 import { navigation } from '@/lib/headers';
@@ -9,28 +11,50 @@ import { NavigationGroup } from './navgroup';
 export const Navigation = (properties) => {
     const pathname = usePathname();
 
-    const foundNavigation = navigation.find(
-        ([url, group]) => pathname.match(url) && group
-    );
+    const isDAO = pathname.match(/\/dao/);
 
-    if (!foundNavigation) {
-        return;
-    }
+    const activeNavigation = navigation[isDAO ? 'dao' : 'protocol'];
 
-    const [, activeNavigation] = foundNavigation;
+    const activeSection = activeNavigation.find((group) => {
+        return group.activePattern.test(pathname);
+    });
 
     return (
-        <nav className="lg:mt-4">
-            <ul>
-                {activeNavigation &&
-                    activeNavigation.map((group, groupIndex) => (
-                        <NavigationGroup
-                            key={group.title}
-                            group={group}
-                            className={groupIndex === 0 && 'md:mt-0'}
-                        />
+        <nav className="">
+            <div className="border-b px-2 py-4">
+                <ul className="flex w-full flex-col gap-1">
+                    {activeNavigation.map((section, sectionIndex) => (
+                        <li key={section.name} className="w-full">
+                            <Link
+                                href={section.href}
+                                className={clsx(
+                                    'flex w-full items-center gap-2 rounded-md p-2 text-sm',
+                                    section.activePattern.test(pathname)
+                                        ? 'bg-ens-200/50 text-ens-700'
+                                        : 'hover:bg-[#f5f5f5]'
+                                )}
+                            >
+                                <span className="text-md aspect-square">
+                                    {section.icon}
+                                </span>
+                                <span>{section.name}</span>
+                            </Link>
+                        </li>
                     ))}
-            </ul>
+                </ul>
+            </div>
+            <div className="w-full overflow-auto pt-4">
+                <ul>
+                    {activeSection &&
+                        activeSection.links.map((group, groupIndex) => (
+                            <NavigationGroup
+                                key={group.title}
+                                group={group}
+                                className=""
+                            />
+                        ))}
+                </ul>
+            </div>
         </nav>
     );
 };

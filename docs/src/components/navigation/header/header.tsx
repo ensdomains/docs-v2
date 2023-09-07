@@ -20,7 +20,6 @@ import markDao from '../../../images/mark_dao.svg';
 import { Button } from '../../Button';
 import { MobileNavigation } from '../../MobileNavigation';
 import { MobileSearch, Search } from '../../search/SearchBar';
-import { SubHeader } from '../subheader/SubHeader';
 
 export const Header = forwardRef<HTMLDivElement, { className?: string }>(
     ({ className }, reference) => {
@@ -39,7 +38,7 @@ export const Header = forwardRef<HTMLDivElement, { className?: string }>(
                 ref={reference}
                 className={clsx(
                     className,
-                    'fixed inset-x-0 top-0 z-50 flex h-14 items-center justify-start gap-6 px-4 transition sm:px-6 md:shadow-2xl lg:z-30 lg:px-4',
+                    'fixed inset-x-0 top-0 z-50 flex h-14 items-center justify-start gap-6 px-4 transition sm:px-6 md:shadow-sm lg:z-30 lg:px-4',
                     !isInsideMobileNavigation &&
                         'left-0 backdrop-blur-sm dark:backdrop-blur',
                     isInsideMobileNavigation
@@ -145,7 +144,7 @@ export const Header = forwardRef<HTMLDivElement, { className?: string }>(
                         {/* <ModeToggle /> */}
                     </div>
                 </div>
-                <SubHeader />
+                {/* <SubHeader /> */}
             </motion.header>
         );
     }

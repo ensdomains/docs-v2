@@ -22,13 +22,13 @@ export const ResponsiveSearch = () => {
 
     return (
         <div id="searchbar" className="w-full text-[#18181b]">
-            <div className="relative z-10 rounded-xl border-2 border-transparent bg-white focus-within:border-blue-700">
+            <div className="relative z-10 rounded-xl border-2 border-transparent bg-white">
                 <input
                     type="text"
                     onClick={() => {
                         setSelect(-1);
                     }}
-                    className="w-full rounded-xl py-2 pl-10 text-xl"
+                    className="outline-ens-500 w-full rounded-xl py-2 pl-10 text-xl outline-offset-4"
                     placeholder="Search for anything..."
                     // eslint-disable-next-line jsx-a11y/no-autofocus
                     autoFocus={true}

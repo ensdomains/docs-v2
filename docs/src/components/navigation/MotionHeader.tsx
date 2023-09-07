@@ -11,7 +11,7 @@ export const MotionHeader: FC = () => {
             <Header />
             <motion.div
                 layoutScroll
-                className="lheader fixed inset-0 top-[5.5rem] z-40 hidden w-72 overflow-y-auto border-r-0 border-zinc-900/10 pb-8 pl-6 pr-2 pt-2 dark:border-white/10 lg:block xl:w-80"
+                className="lheader fixed inset-0 top-[3.5rem] z-40 hidden w-72 overflow-y-auto border-r border-zinc-900/10 lg:block xl:w-80"
             >
                 {/* // TODO: */}
                 <Navigation />
