@@ -399,7 +399,55 @@ export const navigation: Record<'protocol' | 'dao', SectionData[]> = {
 
     dao: [
         {
-            name: 'dao-governance',
+            name: 'The ENS DAO',
+            href: '/dao',
+            icon: '🏛️',
+            activePattern: /^\/dao(\/|(\/(foundation|airdrop|constitution)))?$/,
+            links: [
+                {
+                    title: '',
+                    links: [{ title: '👋 Welcome', href: '/dao' }],
+                },
+                {
+                    title: '🧑‍🎓 The interesting bits',
+                    links: [
+                        {
+                            title: '📜 Constitution',
+                            href: '/dao/constitution',
+                        },
+                        { title: '🏛️ Foundation', href: '/dao/foundation' },
+                        { title: '🪂 Airdrop', href: '/dao/airdrop' },
+                    ],
+                },
+                {
+                    title: '🔗 Links',
+                    links: [
+                        {
+                            title: 'Discourse',
+                            href: 'https://discuss.ens.domains',
+                            external: true,
+                        },
+                        {
+                            title: 'Snapshot',
+                            href: 'https://snapshot.org/#/ens.eth',
+                            external: true,
+                        },
+                        {
+                            title: 'Tally',
+                            href: 'https://www.withtally.com/governance/ens',
+                            external: true,
+                        },
+                        {
+                            title: 'Sybil',
+                            href: 'https://sybil.org/#/delegates/ens',
+                            external: true,
+                        },
+                    ],
+                },
+            ],
+        },
+        {
+            name: 'Governance',
             href: '/dao/governance',
             icon: '🏛️',
             activePattern: /^\/dao\/governance(\/.*)?/,
@@ -420,7 +468,7 @@ export const navigation: Record<'protocol' | 'dao', SectionData[]> = {
             ],
         },
         {
-            name: 'dao-proposals',
+            name: 'Proposals',
             href: '/dao/proposals',
             icon: '📜',
             activePattern: /^\/dao\/proposals(\/.*)?/,
@@ -575,54 +623,6 @@ export const navigation: Record<'protocol' | 'dao', SectionData[]> = {
                         {
                             title: '0.1 - [Social] Proposal: Transfer ENS Treasury and Contract Ownership',
                             href: '/dao/proposals/0.1',
-                        },
-                    ],
-                },
-            ],
-        },
-        {
-            name: 'dao',
-            href: '/dao',
-            icon: '🏛️',
-            activePattern: /^\/dao(\/|(\/(foundation|airdrop|constitution)))?$/,
-            links: [
-                {
-                    title: '',
-                    links: [{ title: '👋 Welcome', href: '/dao' }],
-                },
-                {
-                    title: '🧑‍🎓 The interesting bits',
-                    links: [
-                        {
-                            title: '📜 Constitution',
-                            href: '/dao/constitution',
-                        },
-                        { title: '🏛️ Foundation', href: '/dao/foundation' },
-                        { title: '🪂 Airdrop', href: '/dao/airdrop' },
-                    ],
-                },
-                {
-                    title: '🔗 Links',
-                    links: [
-                        {
-                            title: 'Discourse',
-                            href: 'https://discuss.ens.domains',
-                            external: true,
-                        },
-                        {
-                            title: 'Snapshot',
-                            href: 'https://snapshot.org/#/ens.eth',
-                            external: true,
-                        },
-                        {
-                            title: 'Tally',
-                            href: 'https://www.withtally.com/governance/ens',
-                            external: true,
-                        },
-                        {
-                            title: 'Sybil',
-                            href: 'https://sybil.org/#/delegates/ens',
-                            external: true,
                         },
                     ],
                 },
