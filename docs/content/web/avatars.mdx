@@ -10,21 +10,25 @@ export const meta = {
 # Avatars
 
 Personalization of profiles is what makes identity great.
-This page covers the very special "avatar" record that enables users to take their avatar with them across the web.
+This page covers the very special **"avatar"** record that enables users to take their avatar with them across the web.
 
 ## Getting the users Avatar {{ navtitle: 'User Avatars ', id: 'avatars', tag: 'Avatar' }}
 
-There is a lot more to a user then just their name, and ENS allows you to get all the information you need to build a great user experience.
-Simply add the codesnippet below to your app and you will be able to get any users avatar anywhere you'd like!
+Avatars are an awesome way for users to express themselves. To get the user's avatar, all you need is their **name**. If you only have their address, see [primary names](/web/reverse#get).
+The follow code snippets let you get the avatar for a user.
 
 <div className="card px-8 py-4 flex justify-center items-center gap-3 not-prose">
     <span>luc.eth</span>
     <span>➡️</span>
-    <img
-        src="https://v3x.space/ens-docs/pfp.webp"
-        alt="luc.eth"
-        className="ml-1 w-8 h-8 rounded-full"
-    />
+    <div
+        className="w-8 h-8 rounded-full overflow-hidden border"
+    >
+        <img
+            src="https://metadata.ens.domains/mainnet/avatar/luc.eth"
+            alt="luc.eth"
+            className="w-8 h-8 rounded-full"
+        />
+    </div>
 </div>
 
 <CodeGroup title="Request">
@@ -32,7 +36,7 @@ Simply add the codesnippet below to your app and you will be able to get any use
 ```tsx {{ title: 'Wagmi (React)', language: 'tsx', variant: 'wagmi' }}
 import { useEnsAvatar } from 'wagmi';
 
-const Avatar = () => {
+function App() {
     const { data: ensAvatar } = useEnsAvatar({
         address: 'luc.eth',
         chainId: 1, // (1 = Ethereum Mainnet, 5 = Goerli)

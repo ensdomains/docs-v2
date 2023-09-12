@@ -15,6 +15,8 @@ export const ContributeButton: FC<{ url?: string }> = ({ url }) => {
             'Failed to get url, defaulting back to asPath from useRouter',
             url
         );
+
+        return <></>;
     }
 
     return (

@@ -71,7 +71,7 @@ export const MobileNavigation = () => {
                             >
                                 <motion.div
                                     layoutScroll
-                                    className="lheader ring-zinc-900/7.5 fixed bottom-0 left-0 top-14 z-50 w-full overflow-y-auto bg-white pb-4 pl-4 pr-0 pt-6 shadow-lg shadow-zinc-900/10 ring-1 dark:bg-zinc-900 dark:ring-zinc-800 min-[416px]:max-w-sm sm:pb-10 sm:pl-6"
+                                    className="ring-zinc-900/7.5 fixed bottom-0 left-0 top-14 z-50 w-full overflow-y-auto bg-white pb-8 shadow-lg shadow-zinc-900/10 ring-1 dark:bg-zinc-900 dark:ring-zinc-800 min-[416px]:max-w-sm sm:pl-6"
                                 >
                                     <Navigation />
                                 </motion.div>

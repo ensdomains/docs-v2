@@ -320,13 +320,6 @@ export const navigation: Record<'protocol' | 'dao', SectionData[]> = {
                 },
             ],
         },
-        {
-            name: 'Design',
-            href: '/web/design',
-            icon: '🖼️',
-            activePattern: /^\/web\/design(\/.*)?/,
-            links: [],
-        },
         // {
         //     name: 'Improvement Proposals',
         //     href: '/ensip',
@@ -388,13 +381,13 @@ export const navigation: Record<'protocol' | 'dao', SectionData[]> = {
         //     ],
         // },
         // TODO: Uncomment this
-        // {
-        //     name: 'Learn',
-        //     href: '/learn/protocol',
-        //     icon: '🎓',
-        //     activePattern: /^\/learn(\/.*)?/,
-        //     links: [],
-        // },
+        {
+            name: 'Learn',
+            href: '/learn/protocol',
+            icon: '🎓',
+            activePattern: /^\/learn(\/.*)?/,
+            links: [],
+        },
     ],
 
     dao: [

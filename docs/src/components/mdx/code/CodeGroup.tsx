@@ -1,3 +1,4 @@
+import { createHash } from 'node:crypto';
 import { Children, cloneElement, FC, PropsWithChildren } from 'react';
 
 import { CodePanel } from './CodePanel';
@@ -16,6 +17,8 @@ export type CodeSnippetProperties = {
     language: string;
     title?: string;
     preset?: string;
+    // Link out to external docs etc
+    link?: string;
     config?: LanguageSettings;
 };
 
@@ -25,7 +28,11 @@ export const CodeGroup: FC<PropsWithChildren<CodeGroupProperties>> = ({
     presets = 'code',
     ...properties
 }) => {
-    const identifier = Math.round(Math.random() * 1000);
+    // Generate a unique identifier to keep track of this code group accross dev reloads
+    const identifier = createHash('sha256')
+        .update(title ?? Math.round(Math.random() * 10_000).toString())
+        .digest('hex')
+        .slice(0, 8);
 
     const codeSnippets = Children.map(children, (child) => {
         //

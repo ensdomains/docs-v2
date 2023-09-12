@@ -13,6 +13,7 @@ import { Property } from '@/components/mdx/Property';
 import { Row } from '@/components/mdx/Row';
 import { Repository } from '@/components/repository/Repository';
 import { VideoComponent } from '@/components/video/VideoComponent';
+import { LiveDemo } from '@/demos/LiveDemo';
 
 // This file is required to use MDX in `app` directory.
 export function useMDXComponents(components: MDXComponents): MDXComponents {
@@ -34,6 +35,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         VideoComponent,
         EmbedLink: EmbedLink as any,
         Repository: Repository as any,
+        LiveDemo: LiveDemo as any,
         ...components,
     };
 }

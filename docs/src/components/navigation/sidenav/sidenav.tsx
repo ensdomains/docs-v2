@@ -20,7 +20,7 @@ export const Navigation = (properties) => {
     });
 
     return (
-        <nav className="">
+        <nav className="flex h-full flex-col">
             <div className="border-b px-2 py-4">
                 <ul className="flex w-full flex-col gap-1">
                     {activeNavigation.map((section, sectionIndex) => (
@@ -43,8 +43,8 @@ export const Navigation = (properties) => {
                     ))}
                 </ul>
             </div>
-            <div className="w-full overflow-auto pt-4">
-                <ul>
+            <div className="scrollbar w-full overflow-auto py-4">
+                <ul className="space-y-6 pl-2">
                     {activeSection &&
                         activeSection.links.map((group, groupIndex) => (
                             <NavigationGroup

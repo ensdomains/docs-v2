@@ -112,23 +112,6 @@ export const Header = forwardRef<HTMLDivElement, { className?: string }>(
                             </Button>
                         )}
                     </div>
-                    {/* <nav className="hidden md:block">
-                    <ul role="list" className="flex items-center gap-4">
-                        <TopLevelNavItem
-                            href="https://eips.ethereum.org/EIPS/eip-137"
-                            target="_blank"
-                        >
-                            x
-                        </TopLevelNavItem>
-                        <TopLevelNavItem href="/">x</TopLevelNavItem>
-                        <TopLevelNavItem
-                            href="https://support.ens.domains/?ref=docs"
-                            target="_blank"
-                        >
-                            x
-                        </TopLevelNavItem>
-                    </ul>
-                </nav> */}
                     <div className="md:dark:bg-white/15 hidden md:block md:h-5 md:w-px md:bg-zinc-900/10" />
                     <div className="flex gap-4">
                         <MobileSearch />
@@ -141,10 +124,8 @@ export const Header = forwardRef<HTMLDivElement, { className?: string }>(
                                 className="opacity-90 hover:opacity-100"
                             />
                         </Link>
-                        {/* <ModeToggle /> */}
                     </div>
                 </div>
-                {/* <SubHeader /> */}
             </motion.header>
         );
     }
