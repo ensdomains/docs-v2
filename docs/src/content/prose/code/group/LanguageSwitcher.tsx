@@ -2,8 +2,8 @@
 
 import { FC, useCallback, useEffect, useState } from 'react';
 
+import { sortLanguagesByPreset } from '../languageSorter';
 import { CodeSnippetProperties } from './CodeGroup';
-import { sortLanguagesByPreset } from './getlanguage';
 
 const EVENT = 'l-language-';
 
@@ -16,7 +16,7 @@ class LLanguageEvent extends Event {
     language: string;
 }
 
-export const LanguageOptions: FC<{
+export const LanguageSwitcher: FC<{
     snippets: CodeSnippetProperties[];
     identifier: string;
     presets: string;

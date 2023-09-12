@@ -1,7 +1,11 @@
 import { FC, PropsWithChildren } from 'react';
 
-import { CodeGroup } from './CodeGroup';
-import { CodePanel, CodePanelProperties } from './CodePanel';
+import {
+    CodePanel,
+    CodePanelProperties,
+} from '@/content/prose/code/snippet/CodeSnippet';
+
+import { CodeGroup } from './group/CodeGroup';
 
 export function Code({ children, ...properties }) {
     return (

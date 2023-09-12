@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import { FC, PropsWithChildren } from 'react';
 
-import { CodeSnippetProperties } from './CodeGroup';
-import { getLanguage } from './getlanguage';
+import { CodeSnippetProperties } from '../group/CodeGroup';
+import { getLanguage } from '../languageSorter';
 
 export type CodePanelProperties = {
     tag?: string;
@@ -96,7 +96,7 @@ export const CodePanel: FC<PropsWithChildren<CodePanelProperties>> = ({
             <div className="relative">
                 <pre
                     className="overflow-x-auto p-4 text-xs text-black"
-                    // ref={preReference}
+                // ref={preReference}
                 >
                     {children}
                 </pre>

@@ -1,10 +1,11 @@
 import { createHash } from 'node:crypto';
 import { Children, cloneElement, FC, PropsWithChildren } from 'react';
 
-import { CodePanel } from './CodePanel';
-import { getLanguage } from './getlanguage';
-import { CodeGroupHeader } from './Header';
-import { LanguageSettings } from './languagetypes';
+import { CodePanel } from '@/content/prose/code/snippet/CodeSnippet';
+
+import { getLanguage } from '../languageSorter';
+import { LanguageSettings } from '../types/language';
+import { CodeGroupHeader } from './CodeGroupHeader';
 
 export type CodeGroupProperties = {
     title?: string;

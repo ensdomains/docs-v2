@@ -1,8 +1,6 @@
 import { default as a } from 'next/link';
 
 import { Button } from '@/components/Button';
-import { Code, Pre } from '@/components/mdx/code/Code';
-import { CodeGroup } from '@/components/mdx/code/CodeGroup';
 import { Col } from '@/components/mdx/Col';
 import { EmbedLink } from '@/components/mdx/EmbedLink';
 import { h2 } from '@/components/mdx/h2';
@@ -13,6 +11,9 @@ import { Row } from '@/components/mdx/Row';
 import { Repository } from '@/components/repository/Repository';
 import { VideoComponent } from '@/components/video/VideoComponent';
 
+import { Code, Pre } from './code/Code';
+import { CodeGroup } from './code/group/CodeGroup';
+
 export const prose = {
     a: a as any,
     h2,
@@ -22,11 +23,11 @@ export const prose = {
     Properties,
     Property,
     code: Code,
-    CodeGroup: CodeGroup as any,
-    pre: Pre as any,
-    button: Button as any,
-    Button: Button as any,
+    CodeGroup,
+    pre: Pre,
+    button: Button,
+    Button,
     VideoComponent,
-    EmbedLink: EmbedLink as any,
-    Repository: Repository as any,
+    EmbedLink,
+    Repository,
 };

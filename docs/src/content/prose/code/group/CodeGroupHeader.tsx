@@ -1,7 +1,7 @@
 import { FC, ReactNode } from 'react';
 
 import { CodeSnippetProperties } from './CodeGroup';
-import { LanguageOptions } from './LanguageOptions';
+import { LanguageSwitcher } from './LanguageSwitcher';
 
 export const CodeGroupHeader: FC<{
     snippets: {
@@ -26,7 +26,7 @@ export const CodeGroupHeader: FC<{
                 </h3>
             )}
             {hasTabs && (
-                <LanguageOptions
+                <LanguageSwitcher
                     snippets={snippets.map((entry) => entry.data)}
                     identifier={identifier}
                     presets={presets}
