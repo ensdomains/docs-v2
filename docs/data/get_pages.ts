@@ -1,9 +1,15 @@
-export const getAllPageSlugs = async () => {
-    // const files = await readdir(join(process.cwd(), '../content'));
+import { glob } from 'glob';
+import { join } from 'node:path';
+import { cache } from 'react';
 
-    // console.log({ cwd: process.cwd() });
+const contentDirectory = join(process.cwd(), '../content');
 
-    // return files.map((file) => file.replace(/\.mdx$/, ''));
+const _getAllPageSlugs = async () => {
+    console.log('GLOBBING DA FILES 🧹');
 
-    return [];
+    const files = await glob('**/*.mdx', { cwd: contentDirectory });
+
+    return files.map((file) => file.replace(/(\/index)?\.mdx$/, ''));
 };
+
+export const getAllPageSlugs = cache(_getAllPageSlugs);

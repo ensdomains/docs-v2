@@ -2,7 +2,7 @@ import { MDXProps } from 'mdx/types';
 import { notFound } from 'next/navigation';
 import { existsSync } from 'node:fs';
 import { join } from 'node:path';
-import { ReactNode } from 'react';
+import { cache, ReactNode } from 'react';
 
 import {
     MdxPageProps as MdxPageProperties,
@@ -11,11 +11,11 @@ import {
 
 const contentDirectory = join(process.cwd(), '../content');
 
-export const getPageBySlug = async (
+const _getPageBySlug = async (
     // ex 'index' or 'web' or 'web/quickstart'
     slug: string
 ): Promise<{
-    Page: (properties: MDXProps) => ReactNode;
+    Page: (_properties: MDXProps) => ReactNode;
     pageProperties: MdxPageProperties;
 }> => {
     console.log('🔍 -> ' + slug);
@@ -42,18 +42,10 @@ export const getPageBySlug = async (
 
     const { default: Page, ...rawPageProperties } =
         file as MdxPageProperties & {
-            default: (properties: MDXProps) => ReactNode;
+            default: (_properties: MDXProps) => ReactNode;
         };
 
-    // const { default: Page, ...rawPageProperties } = (await import(
-    //     join(contentDirectory, slug + '.mdx')
-    // )) as MdxPageProperties & {
-    //     default: (properties: MDXProps) => ReactNode;
-    // };
-
     const pageProperties = mdxPagePropertiesSchema.parse(rawPageProperties);
-
-    // const pageProperties = mdxPagePropertiesSchema.parse(rawPageProperties);
 
     if (!pageProperties.meta.title || pageProperties.meta.title == '')
         pageProperties.meta.title = pageProperties.title;
@@ -62,18 +54,6 @@ export const getPageBySlug = async (
         pageProperties,
         Page,
     };
-
-    // return {
-    //     pageProperties: {
-    //         title: 'PAGE TITLE',
-    //         meta: {
-    //             title: 'OTHER TITLE',
-    //             contributors: [],
-    //             description: 'DESCRIPTION',
-    //             emoji: '📖',
-    //             showDetailsSection: false,
-    //         },
-    //     },
-    //     Page: () => <div>Page {contentDirectory}</div>,
-    // };
 };
+
+export const getPageBySlug = cache(_getPageBySlug);

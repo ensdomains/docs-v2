@@ -51,11 +51,9 @@ export const generateMetadata = async (
 export async function generateStaticParams() {
     const pages = await getAllPageSlugs();
 
-    return [];
-
-    // return pages.map((slug) => ({
-    //     slug: slug.split('/'),
-    // }));
+    return pages.map((slug) => ({
+        slug: slug.split('/'),
+    }));
 }
 
 const Page = async ({ params }: PageProperties) => {

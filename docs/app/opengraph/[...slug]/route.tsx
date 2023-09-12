@@ -45,12 +45,12 @@ import { readFile } from 'node:fs/promises';
 export async function generateStaticParams() {
     const pages = await getAllPageSlugs();
 
-    return [];
+    // return [];
 
     // TODO: Uncomment
-    // return pages.map((slug) => ({
-    //     slug: (slug + '.png').split('/'),
-    // }));
+    return pages.map((slug) => ({
+        slug: (slug + '.png').split('/'),
+    }));
 }
 
 const fontScale = (length: number) => {
