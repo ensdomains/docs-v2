@@ -13,7 +13,7 @@ import { Button } from '@/components/Button';
 import {
     useIsInsideMobileNavigation,
     useMobileNavigationStore,
-} from '@/hooks/mobile';
+} from '@/lib/mobile';
 import { cx } from '@/lib/cx';
 
 import { MobileNavigation } from '../sidebar/_legacy/MobileNavigation';

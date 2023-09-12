@@ -87,16 +87,23 @@ import { useEnsMultichainAddress } from 'ens-tools/react';
 export const BitcoinAddress = () => {
     const { address: btcAddress, chainId } = useEnsMultichainAddress({
         name: 'luc.eth',
-        coinType: 1, // BTC
+        coinType: 0, // BTC
     });
 
     return <div>BTC: {btcAddress}</div>;
 };
 ```
 
-```ts {{ title: 'Ethers.js (TS)', variant: 'ethers' }}
+```ts {{ title: 'Viem (TS)', variant: 'viem', link: 'https://viem.sh/docs/ens/actions/getEnsAddress.html#cointype-optional' }}
+const ensName = await publicClient.getEnsAddress({
+    name: normalize('wagmi-dev.eth'), 
+    coinType: 0, // BTC
+});
+```
+
+```ts {{ title: 'Ethers.js (TS)', variant: 'ethers', link: 'https://docs.ethers.org/v5/api/providers/provider/#EnsResolver' }}
 const resolver = await provider.getResolver('luc.eth');
-const btcAddress = await resolver?.getAddress(1);
+const btcAddress = await resolver?.getAddress(0);
 ```
 
 </CodeGroup>

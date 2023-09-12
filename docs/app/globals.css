@@ -84,6 +84,14 @@ pre {
     @apply bg-white;
 }
 
+.mermaid {
+    @apply flex items-center justify-center;
+}
+
+svg[role~='graphics-document'] {
+    @apply w-full border block;
+}
+
 .focus-code {
     @apply w-full;
 }

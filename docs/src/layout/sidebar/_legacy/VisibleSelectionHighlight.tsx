@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { useIsPresent } from 'framer-motion';
 
 import { useSectionStore } from '@/components/SectionProvider';
-import { useIsInsideMobileNavigation } from '@/hooks/mobile';
+import { useIsInsideMobileNavigation } from '@/lib/mobile';
 import { remToPx } from '@/lib/remToPx';
 
 import { useInitialValue } from './useInitialValue';

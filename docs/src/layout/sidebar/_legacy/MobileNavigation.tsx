@@ -7,7 +7,7 @@ import {
     IsInsideMobileNavigationContext,
     useIsInsideMobileNavigation,
     useMobileNavigationStore,
-} from '@/hooks/mobile';
+} from '@/lib/mobile';
 import { Header } from '@/layout/header/Header';
 import { Navigation } from '@/layout/sidebar/_legacy/sidenav';
 

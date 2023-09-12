@@ -25,7 +25,8 @@ Once the client encounters this error, it will attempt to handle it by calling a
 
 ```c
 error OffchainLookup(
-    address sender, string[] urls,
+    address sender,
+    string[] urls,
     bytes callData,
     bytes4 callbackFunction,
     bytes extraData
@@ -115,8 +116,8 @@ sequenceDiagram
     participant ENS
     participant Resolver
     end
-    participant Gateway as Gateway<br />Service*
-    participant L2 as L2 or Database*<br />
+    participant Gateway as Gateway Service*
+    participant L2 as L2 or Database*
 
     Client->>ENS: get resolver for luc.eth
     ENS->>Client: 

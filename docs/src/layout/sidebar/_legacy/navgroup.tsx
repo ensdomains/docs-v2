@@ -8,7 +8,7 @@ import { FiExternalLink } from 'react-icons/fi';
 import { ClientOnly } from '@/ClientOnly';
 import { useSectionStore } from '@/components/SectionProvider';
 import { Tag } from '@/components/Tag';
-import { useIsInsideMobileNavigation } from '@/hooks/mobile';
+import { useIsInsideMobileNavigation } from '@/lib/mobile';
 import { remToPx } from '@/lib/remToPx';
 
 import { useInitialValue } from './useInitialValue';
