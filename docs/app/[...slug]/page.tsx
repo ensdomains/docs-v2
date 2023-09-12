@@ -1,8 +1,9 @@
+import { getPageBySlug } from 'data/get_page';
+import { getAllPageSlugs } from 'data/get_pages';
 import { ResolvingMetadata } from 'next';
 
-import { Layout } from '@/components/Layout';
+import { Layout } from '@/layout/PageLayout';
 import { createMetadata } from '@/lib/metadata';
-import { getAllPagesSlug, getPageBySlug } from '@/lib/pages';
 
 type PageProperties = {
     params: { slug: string[] };
@@ -48,11 +49,13 @@ export const generateMetadata = async (
 
 // eslint-disable-next-line unicorn/prevent-abbreviations
 export async function generateStaticParams() {
-    const pages = getAllPagesSlug();
+    const pages = await getAllPageSlugs();
 
-    return pages.map((slug) => ({
-        slug: slug.split('/'),
-    }));
+    return [];
+
+    // return pages.map((slug) => ({
+    //     slug: slug.split('/'),
+    // }));
 }
 
 const Page = async ({ params }: PageProperties) => {

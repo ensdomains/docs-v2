@@ -1,5 +1,6 @@
+import { LanguagePresets } from '@/config/languages';
+
 import { CodeSnippetProperties } from './CodeGroup';
-import { LanguagePresets } from './languages';
 import { LanguageSettings } from './languagetypes';
 
 export const getLanguage = (

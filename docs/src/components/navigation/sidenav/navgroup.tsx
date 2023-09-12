@@ -66,7 +66,7 @@ export const NavigationGroup = ({ group, className }) => {
     // The state will still update when we re-open (re-render) the navigation.
     const isInsideMobileNavigation = useIsInsideMobileNavigation();
     const [pathname, sections] = useInitialValue(
-        [usePathname(), useSectionStore((s) => s.sections)],
+        [usePathname(), useSectionStore((s) => s.sections || [])],
         isInsideMobileNavigation
     );
 

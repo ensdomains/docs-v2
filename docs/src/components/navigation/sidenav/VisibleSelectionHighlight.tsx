@@ -10,8 +10,8 @@ import { useInitialValue } from './useInitialValue';
 export function VisibleSectionHighlight({ group, pathname }) {
     const [sections, visibleSections] = useInitialValue(
         [
-            useSectionStore((s) => s.sections),
-            useSectionStore((s) => s.visibleSections),
+            useSectionStore((s) => s.sections || []),
+            useSectionStore((s) => s.visibleSections || []),
         ],
         useIsInsideMobileNavigation()
     );

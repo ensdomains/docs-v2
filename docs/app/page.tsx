@@ -1,8 +1,8 @@
+import { getPageBySlug } from 'data/get_page';
 import { ResolvingMetadata } from 'next';
 
-import { Layout } from '@/components/Layout';
+import { Layout } from '@/layout/PageLayout';
 import { createMetadata } from '@/lib/metadata';
-import { getPageBySlug } from '@/lib/pages';
 
 export const generateMetadata = async (_x: any, parent: ResolvingMetadata) => {
     const {

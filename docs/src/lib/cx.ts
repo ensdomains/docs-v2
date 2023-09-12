@@ -1,4 +1,4 @@
-export const cx = (all, light, dark) => {
+export const cxWithTheme = (all, light, dark) => {
     return [
         all,
         light,
@@ -9,7 +9,7 @@ export const cx = (all, light, dark) => {
     ].join(' ');
 };
 
-export const ccx = (...all) => {
+export const cx = (...all) => {
     return all.filter((f) => !!f).join(' ');
 };
 

@@ -1,7 +1,7 @@
+import { getPageBySlug } from 'data/get_page';
+import { getAllPageSlugs } from 'data/get_pages';
 import { ImageResponse, NextRequest } from 'next/server';
 import { readFile } from 'node:fs/promises';
-
-import { getAllPagesSlug, getPageBySlug } from '@/lib/pages';
 
 // Route segment config
 // export const runtime = 'nodejs';
@@ -43,11 +43,14 @@ import { getAllPagesSlug, getPageBySlug } from '@/lib/pages';
 
 // eslint-disable-next-line unicorn/prevent-abbreviations
 export async function generateStaticParams() {
-    const pages = getAllPagesSlug();
+    const pages = await getAllPageSlugs();
 
-    return pages.map((slug) => ({
-        slug: (slug + '.png').split('/'),
-    }));
+    return [];
+
+    // TODO: Uncomment
+    // return pages.map((slug) => ({
+    //     slug: (slug + '.png').split('/'),
+    // }));
 }
 
 const fontScale = (length: number) => {

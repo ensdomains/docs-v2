@@ -1,0 +1,64 @@
+import { QuickBannerLink } from '@/components/home/QuickLink';
+
+{/** @type {import('@/lib/mdxPageProps').MdxMetaProps} */}
+export const meta = {
+    description: 'Learn everything about the Ethereum Name Service (ENS). How to integrate names into your dApp, issue subnames, and so much more!',
+    title: 'ENS Documentation',
+    emoji: '👋', 
+    showDetailsSection: false,
+    contributors: [
+        'lucemans'
+    ]
+};
+
+<h1>Ethereum Name Service</h1>
+
+<p>Build applications with decentralized identity,</p>
+
+<div className="flex gap-x-3">
+    <div className="border p-4 rounded-lg border-gray-500 bg-gradient-to-r from-gray-500/20 to-gray-500/5 not-prose">
+        <h2 className="font-bold text-lg text-gray-900">⚡ Quick Start</h2>
+        <Button>Show me how!</Button>
+    </div>
+    <div className="grow border p-4 rounded-lg border-ens bg-gradient-to-r from-ens-500/20 to-ens-500/5 not-prose">
+        <h2 className="font-bold text-lg text-blue-900">
+            Add identity to your dApp, App, Wallet, or anything else!
+        </h2>
+        <Button variant="filled">Show me how!</Button>
+    </div>
+</div>
+
+<h2>Learn more</h2>
+<p>Try out ENS</p>
+
+{/* <VideoComponent src="https://v3x.space/ens-docs/intro5" /> */}
+
+<div className="grid grid-cols-2 gap-x-3 gap-y-3">
+<QuickBannerLink
+    title="I'm building a dApp"
+    description="Learn how to integrate ENS into your dApp"
+    href="/web"
+    image="/content/home/grid_link_1.png"
+/>
+
+<QuickBannerLink
+    title="I'm here to learn about resolution"
+    description="Learn how ENS works under the hood, register, renew, resolvers, registries, and much more!"
+    href="/resolution"
+    image="/content/home/grid_link_2.png"
+/>
+
+<QuickBannerLink
+    title="I'm looking for the DAO Governance Docs"
+    description="Everything about the ENS DAO you find here!"
+    href="/dao"
+    image="/content/home/grid_link_3.png"
+/>
+
+<QuickBannerLink
+    title="I'm not a developer how did I get here?"
+    description="The support knowledgebase is a wondeful resource for any questions you might have!"
+    href="https://support.ens.domains/"
+    image="/content/home/grid_link_4.png"
+/>
+</div>

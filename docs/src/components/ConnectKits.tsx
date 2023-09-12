@@ -1,30 +1,25 @@
-import Image from 'next/image';
-
-import ConnectKitLogo from '@/images/logos/connectkit.png';
-import RainbowkitLogo from '@/images/logos/rainbow.svg';
-import Web3Modalv2Logo from '@/images/logos/walletconnect.svg';
-import { ccx } from '@/lib/cx';
+import { cx } from '@/lib/cx';
 
 export const ensLibraries = [
     {
         name: 'ConnectKit',
         creator: 'Family',
         creator_url: 'https://family.co',
-        logo: ConnectKitLogo,
+        logo: '/icons/legacy/logos/connectkit.png',
         url: 'https://docs.family.co/connectkit/try-it-out',
     },
     {
         name: 'Rainbowkit',
         creator: 'Rainbow',
         creator_url: 'https://rainbow.me',
-        logo: RainbowkitLogo,
+        logo: '/icons/legacy/logos/rainbow.svg',
         url: 'https://www.rainbowkit.com/docs/introduction',
     },
     {
         name: 'Web3Modalv2',
         creator: 'WalletConnect',
         creator_url: 'https://walletconnect.org',
-        logo: Web3Modalv2Logo,
+        logo: '/icons/legacy/logos/walletconnect.svg',
         url: 'https://docs.walletconnect.com/2.0/web3modal/about',
     },
 ];
@@ -42,9 +37,9 @@ export const ConnectKits = () => {
                         rel="noreferrer"
                     >
                         <div className="mx-auto flex aspect-square w-20 items-center justify-center">
-                            <Image
+                            <img
                                 src={library.logo}
-                                className={ccx(
+                                className={cx(
                                     'w-20',
                                     library.name.toLowerCase() == 'rainbowkit'
                                         ? 'rounded-xl'
