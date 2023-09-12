@@ -1,5 +1,6 @@
 import { default as a } from 'next/link';
 
+import { LiveDemo } from '../../demos/LiveDemo';
 import { Button } from '../Button';
 import { VideoComponent } from '../video/VideoComponent';
 import { Code as code, Pre as pre } from './code/Code';
@@ -13,6 +14,7 @@ import { Property } from './Property';
 import { Row } from './Row';
 
 export const mdxComponents = {
+    LiveDemo,
     h2,
     Note,
     Row,

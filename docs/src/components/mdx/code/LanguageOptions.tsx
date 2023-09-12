@@ -40,6 +40,8 @@ export const LanguageOptions: FC<{
                 '[data-code-group="' + identifier + '"]'
             );
 
+            console.log(entries);
+
             for (const entry of entries) {
                 if (
                     // @ts-ignore
@@ -86,7 +88,7 @@ export const LanguageOptions: FC<{
             // @ts-ignore
             document.removeEventListener(EVENT + presets, hook);
         };
-    }, []);
+    }, [snippets]);
 
     if (!activeLanguage) return <></>;
 

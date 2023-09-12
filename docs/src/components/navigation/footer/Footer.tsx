@@ -153,7 +153,7 @@ export const Footer: FC<{
         <footer className="w-full space-y-4 pb-16">
             <div className="flex items-end justify-between">
                 <div className="w-fit">
-                    <div className="mb-2">
+                    <div className="mb-1">
                         <ContributorsSection
                             contributors={mdxProperties.meta.contributors}
                             expandSingle

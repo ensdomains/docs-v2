@@ -56,7 +56,7 @@ The snippet leverages the [useAccount](https://wagmi.sh/react/hooks/useAccount),
 <div className="card h-24 flex items-center justify-center">
     <div className="flex items-center gap-2">
         <img
-            src="https://v3x.space/ens-docs/pfp.webp"
+            src="https://metadata.ens.domains/mainnet/avatar/luc.eth"
             className="w-8 h-8 rounded-full"
         />
         <div className="flex flex-col gap-0 leading-3 pr-10">
@@ -104,23 +104,8 @@ export const UserProfile: FC = () => {
 
 ## Name Lookups
 
-<div className="card w-full flex items-center justify-center flex-col p-4 not-prose">
-    <div className="flex flex-col">
-        <span>Find user</span>
-        <input
-            className="shadow-xl pl-2 rounded-md border"
-            placeholder="luc.eth"
-            defaultValue="luc.eth"
-        />
-        <div className="flex gap-1 mt-2 items-center h-fit">
-            <img
-                src="https://v3x.space/ens-docs/pfp.webp"
-                className="w-6 h-6 rounded-full"
-            />
-            <span>0x225...c3B5</span>
-        </div>
-    </div>
-</div>
+<LiveDemo id="name_lookup" />
+
 
 ```ts
 

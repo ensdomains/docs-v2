@@ -1,15 +1,18 @@
 'use client';
 import clsx from 'clsx';
-import { AnimatePresence, motion, useIsPresent } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useRef } from 'react';
 import { FiExternalLink } from 'react-icons/fi';
 
+import { ClientOnly } from '@/ClientOnly';
 import { useSectionStore } from '@/components/SectionProvider';
 import { Tag } from '@/components/Tag';
 import { useIsInsideMobileNavigation } from '@/hooks/mobile';
 import { remToPx } from '@/lib/remToPx';
+
+import { useInitialValue } from './useInitialValue';
+import { VisibleSectionHighlight } from './VisibleSelectionHighlight';
 
 function NavLink({ href, tag, active, isAnchorLink = false, children }) {
     return (
@@ -54,47 +57,8 @@ function ActivePageMarker({ group, pathname }) {
     );
 }
 
-function useInitialValue(value, condition = true) {
-    const initialValue = useRef(value).current;
-
-    return condition ? initialValue : value;
-}
-
-function VisibleSectionHighlight({ group, pathname }) {
-    const [sections, visibleSections] = useInitialValue(
-        [
-            useSectionStore((s) => s.sections),
-            useSectionStore((s) => s.visibleSections),
-        ],
-        useIsInsideMobileNavigation()
-    );
-
-    const isPresent = useIsPresent();
-    const firstVisibleSectionIndex = Math.max(
-        0,
-        [{ id: '_top' }, ...sections].findIndex(
-            (section) => section.id === visibleSections[0]
-        )
-    );
-    const itemHeight = remToPx(2);
-    const height = isPresent
-        ? Math.max(1, visibleSections.length) * itemHeight
-        : itemHeight;
-    const top =
-        group.links?.findIndex((link) => link.href === pathname) * itemHeight +
-        firstVisibleSectionIndex * itemHeight;
-
-    return (
-        <motion.div
-            layout
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1, transition: { delay: 0.2 } }}
-            exit={{ opacity: 0 }}
-            className="bg-zinc-800/2.5 dark:bg-white/2.5 absolute inset-x-0 top-0 will-change-transform"
-            style={{ borderRadius: 8, height, top }}
-        />
-    );
-}
+// // Attempt at preventing next.js from rendering the bar in a semi-visible state
+// if (typeof window == 'undefined') return <></>;
 
 export const NavigationGroup = ({ group, className }) => {
     // If this is the mobile navigation then we always render the initial
@@ -110,19 +74,25 @@ export const NavigationGroup = ({ group, className }) => {
         group.links?.findIndex((link) => link.href === pathname) !== -1;
 
     return (
-        <li className={clsx('relative mt-6 first:md:mt-0', className)}>
+        <li className={clsx('relative', className)}>
             <motion.h2
                 layout="position"
-                className="pl-4 text-xs font-semibold text-zinc-900 dark:text-white"
+                className="pl-0.5 text-xs font-semibold text-zinc-900 dark:text-white"
             >
                 {group.title}
             </motion.h2>
-            <div className="relative mt-3 pl-3">
+            <div className="relative mt-3 pl-1">
                 <AnimatePresence initial={!isInsideMobileNavigation}>
                     {isActiveGroup && (
-                        <VisibleSectionHighlight
-                            group={group}
-                            pathname={pathname}
+                        <ClientOnly
+                            child={() => {
+                                return (
+                                    <VisibleSectionHighlight
+                                        group={group}
+                                        pathname={pathname}
+                                    />
+                                );
+                            }}
                         />
                     )}
                 </AnimatePresence>
@@ -132,7 +102,16 @@ export const NavigationGroup = ({ group, className }) => {
                 />
                 <AnimatePresence initial={false}>
                     {isActiveGroup && (
-                        <ActivePageMarker group={group} pathname={pathname} />
+                        <ClientOnly
+                            child={() => {
+                                return (
+                                    <ActivePageMarker
+                                        group={group}
+                                        pathname={pathname}
+                                    />
+                                );
+                            }}
+                        />
                     )}
                 </AnimatePresence>
                 <ul className="border-l border-transparent">

@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { FC, PropsWithChildren } from 'react';
 
 import { CodeSnippetProperties } from './CodeGroup';
@@ -19,6 +20,7 @@ export const CodePanel: FC<PropsWithChildren<CodePanelProperties>> = ({
     tag,
     label,
     code,
+    link,
     title,
     hideCopy: _hideCopy,
     language,
@@ -102,6 +104,18 @@ export const CodePanel: FC<PropsWithChildren<CodePanelProperties>> = ({
                     <CopyButton code={child.props.code ?? code} />
                 )} */}
             </div>
+            {link && (
+                <div className="bg-ens-50 w-full border-t px-4 py-1">
+                    Read more{' '}
+                    <Link
+                        href={link}
+                        target="_blank"
+                        className="text-blue-500 hover:underline"
+                    >
+                        from source
+                    </Link>
+                </div>
+            )}
         </div>
     );
 };
