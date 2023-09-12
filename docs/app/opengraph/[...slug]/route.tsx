@@ -43,6 +43,8 @@ import { readFile } from 'node:fs/promises';
 
 // eslint-disable-next-line unicorn/prevent-abbreviations
 export async function generateStaticParams() {
+    if (process.env.NODE_ENV !== 'production') return [];
+
     const pages = await getAllPageSlugs();
 
     // return [];
@@ -78,6 +80,8 @@ const satoshiFont = readFile('public/fonts/sans-serif/Satoshi-Bold.otf');
 export async function GET(request: NextRequest) {
     // ex: /opengraph/web/siwe.png
     const { pathname } = request.nextUrl;
+
+    console.log('🖼️ -> ' + pathname);
 
     // ex web/siwe (remove final .png, and remove /opengraph/)
     const slug = pathname.slice(11, -4);

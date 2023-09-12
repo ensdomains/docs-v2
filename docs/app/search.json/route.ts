@@ -3,6 +3,10 @@ import { getAllPageSlugs } from 'data/get_pages';
 import { NextResponse } from 'next/server';
 
 export async function GET() {
+    if (process.env.NODE_ENV !== 'production') return NextResponse.json([]);
+
+    console.log('🔍 Generating Search Index');
+
     const slugs = await getAllPageSlugs();
 
     const posts = await Promise.all(

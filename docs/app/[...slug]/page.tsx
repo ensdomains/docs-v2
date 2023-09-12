@@ -49,6 +49,8 @@ export const generateMetadata = async (
 
 // eslint-disable-next-line unicorn/prevent-abbreviations
 export async function generateStaticParams() {
+    if (process.env.NODE_ENV !== 'production') return [];
+
     const pages = await getAllPageSlugs();
 
     return pages.map((slug) => ({
@@ -57,6 +59,8 @@ export async function generateStaticParams() {
 }
 
 const Page = async ({ params }: PageProperties) => {
+    console.log('🖥️ -> ' + params.slug.join('/'));
+
     const { Page, pageProperties } = await getPageBySlug(params.slug.join('/'));
 
     return (
