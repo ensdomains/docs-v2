@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, Fragment } from 'react';
 import {
     FaClock,
     FaDiscord,
@@ -33,7 +33,7 @@ export const Records: FC<{ records?: Record<RecordType, string> }> = ({
             {Object.keys(records)
                 .sort((a, b) => b.length - a.length)
                 .map((record) => (
-                    <>
+                    <Fragment key={record}>
                         <div>
                             {recordIcons[record] ? (
                                 <div className="flex items-center gap-0.5">
@@ -62,7 +62,7 @@ export const Records: FC<{ records?: Record<RecordType, string> }> = ({
                         <div className="truncate leading-none">
                             {records[record]}
                         </div>
-                    </>
+                    </Fragment>
                 ))}
         </div>
     );

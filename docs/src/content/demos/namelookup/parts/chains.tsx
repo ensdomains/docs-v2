@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, Fragment } from 'react';
 
 const multicoinIcons = {
     btc: '/icons/multicoin/bitcoin.svg',
@@ -18,7 +18,7 @@ export const Chains: FC<{ chains?: Record<string, string> }> = ({ chains }) => {
             {Object.keys(chains)
                 .sort((a, b) => b.length - a.length)
                 .map((chain) => (
-                    <>
+                    <Fragment key={chain}>
                         <div>
                             {multicoinIcons[chain] ? (
                                 <div className="flex items-center gap-0.5">
@@ -42,7 +42,7 @@ export const Chains: FC<{ chains?: Record<string, string> }> = ({ chains }) => {
                         <div className="truncate leading-none">
                             {chains[chain]}
                         </div>
-                    </>
+                    </Fragment>
                 ))}
         </div>
     );
