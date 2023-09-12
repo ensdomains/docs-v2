@@ -16,9 +16,12 @@ export type UseProfileParameters = {
     instance?: string;
 };
 
+// TODO: Naive approach, doesnt support extended character set
+const isValidDomain = /^([\da-z-]{1,63}\.)+[\da-z-]{1,63}$/i;
+
 export const useProfile = ({ name, instance }: UseProfileParameters) => {
     const { data, error, isLoading, isValidating, mutate } = useSWR(
-        ['enstate', name],
+        isValidDomain.test(name) ? ['enstate', name] : undefined,
         swrFetchEnstateProfile(instance)
     );
 
