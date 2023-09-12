@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 
-import { Navigation } from '@/components/navigation/sidenav/sidenav';
+import { Navigation } from './_legacy/sidenav';
 
 export const Sidebar = () => {
     return (

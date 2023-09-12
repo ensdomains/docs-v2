@@ -8,11 +8,11 @@ import { Note } from '@/components/mdx/Note';
 import { Properties } from '@/components/mdx/Properties';
 import { Property } from '@/components/mdx/Property';
 import { Row } from '@/components/mdx/Row';
-import { Repository } from '@/components/repository/Repository';
-import { VideoComponent } from '@/components/video/VideoComponent';
 
 import { Code, Pre } from './code/Code';
 import { CodeGroup } from './code/group/CodeGroup';
+import { Repository } from './repository/Repository';
+import { VideoComponent } from './video/Video';
 
 export const prose = {
     a: a as any,

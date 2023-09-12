@@ -96,7 +96,7 @@ export const CodePanel: FC<PropsWithChildren<CodePanelProperties>> = ({
             <div className="relative">
                 <pre
                     className="overflow-x-auto p-4 text-xs text-black"
-                // ref={preReference}
+                    // ref={preReference}
                 >
                     {children}
                 </pre>

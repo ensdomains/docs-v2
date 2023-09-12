@@ -1,3 +1,4 @@
+/* eslint-disable sonarjs/no-duplicate-string */
 import { SectionData } from '../navigation';
 
 export const navigation: SectionData[] = [

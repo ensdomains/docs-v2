@@ -10,13 +10,13 @@ import { forwardRef } from 'react';
 import { FaGithub } from 'react-icons/fa';
 
 import { Button } from '@/components/Button';
-import { MobileNavigation } from '@/components/MobileNavigation';
 import {
     useIsInsideMobileNavigation,
     useMobileNavigationStore,
 } from '@/hooks/mobile';
 import { cx } from '@/lib/cx';
 
+import { MobileNavigation } from '../sidebar/_legacy/MobileNavigation';
 import { MobileSearch, Search } from './search/Search';
 
 export const Header = forwardRef<HTMLDivElement, { className?: string }>(

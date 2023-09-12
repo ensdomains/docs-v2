@@ -9,10 +9,10 @@ import {
     useMobileNavigationStore,
 } from '@/hooks/mobile';
 import { Header } from '@/layout/header/Header';
+import { Navigation } from '@/layout/sidebar/_legacy/sidenav';
 
-import { MenuIcon } from './icons/MenuIcon';
-import { XIcon } from './icons/XIcon';
-import { Navigation } from './navigation/sidenav/sidenav';
+import { MenuIcon } from '../../../components/icons/MenuIcon';
+import { XIcon } from '../../../components/icons/XIcon';
 
 export const MobileNavigation = () => {
     const isInsideMobileNavigation = useIsInsideMobileNavigation();

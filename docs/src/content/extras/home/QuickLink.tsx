@@ -11,6 +11,7 @@ export const QuickBannerLink: FC<{
     return (
         <Link
             href={href}
+            target={href.startsWith('http') ? '_blank' : undefined}
             className="card not-prose !m-0 flex flex-col !p-0 text-inherit hover:text-inherit hover:no-underline hover:brightness-95"
         >
             <div className="aspect-[21/9] w-full bg-white">
