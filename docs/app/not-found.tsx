@@ -1,7 +1,7 @@
 import Image from 'next/image';
 
 import { Button } from '@/components/Button';
-import { Layout } from '@/components/Layout';
+import { Layout } from '@/layout/PageLayout';
 
 export default function NotFound() {
     return (

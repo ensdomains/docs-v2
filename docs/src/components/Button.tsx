@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import Link from 'next/link';
 import { FC, PropsWithChildren } from 'react';
 
-import { ccx, cx } from '@/lib/cx';
+import { cx, cxWithTheme } from '@/lib/cx';
 
 const ArrowIcon: FC = (properties) => {
     return (
@@ -18,12 +18,12 @@ const ArrowIcon: FC = (properties) => {
 };
 
 const variantStyles = {
-    primary: cx(
+    primary: cxWithTheme(
         'rounded-lg py-1 px-3',
         'bg-ens-400/10 text-ens-600 ring-1 ring-inset ring-ens-400/20 hover:bg-ens-400/10 hover:text-ens-300 hover:ring-ens-300',
         'bg-ens-400/10 text-ens-400 ring-1 ring-inset ring-ens-400/20 hover:bg-ens-400/10 hover:text-ens-300 hover:ring-ens-300'
     ),
-    red: cx(
+    red: cxWithTheme(
         'rounded-lg py-1 px-3',
         'bg-ens-red-400/10 text-ens-red-400 ring-1 ring-inset ring-ens-red-400/20 hover:bg-ens-red-400/10 hover:text-ens-red-300 hover:ring-ens-red-300',
         'bg-ens-red-400/10 text-ens-red-400 ring-1 ring-inset ring-ens-red-400/20 hover:bg-ens-red-400/10 hover:text-ens-red-300 hover:ring-ens-red-300'
@@ -56,7 +56,7 @@ export const Button: FC<
     const arrowIcon = (
         <ArrowIcon
             // @ts-ignore
-            className={ccx(
+            className={cx(
                 'mt-0.5 h-5 w-5',
                 variant === 'text' && 'relative top-px',
                 arrow === 'left' && '-ml-1 rotate-180',

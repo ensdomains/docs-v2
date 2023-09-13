@@ -1,4 +1,5 @@
 import { mdxAnnotations } from 'mdx-annotations';
+// import mdxmermaid from 'mdx-mermaid';
 import gfm from 'remark-gfm';
 
 export const remarkPlugins = [
@@ -12,4 +13,5 @@ export const remarkPlugins = [
      * Add support for GitHub Flavored Markdown.
      */
     gfm,
+    // [mdxmermaid, { output: 'svg' }],
 ];

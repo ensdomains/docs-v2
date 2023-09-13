@@ -3,8 +3,34 @@ import * as acorn from 'acorn';
 import { toString } from 'mdast-util-to-string';
 import { mdxAnnotations } from 'mdx-annotations';
 import rehypeMdxTitle from 'rehype-mdx-title';
+import rehypeMermaid from 'rehype-mermaidjs';
 import shiki from 'shiki';
 import { visit } from 'unist-util-visit';
+
+/**
+ * @type {import('unified').Plugin[]}
+ */
+function rehypeMermaidWrapper() {
+    return (tree) => {
+        visit(tree, 'element', (node, _nodeIndex, parentNode) => {
+            if (
+                node.tagName === 'svg' &&
+                node.properties.role === 'graphics-document document'
+            ) {
+                const mermaidDiv = {
+                    type: 'element',
+                    tagName: 'div',
+                    properties: {
+                        className: ['mermaid'],
+                    },
+                    children: [node],
+                };
+
+                parentNode.children.splice(_nodeIndex, 1, mermaidDiv);
+            }
+        });
+    };
+}
 
 function rehypeParseCodeBlocks() {
     return (tree) => {
@@ -157,6 +183,14 @@ export const rehypePlugins = [
      */
     mdxAnnotations.rehype,
     rehypeExportContent,
+    /**
+     * Add support for mermaid diagrams to MDX.
+     */
+    [rehypeMermaid, { strategy: 'inline-svg' }],
+    /**
+     * Wraps all mermaid segments in a div with class="mermaid"
+     */
+    rehypeMermaidWrapper,
     /**
      * Parse code blocks to add the language to the properties
      */

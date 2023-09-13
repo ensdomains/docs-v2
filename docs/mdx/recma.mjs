@@ -2,12 +2,14 @@ import { mdxAnnotations } from 'mdx-annotations';
 // import recmaNextjsStaticProps from 'recma-nextjs-static-props';
 import { simpleGit } from 'simple-git';
 
+const cwd = process.cwd().replace(/\/docs$/, '');
+
 /**
  * @type {import('unified').Plugin<[], import('estree').Program>}
  */
 const recmaExportFilepath = () => {
     return (tree, file) => {
-        const relativePath = file.path.replace(file.cwd, '');
+        const relativePath = file.path.replace(cwd, '');
 
         tree.body.push({
             type: 'ExportNamedDeclaration',

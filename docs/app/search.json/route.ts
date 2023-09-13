@@ -1,16 +1,20 @@
+import { getPageBySlug } from 'data/get_page';
+import { getAllPageSlugs } from 'data/get_pages';
 import { NextResponse } from 'next/server';
 
-import { getAllPagesSlug, getPageBySlug } from '@/lib/pages';
-
 export async function GET() {
-    const slugs = getAllPagesSlug();
+    if (process.env.NODE_ENV !== 'production') return NextResponse.json([]);
+
+    console.log('🔍 Generating Search Index');
+
+    const slugs = await getAllPageSlugs();
 
     const posts = await Promise.all(
         slugs.map(async (slug) => {
-            const page = await getPageBySlug(slug);
+            const { pageProperties } = await getPageBySlug(slug);
 
             return {
-                ...page,
+                pageProperties,
                 slug,
             };
         })

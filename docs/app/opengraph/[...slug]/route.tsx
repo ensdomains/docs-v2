@@ -1,7 +1,7 @@
+import { getPageBySlug } from 'data/get_page';
+import { getAllPageSlugs } from 'data/get_pages';
 import { ImageResponse, NextRequest } from 'next/server';
 import { readFile } from 'node:fs/promises';
-
-import { getAllPagesSlug, getPageBySlug } from '@/lib/pages';
 
 // Route segment config
 // export const runtime = 'nodejs';
@@ -43,8 +43,13 @@ import { getAllPagesSlug, getPageBySlug } from '@/lib/pages';
 
 // eslint-disable-next-line unicorn/prevent-abbreviations
 export async function generateStaticParams() {
-    const pages = getAllPagesSlug();
+    if (process.env.NODE_ENV !== 'production') return [];
 
+    const pages = await getAllPageSlugs();
+
+    // return [];
+
+    // TODO: Uncomment
     return pages.map((slug) => ({
         slug: (slug + '.png').split('/'),
     }));
@@ -75,6 +80,8 @@ const satoshiFont = readFile('public/fonts/sans-serif/Satoshi-Bold.otf');
 export async function GET(request: NextRequest) {
     // ex: /opengraph/web/siwe.png
     const { pathname } = request.nextUrl;
+
+    console.log('🖼️ -> ' + pathname);
 
     // ex web/siwe (remove final .png, and remove /opengraph/)
     const slug = pathname.slice(11, -4);
