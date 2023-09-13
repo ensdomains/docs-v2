@@ -1,10 +1,9 @@
 import { createHash } from 'node:crypto';
 import { Children, cloneElement, FC, PropsWithChildren } from 'react';
 
-import { CodePanel } from '@/content/prose/code/snippet/CodeSnippet';
+import { CodePanel, CodeSnippetProperties } from '@/content/prose/code/snippet/CodeSnippet';
 
 import { getLanguage } from '../languageSorter';
-import { LanguageSettings } from '../types/language';
 import { CodeGroupHeader } from './CodeGroupHeader';
 
 export type CodeGroupProperties = {
@@ -12,15 +11,6 @@ export type CodeGroupProperties = {
     isChild?: boolean;
     // Key for what type of presets to use
     presets?: string;
-};
-
-export type CodeSnippetProperties = {
-    language: string;
-    title?: string;
-    preset?: string;
-    // Link out to external docs etc
-    link?: string;
-    config?: LanguageSettings;
 };
 
 export const CodeGroup: FC<PropsWithChildren<CodeGroupProperties>> = ({

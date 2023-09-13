@@ -16,29 +16,29 @@ This quickstart guide assumes you have a basic understanding of **react, ethers,
 
 ## Setup
 
-<CodeGroup>
+<CodeGroup title="Installing Dependencies">
 
-```sh {{ title: "Connectkit", variant: "connectkit" }}
+```sh {{ title: "Connectkit", variant: "connectkit", link: "https://docs.family.co/connectkit/getting-started" }}
 npm install connectkit wagmi viem
 ```
 
-```sh {{ title: "Rainbowkit", variant: "rainbowkit" }}
+```sh {{ title: "Rainbowkit", variant: "rainbowkit", link: "https://www.rainbowkit.com/docs/installation" }}
 npm install @rainbow-me/rainbowkit wagmi viem
 ```
 
-```tsx {{ title: "Wagmi", variant: "wagmi" }}
+```tsx {{ title: "Wagmi", variant: "wagmi", link: "https://wagmi.sh/react/getting-started" }}
 npm install wagmi viem
 ```
 
-```tsx {{ title: "Ethers", variant: "ethers" }}
+```tsx {{ title: "Ethers", variant: "ethers", link: "https://docs.ethers.org/v5/getting-started/" }}
 npm install ethers
 ```
 
-```tsx {{ title: "Viem", variant: "viem" }}
+```tsx {{ title: "Viem", variant: "viem", link: "https://viem.sh/docs/getting-started.html", stackblitz: "https://new.viem.sh" }}
 npm install viem
 ```
 
-```tsx {{ title: "Ethers.rs", variant: "rust" }}
+```tsx {{ title: "Ethers.rs", variant: "rust", link: "https://docs.rs/ethers/latest/ethers/" }}
 cargo add ethers
 ```
 
@@ -66,17 +66,22 @@ The snippet leverages the [useAccount](https://wagmi.sh/react/hooks/useAccount),
     </div>
 </div>
 
-<CodeGroup>
+<CodeGroup title="Showing the User Profile">
 
-```tsx {{ meta: "", variant: "rainbowkit" }}
-do thing
+```tsx {{ variant: "rainbowkit", link: "https://www.rainbowkit.com/docs/connect-button" }}
+import { ConnectButton } from '@rainbow-me/rainbowkit';
+
+// Rainbowkit's ConnectButton includes a built-in user profile!
+export const YourApp = () => {
+  return <ConnectButton />;
+};
 ```
 
-```tsx {{ meta: "focus=5:11", variant: "wagmi" }}
+```tsx {{ meta: "focus=5:11", variant: "wagmi", link: "https://wagmi.sh/react/hooks/useEnsAvatar" }}
 import { useAccount, useEnsName, useEnsAvatar } from 'wagmi';
 import { formatAddress } from 'ens-tools';
 
-export const UserProfile: FC = () => {
+export const YourApp: FC = () => {
     const { address } = useAccount();
     const { data: ensName } = useEnsName({
         address,

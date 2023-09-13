@@ -1,8 +1,19 @@
 import Link from 'next/link';
 import { FC, PropsWithChildren } from 'react';
 
-import { CodeSnippetProperties } from '../group/CodeGroup';
 import { getLanguage } from '../languageSorter';
+import { LanguageSettings } from '../types/language';
+
+export type CodeSnippetProperties = {
+    language: string;
+    title?: string;
+    preset?: string;
+    // Link out to external docs etc
+    link?: string;
+    // Link to stackblitz
+    stackblitz?: string;
+    config?: LanguageSettings;
+};
 
 export type CodePanelProperties = {
     tag?: string;
@@ -21,6 +32,7 @@ export const CodePanel: FC<PropsWithChildren<CodePanelProperties>> = ({
     label,
     code,
     link,
+    stackblitz,
     title,
     hideCopy: _hideCopy,
     language,
@@ -77,7 +89,7 @@ export const CodePanel: FC<PropsWithChildren<CodePanelProperties>> = ({
 
     return (
         <div
-            className="dark:bg-white/2.5 hidable-code group"
+            className="hidable-code dark:bg-white/2.5 group"
             data-code-variant={variant ?? title ?? language}
             data-code-group={identifier}
         >
@@ -104,16 +116,38 @@ export const CodePanel: FC<PropsWithChildren<CodePanelProperties>> = ({
                     <CopyButton code={child.props.code ?? code} />
                 )} */}
             </div>
-            {link && (
-                <div className="bg-ens-50 w-full border-t px-4 py-1">
-                    Read more{' '}
-                    <Link
-                        href={link}
-                        target="_blank"
-                        className="text-blue-500 hover:underline"
-                    >
-                        from source
-                    </Link>
+            {(link || stackblitz) && (
+                <div className="bg-ens-50 flex w-full items-center justify-between border-t p-1">
+                    <div className="px-2">
+                        {link && (
+                            <div>
+                                Read more{' '}
+                                <Link
+                                    href={link}
+                                    target="_blank"
+                                    className="text-blue-500 hover:underline"
+                                >
+                                    from source
+                                </Link>
+                            </div>
+                        )}
+                    </div>
+                    <div>
+                        {stackblitz && (
+                            <Link
+                                href={stackblitz}
+                                target="_blank"
+                                className="rounded-md p-1 pr-2 text-xs transition hover:bg-gray-100"
+                            >
+                                <img
+                                    src="/icons/stackblitz.svg"
+                                    alt="Stackblitz"
+                                    className="mr-1 inline-block h-4 w-4"
+                                />
+                                Try it out
+                            </Link>
+                        )}
+                    </div>
                 </div>
             )}
         </div>
