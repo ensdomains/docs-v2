@@ -24,6 +24,10 @@ jobs:
       - name: Install Tools & Dependencies
         uses: ./.github/actions/install
 
+      - name: Setup Playwright
+        working-directory: ./docs
+        run: pnpm exec playwright install
+
       - name: Build
         working-directory: ./docs
         run: pnpm run build
