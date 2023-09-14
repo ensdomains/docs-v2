@@ -11,6 +11,7 @@ env:
 jobs:
   deploy:
     runs-on: ubuntu-20.04
+    container: mcr.microsoft.com/playwright:v1.36.2
     permissions:
       contents: write
     concurrency:
@@ -23,10 +24,6 @@ jobs:
 
       - name: Install Tools & Dependencies
         uses: ./.github/actions/install
-
-      - name: Setup
-        working-directory: ./docs
-        run: npx playwright install
 
       - name: Build
         working-directory: ./docs
