@@ -1,6 +1,6 @@
 import { FC, ReactNode } from 'react';
 
-import { CodeSnippetProperties } from './CodeGroup';
+import { CodeSnippetProperties } from '../snippet/CodeSnippet';
 import { LanguageSwitcher } from './LanguageSwitcher';
 
 export const CodeGroupHeader: FC<{

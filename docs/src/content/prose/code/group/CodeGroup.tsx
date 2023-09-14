@@ -1,7 +1,10 @@
 import { createHash } from 'node:crypto';
 import { Children, cloneElement, FC, PropsWithChildren } from 'react';
 
-import { CodePanel, CodeSnippetProperties } from '@/content/prose/code/snippet/CodeSnippet';
+import {
+    CodePanel,
+    CodeSnippetProperties,
+} from '@/content/prose/code/snippet/CodeSnippet';
 
 import { getLanguage } from '../languageSorter';
 import { CodeGroupHeader } from './CodeGroupHeader';

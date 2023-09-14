@@ -10,11 +10,11 @@ import { forwardRef } from 'react';
 import { FaGithub } from 'react-icons/fa';
 
 import { Button } from '@/components/Button';
+import { cx } from '@/lib/cx';
 import {
     useIsInsideMobileNavigation,
     useMobileNavigationStore,
 } from '@/lib/mobile';
-import { cx } from '@/lib/cx';
 
 import { MobileNavigation } from '../sidebar/_legacy/MobileNavigation';
 import { MobileSearch, Search } from './search/Search';

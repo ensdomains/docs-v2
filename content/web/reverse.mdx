@@ -24,7 +24,7 @@ This allows us to turn any address into a human-readable name.
 
 <CodeGroup title="Reverse Lookup">
 
-```tsx {{ title: 'Wagmi (React)', language: 'tsx', meta: 'focus=4:8', variant: 'wagmi' }}
+```tsx {{ meta: 'focus=4:8', variant: 'wagmi', link: 'https://wagmi.sh/react/hooks/useEnsName', stackblitz: 'https://stackblitz.com/edit/ens-wagmi-use-ens-name' }}
 import { useEnsName } from 'wagmi';
 
 export const Name = () => {
@@ -36,14 +36,14 @@ export const Name = () => {
 };
 ```
 
-```ts {{ title: 'Ethers.js (TS)', variant: 'ethers' }}
+```ts {{ variant: 'ethers' }}
 // 0x225f137127d9067788314bc7fcc1f36746a3c3B5 -> luc.eth
 const name = await provider.lookupAddress(
     '0x225f137127d9067788314bc7fcc1f36746a3c3B5'
 );
 ```
 
-```ts {{ title: 'Viem (TS)', variant: 'viem' }}
+```ts {{ variant: 'viem', link: 'https://viem.sh/docs/ens/actions/getEnsName.html', stackblitz: 'https://stackblitz.com/edit/ens-viem-get-ens-name' }}
 // 0x225f137127d9067788314bc7fcc1f36746a3c3B5 -> luc.eth
 import { publicClient } from './client';
 
@@ -70,11 +70,11 @@ Most users are expected to do this through the ENS Manager, however it is totall
 
 <CodeGroup title="Setting Primary Name">
 
-```tsx {{ title: 'Wagmi (React)', language: 'tsx', meta: 'focus=4:9', variant: 'wagmi' }}
+```tsx {{ meta: 'focus=4:9', variant: 'wagmi' }}
 // TODO: Write Code Snippet
 ```
 
-```ts {{ title: 'Ethers.js (TS)', variant: 'ethers' }}
+```ts {{ variant: 'ethers' }}
 
 ```
 

@@ -186,7 +186,7 @@ export const rehypePlugins = [
     /**
      * Add support for mermaid diagrams to MDX.
      */
-    [rehypeMermaid, { strategy: 'inline-svg' }],
+    [rehypeMermaid({ browser: 'chromium' }), { strategy: 'inline-svg' }],
     /**
      * Wraps all mermaid segments in a div with class="mermaid"
      */

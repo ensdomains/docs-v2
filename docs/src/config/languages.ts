@@ -2,53 +2,53 @@ import { configureLanguages } from '@/content/prose/code/types/language';
 
 export const LanguagePresets = configureLanguages({
     typescript: {
-        icon: '/icons/typescript.png',
+        icon: '/icons/libraries/typescript.png',
         name: 'Typescript',
         language: 'typescript',
         fallback: ['javascript'],
     },
     javascript: {
-        icon: '/icons/javascript.png',
+        icon: '/icons/libraries/javascript.png',
         name: 'Javascript',
         language: 'javascript',
         fallback: [],
     },
     ethers: {
-        icon: '/icons/ethers.svg',
+        icon: '/icons/libraries/ethers.svg',
         language: 'typescript',
         name: 'Ethers',
         fallback: ['typescript', 'javascript'],
     },
     viem: {
-        icon: '/icons/viem.svg',
+        icon: '/icons/libraries/viem.svg',
         language: 'typescript',
         name: 'Viem',
         fallback: ['typescript', 'javascript'],
     },
     rust: {
-        icon: '/icons/rust.svg',
+        icon: '/icons/libraries/rust.svg',
         name: 'Rust',
         language: 'rust',
     },
     go: {
-        icon: '/icons/go.svg',
+        icon: '/icons/libraries/go.svg',
         name: 'Go',
         language: 'go',
     },
     react: {
-        icon: '/icons/react.svg',
+        icon: '/icons/libraries/react.svg',
         name: 'React',
         language: 'typescript',
         fallback: ['typescript'],
     },
     wagmi: {
-        icon: '/icons/wagmi.svg',
+        icon: '/icons/libraries/wagmi.svg',
         name: 'Wagmi',
         language: 'typescript',
         fallback: ['enstools', 'react', 'viem', 'typescript', 'javascript'],
     },
     rainbowkit: {
-        icon: '/icons/rainbow.svg',
+        icon: '/icons/libraries/rainbow.svg',
         name: 'Rainbowkit',
         language: 'typescript',
         fallback: [
@@ -61,7 +61,7 @@ export const LanguagePresets = configureLanguages({
         ],
     },
     connectkit: {
-        icon: '/icons/family.svg',
+        icon: '/icons/libraries/family.svg',
         name: 'Connectkit',
         language: 'typescript',
         fallback: [
@@ -74,7 +74,7 @@ export const LanguagePresets = configureLanguages({
         ],
     },
     enstools: {
-        icon: '/icons/family.svg',
+        icon: '/icons/libraries/family.svg',
         name: 'ENS Tools',
         language: 'typescript',
         fallback: ['wagmi', 'react', 'viem', 'typescript', 'javascript'],

@@ -3,13 +3,13 @@ import { Dialog, Transition } from '@headlessui/react';
 import { motion } from 'framer-motion';
 import { Fragment } from 'react';
 
+import { Header } from '@/layout/header/Header';
+import { Navigation } from '@/layout/sidebar/_legacy/sidenav';
 import {
     IsInsideMobileNavigationContext,
     useIsInsideMobileNavigation,
     useMobileNavigationStore,
 } from '@/lib/mobile';
-import { Header } from '@/layout/header/Header';
-import { Navigation } from '@/layout/sidebar/_legacy/sidenav';
 
 import { MenuIcon } from '../../../components/icons/MenuIcon';
 import { XIcon } from '../../../components/icons/XIcon';

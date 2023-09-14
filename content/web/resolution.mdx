@@ -37,7 +37,7 @@ The goal here is to take a name, such as `nick.eth`, and convert it to an addres
 
 <CodeGroup title="Forward Resolution">
 
-```tsx {{ title: 'Wagmi (React)', language: 'tsx', meta: 'focus=4:9', variant: 'wagmi' }}
+```tsx {{ title: 'Wagmi (React)', language: 'tsx', meta: 'focus=4:9', variant: 'wagmi', link: 'https://wagmi.sh/react/hooks/useEnsAddress', stackblitz: 'https://stackblitz.com/edit/ens-wagmi-use-ens-address' }}
 import { useAccount, useEnsName, useEnsAvatar } from 'wagmi';
 
 export const Name = () => {
@@ -54,7 +54,7 @@ export const Name = () => {
 const address = await provider.lookupAddress('luc.eth');
 ```
 
-```ts {{ title: 'Viem (TS)', variant: 'viem' }}
+```ts {{ title: 'Viem (TS)', variant: 'viem', link: 'https://viem.sh/docs/ens/actions/getEnsAddress.html', stackblitz: 'https://stackblitz.com/edit/ens-viem-get-ens-address' }}
 import { normalize } from 'viem/ens';
 import { publicClient } from './client';
 
@@ -94,7 +94,7 @@ export const BitcoinAddress = () => {
 };
 ```
 
-```ts {{ title: 'Viem (TS)', variant: 'viem', link: 'https://viem.sh/docs/ens/actions/getEnsAddress.html#cointype-optional' }}
+```ts {{ title: 'Viem (TS)', variant: 'viem', link: 'https://viem.sh/docs/ens/actions/getEnsAddress.html#cointype-optional', stackblitz: 'https://stackblitz.com/edit/ens-viem-get-ens-address' }}
 const ensName = await publicClient.getEnsAddress({
     name: normalize('wagmi-dev.eth'), 
     coinType: 0, // BTC

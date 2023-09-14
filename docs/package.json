@@ -37,6 +37,7 @@
         "mdx-annotations": "^0.1.1",
         "mdx-mermaid": "^2.0.0",
         "mermaid": "^10.4.0",
+        "playwright": "^1.38.0",
         "postcss-focus-visible": "^6.0.4",
         "react-icons": "^4.8.0",
         "react-modal": "^3.16.1",
