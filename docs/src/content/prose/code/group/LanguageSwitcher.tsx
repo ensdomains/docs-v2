@@ -21,53 +21,54 @@ export const LanguageSwitcher: FC<{
     identifier: string;
     presets: string;
 }> = ({ snippets, identifier, presets }) => {
+    console.log('rerender');
     // Get active language from localstorage
     const [activeLanguage, setActiveLanguage] = useState<string>(
         snippets.at(0).preset
     );
+
     const setPreset = useCallback(
         (preferred_preset_key: string) => {
+            console.log(
+                'From: ' + activeLanguage + ' To: ' + preferred_preset_key
+            );
+
             // eslint-disable-next-line prefer-destructuring
-            const rankedPresets = sortLanguagesByPreset(
-                snippets,
+            const best_match = sortLanguagesByPreset(
+                snippets.map((s) => s.preset),
                 preferred_preset_key
             );
 
-            // eslint-disable-next-line prefer-destructuring
-            const newPreset = rankedPresets[0];
-
-            const entries = document.querySelectorAll(
-                '[data-code-group="' + identifier + '"]'
-            );
-
-            console.log(entries);
-
-            for (const entry of entries) {
-                if (
-                    // @ts-ignore
-                    entry.dataset.codeVariant === newPreset.preset ||
-                    // @ts-ignore
-                    entry.dataset.codeVariant === newPreset.title
-                ) {
-                    entry.classList.remove('hidden');
-                } else {
-                    entry.classList.add('hidden');
-                }
-            }
-
-            setActiveLanguage(newPreset.preset);
+            setActiveLanguage(best_match);
         },
         [setActiveLanguage]
     );
 
     useEffect(() => {
+        const entries = document.querySelectorAll(
+            '[data-code-group="' + identifier + '"]'
+        );
+
+        for (const entry of entries) {
+            if (
+                // @ts-ignore
+                entry.dataset.codeVariant === activeLanguage
+            ) {
+                entry.classList.remove('hidden');
+            } else {
+                entry.classList.add('hidden');
+            }
+        }
+    }, [activeLanguage]);
+
+    useEffect(() => {
+        console.log('onUpdateSnippets', activeLanguage);
+
         // when page first load
         // load query params
         const urlParameters = new URLSearchParams(
             (location as Location).search
         );
-
-        console.log({ urlParameters });
 
         // Prioritize query params
         // Then localstorage
