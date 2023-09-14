@@ -24,5 +24,5 @@ runs:
       shell: bash
 
     - name: Install Playwright Browsers
-      run: npx playwright install
+      run: cd docs && pnpx playwright install
       shell: bash
