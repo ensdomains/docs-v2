@@ -11,7 +11,6 @@ env:
 jobs:
   deploy:
     runs-on: ubuntu-20.04
-    container: mcr.microsoft.com/playwright:v1.36.2
     permissions:
       contents: write
     concurrency:
@@ -27,7 +26,7 @@ jobs:
 
       - name: Build
         working-directory: ./docs
-        run: pnpm run build
+        run: npx playwright install && pnpm run build
 
       - name: Prepare tag
         id: prepare_tag
