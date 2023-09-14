@@ -67,11 +67,13 @@ export const LanguageSwitcher: FC<{
             (location as Location).search
         );
 
+        console.log({ urlParameters });
+
         // Prioritize query params
         // Then localstorage
         // Then default to first snippet
         const default_preset =
-            urlParameters.get(presets) ??
+            urlParameters.get('preset') ??
             localStorage.getItem(EVENT + presets) ??
             snippets.at(0).preset;
 
