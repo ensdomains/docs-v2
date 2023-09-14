@@ -3,7 +3,7 @@
 import { FC, useCallback, useEffect, useState } from 'react';
 
 import { sortLanguagesByPreset } from '../languageSorter';
-import { CodeSnippetProperties } from './CodeGroup';
+import { CodeSnippetProperties } from '../snippet/CodeSnippet';
 
 const EVENT = 'l-language-';
 
