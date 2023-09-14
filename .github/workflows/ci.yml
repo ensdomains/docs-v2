@@ -51,6 +51,7 @@ jobs:
   build:
     name: 🛠️ Build
     runs-on: ubuntu-20.04
+    container: mcr.microsoft.com/playwright:v1.36.2
     env:
       FORCE_COLOR: true
     steps:
