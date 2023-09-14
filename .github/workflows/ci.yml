@@ -51,7 +51,6 @@ jobs:
   build:
     name: 🛠️ Build
     runs-on: ubuntu-20.04
-    container: mcr.microsoft.com/playwright:v1.36.2
     env:
       FORCE_COLOR: true
     steps:
@@ -60,6 +59,10 @@ jobs:
 
       - name: Install Tools & Dependencies
         uses: ./.github/actions/install
+
+      - name: Setup Playwright
+        working-directory: ./docs
+        run: npx playwright install --with-deps
 
       - name: Build
         working-directory: ./docs
