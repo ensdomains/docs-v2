@@ -20,5 +20,5 @@ runs:
         cache-dependency-path: 'docs'
 
     - name: Install dependencies
-      run: cd docs && npx install
+      run: cd docs && pnpm install
       shell: bash
