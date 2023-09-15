@@ -110,6 +110,8 @@ func main() {
 	domain, _ := ens.Normalize("luc.eth")
 	resolver, _ := ens.NewResolver(client, domain)
 	twitter, _ := resolver.Text("com.twitter")
+
+    fmt.Println("Twitter: ", twitter)
 }
 ```
 
