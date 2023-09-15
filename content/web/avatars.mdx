@@ -80,6 +80,8 @@ func main() {
 	domain, _ := ens.Normalize("luc.eth")
 	resolver, _ := ens.NewResolver(client, domain)
 	avatar, _ := resolver.Text("avatar")
+
+    fmt.Println("Avatar: ", avatar)
 }
 ```
 
