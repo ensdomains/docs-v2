@@ -1,5 +1,3 @@
-import { Guides } from '@/components/Guides';
-import { Resources } from '@/components/Resources';
 
 {/** @type {import('@/lib/mdxPageProps').MdxMetaProps} */}
 export const meta = {
@@ -13,23 +11,16 @@ export const meta = {
 
 # What is the Ethereum Name Service?
 
-{/* <VideoComponent src="https://v3x.space/ens-docs/placeholder" /> */}
-
 The Ethereum Name Service (ENS) is a distributed, open, and extensible naming system based on the Ethereum blockchain.
 
 ENS's job is to map human-readable names like 'alice.eth' to machine-readable identifiers such as Ethereum addresses, other cryptocurrency addresses, content hashes, and metadata. ENS also supports 'reverse resolution', making it possible to associate metadata such as canonical names or interface descriptions with Ethereum addresses.
 
 <div className="card not-prose">
   <div className="flex justify-center gap-4 p-4">
-    <div className="card flex h-fit items-center gap-4 !rounded-lg pr-4">
-      <div className="aspect-square h-12 w-12 rounded-full shadow-lg">
-        <img src="https://metadata.ens.domains/mainnet/avatar/nick.eth" />
-      </div>
-      <div className="text-lg font-bold">nick.eth</div>
-    </div>
-    <div className="flex h-20 items-center">➡️</div>
-    <div className="w-32 whitespace-normal break-all pt-6 font-extrabold">
-      0xb8c2c29ee19d8307cb7255e1cd9cbde883a267d5
+    <Usertag />
+    <div className="flex h-12 items-center">➡️</div>
+    <div className="w-32 whitespace-normal break-all pt-3 text-xs">
+      <div>0xb8c2c29ee19d8307cb7255e1cd9cbde883a267d5</div>
     </div>
   </div>
 </div>

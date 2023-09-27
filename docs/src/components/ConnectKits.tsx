@@ -29,36 +29,47 @@ export const ConnectKits = () => {
         <div className="xl:max-w-none">
             <div className="flex gap-3">
                 {ensLibraries.map((library) => (
-                    <a
-                        href={library.url}
-                        target="_blank"
+                    <div
                         key={library.name}
                         className="w-42 not-prose items-center justify-center rounded-md bg-neutral-100 p-4 text-center ring-1 ring-black/20 hover:ring-black/30 dark:bg-zinc-800 dark:ring-white/20 dark:hover:ring-white/30"
-                        rel="noreferrer"
                     >
-                        <div className="mx-auto flex aspect-square w-20 items-center justify-center">
-                            <img
-                                src={library.logo}
-                                className={cx(
-                                    'w-20',
-                                    library.name.toLowerCase() == 'rainbowkit'
-                                        ? 'rounded-xl'
-                                        : ''
-                                )}
-                                alt={library.name}
-                            />
+                        <div className="flex items-center gap-2">
+                            <div className="aspect-square w-6">
+                                <img
+                                    src={library.logo}
+                                    className={cx(
+                                        'w-6',
+                                        library.name.toLowerCase() ==
+                                            'rainbowkit'
+                                            ? 'rounded-xl'
+                                            : ''
+                                    )}
+                                    alt={library.name}
+                                />
+                            </div>
+                            <div className="block text-left">
+                                <div className="font-bold leading-4">
+                                    {library.name}
+                                </div>
+                                <span className="block text-xs leading-3 text-zinc-500">
+                                    by{' '}
+                                    <a
+                                        href={library.creator_url}
+                                        className="text-zinc-700 dark:text-zinc-100"
+                                    >
+                                        {library.creator}
+                                    </a>
+                                </span>
+                            </div>
                         </div>
-                        <div className="pt-4 font-bold">{library.name}</div>
-                        <p className="w-32 text-zinc-500">
-                            by{' '}
-                            <a
-                                href={library.creator_url}
-                                className="text-zinc-700 dark:text-zinc-100"
-                            >
-                                {library.creator}
-                            </a>
-                        </p>
-                    </a>
+                        <div>
+                            <ul>
+                                {Array.from({ length: 3 }).map((_, index) => (
+                                    <li>react-existing-thing</li>
+                                ))}
+                            </ul>
+                        </div>
+                    </div>
                 ))}
             </div>
         </div>

@@ -61,7 +61,15 @@
 @tailwind utilities;
 
 .card {
-    @apply my-6 overflow-hidden rounded-lg bg-white shadow-sm dark:shadow-md ring-1 ring-black/10 dark:ring-white/10;
+    @apply overflow-hidden rounded-lg bg-[rgba(0,0,0,0.01)] shadow-sm dark:shadow-md ring-1 ring-black/10 dark:ring-white/10;
+}
+
+.card:not(.no-margin) {
+    @apply my-6;
+}
+
+.prose > p + p {
+    @apply !mt-0 mb-0;
 }
 
 html.dark {
