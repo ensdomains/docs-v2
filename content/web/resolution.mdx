@@ -69,6 +69,27 @@ let provider = Provider::<Http>::try_from("https://mainnet.infura.io/v3/...")?;
 let address = provider.lookup_address("luc.eth").await?;
 ```
 
+```go {{ title: 'Go-ens (Go)', variant: 'go' }}
+package main
+
+import (
+	"fmt"
+
+	"github.com/ethereum/go-ethereum/ethclient"
+	ens "github.com/wealdtech/go-ens/v3"
+)
+
+func main() {
+	client, _ := ethclient.Dial("https://rpc.ankr.com/eth")
+
+	domain, _ := ens.Normalize("luc.eth")
+	resolver, _ := ens.NewResolver(client, domain)
+	address, _ := resolver.Address()
+
+	fmt.Println("Address:", address.Hex())
+}
+```
+
 </CodeGroup>
 
 ## Multi-Chain Addresses (BTC, LTC, etc) {{ navtitle: 'Multi-Chain Addresses', label: 'Multi-Chain', id: 'multi-chain', tag: '', }}

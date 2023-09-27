@@ -52,6 +52,26 @@ const ensName = await publicClient.getEnsName({
 });
 ```
 
+```go {{ variant: 'go', title: 'Go' }}
+package main
+
+import (
+	"fmt"
+
+	"github.com/ethereum/go-ethereum/common"
+	"github.com/ethereum/go-ethereum/ethclient"
+	ens "github.com/wealdtech/go-ens/v3"
+)
+
+func main() {
+	client, _ := ethclient.Dial("https://rpc.ankr.com/eth")
+
+	name, _ := ens.ReverseResolve(client, common.HexToAddress("0x225f137127d9067788314bc7fcc1f36746a3c3B5"))
+	fmt.Println("Name:", name)
+    // Name: luc.eth
+}
+```
+
 </CodeGroup>
 
 🎉 And thats it! Now you can turn all your pages from this, to this:

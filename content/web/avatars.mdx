@@ -64,6 +64,27 @@ const ensAvatar = await publicClient.getEnsAvatar({
 });
 ```
 
+```go {{ title: "Go", variant: "go" }}
+package main
+
+import (
+	"fmt"
+
+	"github.com/ethereum/go-ethereum/ethclient"
+	ens "github.com/wealdtech/go-ens/v3"
+)
+
+func main() {
+	client, _ := ethclient.Dial("https://rpc.ankr.com/eth")
+
+	domain, _ := ens.Normalize("luc.eth")
+	resolver, _ := ens.NewResolver(client, domain)
+	avatar, _ := resolver.Text("avatar")
+
+    fmt.Println("Avatar: ", avatar)
+}
+```
+
 </CodeGroup>
 
 ### The Metadata Service

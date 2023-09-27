@@ -94,8 +94,25 @@ const ensText = await publicClient.getEnsText({
 // TODO: Not Implemented
 ```
 
-```tsx {{ title: "Go", variant: "go" }}
-// TODO: Not Implemented
+```go {{ title: "Go", variant: "go" }}
+package main
+
+import (
+	"fmt"
+
+	"github.com/ethereum/go-ethereum/ethclient"
+	ens "github.com/wealdtech/go-ens/v3"
+)
+
+func main() {
+	client, _ := ethclient.Dial("https://rpc.ankr.com/eth")
+
+	domain, _ := ens.Normalize("luc.eth")
+	resolver, _ := ens.NewResolver(client, domain)
+	twitter, _ := resolver.Text("com.twitter")
+
+    fmt.Println("Twitter: ", twitter)
+}
 ```
 
 </CodeGroup>
