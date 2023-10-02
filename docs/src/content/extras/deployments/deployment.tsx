@@ -19,7 +19,7 @@ type DeploymentData = {
 export const getGithubDeployment = async (
     branch: string = 'staging',
     chain: string = 'mainnet',
-    path: string = 'mainnet/ENSRegistry'
+    path: string = 'ENSRegistry'
 ) => {
     const url = `https://raw.githubusercontent.com/ensdomains/ens-contracts/${branch}/deployments/${chain}/${path}.json`;
 
