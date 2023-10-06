@@ -59,7 +59,7 @@ module.exports = ({ theme }) => ({
 
             // Text
             p: {
-                marginTop: theme('spacing.6'),
+                marginTop: theme('spacing.4'),
                 marginBottom: theme('spacing.6'),
             },
             '[class~="lead"]': {

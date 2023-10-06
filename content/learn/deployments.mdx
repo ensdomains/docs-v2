@@ -1,10 +1,10 @@
-{/** @type {import('@/lib/mdxPageProps').MdxMetaProps} */}
+{/* * @type {import('@/lib/mdxPageProps').MdxMetaProps} */}
 export const meta = {
-    description: '',
-    emoji: '📰',
-    contributors: [
-        'lucemans'
-    ]
+description: '',
+emoji: '📰',
+contributors: [
+'lucemans'
+]
 };
 
 # Deployments
@@ -19,55 +19,114 @@ Though ENS is a platform-agnostic (read more [here](/learn/multichain)), the ENS
 Listed below you will find a list of latest deployments of registries, resolvers, and more.
 If you are looking for our legacy contracts please refer to the [changelog section](/changelog).
 
-## Mainnet {{ tag: "Production" }}
+## Active Deployments
 
-This section contains the contracts for Ethereum mainnet.
-These should be considered the source of truth for any chain unless it is a testnet.
+<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 
-<>{/*TODO: Cleaner way to do deployments, aswell as potentially link out to each contract on etherscan*/}</>
+<ChainDeployments
+    chain="mainnet"
+    deployments={[
+        {
+            name: "Base Registrar",
+            branch: "staging",
+            path: "BaseRegistrarImplementation",
+        },
+        {
+            name: "DNS Registrar",
+            path: "DNSRegistrar",
+        },
+        {
+            name: "ETH Registrar Controller",
+            path: "ETHRegistrarController",
+        },
+        {
+            name: "Name Wrapper",
+            path: "NameWrapper",
+        },
+        {
+            name: "Public Resolver",
+            path: "PublicResolver",
+        },
+        {
+            name: "Registry",
+            path: "ENSRegistry",
+        },
+        {
+            name: "Reverse Registrar",
+            path: "ReverseRegistrar",
+        },
+    ]}
+/>
 
-| Network | Contract          | Address                                    |
-| ------- | ----------------- | ------------------------------------------ |
-| Mainnet | ENS Registry      | 0x314159265dD8dbb310642f98f50C066173C1259b |
-| Mainnet | BaseRegistrarImplementation | 0x57f1887a8BF19b14fC0dF6Fd9B2acc9Af147eA85 |
-| Mainnet | DnsRegistrar | 0x58774Bb8acD458A640aF0B88238369A167546ef2 |
-| Mainnet | EthRegistrarController | 0x253553366Da8546fC250F225fe3d25d0C782303b |
-| Mainnet | NameWrapper | 0xD4416b13d2b3a9aBae7AcD5D6C2BbDBE25686401 |
-| Mainnet | PublicResolver | 0x231b0Ee14048e9dCcD1d247744d114a4EB5E8E63 |
-| Mainnet | Public Resolver?   | 0x4976fb03C32e5B8cfe2b6cCB31c09Ba78EBaBa41 |
-| Mainnet | ReverseRegistrar | 0xa58E81fe9b61B5c3fE2AFD33CF304c454AbFc7Cb |
-| Mainnet | BulkRenewal | 0xa12159e5131b1eEf6B4857EEE3e1954744b5033A |
-| Mainnet | DnssecImpl | 0x21745FF62108968fBf5aB1E07961CC0FCBeB2364 |
+<ChainDeployments
+    chain="goerli"
+    deployments={[
+        {
+            name: "Base Registrar",
+            path: "BaseRegistrarImplementation",
+        },
+        {
+            name: "DNS Registrar",
+            path: "DNSRegistrar",
+        },
+        {
+            name: "ETH Registrar Controller",
+            path: "ETHRegistrarController",
+        },
+        {
+            name: "Name Wrapper",
+            path: "NameWrapper",
+        },
+        {
+            name: "Public Resolver",
+            path: "PublicResolver",
+        },
+        {
+            name: "Registry",
+            path: "ENSRegistry",
+        },
+        {
+            name: "Reverse Registrar",
+            path: "ReverseRegistrar",
+        },
+    ]}
+/>
 
-## Goerli {{ tag: "Testnet" }}
+<ChainDeployments
+    chain="sepolia"
+    deployments={[
+        {
+            name: "Base Registrar",
+            path: "BaseRegistrarImplementation",
+        },
+//        {
+//            name: "DNS Registrar",
+//            path: "DNSRegistrar",
+//        },
+        {
+            name: "ETH Registrar Controller",
+            path: "ETHRegistrarController",
+        },
+        {
+            name: "Name Wrapper",
+            path: "NameWrapper",
+        },
+        {
+            name: "Public Resolver",
+            path: "PublicResolver",
+        },
+        {
+            name: "Registry",
+            path: "ENSRegistry",
+        },
+        {
+            name: "Reverse Registrar",
+            path: "ReverseRegistrar",
+        },
+    ]}
+/>
 
-| Network | Contract          | Address                                    |
-| ------- | ----------------- | ------------------------------------------ |
-| Mainnet | ENS Registry      | 0x112234455c3a32fd11230c42e7bccd4a84e02010 |
-| Mainnet | BaseRegistrarImplementation | 0x57f1887a8bf19b14fc0df6fd9b2acc9af147ea85 |
-| Mainnet | DnsRegistrar | 0x8edc487D26F6c8Fa76e032066A3D4F87E273515d |
-| Mainnet | EthRegistrarController | 0xCc5e7dB10E65EED1BBD105359e7268aa660f6734 |
-| Mainnet | NameWrapper | 0x114D4603199df73e7D157787f8778E21fCd13066 |
-| Mainnet | PublicResolver | 0xd7a4F6473f32aC2Af804B3686AE8F19E48B8fF5f |
-| Mainnet | ReverseRegistrar | 0x6d9F26FfBcF1c6f0bAe9F2C1f7fBe8eE6B1d8d4d |
-| Mainnet | BulkRenewal | 0x6d9F26FfBcF1c6f0bAe9F2C1f7fBe8eE6B1d8d4d |
-| Mainnet | DnssecImpl | 0xF427c4AdED8B6dfde604865c1a7E953B160C26f0 |
-
-## Sepolia {{ tag: "Testnet" }}
-
-| Network | Contract          | Address |
-| ------- | ----------------- | ------- |
-| Mainnet | ENS Registry      |         |
-| Mainnet | Reverse Registrar |         |
-| Mainnet | Public Resolver   |         |
-
-## Ropsten {{ tag: "Testnet" }}
-
-| Network | Contract          | Address |
-| ------- | ----------------- | ------- |
-| Mainnet | ENS Registry      |         |
-| Mainnet | Reverse Registrar |         |
-| Mainnet | Public Resolver   |         |
+</div>
 
 ## But what about multichain? {{ tag: "Multichain", title: "Multichain", id: "multichain" }}
 

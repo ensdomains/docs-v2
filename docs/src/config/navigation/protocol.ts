@@ -77,7 +77,6 @@ export const navigation: SectionData[] = [
                     {
                         title: '⚡ Quickstart',
                         href: '/web/quickstart',
-                        wip: true,
                     },
                     {
                         title: '🛠️ Tools and Libraries',

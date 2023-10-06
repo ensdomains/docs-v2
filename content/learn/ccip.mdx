@@ -9,14 +9,38 @@ export const meta = {
 
 # CCIP
 
-<WIP />
+[EIP-3668](https://eips.ethereum.org/EIPS/eip-3668), otherwise known as CCIP Read, is an Ethereum standard that enables any smart contract to load data from an external source (such as a database, rollup, L2, or http).
+This means that using CCIP we can load information about names and subnames, from for example an L2, Database, or a regular REST endpoint.
 
-[EIP-3668](https://eips.ethereum.org/EIPS/eip-3668), otherwise known as CCIP Read, is an Ethereum standard that enables any smart contract to load data from an external source.
-This allows us to load information about names and subnames, from an L2, Database, or a regular REST endpoint.
+<div className="card p-4 flex justify-center items-center gap-4">
+    <Usertag name="lucemans.cb.id" image="https://metadata.ens.domains/mainnet/avatar/luc.eth" />
+    <div>➡️</div>
+    <div className="text-center leading-4">
+        <div className="font-bold">Resolver</div>
+        <div>0x1234</div>
+    </div>
+    <div>➡️</div>
+    <div className="text-center leading-4">
+        <div className="font-bold">Gateway</div>
+        <div>api.example.com</div>
+    </div>
+    <div>➡️</div>
+    <div className="text-center leading-4 card p-2 no-margin !bg-lime-50">
+        <div className="font-bold">Address:</div>
+        <div>0x225...c3b5</div>
+    </div>
+</div>
+
+## So unlimited free subnames?
+
+By loading data from a gateway, write operations (and thereby gas costs) can be deferred to an L2, or completely circumvented using a database.
+This means subnames can be issued gaslessly, tokenized on an L2, inferred from live DNS data, and more.
+
+## How does it work?
 
 <img src="/content/learn/ccip/1.png" className="w-full card" />
 
-If you're interested to read more, a more in-depth analysis can be found at:
+If you're interested to read more or would like to implement ccip resolution, a more in-depth analysis can be found at:
 
 <EmbedLink
     href="/resolvers/ccip"
