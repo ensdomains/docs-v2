@@ -1,5 +1,6 @@
 'use client';
 
+import { formatAddress } from '@ens-tools/format';
 import { FC, useState } from 'react';
 import { BiLoaderAlt } from 'react-icons/bi';
 import { useDebounce } from 'use-debounce';
@@ -55,10 +56,7 @@ export const NameLookupDemo: FC = () => {
 
                                         <div className="text-xs leading-none">
                                             {data?.address &&
-                                                `${data.address.slice(
-                                                    0,
-                                                    5
-                                                )}...${data.address.slice(-4)}`}
+                                                formatAddress(data.address)}
                                         </div>
                                     </div>
                                 </div>

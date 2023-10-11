@@ -1,3 +1,4 @@
+import { formatAddress } from '@ens-tools/format';
 import { FC, Fragment } from 'react';
 
 const multicoinIcons = {
@@ -40,7 +41,9 @@ export const Chains: FC<{ chains?: Record<string, string> }> = ({ chains }) => {
                             )}
                         </div>
                         <div className="truncate leading-none">
-                            {chains[chain]}
+                            {chain == 'eth'
+                                ? formatAddress(chains[chain])
+                                : chains[chain]}
                         </div>
                     </Fragment>
                 ))}

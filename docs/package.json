@@ -13,6 +13,7 @@
     "dependencies": {
         "@algolia/autocomplete-core": "^1.7.3",
         "@algolia/autocomplete-preset-algolia": "^1.7.3",
+        "@ens-tools/format": "^0.0.2",
         "@ensdomains/thorin": "^0.6.42",
         "@headlessui/react": "^1.7.7",
         "@mdx-js/loader": "^2.3.0",
@@ -47,10 +48,12 @@
         "schema-dts": "^1.1.2",
         "shiki": "^0.11.1",
         "simple-git": "^3.19.1",
+        "siwe": "^2.1.4",
         "swr": "^2.2.0",
         "unified": "^10.1.2",
         "unist-util-visit": "^4.1.1",
         "use-debounce": "^9.0.4",
+        "wagmi": "^1.4.3",
         "zod": "^3.21.4",
         "zustand": "^4.1.4"
     },
