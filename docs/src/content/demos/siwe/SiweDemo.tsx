@@ -36,7 +36,9 @@ const config = createConfig({
 
 const Demo = () => {
     const { address, isConnected } = useAccount();
-    const { connect } = useConnect();
+    const { connect } = useConnect({
+        connector: new InjectedConnector(),
+    });
     const { disconnect } = useDisconnect();
     const { data: ensName } = useEnsName({ address });
     const {
@@ -112,9 +114,7 @@ const Demo = () => {
                 <Button
                     variant="primary"
                     onClick={() => {
-                        const x = new InjectedConnector();
-
-                        connect({ chainId: 1, connector: x });
+                        connect();
                     }}
                 >
                     Connect Wallet
