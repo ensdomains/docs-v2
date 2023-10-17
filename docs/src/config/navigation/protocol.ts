@@ -88,12 +88,10 @@ export const navigation: SectionData[] = [
                     {
                         title: '🔍 Primary Names',
                         href: '/web/reverse',
-                        wip: true,
                     },
                     {
                         title: '🔍 List Names',
                         href: '/web/enumerate',
-                        wip: true,
                     },
                     {
                         title: '✍️ Sign In With Ethereum (SIWE)',
