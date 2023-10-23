@@ -71,7 +71,15 @@ export const ChainDeployments: FC<{
                                     {deployment.address || data.address}
                                 </div>
                                 <div className="hidden group-hover:block">
-                                    <Button variant="primary">
+                                    <Button
+                                        onClick={() => {
+                                            navigator.clipboard.writeText(
+                                                deployment.address ||
+                                                    data.address
+                                            );
+                                        }}
+                                        variant="primary"
+                                    >
                                         <FiClipboard />
                                     </Button>
                                 </div>
