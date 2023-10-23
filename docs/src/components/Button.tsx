@@ -1,3 +1,4 @@
+/* eslint-disable sonarjs/no-duplicate-string */
 import clsx from 'clsx';
 import Link from 'next/link';
 import { FC, PropsWithChildren } from 'react';
