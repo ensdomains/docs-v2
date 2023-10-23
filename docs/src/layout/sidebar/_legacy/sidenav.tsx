@@ -21,7 +21,7 @@ export const Navigation = (properties) => {
 
     return (
         <nav className="flex h-full flex-col">
-            <div className="border-b px-2 py-4">
+            {/* <div className="border-b px-2 py-4">
                 <ul className="flex w-full flex-col gap-1">
                     {activeNavigation.map((section, sectionIndex) => (
                         <li key={section.name} className="w-full">
@@ -42,17 +42,38 @@ export const Navigation = (properties) => {
                         </li>
                     ))}
                 </ul>
-            </div>
+            </div> */}
             <div className="scrollbar w-full overflow-auto py-4">
-                <ul className="space-y-6 pl-2">
-                    {activeSection &&
-                        activeSection.links.map((group, groupIndex) => (
-                            <NavigationGroup
-                                key={group.title}
-                                group={group}
-                                className=""
-                            />
-                        ))}
+                <ul className="space-y-3 pl-2">
+                    {activeNavigation.map((section, sectionIndex) => (
+                        <li key={section.name} className="w-full">
+                            <Link
+                                href={section.href}
+                                className={clsx(
+                                    'flex w-full items-center gap-2 rounded-md bg-neutral-50 p-2 text-sm',
+                                    section.activePattern.test(pathname)
+                                        ? 'bg-ens-200/60 text-ens-700'
+                                        : 'hover:bg-[#f5f5f5]'
+                                )}
+                            >
+                                <span className="text-md aspect-square">
+                                    {section.icon}
+                                </span>
+                                <span>{section.name}</span>
+                            </Link>
+                            {activeSection.href == section.href && (
+                                <ul className="space-y-6 pl-2">
+                                    {section.links.map((group, groupIndex) => (
+                                        <NavigationGroup
+                                            key={group.title}
+                                            group={group}
+                                            className=""
+                                        />
+                                    ))}
+                                </ul>
+                            )}
+                        </li>
+                    ))}
                 </ul>
             </div>
         </nav>
