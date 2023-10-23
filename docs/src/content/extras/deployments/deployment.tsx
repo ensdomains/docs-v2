@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import { FC } from 'react';
-import { FiClipboard, FiExternalLink } from 'react-icons/fi';
+import { FiExternalLink } from 'react-icons/fi';
 
-import { Button } from '@/components/Button';
+import { CopyButton } from './copy';
 
 type githubDeploymentReturn = {
     address: string;
@@ -71,17 +71,11 @@ export const ChainDeployments: FC<{
                                     {deployment.address || data.address}
                                 </div>
                                 <div className="hidden group-hover:block">
-                                    <Button
-                                        onClick={() => {
-                                            navigator.clipboard.writeText(
-                                                deployment.address ||
-                                                    data.address
-                                            );
-                                        }}
-                                        variant="primary"
-                                    >
-                                        <FiClipboard />
-                                    </Button>
+                                    <CopyButton
+                                        text={
+                                            deployment.address || data.address
+                                        }
+                                    />
                                 </div>
                             </div>
                         </div>
