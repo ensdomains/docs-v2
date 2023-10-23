@@ -4,8 +4,7 @@ import { FC } from 'react';
 import { TruncatedAddress } from '@/components/TruncatedAddress';
 import { MdxDAOProposalProps } from '@/lib/mdxPageProps';
 
-const API_KEY =
-    'a0a4cd00bb6953720c9c201c010cdd36a563e65c97e926a36a8acdfcd1d1eeb7';
+const API_KEY = process.env.TALLY_API_KEY;
 
 // eslint-disable-next-line prettier/prettier, unicorn/template-indent
 const query = gql`
@@ -116,7 +115,8 @@ const large2Smol = (x: number) => {
 export const TallyDetails: FC<{
     data: MdxDAOProposalProps;
 }> = async ({ data }) => {
-    const tallyData = await fetchTallyData(data.tally);
+    // TODO: Re-enable Tally API
+    const tallyData = undefined; // await fetchTallyData(data.tally);
 
     if (!tallyData) {
         return <></>;

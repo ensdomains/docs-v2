@@ -31,6 +31,8 @@ jobs:
       - name: Build
         working-directory: ./docs
         run: pnpm run build
+        env:
+          TALLY_API_KEY: ${{ secrets.TALLY_API_KEY }}
 
       - name: Prepare tag
         id: prepare_tag
