@@ -14,10 +14,10 @@ export const QuickBannerLink: FC<{
             target={href.startsWith('http') ? '_blank' : undefined}
             className="card not-prose !m-0 flex flex-col !p-0 text-inherit hover:text-inherit hover:no-underline hover:brightness-95"
         >
-            <div className="aspect-[21/9] w-full bg-white">
+            <div className="aspect-[21/9] w-full">
                 {image && <img src={image} alt="" className="h-auto w-full" />}
             </div>
-            <div className="flex grow bg-gray-50 p-3 pt-2">
+            <div className="flex grow p-3 pt-2">
                 <div className="w-full">
                     <div className="font-bold">{title}</div>
                     <div className="leading-5">{description}</div>

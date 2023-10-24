@@ -10,8 +10,10 @@ export default function RootLayout(properties) {
     const { children } = properties;
 
     return (
-        <html lang="en">
-            <body className="bg-">{children}</body>
+        <html lang="en" className="dar">
+            <body className="bg-ens-light-background-primary dark:bg-ens-dark-background-primary text-ens-light-text-primary dark:text-ens-dark-text-primary">
+                {children}
+            </body>
         </html>
     );
 }

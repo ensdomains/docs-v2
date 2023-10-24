@@ -2,7 +2,7 @@ import { FC } from 'react';
 
 export const WIP: FC<{ missing?: string[] }> = ({ missing }) => {
     return (
-        <div className="not-prose rounded-md border border-yellow-500 bg-yellow-50 p-4">
+        <div className="not-prose border-ens-light-yellow-bright dark:border-ens-dark-yellow-bright dark:bg-ens-dark-yellow-surface bg-ens-light-yellow-surface rounded-md border p-4">
             <h2 className="text-xl font-bold text-yellow-800">
                 🚧 This page is work in progress 🚧
             </h2>

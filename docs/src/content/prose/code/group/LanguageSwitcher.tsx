@@ -106,7 +106,7 @@ export const LanguageSwitcher: FC<{
                     );
                 }}
                 value={activeLanguage}
-                className="mr-1 rounded-lg bg-white px-2 py-1"
+                className="mr-1 rounded-lg bg-ens-light-background-primary dark:bg-ens-dark-background-primary px-2 py-1"
             >
                 {snippets.map((snippet) => {
                     return (

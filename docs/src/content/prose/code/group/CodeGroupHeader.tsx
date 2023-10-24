@@ -19,11 +19,11 @@ export const CodeGroupHeader: FC<{
     }
 
     return (
-        <div className="relative flex min-h-[calc(theme(spacing.12)+1px)] justify-between gap-x-4 border-b border-black/10 px-4 dark:border-zinc-800 dark:bg-zinc-800">
+        <div className="border-ens-light-border dark:border-ens-dark-border bg-ens-light-grey-surface dark:bg-ens-dark-grey-surface relative flex min-h-[calc(theme(spacing.12)+1px)] justify-between gap-x-4 border-b px-4">
             {title && (
-                <h3 className="pt-3 text-xs font-semibold text-black dark:text-white">
+                <div className="text-ens-light-text-primary dark:text-ens-dark-text-primary pt-3 text-xs font-semibold dark:text-white">
                     {title}
-                </h3>
+                </div>
             )}
             {hasTabs && (
                 <LanguageSwitcher
