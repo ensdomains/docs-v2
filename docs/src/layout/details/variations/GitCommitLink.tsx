@@ -25,7 +25,7 @@ export const GitCommitLink: FC<
             rel="noopener noreferrer nofollow"
             className={cx(
                 'flex items-center gap-1 hover:underline',
-                isDAO ? 'text-ens-dao-400' : 'text-blue-500'
+                isDAO ? 'text-ens-light-blue-dao-400' : 'text-blue-500'
             )}
         >
             {children}

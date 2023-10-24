@@ -104,7 +104,7 @@ export const SearchResults: FC<{
                                 </span>
                                 <span className="flex gap-2">
                                     {hit.slug.startsWith('dao') && (
-                                        <span className="bg-ens-dao-400 h-fit rounded-md px-2 py-0.5 text-xs font-bold text-white">
+                                        <span className="bg-ens-light-blue-dao-400 h-fit rounded-md px-2 py-0.5 text-xs font-bold text-white">
                                             DAO
                                         </span>
                                     )}

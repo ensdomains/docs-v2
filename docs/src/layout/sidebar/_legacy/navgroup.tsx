@@ -48,7 +48,7 @@ function ActivePageMarker({ group, pathname }) {
     return (
         <motion.div
             layout
-            className="bg-ens-500 absolute left-2 h-6 w-px"
+            className="bg-ens-light-blue-500 absolute left-2 h-6 w-px"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1, transition: { delay: 0.2 } }}
             exit={{ opacity: 0 }}

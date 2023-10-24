@@ -30,7 +30,7 @@ export const Navigation = (properties) => {
                                 className={clsx(
                                     'flex w-full items-center gap-2 rounded-md p-2 text-sm',
                                     section.activePattern.test(pathname)
-                                        ? 'bg-ens-200/50 text-ens-700'
+                                        ? 'bg-ens-light-blue-200/50 text-ens-light-blue-700'
                                         : 'hover:bg-[#f5f5f5]'
                                 )}
                             >
@@ -52,7 +52,7 @@ export const Navigation = (properties) => {
                                 className={clsx(
                                     'flex w-full items-center gap-2 rounded-md bg-neutral-50 p-2 text-sm',
                                     section.activePattern.test(pathname)
-                                        ? 'bg-ens-200/60 text-ens-700'
+                                        ? 'bg-ens-light-blue-200/60 text-ens-light-blue-700'
                                         : 'hover:bg-[#f5f5f5]'
                                 )}
                             >

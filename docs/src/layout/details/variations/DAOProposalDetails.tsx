@@ -21,7 +21,7 @@ export const DAOProposalDetails: FC<{ mdxProperties: MdxDAOProposalProps }> = ({
                                     </span>
                                 ),
                                 draft: (
-                                    <span className="text-ens-dao-400">
+                                    <span className="text-ens-light-blue-dao-400">
                                         ✍️ Draft
                                     </span>
                                 ),
@@ -44,7 +44,7 @@ export const DAOProposalDetails: FC<{ mdxProperties: MdxDAOProposalProps }> = ({
                     <div>Discourse</div>
                     <a
                         href={`https://discuss.ens.domains/t/t/${mdxProperties.discourse}`}
-                        className="flex items-center gap-1 text-ens-dao-400 hover:underline"
+                        className="flex items-center gap-1 text-ens-light-blue-dao-400 hover:underline"
                         target="_blank"
                     >
                         <FaDiscourse />#{mdxProperties.discourse}
@@ -71,7 +71,7 @@ export const DAOProposalDetails: FC<{ mdxProperties: MdxDAOProposalProps }> = ({
                         {
                             {
                                 social: (
-                                    <span className="text-ens-dao-400">
+                                    <span className="text-ens-light-blue-dao-400">
                                         👨‍👩‍👧‍👦 Social
                                     </span>
                                 ),

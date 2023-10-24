@@ -57,7 +57,7 @@ const FeedbackThanks = forwardRef(
                 ref={reference}
                 className="flex justify-center md:justify-start"
             >
-                <div className="items-top bg-ens-50/50 text-ens-900 ring-ens-500/20 dark:bg-ens-500/5 dark:text-ens-200 dark:ring-ens-500/30 flex h-fit gap-3 overflow-hidden rounded-lg py-3 pl-3 pr-4 text-sm ring-1 ring-inset">
+                <div className="items-top bg-ens-light-blue-50/50 text-ens-light-blue-900 ring-ens-500/20 dark:bg-ens-light-blue-500/5 dark:text-ens-light-blue-200 dark:ring-ens-500/30 flex h-fit gap-3 overflow-hidden rounded-lg py-3 pl-3 pr-4 text-sm ring-1 ring-inset">
                     <CheckIcon className="fill-ens-500 dark:fill-ens-200/20 dark:stroke-ens-200 h-5 w-5 flex-none stroke-white" />
                     <div className="leading-5">
                         <div>Thanks for your feedback!</div>

@@ -40,7 +40,7 @@ export const NameLookupDemo: FC = () => {
                         {data && (
                             <>
                                 <div className="flex gap-2">
-                                    <div className="bg-ens-100 h-8 w-8 overflow-hidden rounded-full">
+                                    <div className="bg-ens-light-blue-100 h-8 w-8 overflow-hidden rounded-full">
                                         {data?.avatar && (
                                             <img
                                                 src={data.avatar}
