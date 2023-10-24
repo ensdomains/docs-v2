@@ -18,6 +18,7 @@ import {
 
 import { MobileNavigation } from '../sidebar/_legacy/MobileNavigation';
 import { MobileSearch, Search } from './search/Search';
+import { ThemeSwitcher } from './ThemeSwitcher';
 
 export const Header = forwardRef<HTMLDivElement, { className?: string }>(
     ({ className }, reference) => {
@@ -114,6 +115,7 @@ export const Header = forwardRef<HTMLDivElement, { className?: string }>(
                             </Button>
                         )}
                     </div>
+                    <ThemeSwitcher />
                     <div className="md:dark:bg-white/15 hidden md:block md:h-5 md:w-px md:bg-zinc-900/10" />
                     <div className="flex gap-4">
                         <MobileSearch />
