@@ -81,7 +81,7 @@ export const Header = forwardRef<HTMLDivElement, { className?: string }>(
                     <div
                         className={cx(
                             'rounded-md px-2 text-xs font-bold text-white',
-                            isDao ? 'bg-ens-light-blue-dao-400' : 'bg-ens-light-blue-500'
+                            isDao ? 'bg-ens-dao-400' : 'bg-ens-light-blue-500'
                         )}
                     >
                         ALPHA

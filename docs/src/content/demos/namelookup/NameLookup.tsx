@@ -16,15 +16,15 @@ export const NameLookupDemo: FC = () => {
     const { data, isLoading, error } = useProfile({ name });
 
     return (
-        <div className="mx-auto max-w-xs">
+        <div className="text-ens-light-text-primary dark:text-ens-dark-text-primary mx-auto max-w-xs">
             <div>Find user</div>
             <input
-                className="w-full rounded-md border pl-2"
+                className="border-ens-light-border dark:border-ens-dark-border w-full rounded-md border pl-2"
                 placeholder="luc.eth"
                 onChange={(event) => setTemporaryName(event.target.value)}
                 value={temporaryName}
             />
-            <div className="mt-2 flex h-fit flex-col gap-1.5 rounded-lg border p-4">
+            <div className="border-ens-light-border dark:border-ens-dark-border mt-2 flex h-fit flex-col gap-1.5 rounded-lg border p-4">
                 {isLoading && <BiLoaderAlt className="animate-spin" />}
                 {!isLoading && (
                     <>
