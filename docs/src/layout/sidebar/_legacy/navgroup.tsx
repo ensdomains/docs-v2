@@ -24,7 +24,7 @@ function NavLink({ href, tag, active, isAnchorLink = false, children }) {
                 isAnchorLink ? 'pl-7' : 'pl-4',
                 active
                     ? 'text-zinc-900 dark:text-white'
-                    : 'text-ens-light-text-primary dark:text-ens-dark-text-primary hover:text-ens-light-text-accent dark:hover:text-ens-dark-text-accent'
+                    : 'text-ens-light-text-primary dark:text-ens-dark-text-primary hover:text-ens-light-text-secondary dark:hover:text-ens-dark-text-accent'
             )}
         >
             <span className="flex items-center gap-1 truncate">{children}</span>
