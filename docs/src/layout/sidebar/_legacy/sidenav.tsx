@@ -42,7 +42,7 @@ export const Navigation = (properties) => {
                                 </span>
                                 <span>{section.name}</span>
                             </Link>
-                            {activeSection.href == section.href && (
+                            {activeSection?.href == section.href && (
                                 <ul className="space-y-6">
                                     {section.links.map((group, groupIndex) => (
                                         <NavigationGroup
