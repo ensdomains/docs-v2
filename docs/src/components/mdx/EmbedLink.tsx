@@ -11,7 +11,7 @@ export const EmbedLink: FC<{
     return (
         <Link
             href={href}
-            className="card not-prose flex items-center p-4 text-black no-underline outline-blue-500 transition-all hover:text-black hover:shadow-md hover:outline-2"
+            className="card not-prose text-ens-light-text-primary dark:text-ens-dark-text-primary flex items-center p-4 no-underline outline-blue-500 transition-all hover:shadow-md hover:outline-2"
         >
             <span className="flex w-full flex-col">
                 <span className="font-bold">

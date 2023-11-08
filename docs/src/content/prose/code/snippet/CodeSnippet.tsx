@@ -117,7 +117,7 @@ export const CodePanel: FC<PropsWithChildren<CodePanelProperties>> = ({
                 )} */}
             </div>
             {(link || stackblitz) && (
-                <div className="bg-ens-50 flex w-full items-center justify-between border-t p-1">
+                <div className="bg-ens-light-grey-surface dark:bg-ens-dark-grey-surface border-ens-light-border dark:border-ens-dark-border flex w-full items-center justify-between border-t p-1">
                     <div className="px-2">
                         {link && (
                             <div>

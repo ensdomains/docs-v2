@@ -21,39 +21,20 @@ export const Navigation = (properties) => {
 
     return (
         <nav className="flex h-full flex-col">
-            {/* <div className="border-b px-2 py-4">
-                <ul className="flex w-full flex-col gap-1">
-                    {activeNavigation.map((section, sectionIndex) => (
-                        <li key={section.name} className="w-full">
-                            <Link
-                                href={section.href}
-                                className={clsx(
-                                    'flex w-full items-center gap-2 rounded-md p-2 text-sm',
-                                    section.activePattern.test(pathname)
-                                        ? 'bg-ens-200/50 text-ens-700'
-                                        : 'hover:bg-[#f5f5f5]'
-                                )}
-                            >
-                                <span className="text-md aspect-square">
-                                    {section.icon}
-                                </span>
-                                <span>{section.name}</span>
-                            </Link>
-                        </li>
-                    ))}
-                </ul>
-            </div> */}
             <div className="scrollbar w-full overflow-auto py-4">
-                <ul className="space-y-3 pl-2">
+                <ul className="space-y-3 px-2">
                     {activeNavigation.map((section, sectionIndex) => (
-                        <li key={section.name} className="w-full">
+                        <li
+                            key={section.name}
+                            className="border-ens-light-border dark:border-ens-dark-border w-full border-b pb-2"
+                        >
                             <Link
                                 href={section.href}
                                 className={clsx(
-                                    'flex w-full items-center gap-2 rounded-md bg-neutral-50 p-2 text-sm',
+                                    'text-ens-light-text-secondary dark:text-ens-light-text-secondary flex w-full items-center gap-2 rounded-md p-2 text-sm',
                                     section.activePattern.test(pathname)
-                                        ? 'bg-ens-200/60 text-ens-700'
-                                        : 'hover:bg-[#f5f5f5]'
+                                        ? 'bg-ens-light-grey-surface dark:bg-ens-dark-background-surface dark:bg-ens-dark-blue-surface'
+                                        : 'bg-ens-light-background-primary dark:bg-ens-dark-background-primary'
                                 )}
                             >
                                 <span className="text-md aspect-square">
@@ -61,8 +42,8 @@ export const Navigation = (properties) => {
                                 </span>
                                 <span>{section.name}</span>
                             </Link>
-                            {activeSection.href == section.href && (
-                                <ul className="space-y-6 pl-2">
+                            {activeSection?.href == section.href && (
+                                <ul className="space-y-6">
                                     {section.links.map((group, groupIndex) => (
                                         <NavigationGroup
                                             key={group.title}

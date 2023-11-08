@@ -24,7 +24,7 @@ function NavLink({ href, tag, active, isAnchorLink = false, children }) {
                 isAnchorLink ? 'pl-7' : 'pl-4',
                 active
                     ? 'text-zinc-900 dark:text-white'
-                    : 'text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white'
+                    : 'text-ens-light-text-primary dark:text-ens-dark-text-primary hover:text-ens-light-text-secondary dark:hover:text-ens-dark-text-accent'
             )}
         >
             <span className="flex items-center gap-1 truncate">{children}</span>
@@ -48,7 +48,7 @@ function ActivePageMarker({ group, pathname }) {
     return (
         <motion.div
             layout
-            className="bg-ens-500 absolute left-2 h-6 w-px"
+            className="bg-ens-light-blue-500 absolute left-2 h-6 w-px"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1, transition: { delay: 0.2 } }}
             exit={{ opacity: 0 }}
@@ -129,7 +129,7 @@ export const NavigationGroup = ({ group, className }) => {
                                 <span>{link.title}</span>
                                 {link.external && <FiExternalLink />}
                                 {link.wip && (
-                                    <div className="text-2xs rounded-md border bg-slate-100 px-2 text-slate-500">
+                                    <div className="text-2xs dark:bg-ens-dark-blue-surface dark:text-ens-dark-blue-primary dark:border-ens-dark-blue-bright bg-ens-dark-light-surface text-ens-light-blue-primary border-ens-light-blue-bright rounded-md border px-2">
                                         WIP
                                     </div>
                                 )}

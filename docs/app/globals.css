@@ -1,13 +1,13 @@
 :root.dark {
     --shiki-color-text: theme('colors.white');
     --shiki-color-background: theme('colors.zinc.900');
-    --shiki-token-constant: theme('colors.ens.300');
-    --shiki-token-string: theme('colors.ens.300');
+    --shiki-token-constant: theme('colors.ens.light.blue.300');
+    --shiki-token-string: theme('colors.ens.light.blue.300');
     --shiki-token-comment: theme('colors.zinc.500');
     --shiki-token-keyword: theme('colors.sky.300');
     --shiki-token-parameter: theme('colors.pink.300');
     --shiki-token-function: theme('colors.violet.300');
-    --shiki-token-string-expression: theme('colors.ens.300');
+    --shiki-token-string-expression: theme('colors.ens.light.blue.300');
     --shiki-token-punctuation: theme('colors.zinc.200');
 }
 
@@ -44,6 +44,7 @@
     font-display: swap;
     src: url('/fonts/sans-serif/Satoshi-Variable.ttf') format('truetype');
 } */
+
 @font-face {
     font-family: 'Inter';
     font-display: swap;
@@ -61,7 +62,7 @@
 @tailwind utilities;
 
 .card {
-    @apply overflow-hidden rounded-lg bg-[rgba(0,0,0,0.01)] shadow-sm dark:shadow-md ring-1 ring-black/10 dark:ring-white/10;
+    @apply overflow-hidden rounded-lg bg-ens-light-grey-surface dark:bg-ens-dark-grey-surface shadow-sm dark:shadow-md ring-1 ring-black/10 dark:ring-white/10;
 }
 
 .card:not(.no-margin) {
@@ -69,7 +70,7 @@
 }
 
 .prose > p + p {
-    @apply !mt-0 mb-0;
+    /* @apply !mt-0 mb-0; */
 }
 
 html.dark {
@@ -89,7 +90,7 @@ html.dark {
 }
 
 pre {
-    @apply bg-white;
+    @apply bg-ens-light-background-primary dark:bg-ens-dark-background-primary;
 }
 
 .mermaid {
@@ -106,7 +107,7 @@ svg[role~='graphics-document'] {
 
 .focus-code::before {
     content: '';
-    @apply absolute left-0 right-0 h-[24px] bg-ens-400/5;
+    @apply absolute left-0 right-0 h-[24px] bg-ens-light-blue-400/5;
 }
 
 @media (min-width: 1650px) {
