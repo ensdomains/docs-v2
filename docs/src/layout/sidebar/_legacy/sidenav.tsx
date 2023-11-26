@@ -21,13 +21,10 @@ export const Navigation = (properties) => {
 
     return (
         <nav className="flex h-full flex-col">
-            <div className="scrollbar w-full overflow-auto py-4">
-                <ul className="space-y-3 px-2">
+            <div className="scrollbar w-full overflow-auto py-[16px]">
+                <ul className="border-ens-light-border dark:border-ens-dark-border w-full border-b px-[16px] pb-2">
                     {activeNavigation.map((section, sectionIndex) => (
-                        <li
-                            key={section.name}
-                            className="border-ens-light-border dark:border-ens-dark-border w-full border-b pb-2"
-                        >
+                        <li key={section.name} className="">
                             <Link
                                 href={section.href}
                                 className={clsx(
@@ -42,20 +39,20 @@ export const Navigation = (properties) => {
                                 </span>
                                 <span>{section.name}</span>
                             </Link>
-                            {activeSection?.href == section.href && (
-                                <ul className="space-y-6">
-                                    {section.links.map((group, groupIndex) => (
-                                        <NavigationGroup
-                                            key={group.title}
-                                            group={group}
-                                            className=""
-                                        />
-                                    ))}
-                                </ul>
-                            )}
                         </li>
                     ))}
                 </ul>
+                {/* {activeSection?.href == section.href && ( */}
+                <ul className="space-y-6 px-3">
+                    {activeSection.links.map((group, groupIndex) => (
+                        <NavigationGroup
+                            key={group.title}
+                            group={group}
+                            className=""
+                        />
+                    ))}
+                </ul>
+                {/* )} */}
             </div>
         </nav>
     );

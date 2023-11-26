@@ -54,6 +54,7 @@
         "unified": "^10.1.2",
         "unist-util-visit": "^4.1.1",
         "use-debounce": "^9.0.4",
+        "viem": "^1.19.4",
         "wagmi": "^1.4.3",
         "zod": "^3.21.4",
         "zustand": "^4.1.4"

@@ -14,12 +14,14 @@ export type SectionData = {
 export type routeLink = {
     title: string;
     href: string;
+    icon?: string;
     external?: boolean;
     wip?: boolean;
 };
 
 export type routeGroup = {
     title: string;
+    icon?: string;
     links: (routeLink | routeGroup)[];
 };
 

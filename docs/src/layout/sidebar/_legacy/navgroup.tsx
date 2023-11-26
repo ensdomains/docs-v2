@@ -1,33 +1,36 @@
 'use client';
 import clsx from 'clsx';
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { FiExternalLink } from 'react-icons/fi';
 
-import { ClientOnly } from '@/ClientOnly';
 import { useSectionStore } from '@/components/SectionProvider';
 import { Tag } from '@/components/Tag';
 import { useIsInsideMobileNavigation } from '@/lib/mobile';
 import { remToPx } from '@/lib/remToPx';
 
 import { useInitialValue } from './useInitialValue';
-import { VisibleSectionHighlight } from './VisibleSelectionHighlight';
 
 function NavLink({ href, tag, active, isAnchorLink = false, children }) {
+    // To hide the sections of a page, uncomment this line:
+    if (isAnchorLink) return <></>;
+
     return (
         <Link
             href={href}
             aria-current={active ? 'page' : undefined}
             className={clsx(
-                'flex justify-between gap-2 py-1 pr-0 text-sm transition',
-                isAnchorLink ? 'pl-7' : 'pl-4',
+                'flex justify-between gap-2 rounded-lg py-2 pr-0 text-xs transition',
+                isAnchorLink ? 'pl-8' : 'pl-4',
                 active
-                    ? 'text-zinc-900 dark:text-white'
-                    : 'text-ens-light-text-primary dark:text-ens-dark-text-primary hover:text-ens-light-text-secondary dark:hover:text-ens-dark-text-accent'
+                    ? 'text-ens-light-text-primary dark:text-ens-dark-text-primary bg-ens-light-blue-surface dark:bg-ens-dark-blue-surface'
+                    : 'text-ens-light-text-primary dark:text-ens-dark-text-primary hover:bg-ens-light-background-secondary dark:hover:bg-ens-dark-background-secondary'
             )}
         >
-            <span className="flex items-center gap-1 truncate">{children}</span>
+            <span className="flex items-center gap-1 truncate leading-5">
+                {children}
+            </span>
             {tag && (
                 <Tag variant="small" color="zinc">
                     {tag}
@@ -77,12 +80,13 @@ export const NavigationGroup = ({ group, className }) => {
         <li className={clsx('relative', className)}>
             <motion.h2
                 layout="position"
-                className="pl-0.5 text-xs font-semibold text-zinc-900 dark:text-white"
+                className="text-ens-light-text-secondary dark:text-ens-dark-text-secondary py-2 pl-0.5 text-xs font-bold leading-5 dark:text-white"
             >
+                {group.icon && group.icon + ' '}
                 {group.title}
             </motion.h2>
-            <div className="relative mt-3 pl-1">
-                <AnimatePresence initial={!isInsideMobileNavigation}>
+            <div className="relative">
+                {/* <AnimatePresence initial={!isInsideMobileNavigation}>
                     {isActiveGroup && (
                         <ClientOnly
                             child={() => {
@@ -113,8 +117,8 @@ export const NavigationGroup = ({ group, className }) => {
                             }}
                         />
                     )}
-                </AnimatePresence>
-                <ul className="border-l border-transparent">
+                </AnimatePresence> */}
+                <ul className="">
                     {group.links?.map((link) => (
                         <motion.li
                             key={link.href}
@@ -129,12 +133,12 @@ export const NavigationGroup = ({ group, className }) => {
                                 <span>{link.title}</span>
                                 {link.external && <FiExternalLink />}
                                 {link.wip && (
-                                    <div className="text-2xs dark:bg-ens-dark-blue-surface dark:text-ens-dark-blue-primary dark:border-ens-dark-blue-bright bg-ens-dark-light-surface text-ens-light-blue-primary border-ens-light-blue-bright rounded-md border px-2">
+                                    <div className="text-3xs dark:text-ens-dark-blue-primary text-ens-light-blue-primary rounded-md">
                                         WIP
                                     </div>
                                 )}
                             </NavLink>
-                            <AnimatePresence mode="popLayout" initial={false}>
+                            {/* <AnimatePresence mode="popLayout" initial={false}>
                                 {link.href === pathname &&
                                     sections.length > 0 && (
                                         <motion.ul
@@ -164,7 +168,7 @@ export const NavigationGroup = ({ group, className }) => {
                                             ))}
                                         </motion.ul>
                                     )}
-                            </AnimatePresence>
+                            </AnimatePresence> */}
                         </motion.li>
                     ))}
                 </ul>
