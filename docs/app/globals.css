@@ -69,6 +69,11 @@
     @apply my-6;
 }
 
+.prose {
+    /* max-width: 720px; */
+    /* width: 720px; */
+}
+
 .prose > p + p {
     /* @apply !mt-0 mb-0; */
 }

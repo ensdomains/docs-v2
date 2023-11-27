@@ -82,7 +82,7 @@ export const NavigationGroup = ({ group, className }) => {
                 layout="position"
                 className="text-ens-light-text-secondary dark:text-ens-dark-text-secondary py-2 pl-0.5 text-xs font-bold leading-5 dark:text-white"
             >
-                {group.icon && group.icon + ' '}
+                {/* {group.icon && group.icon + ' '} */}
                 {group.title}
             </motion.h2>
             <div className="relative">

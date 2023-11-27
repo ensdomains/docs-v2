@@ -72,7 +72,7 @@ export const navigation: SectionData[] = [
         ],
     },
     {
-        name: 'Getting Started',
+        name: 'Using ENS',
         href: '/web',
         icon: '📖',
         activePattern: /^\/web(\/.*)?/,
@@ -95,8 +95,12 @@ export const navigation: SectionData[] = [
                         href: '/web/libraries',
                         icon: '🛠️',
                     },
-                    { title: 'Address', href: '/web/resolution', icon: '🔍' },
-                    { title: 'Records', href: '/web/records', icon: '🔍' },
+                    {
+                        title: 'Address Lookup',
+                        href: '/web/resolution',
+                        icon: '🔍',
+                    },
+                    { title: 'Text Records', href: '/web/records', icon: '🔍' },
                     { title: 'Avatars', href: '/web/avatars', icon: '🔍' },
                     {
                         title: 'Primary Names',
@@ -158,7 +162,7 @@ export const navigation: SectionData[] = [
         ],
     },
     {
-        name: 'Advanced Usage',
+        name: 'Smart Contracts',
         href: '/resolution',
         icon: '⚙️',
         activePattern: /^\/(resolvers|subnames|registry|resolution)(\/.*)?/,

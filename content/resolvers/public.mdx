@@ -1,12 +1,33 @@
-import { WIP } from '@/components/wip/WIP';
+import { WIP } from "@/components/wip/WIP";
 
-{/** @type {import('@/lib/mdxPageProps').MdxMetaProps} */}
+{/* * @type {import('@/lib/mdxPageProps').MdxMetaProps} */}
 export const meta = {
-    description: '',
-    emoji: '🏛️',
-    contributors: []
+description: '',
+emoji: '🏛️',
+contributors: []
 };
 
 # Public Resolver
 
 <WIP />
+
+The public resolver is a special type of resolver.
+
+The public resolver implements a general-purpoese ENS resolver that is suitable for most standard ENS use-cases. It permits the owner of a name to update the records of their name.
+More specifically it implements the following EIPs:
+
+-   [EIP-137](https://eips.ethereum.org/EIPS/eip-137) - Contract address interface (`addr()`)
+-   [EIP-165](https://eips.ethereum.org/EIPS/eip-165) - Interface Detection (`supportsInterface()`)
+-   [EIP-181](https://eips.ethereum.org/EIPS/eip-181) - Reverse Resolution (`name()`)
+-   [EIP-205](https://eips.ethereum.org/EIPS/eip-205) - ABI Resolution for contracts (`ABI()`)
+-   [EIP-619](https://eips.ethereum.org/EIPS/eip-619) - SECP256k1 public keys (`pubkey()`)
+-   [EIP-634](https://eips.ethereum.org/EIPS/eip-634) - Text records (`text()`)
+-   [EIP-1577](https://eips.ethereum.org/EIPS/eip-1577) - Content hash resolution (`contenthash()`)
+-   [EIP-2304](https://eips.ethereum.org/EIPS/eip-2304) - Multicoin support (`addr()`)
+
+<Note>
+    While the `PublicResolver` provides a convenient default implementation.
+    Many versions & variations may exist, and it is therefore not recommended to
+    hardcode any addresses. To ensure a safe implementation, always use the `supportsInterface()` method to check for the existence of a specific interface.
+    See [Interacting with a Resolver](/resolvers/interacting) for how to do this.
+</Note>

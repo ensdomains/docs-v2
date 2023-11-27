@@ -1,18 +1,31 @@
-import { WIP } from '@/components/wip/WIP';
+import { WIP } from "@/components/wip/WIP";
 
-{/** @type {import('@/lib/mdxPageProps').MdxMetaProps} */}
+{/* * @type {import('@/lib/mdxPageProps').MdxMetaProps} */}
 export const meta = {
-    description: '',
-    emoji: '👉',
-    contributors: []
+description: '',
+emoji: '👉',
+contributors: []
 };
 
 # Interacting with a Resolver
 
 <WIP
     missing={[
-        'How to set avatar from frontend',
-        'How to update a users resolver',
-        'Something about Layer 2 Resolvers'
+        "How to set avatar from frontend",
+        "How to update a users resolver",
+        "Something about Layer 2 Resolvers",
     ]}
 />
+
+## Checking Interface Support
+
+Before you start sending transactions to users resolvers, you should check if they support the interface you want to use. This is done by calling the `supportsInterface` (see [EIP-165](https://eips.ethereum.org/EIPS/eip-165)) function on the resolver contract.
+
+```
+function supportsInterface(bytes4 interfaceID) external pure returns (bool)
+```
+
+In order to ensure that resolvers we interact with are compatible with specific standards you can call the above function on contracts with an interfaceID and then check the boolean it returns.
+
+Interface IDs are calculated according to solidity ABI and stored in a four-byte value. Here is a cheatsheet of common interface IDs:
+
