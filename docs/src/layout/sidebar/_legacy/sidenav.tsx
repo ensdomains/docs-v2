@@ -44,7 +44,7 @@ export const Navigation = (properties) => {
                 </ul>
                 {/* {activeSection?.href == section.href && ( */}
                 <ul className="space-y-6 px-3">
-                    {activeSection.links.map((group, groupIndex) => (
+                    {activeSection?.links.map((group, groupIndex) => (
                         <NavigationGroup
                             key={group.title}
                             group={group}
