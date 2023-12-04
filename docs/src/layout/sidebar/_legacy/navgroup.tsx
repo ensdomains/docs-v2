@@ -21,7 +21,7 @@ function NavLink({ href, tag, active, isAnchorLink = false, children }) {
             href={href}
             aria-current={active ? 'page' : undefined}
             className={clsx(
-                'flex justify-between gap-2 rounded-lg py-2 pr-0 text-xs transition',
+                'flex justify-between gap-2 rounded-lg py-3 pr-0 text-sm transition',
                 isAnchorLink ? 'pl-8' : 'pl-4',
                 active
                     ? 'text-ens-light-text-primary dark:text-ens-dark-text-primary bg-ens-light-blue-surface dark:bg-ens-dark-blue-surface'
@@ -78,13 +78,15 @@ export const NavigationGroup = ({ group, className }) => {
 
     return (
         <li className={clsx('relative', className)}>
-            <motion.h2
-                layout="position"
-                className="text-ens-light-text-secondary dark:text-ens-dark-text-secondary py-2 pl-0.5 text-xs font-bold leading-5 dark:text-white"
-            >
-                {/* {group.icon && group.icon + ' '} */}
-                {group.title}
-            </motion.h2>
+            {group.title && (
+                <motion.h2
+                    layout="position"
+                    className="text-ens-light-text-secondary dark:text-ens-dark-text-secondary py-2 pl-2 text-xs font-bold leading-5 dark:text-white"
+                >
+                    {/* {group.icon && group.icon + ' '} */}
+                    {group.title}
+                </motion.h2>
+            )}
             <div className="relative">
                 {/* <AnimatePresence initial={!isInsideMobileNavigation}>
                     {isActiveGroup && (

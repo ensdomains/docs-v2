@@ -34,7 +34,7 @@ export const Layout: FC<{
                 <Header />
                 <Sidebar />
 
-                <div className="relative px-4 pt-14 sm:px-6 lg:px-8">
+                <div className="relative px-4 pt-24 sm:px-6 lg:px-8">
                     <main className="relative py-16">
                         <script
                             type="application/ld+json"

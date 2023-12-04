@@ -1,7 +1,5 @@
 'use client';
 
-import clsx from 'clsx';
-import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 import { navigation } from '@/config/navigation';
@@ -21,8 +19,8 @@ export const Navigation = (properties) => {
 
     return (
         <nav className="flex h-full flex-col">
-            <div className="scrollbar w-full overflow-auto py-[16px]">
-                <ul className="border-ens-light-border dark:border-ens-dark-border w-full border-b px-[16px] pb-2">
+            <div className="scrollbar w-full overflow-auto py-2">
+                {/* <ul className="border-ens-light-border dark:border-ens-dark-border w-full border-b px-[16px] pb-2">
                     {activeNavigation.map((section, sectionIndex) => (
                         <li key={section.name} className="">
                             <Link
@@ -41,14 +39,14 @@ export const Navigation = (properties) => {
                             </Link>
                         </li>
                     ))}
-                </ul>
+                </ul> */}
                 {/* {activeSection?.href == section.href && ( */}
-                <ul className="space-y-6 px-3">
+                <ul className="px-3">
                     {activeSection?.links.map((group, groupIndex) => (
                         <NavigationGroup
                             key={group.title}
                             group={group}
-                            className=""
+                            className="border-b py-2 last:border-b-0"
                         />
                     ))}
                 </ul>
