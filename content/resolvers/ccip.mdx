@@ -15,8 +15,8 @@ export const meta = {
 {/* This document covers what it takes to write a gateway resolver. */}
 
 The source of truth for a name and its subdomains does not always have to be on-chain or on Ethereum L1 at all.
-By leveraging [EIP-3668](https://eips.ethereum.org/EIPS/eip-3668), the Cross Chain Interoperability Protocol (CCIP for short), we can load information about a name (and its subnames) by hitting a so called "Gateway".
-This enables for storing names, addresses, records, and more on other chains, or even off-chain.
+By leveraging [EIP-3668](https://eips.ethereum.org/EIPS/eip-3668), the Cross Chain Interoperability Protocol (or CCIP Read for short), we can load information by hitting a so called "Gateway".
+Within the context of ENS, this enables us, to read names, addresses, records, and more from other chains, or even off-chain.
 
 ## How does it work?
 
@@ -57,7 +57,8 @@ This service can be a server, a serverless function, worker, etc.
 The URL for this gateway is determined by the `OffchainLookup` error, and is passed as a parameter to the error.
 
 ### Template Repositories
-<Repository src="ensdomains/offchain-resolver" description="CCIP Offchain ENS Resolver Cloudflare Workers"/>
+<Repository src="ensdomains/offchain-resolver" description="CCIP Offchain ENS Resolver with Cloudflare Workers"/>
+<Repository src="ensdomains/offchain-gateway-rs" description="Offchain CCIP Gateway Resolver implementation in Rust (& postgres)"/>
 <Repository src="ensdomains/offchain-resolver-example" />
 <Repository src="gskril/ens-offchain-resolver-read-from-api" />
 

@@ -48,12 +48,13 @@
 @font-face {
     font-family: 'Inter';
     font-display: swap;
-    src: url('/fonts/sans-serif/inter/Inter-VariableFont_slnt,wght.ttf') format('truetype');
+    src: url('/fonts/sans-serif/inter/Inter-VariableFont_slnt,wght.ttf')
+        format('truetype');
 }
 
 @media (min-width: 768px) {
     :root {
-        font-size: 18px;
+        font-size: 16px;
     }
 }
 
@@ -65,6 +66,13 @@
     @apply overflow-hidden rounded-lg bg-ens-light-grey-surface dark:bg-ens-dark-grey-surface shadow-sm dark:shadow-md ring-1 ring-black/10 dark:ring-white/10;
 }
 
+.card1 {
+    @apply rounded-lg bg-ens-light-background-primary dark:bg-ens-dark-background-primary border border-ens-light-border dark:border-ens-dark-border;
+}
+.card2 {
+    @apply rounded-lg bg-ens-light-background-secondary dark:bg-ens-dark-background-secondary border border-ens-light-border dark:border-ens-dark-border;
+}
+
 .card:not(.no-margin) {
     @apply my-6;
 }
@@ -72,6 +80,10 @@
 .prose {
     /* max-width: 720px; */
     /* width: 720px; */
+}
+
+.prose > * {
+    margin-left: 0;
 }
 
 .prose > p + p {
