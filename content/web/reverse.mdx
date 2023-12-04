@@ -12,14 +12,14 @@ export const meta = {
 We can all agree 42-character long machine-optimized addresses (eg. 0x225...c3b5) are not aesthetically pleasing.
 Fortunately, it is super easy to retrieve a user's preferred name, and this page will show you how.
 
-In order to convert them to human-readable names, we use [the reverse registrar](/registry/reverse).
-The reverse registrar is a smart contract that allows users to register their preferred name, referred to as their "primary name" for simplicity purposes.
-
 <div className="card px-8 py-4 flex justify-center gap-2">
     <span>0x225...c3B5</span>
     <span>➡️</span>
     <span>luc.eth</span>
 </div>
+
+In order to convert them to human-readable names, we use [the reverse registrar](/registry/reverse).
+The reverse registrar is a smart contract that allows users to register their preferred name, referred to as their "primary name" for simplicity purposes.
 
 ## Getting a Primary Name {{ navtitle: 'Getting Primary Name', id: 'get' }}
 
@@ -100,6 +100,24 @@ Most users are expected to do this through the ENS Manager, however it is totall
 
 ```ts {{ variant: 'ethers' }}
 
+```
+
+```ts {{ variant: 'ensjs' }}
+import { createWalletClient, custom } from 'viem';
+import { mainnet } from 'viem/chains';
+
+import { addEnsContracts } from '@ensdomains/ensjs';
+import { setPrimaryName } from '@ensdomains/ensjs/wallet';
+
+const wallet = createWalletClient({
+    chain: addEnsContracts(mainnet),
+    transport: custom(window.ethereum),
+});
+
+const hash = await setPrimaryName(wallet, {
+    name: 'ens.eth',
+});
+// 0x...
 ```
 
 </CodeGroup>

@@ -1,9 +1,9 @@
-{/** @type {import('@/lib/mdxPageProps').MdxMetaProps} */}
+{/* * @type {import('@/lib/mdxPageProps').MdxMetaProps} */}
 export const meta = {
-    description: '',
-    contributors: [
-        'lucemans'
-    ]
+description: '',
+contributors: [
+'lucemans'
+]
 };
 
 # Listing a Users Names
@@ -15,9 +15,9 @@ Luckily tooling has been written to accomodate for this and to make it easier.
     <span>0x225...c3B5</span>
     <span>➡️</span>
     <div className="block border-l-2 pl-2">
-      <div>luc.eth</div>
-      <div>lucemans.eth</div>
-      <div>keukenrol.eth</div>
+        <div>luc.eth</div>
+        <div>lucemans.eth</div>
+        <div>keukenrol.eth</div>
     </div>
 </div>
 
@@ -33,6 +33,26 @@ these are on-chain, and indexable through scanning events on the appropriate con
 When using one of the methods described below It is important to keep in mind that you should always allow for a user to manually enter a name, as not all names are indexable.
 It is generally recommended to allow users to input a name using an [input box](todo-link) and to verify it resolves to the correct address upon user-completion.
 
+<div className="border border-ens-light-border dark:border-ens-dark-border rounded-md not-prose grid grid-cols-2">
+  <div className="flex flex-col">
+    <div className="grow p-2 flex items-center justify-center">
+      <span>Hello</span>
+    </div>
+    <div className="bg-ens-light-background-secondary dark:bg-ens-dark-background-secondary px-4 py-2 space-x-1">
+      <span className="text-ens-light-blue-primary dark:text-ens-dark-blue-primary">Do</span><span>- Fallback to raw name entry</span>
+    </div>
+  </div>
+  <div className="flex flex-col border-l border-ens-light-border dark:border-ens-dark-border">
+    <div className="grow p-2 flex items-center justify-center">
+
+    </div>
+    <div className="bg-ens-light-background-secondary dark:bg-ens-dark-background-secondary px-4 py-2 space-x-1">
+      <span className="text-ens-light-red-bright dark:text-ens-dark-red-bright">Don't</span><span>- Assume all names are owned</span>
+    </div>
+
+  </div>
+</div>
+
 ## Alchemy {{ title: "Alchemy" }}
 
 The Alchemy platform has provided several endpoints for interacting with ENS names aswell as to query a list of names a user has.
@@ -42,15 +62,15 @@ The Alchemy platform has provided several endpoints for interacting with ENS nam
 import { Alchemy, Network } from "alchemy-sdk";
 
 const config = {
-  apiKey: "<-- ALCHEMY APP API KEY -->",
-  network: Network.ETH_MAINNET,
+    apiKey: "<-- ALCHEMY APP API KEY -->",
+    network: Network.ETH_MAINNET,
 };
 const alchemy = new Alchemy(config);
 
 const walletAddress = "0x458d1E307CcA61C0Bea82f7663F66831175EcDe8"; // replace with wallet address
 const ensContractAddress = "0x57f1887a8BF19b14fC0dF6Fd9B2acc9Af147eA85";
 const nfts = await alchemy.nft.getNftsForOwner(walletAddress, {
-  contractAddresses: [ensContractAddress],
+    contractAddresses: [ensContractAddress],
 });
 
 console.log(nfts);
