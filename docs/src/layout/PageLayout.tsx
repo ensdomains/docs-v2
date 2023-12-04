@@ -30,12 +30,12 @@ export const Layout: FC<{
 
     return (
         <SectionProvider sections={mdxProperties.sections}>
-            <div className="lg:ml-72 xl:ml-80" id="app">
+            <div className="h-full max-h-screen" id="app">
                 <Header />
                 <Sidebar />
 
-                <div className="relative px-4 pt-24 sm:px-6 lg:px-8">
-                    <main className="relative py-16">
+                <div className="relative mt-28 px-4 sm:px-6 lg:ml-72 lg:px-8 xl:ml-80">
+                    <main className="relative py-14">
                         <script
                             type="application/ld+json"
                             dangerouslySetInnerHTML={{

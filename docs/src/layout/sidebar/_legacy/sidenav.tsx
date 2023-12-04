@@ -19,7 +19,7 @@ export const Navigation = (properties) => {
 
     return (
         <nav className="flex h-full flex-col">
-            <div className="scrollbar w-full overflow-auto py-2">
+            <div className="scrollbar flex h-full w-full flex-col justify-between overflow-auto py-2">
                 {/* <ul className="border-ens-light-border dark:border-ens-dark-border w-full border-b px-[16px] pb-2">
                     {activeNavigation.map((section, sectionIndex) => (
                         <li key={section.name} className="">
@@ -41,7 +41,7 @@ export const Navigation = (properties) => {
                     ))}
                 </ul> */}
                 {/* {activeSection?.href == section.href && ( */}
-                <ul className="px-3">
+                <ul className="mb-32 px-3">
                     {activeSection?.links.map((group, groupIndex) => (
                         <NavigationGroup
                             key={group.title}
@@ -50,6 +50,7 @@ export const Navigation = (properties) => {
                         />
                     ))}
                 </ul>
+                <div className="px-6 text-sm">ENS Documentation (Alpha)</div>
                 {/* )} */}
             </div>
         </nav>

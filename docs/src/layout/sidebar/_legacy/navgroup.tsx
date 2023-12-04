@@ -77,7 +77,7 @@ export const NavigationGroup = ({ group, className }) => {
         group.links?.findIndex((link) => link.href === pathname) !== -1;
 
     return (
-        <li className={clsx('relative', className)}>
+        <li className={clsx('', className)}>
             {group.title && (
                 <motion.h2
                     layout="position"
@@ -87,46 +87,10 @@ export const NavigationGroup = ({ group, className }) => {
                     {group.title}
                 </motion.h2>
             )}
-            <div className="relative">
-                {/* <AnimatePresence initial={!isInsideMobileNavigation}>
-                    {isActiveGroup && (
-                        <ClientOnly
-                            child={() => {
-                                return (
-                                    <VisibleSectionHighlight
-                                        group={group}
-                                        pathname={pathname}
-                                    />
-                                );
-                            }}
-                        />
-                    )}
-                </AnimatePresence>
-                <motion.div
-                    layout
-                    className="absolute inset-y-0 left-2 w-px bg-zinc-900/10 dark:bg-white/5"
-                />
-                <AnimatePresence initial={false}>
-                    {isActiveGroup && (
-                        <ClientOnly
-                            child={() => {
-                                return (
-                                    <ActivePageMarker
-                                        group={group}
-                                        pathname={pathname}
-                                    />
-                                );
-                            }}
-                        />
-                    )}
-                </AnimatePresence> */}
+            <div className="">
                 <ul className="">
                     {group.links?.map((link) => (
-                        <motion.li
-                            key={link.href}
-                            layout="position"
-                            className="relative"
-                        >
+                        <li key={link.href} className="">
                             <NavLink
                                 tag={undefined}
                                 href={link.href}
@@ -140,38 +104,7 @@ export const NavigationGroup = ({ group, className }) => {
                                     </div>
                                 )}
                             </NavLink>
-                            {/* <AnimatePresence mode="popLayout" initial={false}>
-                                {link.href === pathname &&
-                                    sections.length > 0 && (
-                                        <motion.ul
-                                            role="list"
-                                            initial={{ opacity: 0 }}
-                                            animate={{
-                                                opacity: 1,
-                                                transition: { delay: 0.1 },
-                                            }}
-                                            exit={{
-                                                opacity: 0,
-                                                transition: { duration: 0.15 },
-                                            }}
-                                        >
-                                            {sections.map((section) => (
-                                                <li key={section.id}>
-                                                    <NavLink
-                                                        active={undefined}
-                                                        href={`${link.href}#${section.id}`}
-                                                        tag={section.tag}
-                                                        isAnchorLink
-                                                    >
-                                                        {section.navtitle ||
-                                                            section.title}
-                                                    </NavLink>
-                                                </li>
-                                            ))}
-                                        </motion.ul>
-                                    )}
-                            </AnimatePresence> */}
-                        </motion.li>
+                        </li>
                     ))}
                 </ul>
             </div>

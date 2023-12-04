@@ -3,7 +3,7 @@ import { SectionData } from '../navigation';
 
 export const navigation: SectionData[] = [
     {
-        name: 'Home',
+        name: 'Intro',
         href: '/',
         icon: '🏠',
         activePattern: /^\/((learn|glossary|changelog|bugs)(\/.*)?)?$/,
@@ -310,6 +310,13 @@ export const navigation: SectionData[] = [
                 ],
             },
         ],
+    },
+    {
+        name: 'Governance',
+        href: '/dao',
+        icon: '🏛️',
+        activePattern: /^\/(dao|governance)(\/.*)?/,
+        links: [],
     },
     {
         name: 'Improvement Proposals',

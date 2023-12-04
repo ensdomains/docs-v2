@@ -39,8 +39,8 @@ export const Header = forwardRef<HTMLDivElement, { className?: string }>(
                     ref={reference}
                     className={clsx(
                         className,
-                        'fixed inset-x-0 top-0 z-50 flex h-16 items-center justify-start gap-6 px-4 transition sm:px-6 lg:z-30 lg:px-4',
-                        'bg-white dark:bg-zinc-900'
+                        'border-b-ens-light-border dark:border-b-ens-dark-border fixed inset-x-0 top-0 z-50 flex h-16 items-center justify-start gap-6 border-b px-4 transition sm:px-6 lg:z-30 lg:px-4',
+                        'bg-ens-light-background-primary dark:bg-ens-dark-background-primary'
                     )}
                     style={
                         {
