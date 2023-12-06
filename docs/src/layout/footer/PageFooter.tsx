@@ -1,12 +1,10 @@
 import Link from 'next/link';
 import { FC } from 'react';
 
-import { ContributorsSection } from '@/components/contribute/ContributorsSection';
 // import { navigation } from '@/lib/headers';
 import { MdxPageProps } from '@/lib/mdxPageProps';
 
 import { ContributeLink } from './contribute/ContributeLink';
-import { Feedback } from './feedback/FeedbackSection';
 
 // function PageLink({ label, page, previous = false }) {
 //     return (
