@@ -9,7 +9,6 @@ import { usePathname } from 'next/navigation';
 import { forwardRef } from 'react';
 import { FaGithub } from 'react-icons/fa';
 
-import { Button } from '@/components/Button';
 import { cx } from '@/lib/cx';
 import {
     useIsInsideMobileNavigation,
@@ -97,29 +96,7 @@ export const Header = forwardRef<HTMLDivElement, { className?: string }>(
                     <div className="mx-auto w-full max-w-lg">
                         <Search />
                     </div>
-                    <div className="flex h-full items-center gap-4">
-                        <div className="hidden gap-2 min-[786px]:flex">
-                            <Button
-                                href="https://app.ens.domains?ref=ens-docs-v2"
-                                target="_blank"
-                                variant="primary"
-                            >
-                                App
-                            </Button>
-                            {isDao ? (
-                                <Button href="/" variant="primary" className="">
-                                    Protocol Docs
-                                </Button>
-                            ) : (
-                                <Button
-                                    href="/dao"
-                                    variant="primary"
-                                    className=""
-                                >
-                                    DAO Docs
-                                </Button>
-                            )}
-                        </div>
+                    <div className="flex h-full items-center gap-4 float-right">
                         <ThemeSwitcher />
                         <div className="md:dark:bg-white/15 hidden md:block md:h-5 md:w-px md:bg-zinc-900/10" />
                         <div className="flex gap-4">

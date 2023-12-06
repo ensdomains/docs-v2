@@ -90,7 +90,7 @@ export const CodePanel: FC<PropsWithChildren<CodePanelProperties>> = ({
 
     return (
         <div
-            className="hidable-code dark:bg-white/2.5 group"
+            className="hidable-code group"
             data-code-variant={variant ?? title ?? language}
             data-code-group={identifier}
         >

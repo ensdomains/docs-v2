@@ -334,7 +334,7 @@ module.exports = ({ theme }) => ({
 
             // Overrides
             ':is(h1, h2, h3) + *': {
-                marginTop: '0',
+                // marginTop: '0',
             },
             '> :first-child': {
                 marginTop: '0 !important',
