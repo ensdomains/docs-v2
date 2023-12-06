@@ -148,7 +148,7 @@ export const navigation: SectionData[] = [
                     // eslint-disable-next-line quotes
                     {
                         // eslint-disable-next-line prettier/prettier
-                        title: 'Do\'s and Don\'ts',
+                        title: 'Do\'s and Dont\'s',
                         href: '/web/design',
                         wip: true,
                     },
