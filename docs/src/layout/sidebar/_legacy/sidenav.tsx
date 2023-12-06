@@ -11,7 +11,7 @@ export const Navigation = (properties) => {
 
     const isDAO = pathname.match(/\/dao/);
 
-    const activeNavigation = navigation[isDAO ? 'dao' : 'protocol'];
+    const activeNavigation = navigation['protocol'];
 
     const activeSection = activeNavigation.find((group) => {
         return group.activePattern.test(pathname);

@@ -1,6 +1,5 @@
 import { ReactNode } from 'react';
 
-import { navigation as daoNavigation } from './navigation/dao';
 import { navigation as protocolNavigation } from './navigation/protocol';
 
 export type SectionData = {
@@ -26,6 +25,5 @@ export type routeGroup = {
 };
 
 export const navigation = {
-    dao: daoNavigation,
     protocol: protocolNavigation,
 };
