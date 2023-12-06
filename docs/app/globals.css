@@ -82,8 +82,10 @@
     /* width: 720px; */
 }
 
-.prose > * {
-    margin-left: 0;
+@media (max-width: 1400px) {
+    .prose > * {
+        margin-left: 0;
+    }
 }
 
 .prose > p + p {
@@ -183,4 +185,25 @@ svg[role~='graphics-document'] {
     opacity: 0;
     scale: 0.95;
     transform: translateY(32px);
+}
+
+.breadcrumb {
+}
+
+.breadcrumb ul {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.breadcrumb li:first-child {
+    padding-left: 0;
+}
+
+.breadcrumb li:not(:last-child)::after {
+    display: inline-block;
+    padding-left: 0.5rem;
+    content: '/';
 }

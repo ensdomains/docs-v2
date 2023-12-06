@@ -33,9 +33,34 @@ export const Layout: FC<{
             <div className="h-full max-h-screen" id="app">
                 <Header />
                 <Sidebar />
-
                 <div className="relative mt-28 px-4 sm:px-6 lg:ml-72 lg:px-8 xl:ml-80">
-                    <main className="relative py-14">
+                    <main className="relative space-y-4 py-4">
+                        <div className="prose text-ens-light-text-secondary dark:text-ens-dark-text-secondary">
+                            <nav className="breadcrumb" aria-label="Breadcrumb">
+                                <ul>
+                                    {/* Todo make this work */}
+                                    {[
+                                        'Home',
+                                        'Using ENS',
+                                        'Web',
+                                        'Querying',
+                                    ].map((item, index, array) => (
+                                        <li>
+                                            <span
+                                                aria-current={
+                                                    array.length - 1 == index
+                                                        ? 'page'
+                                                        : undefined
+                                                }
+                                            >
+                                                {item}
+                                            </span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </nav>
+                        </div>
+
                         <script
                             type="application/ld+json"
                             dangerouslySetInnerHTML={{

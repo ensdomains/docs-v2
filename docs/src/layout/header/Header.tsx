@@ -39,7 +39,7 @@ export const Header = forwardRef<HTMLDivElement, { className?: string }>(
                     ref={reference}
                     className={clsx(
                         className,
-                        'border-b-ens-light-border dark:border-b-ens-dark-border fixed inset-x-0 top-0 z-50 flex h-16 items-center justify-start gap-6 border-b px-4 transition sm:px-6 lg:z-30 lg:px-4',
+                        'fixed inset-x-0 top-0 z-50 flex h-16 items-center justify-start gap-6 px-4 transition sm:px-6 lg:z-30 lg:px-4',
                         'bg-ens-light-background-primary dark:bg-ens-dark-background-primary'
                     )}
                     style={
@@ -78,13 +78,13 @@ export const Header = forwardRef<HTMLDivElement, { className?: string }>(
 
                         <div
                             className={cx(
-                                'rounded-md px-2 text-xs font-bold text-white',
+                                'rounded-md px-2 text-xs font-bold',
                                 isDao
-                                    ? 'bg-ens-dao-400'
-                                    : 'bg-ens-light-blue-500'
+                                    ? 'bg-ens-light-purple-surface dark:bg-ens-dark-purple-surface text-ens-light-purple-primary dark:text-ens-dark-purple-primary'
+                                    : 'bg-ens-light-blue-surface dark:bg-ens-dark-blue-surface text-ens-light-blue-primary dark:text-ens-dark-blue-primary'
                             )}
                         >
-                            Documentation
+                            Docs
                         </div>
                     </div>
                     <div
@@ -94,8 +94,9 @@ export const Header = forwardRef<HTMLDivElement, { className?: string }>(
                                 'bg-zinc-900/7.5 dark:bg-white/7.5'
                         )}
                     />
-                    <Search />
-                    <div className="h-full w-auto grow"></div>
+                    <div className="mx-auto w-full max-w-lg">
+                        <Search />
+                    </div>
                     <div className="flex h-full items-center gap-4">
                         <div className="hidden gap-2 min-[786px]:flex">
                             <Button

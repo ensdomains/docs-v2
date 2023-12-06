@@ -6,7 +6,7 @@ import { SiweDemo } from './siwe/SiweDemo';
 
 export const LiveDemo: FC<{ id?: string }> = ({ id }) => {
     return (
-        <div className="card not-prose w-full p-4">
+        <div className="card1 not-prose w-full p-4">
             {id == 'name_lookup' && <NameLookupDemo />}
             {id == 'siwe' && <SiweDemo />}
             {id == 'resolver_test' && <ResolverTestDemo />}

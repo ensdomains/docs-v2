@@ -19,9 +19,9 @@ export const CodeGroupHeader: FC<{
     }
 
     return (
-        <div className="border-ens-light-border dark:border-ens-dark-border bg-ens-light-grey-surface dark:bg-ens-dark-grey-surface relative flex min-h-[calc(theme(spacing.12)+1px)] justify-between gap-x-4 border-b px-4">
+        <div className="border-ens-light-border dark:border-ens-dark-border bg-ens-light-grey-surface dark:bg-ens-dark-grey-surface relative flex min-h-[calc(theme(spacing.12)+1px)] items-center justify-between gap-x-4 rounded-t-lg border border-b-0 px-4">
             {title && (
-                <div className="text-ens-light-text-primary dark:text-ens-dark-text-primary pt-3 text-xs font-semibold dark:text-white">
+                <div className="text-ens-light-text-primary dark:text-ens-dark-text-primary text-base">
                     {title}
                 </div>
             )}

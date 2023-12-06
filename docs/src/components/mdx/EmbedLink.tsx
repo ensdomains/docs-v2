@@ -11,19 +11,18 @@ export const EmbedLink: FC<{
     return (
         <Link
             href={href}
-            className="card not-prose text-ens-light-text-primary dark:text-ens-dark-text-primary flex items-center p-4 no-underline outline-blue-500 transition-all hover:shadow-md hover:outline-2"
+            className="card1 not-prose text-ens-light-text-primary dark:text-ens-dark-text-primary flex items-center gap-1.5 p-6 no-underline outline-blue-500 transition-all hover:shadow-md hover:outline-2"
         >
             <span className="flex w-full flex-col">
-                <span className="font-bold">
-                    {title}
-                    {tag && (
-                        <span className="ml-2 rounded-full border border-yellow-300 bg-yellow-100 px-2 py-1 text-xs text-yellow-400">
-                            {tag}
-                        </span>
-                    )}
-                </span>
+                <span className="font-bold">{title}</span>
                 <span className="font-normal">{description}</span>
             </span>
+
+            {tag && (
+                <span className="bg-ens-light-yellow-surface dark:bg-ens-dark-yellow-surface text-ens-light-yellow-active dark:text-ens-dark-yellow-active ml-2 rounded-full px-2 text-xs">
+                    {tag}
+                </span>
+            )}
             <FiChevronRight className="text-2xl" />
         </Link>
     );

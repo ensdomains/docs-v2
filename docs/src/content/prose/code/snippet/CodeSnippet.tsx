@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { FC, PropsWithChildren } from 'react';
+import { FiExternalLink } from 'react-icons/fi';
 
 import { getLanguage } from '../languageSorter';
 import { LanguageSettings } from '../types/language';
@@ -93,43 +94,43 @@ export const CodePanel: FC<PropsWithChildren<CodePanelProperties>> = ({
             data-code-variant={variant ?? title ?? language}
             data-code-group={identifier}
         >
-            {isStandaloneCodeSnippet && preset && (
-                <div className="float-right flex items-center gap-1 pr-3.5 pt-3.5">
-                    <div className="h-4 w-4 overflow-hidden rounded-full">
-                        <img
-                            src={preset?.icon}
-                            alt={preset?.name}
-                            className="h-full w-full object-cover"
-                        />
+            <div className="border-ens-light-border dark:border-ens-dark-border overflow-hidden rounded-b-xl border">
+                {isStandaloneCodeSnippet && preset && (
+                    <div className="float-right flex items-center gap-1 pr-3.5 pt-3.5">
+                        <div className="h-4 w-4 overflow-hidden rounded-full">
+                            <img
+                                src={preset?.icon}
+                                alt={preset?.name}
+                                className="h-full w-full object-cover"
+                            />
+                        </div>
+                        <div>{preset?.name ?? variant ?? language}</div>
                     </div>
-                    <div>{preset?.name ?? variant ?? language}</div>
-                </div>
-            )}
-            <div className="relative">
-                <pre
-                    className="overflow-x-auto p-4 text-xs text-black"
-                    // ref={preReference}
-                >
-                    {children}
-                </pre>
-                {/* {child.props.hideCopy || (
+                )}
+                <div className="relative">
+                    <pre
+                        className="overflow-x-auto p-4 text-xs text-black"
+                        // ref={preReference}
+                    >
+                        {children}
+                    </pre>
+                    {/* {child.props.hideCopy || (
                     <CopyButton code={child.props.code ?? code} />
                 )} */}
+                </div>
             </div>
             {(link || stackblitz) && (
-                <div className="bg-ens-light-grey-surface dark:bg-ens-dark-grey-surface border-ens-light-border dark:border-ens-dark-border flex w-full items-center justify-between border-t p-1">
+                <div className="flex w-full items-center justify-end p-1">
                     <div className="px-2">
                         {link && (
-                            <div>
-                                Read more{' '}
-                                <Link
-                                    href={link}
-                                    target="_blank"
-                                    className="text-blue-500 hover:underline"
-                                >
-                                    from source
-                                </Link>
-                            </div>
+                            <Link
+                                href={link}
+                                target="_blank"
+                                className="text-ens-light-blue-primary dark:text-ens-dark-blue-primary flex items-center gap-1 hover:underline"
+                            >
+                                <FiExternalLink />
+                                Read more
+                            </Link>
                         )}
                     </div>
                     <div>
@@ -137,7 +138,7 @@ export const CodePanel: FC<PropsWithChildren<CodePanelProperties>> = ({
                             <Link
                                 href={stackblitz}
                                 target="_blank"
-                                className="rounded-md p-1 pr-2 text-xs transition hover:bg-gray-100"
+                                className="text-ens-light-blue-primary dark:text-ens-dark-blue-primary rounded-md p-1 pr-2 text-xs transition hover:bg-gray-100"
                             >
                                 <img
                                     src="/icons/stackblitz.svg"

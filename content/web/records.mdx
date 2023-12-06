@@ -1,18 +1,18 @@
 {/* * @type {import('@/lib/mdxPageProps').MdxMetaProps} */}
 export const meta = {
-description: '',
-emoji: '🔍',
-contributors: [
-'lucemans'
-]
+    description: '',
+    emoji: '🔍',
+    contributors: [
+        'lucemans'
+    ]
 };
 
-# Records
+# Text Records
 
 With every name come a set of records. These records are key value pairs that can be used to store information about the profile.
 Think of this as a user's **digital backpack**. Utalized for storage of preferences, public details, and more.
 
-<div className="card px-8 py-4 flex justify-center gap-2 not-prose">
+<div className="card1 px-8 py-4 flex justify-center gap-2 not-prose">
     <span>nick.eth</span>
     <span>➡️</span>
     <div className="bg-ens-light-background-primary dark:bg-ens-dark-background-primary border border-ens-light-border dark:border-ens-dark-border p-3 gap-3 rounded-lg flex">
@@ -182,7 +182,7 @@ The image is then displayed as a banner on the profile page and tends to be in a
                 const data = await request.json();
 
                 return (
-                    <div className="card !p-0 !m-0 w-fit">
+                    <div className="card1 !p-0 !m-0 w-fit">
                         <div className="h-20 aspect-[3/1]">
                             {data?.header && (
                                 <img

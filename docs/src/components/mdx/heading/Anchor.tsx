@@ -16,20 +16,20 @@ export const AnchorIcon = (properties) => {
 
 export const Anchor = ({ id, inView, children }) => {
     return (
-        <div className="group">
+        <div className="group flex items-center gap-1">
+            {children}
             <Link
                 href={`#${id}`}
                 className="text-inherit no-underline hover:text-inherit"
             >
                 {inView && (
-                    <div className="absolute ml-[calc(-1*var(--width))] mt-1 hidden w-[var(--width)] opacity-0 transition [--width:1.6rem] group-hover:opacity-100 group-focus:opacity-100 md:block lg:z-50">
-                        <div className="group/anchor block h-5 w-5 rounded-lg bg-zinc-50 ring-1 ring-inset ring-zinc-300 transition hover:ring-zinc-500 dark:bg-zinc-800 dark:ring-zinc-700 dark:hover:bg-zinc-700 dark:hover:ring-zinc-600">
+                    <div className="transition group-hover:opacity-100 group-focus:opacity-100 md:block lg:z-50">
+                        <div className="group/anchor w-5transition block h-5">
                             <AnchorIcon className="h-5 w-5 stroke-zinc-500 transition dark:stroke-zinc-400 dark:group-hover/anchor:stroke-white" />
                         </div>
                     </div>
                 )}
             </Link>
-            {children}
         </div>
     );
 };

@@ -96,7 +96,7 @@ export const LanguageSwitcher: FC<{
     if (!activeLanguage) return <></>;
 
     return (
-        <div className="absolute left-auto right-2 top-1/2 w-fit -translate-y-1/2 text-right">
+        <div className="absolute left-auto right-2 top-1/2 w-fit -translate-y-1/2 text-right text-sm">
             <select
                 onChange={(event) => {
                     localStorage.setItem(EVENT + presets, event.target.value);
@@ -106,7 +106,7 @@ export const LanguageSwitcher: FC<{
                     );
                 }}
                 value={activeLanguage}
-                className="mr-1 rounded-lg bg-ens-light-background-primary dark:bg-ens-dark-background-primary px-2 py-1"
+                className="bg-ens-light-background-primary dark:bg-ens-dark-background-primary rounded-lg px-3 py-2"
             >
                 {snippets.map((snippet) => {
                     return (
