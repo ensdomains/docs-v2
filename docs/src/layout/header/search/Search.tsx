@@ -23,7 +23,7 @@ export function Search() {
     // eslint-disable-next-line sonarjs/no-identical-functions
     useEffect(() => {
         setModifierKey(
-            /(mac|iphone|ipod|ipad)/i.test(navigator.platform) ? '⌘' : 'Ctrl '
+            /(mac|iphone|ipod|ipad)/i.test(navigator.platform) ? '⌘' : 'ctrl '
         );
     }, []);
 
@@ -55,15 +55,17 @@ export function Search() {
         <div className="hidden lg:block lg:max-w-md lg:flex-auto">
             <button
                 type="button"
-                className="outline-ens-500 hidden h-8 w-full items-center gap-2 rounded-lg bg-white pl-2 pr-3 text-sm text-zinc-500 ring-1 ring-zinc-900/10 transition hover:ring-zinc-900/20 focus:outline-2 dark:bg-white/5 dark:text-zinc-400 dark:ring-inset dark:ring-white/10 dark:hover:ring-white/20 lg:flex"
+                className="outline-ens-500 hidden h-8 w-full items-center gap-2 rounded-lg bg-white pl-2 text-sm text-zinc-500 ring-1 ring-zinc-900/10 transition hover:ring-zinc-900/20 focus:outline-2 dark:bg-white/5 dark:text-zinc-400 dark:ring-inset dark:ring-white/10 dark:hover:ring-white/20 lg:flex"
                 onClick={() => setOpen(true)}
             >
                 <SearchIcon className="h-5 w-5 stroke-current" />
                 Search Content...
-                <kbd className="text-2xs ml-auto translate-y-0.5 text-zinc-400 dark:text-zinc-500">
-                    <kbd className="font-sans">{modifierKey}</kbd>
-                    <kbd className="font-sans">K</kbd>
-                </kbd>
+                <span className="ml-auto inline-flex p-1">
+                    <kbd className="text-2xs my-1 flex h-full items-center rounded-md border px-1">
+                        <kbd className="font-sans">{modifierKey}</kbd>+
+                        <kbd className="font-sans">k</kbd>
+                    </kbd>
+                </span>
             </button>
             <SearchModal open={isOpen} onClose={() => setOpen(false)} />
         </div>
