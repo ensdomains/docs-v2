@@ -4,7 +4,7 @@ import { SectionData } from '../navigation';
 export const navigation: SectionData[] = [
     {
         name: 'Intro',
-        href: '/',
+        href: '/learn/protocol',
         icon: '🏠',
         activePattern: /^\/((learn|glossary|changelog|bugs)(\/.*)?)?$/,
         links: [

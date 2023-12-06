@@ -207,3 +207,38 @@ svg[role~='graphics-document'] {
     padding-left: 0.5rem;
     content: '/';
 }
+
+table {
+    border-collapse: separate;
+    border-width: 0;
+    border-spacing: 0;
+    @apply rounded-xl overflow-hidden border border-ens-light-border dark:border-ens-dark-border;
+}
+
+thead {
+    @apply bg-ens-light-grey-surface dark:bg-ens-dark-grey-surface;
+
+    display: table-header-group;
+    vertical-align: middle;
+}
+
+thead tr {
+    display: table-row;
+    vertical-align: inherit;
+    @apply rounded-t-xl border overflow-hidden border-ens-light-border dark:border-ens-dark-border;
+}
+
+thead th {
+    @apply p-4 last:border-r-0 border-b border-r text-ens-light-text-primary dark:text-ens-dark-text-primary border-ens-light-border dark:border-ens-dark-border;
+}
+
+tbody tr {
+}
+
+tbody td {
+    @apply p-4 border-b border-ens-light-border dark:border-ens-dark-border;
+}
+
+tbody tr:last-child td {
+    @apply border-b-0;
+}

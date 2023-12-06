@@ -232,57 +232,58 @@ module.exports = ({ theme }) => ({
                 width: '100%',
                 tableLayout: 'auto',
                 textAlign: 'left',
-                marginTop: theme('spacing.8'),
-                marginBottom: theme('spacing.8'),
+                // marginTop: theme('spacing.8'),
+                //     marginBottom: theme('spacing.8'),
                 lineHeight: theme('lineHeight.6'),
             },
             thead: {
-                borderBottomWidth: '1px',
-                borderBottomColor: 'var(--tw-prose-th-borders)',
+                // borderBottomWidth: '1px',
+                // borderBottomColor: 'var(--tw-prose-th-borders)',
             },
-            'thead th': {
-                color: 'var(--tw-prose-headings)',
-                fontWeight: '600',
-                verticalAlign: 'bottom',
-                paddingRight: theme('spacing.2'),
-                paddingBottom: theme('spacing.2'),
-                paddingLeft: theme('spacing.2'),
-            },
-            'thead th:first-child': {
-                paddingLeft: '0',
-            },
-            'thead th:last-child': {
-                paddingRight: '0',
-            },
-            'tbody tr': {
-                borderBottomWidth: '1px',
-                borderBottomColor: 'var(--tw-prose-td-borders)',
-            },
-            'tbody tr:last-child': {
-                borderBottomWidth: '0',
-            },
-            'tbody td': {
-                verticalAlign: 'baseline',
-            },
-            tfoot: {
-                borderTopWidth: '1px',
-                borderTopColor: 'var(--tw-prose-th-borders)',
-            },
-            'tfoot td': {
-                verticalAlign: 'top',
-            },
-            ':is(tbody, tfoot) td': {
-                paddingTop: theme('spacing.2'),
-                paddingRight: theme('spacing.2'),
-                paddingBottom: theme('spacing.2'),
-                paddingLeft: theme('spacing.2'),
-            },
-            ':is(tbody, tfoot) td:first-child': {
-                paddingLeft: '0',
-            },
-            ':is(tbody, tfoot) td:last-child': {
-                paddingRight: '0',
-            },
+            // 'thead th': {
+            //     color: 'var(--tw-prose-headings)',
+            //     fontWeight: '600',
+            //     // verticalAlign: 'bottom',
+            //     paddingTop: theme('spacing.4'),
+            //     paddingRight: theme('spacing.4'),
+            //     paddingBottom: theme('spacing.4'),
+            //     paddingLeft: theme('spacing.4'),
+            // },
+            // // 'thead th:first-child': {
+            // //     paddingLeft: '0',
+            // // },
+            // // 'thead th:last-child': {
+            // //     paddingRight: '0',
+            // // },
+            // 'tbody tr': {
+            //     borderBottomWidth: '1px',
+            //     borderBottomColor: 'var(--tw-prose-td-borders)',
+            // },
+            // 'tbody tr:last-child': {
+            //     borderBottomWidth: '0',
+            // },
+            // 'tbody td': {
+            //     verticalAlign: 'baseline',
+            // },
+            // tfoot: {
+            //     borderTopWidth: '1px',
+            //     borderTopColor: 'var(--tw-prose-th-borders)',
+            // },
+            // 'tfoot td': {
+            //     verticalAlign: 'top',
+            // },
+            // ':is(tbody, tfoot) td': {
+            //     paddingTop: theme('spacing.2'),
+            //     paddingRight: theme('spacing.2'),
+            //     paddingBottom: theme('spacing.2'),
+            //     paddingLeft: theme('spacing.2'),
+            // },
+            // ':is(tbody, tfoot) td:first-child': {
+            //     paddingLeft: '0',
+            // },
+            // ':is(tbody, tfoot) td:last-child': {
+            //     paddingRight: '0',
+            // },
 
             // Inline elements
             a: {
