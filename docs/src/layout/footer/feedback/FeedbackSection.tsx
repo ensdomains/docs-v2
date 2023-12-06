@@ -21,7 +21,7 @@ function FeedbackButton(properties) {
     return (
         <button
             type="submit"
-            className="hover:bg-zinc-900/2.5 px-3 text-sm font-medium text-zinc-600 transition hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-white/5 dark:hover:text-white"
+            className="bg-ens-light-blue-surface dark:bg-ens-dark-blue-surface text-ens-light-blue-dim dark:ens-dark-blue-dim px-3 text-sm font-medium transition"
             {...properties}
         />
     );
@@ -37,12 +37,10 @@ const FeedbackForm = forwardRef(
                 onSubmit={onSubmit}
                 className="flex items-center justify-center gap-6 md:justify-start"
             >
-                <p className="text-sm text-zinc-600 dark:text-zinc-400">
-                    Was this page helpful?
-                </p>
-                <div className="group grid h-8 grid-cols-[1fr,1px,1fr] overflow-hidden rounded-full border border-zinc-900/10 dark:border-white/10">
+                <p className="text-sm font-bold">Was this page helpful?</p>
+                <div className="group grid h-8 grid-cols-[1fr,1px,1fr] overflow-hidden rounded-xl">
                     <FeedbackButton data-response="yes">Yes</FeedbackButton>
-                    <div className="bg-zinc-900/10 dark:bg-white/10" />
+                    <div className="" />
                     <FeedbackButton data-response="no">No</FeedbackButton>
                 </div>
             </form>

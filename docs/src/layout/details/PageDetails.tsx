@@ -5,7 +5,6 @@ import { FiClock, FiGitCommit } from 'react-icons/fi';
 
 import { ContributorsSection } from '@/components/contribute/ContributorsSection';
 import { TimeSince } from '@/components/Timestamp';
-import { cx } from '@/lib/cx';
 import { MdxPageProps } from '@/lib/mdxPageProps';
 
 import { DAOProposalDetails } from './variations/DAOProposalDetails';
@@ -33,15 +32,7 @@ export const PageDetails: FC<{
 
     return (
         <>
-            <div>
-                <div
-                    className={cx(
-                        'mb-2 border-b font-bold',
-                        isDAO ? 'border-ens-dao-400' : 'border-blue-500'
-                    )}
-                >
-                    Details
-                </div>
+            <div className="border-ens-light-border dark:border-ens-dark-border border-t pt-2">
                 <div className="leading-6">
                     {mdxProperties.meta?.ensip && (
                         <ENSIPDetails

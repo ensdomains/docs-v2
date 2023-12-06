@@ -1,10 +1,15 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { usePathname } from 'next/navigation';
 
 import { Navigation } from './_legacy/sidenav';
 
 export const Sidebar = () => {
+    const pathname = usePathname();
+
+    if (pathname === '/') return;
+
     return (
         <motion.div
             layoutScroll

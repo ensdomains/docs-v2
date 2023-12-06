@@ -8,10 +8,10 @@ export const navigation: SectionData[] = [
         icon: '🏠',
         activePattern: /^\/((learn|glossary|changelog|bugs)(\/.*)?)?$/,
         links: [
-            {
-                title: '',
-                links: [{ title: 'Welcome', href: '/', icon: '👋' }],
-            },
+            // {
+            //     title: '',
+            //     links: [{ title: 'Welcome', href: '/', icon: '👋' }],
+            // },
             {
                 title: 'Learn',
                 icon: '🧑‍🎓',

@@ -7,6 +7,7 @@ import { MdxPageProps } from '@/lib/mdxPageProps';
 
 import { PageDetails } from './details/PageDetails';
 import { ProposalData } from './details/variations/SnapshotDetails';
+import { Feedback } from './footer/feedback/FeedbackSection';
 import { Footer } from './footer/PageFooter';
 import { Header } from './header/Header';
 import { Sidebar } from './sidebar/Sidebar';
@@ -69,18 +70,23 @@ export const Layout: FC<{
                         />
                         <Prose>{children}</Prose>
 
-                        <div className="pagedetails_wrapper">
-                            <div className="pagedetails">
-                                <div className="pagedetails_inner">
-                                    <PageDetails
-                                        mdxProperties={mdxProperties}
-                                        snapshotData={snapshotData}
-                                    />
+                        <div className="prose">
+                            <div className="w-full py-4">
+                                <div className="mx-auto w-fit">
+                                    <Feedback />
                                 </div>
                             </div>
+                            <PageDetails
+                                mdxProperties={mdxProperties}
+                                snapshotData={snapshotData}
+                            />
                         </div>
                     </main>
-                    <Footer mdxProperties={mdxProperties} />
+                    <div className="prose">
+                        <div className="notprose w-full">
+                            <Footer mdxProperties={mdxProperties} />
+                        </div>
+                    </div>
                 </div>
             </div>
         </SectionProvider>
