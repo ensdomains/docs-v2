@@ -2,20 +2,15 @@ import { WIP } from "@/components/wip/WIP";
 
 {/* * @type {import('@/lib/mdxPageProps').MdxMetaProps} */}
 export const meta = {
-description: '',
-emoji: '👉',
-contributors: []
+    description: '',
+    emoji: '👉',
+    contributors: []
 };
 
 # Interacting with a Resolver
 
-<WIP
-    missing={[
-        "How to set avatar from frontend",
-        "How to update a users resolver",
-        "Something about Layer 2 Resolvers",
-    ]}
-/>
+Some apps may want to allow for users to edit, update, or modify their name and its behaviour at a more advanced level.
+This is possible by interacting with the resolver contract of a name directly.
 
 ## Checking Interface Support
 
@@ -27,5 +22,51 @@ function supportsInterface(bytes4 interfaceID) external pure returns (bool)
 
 In order to ensure that resolvers we interact with are compatible with specific standards you can call the above function on contracts with an interfaceID and then check the boolean it returns.
 
-Interface IDs are calculated according to solidity ABI and stored in a four-byte value. Here is a cheatsheet of common interface IDs:
+Interface IDs are calculated according to solidity ABI and stored in a four-byte value.
 
+## Updating a user's Record
+
+If you want to help a user set their avatar, specify a prefered color scheme, or set any other record on their ENS name you can do so in specific cases.
+
+First we need to <b>check if the user's resolver supports the interface</b> we want to use. And then you can call the `setRecord` function on the resolver contract.
+
+<CodeGroup title="Updating a Resolver">
+
+```solidity
+interface ENS {
+    function setResolver(bytes32 node, address resolver) external;
+}
+```
+
+```typescript
+// TODO: Example
+```
+
+</CodeGroup>
+
+Please make it clear to the user what you are doing and why. If possible please also showcase the record you are setting to the user before you do so.
+
+## Update a user's Resolver
+
+Overwriting a user's resolver involves overwriting the behaviour of their ENS name.
+In order to overwrite the resolver for a user you need to call the `setResolver` function on the `ENSRegistry` contract.
+
+<CodeGroup title="Updating a Resolver">
+
+```solidity
+interface ENS {
+    function setResolver(bytes32 node, address resolver) external;
+}
+```
+
+```typescript
+// TODO: Example
+```
+
+</CodeGroup>
+
+Please do not change the resolver for a user without their permission. Overwriting the resolver is a destructive action and will overwrite any existing resolution logic.
+
+## Layer 2 Considerations
+
+This is to be determined and not standardised at this time.

@@ -1,7 +1,7 @@
 import { createPublicClient, http, MulticallReturnType, namehash } from 'viem';
 import { mainnet } from 'viem/chains';
 
-import { TLDs } from '@/lib/tld-list';
+import { TLDs } from '#/data/tlds';
 
 const ADDRESS_MAP = {
     '0x57f1887a8BF19b14fC0dF6Fd9B2acc9Af147eA85': (

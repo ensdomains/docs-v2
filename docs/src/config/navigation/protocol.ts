@@ -79,7 +79,7 @@ export const navigation: SectionData[] = [
         links: [
             {
                 title: '',
-                links: [{ title: 'Welcome', href: '/web', icon: '👋' }],
+                links: [{ title: 'Getting Started', href: '/web', icon: '👋' }],
             },
             {
                 title: 'Web / Querying',
@@ -163,13 +163,14 @@ export const navigation: SectionData[] = [
     },
     {
         name: 'Smart Contracts',
-        href: '/resolution',
+        href: '/contracts',
         icon: '⚙️',
-        activePattern: /^\/(resolvers|subnames|registry|resolution)(\/.*)?/,
+        activePattern:
+            /^\/(resolvers|contracts|subnames|registry|resolution)(\/.*)?/,
         links: [
             {
                 title: '',
-                links: [{ title: 'Welcome', href: '/resolution', icon: '👋' }],
+                links: [{ title: 'Welcome', href: '/contracts', icon: '👋' }],
             },
             {
                 title: 'Resolution',
@@ -177,7 +178,7 @@ export const navigation: SectionData[] = [
                 links: [
                     {
                         title: 'Start Here',
-                        href: '/resolution/quickstart',
+                        href: '/resolution',
                         wip: true,
                         icon: '✨',
                     },
@@ -196,14 +197,7 @@ export const navigation: SectionData[] = [
                     {
                         title: 'Start Here',
                         href: '/resolvers/quickstart',
-                        wip: true,
                         icon: '✨',
-                    },
-                    {
-                        title: 'Why Resolvers',
-                        href: '/resolvers/about',
-                        wip: true,
-                        icon: '🤷‍♀️',
                     },
                     {
                         title: 'Public Resolver',
@@ -228,6 +222,12 @@ export const navigation: SectionData[] = [
                         href: '/resolvers/ccip',
                         wip: true,
                         icon: '⛓️',
+                    },
+                    {
+                        title: 'Interface Reference',
+                        href: '/resolvers/interfaces',
+                        wip: true,
+                        icon: '✍️',
                     },
                 ],
             },
