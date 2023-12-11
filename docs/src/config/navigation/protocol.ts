@@ -51,17 +51,7 @@ export const navigation: SectionData[] = [
                 ],
             },
             {
-                title: 'FAQ',
-                icon: '',
-                links: [
-                    {
-                        title: 'DNS TLDs',
-                        href: '/dns/tlds',
-                    },
-                ],
-            },
-            {
-                title: 'A brief history',
+                title: 'Other',
                 icon: '📰',
                 links: [
                     {
@@ -74,6 +64,10 @@ export const navigation: SectionData[] = [
                         title: 'Bug Bounties',
                         href: '/bugs',
                         icon: '🪲',
+                    },
+                    {
+                        title: 'TLDs List',
+                        href: '/dns/tlds',
                     },
                     {
                         title: 'Terminology',
