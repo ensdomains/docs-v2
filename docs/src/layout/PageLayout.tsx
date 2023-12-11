@@ -3,6 +3,7 @@ import { Article, WithContext } from 'schema-dts';
 
 import { Prose } from '@/components/mdx/Prose';
 import { SectionProvider } from '@/components/SectionProvider';
+import { Breadcrumbs } from '@/content/prose/breadcrumbs/Breadcrumbs';
 import { MdxPageProps } from '@/lib/mdxPageProps';
 
 import { PageDetails } from './details/PageDetails';
@@ -37,29 +38,7 @@ export const Layout: FC<{
                 <div className="relative mt-28 px-4 sm:px-6 lg:ml-72 lg:px-8 xl:ml-80">
                     <main className="relative space-y-4 py-4">
                         <div className="prose text-ens-light-text-secondary dark:text-ens-dark-text-secondary">
-                            <nav className="breadcrumb" aria-label="Breadcrumb">
-                                <ul>
-                                    {/* Todo make this work */}
-                                    {[
-                                        'Home',
-                                        'Using ENS',
-                                        'Web',
-                                        'Querying',
-                                    ].map((item, index, array) => (
-                                        <li>
-                                            <span
-                                                aria-current={
-                                                    array.length - 1 == index
-                                                        ? 'page'
-                                                        : undefined
-                                                }
-                                            >
-                                                {item}
-                                            </span>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </nav>
+                            <Breadcrumbs />
                         </div>
 
                         <script
