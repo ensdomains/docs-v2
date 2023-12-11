@@ -20,6 +20,7 @@ export type routeLink = {
     icon?: string;
     external?: boolean;
     wip?: number | boolean;
+    design_wip?: boolean;
 };
 
 export type routeGroup = {

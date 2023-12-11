@@ -28,12 +28,14 @@ export const navigation: SectionData[] = [
                         href: '/learn/deployments',
                         icon: '📰',
                         wip: 60,
+                        design_wip: true,
                     },
                     {
                         title: 'Resolution',
                         href: '/learn/resolution',
                         icon: '🔍',
                         wip: 20,
+                        design_wip: true,
                     },
                     {
                         title: 'Multichain',
@@ -47,6 +49,7 @@ export const navigation: SectionData[] = [
                         icon: '🔗',
                         href: '/learn/ccip',
                         wip: 45,
+                        design_wip: true,
                     },
                 ],
             },
@@ -87,7 +90,14 @@ export const navigation: SectionData[] = [
         links: [
             {
                 title: '',
-                links: [{ title: 'Getting Started', href: '/web', icon: '👋' }],
+                links: [
+                    {
+                        title: 'Getting Started',
+                        href: '/web',
+                        icon: '👋',
+                        design_wip: true,
+                    },
+                ],
             },
             {
                 title: 'Web / Querying',
@@ -187,7 +197,14 @@ export const navigation: SectionData[] = [
         links: [
             {
                 title: '',
-                links: [{ title: 'Welcome', href: '/contracts', icon: '👋' }],
+                links: [
+                    {
+                        title: 'Welcome',
+                        href: '/contracts',
+                        icon: '👋',
+                        design_wip: true,
+                    },
+                ],
             },
             {
                 title: 'Resolution',

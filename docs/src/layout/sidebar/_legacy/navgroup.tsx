@@ -103,6 +103,9 @@ export const NavigationGroup = ({ group, className }) => {
                                         {link.wip == 1 ? 'WIP' : `${link.wip}%`}
                                     </div>
                                 )}
+                                {link.design_wip && (
+                                    <div className="bg-ens-light-pink-primary dark:bg-ens-dark-pink-primary h-1.5 w-1.5 rounded-full"></div>
+                                )}
                             </NavLink>
                         </li>
                     ))}
