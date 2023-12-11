@@ -172,7 +172,7 @@ export function Libraries() {
                                         className="inline-flex items-center gap-0.5 text-blue-500 hover:underline"
                                     >
                                         {library.logo &&
-                                            typeof library.logo == 'string' ? (
+                                        typeof library.logo == 'string' ? (
                                             <img
                                                 src={library.logo}
                                                 className="h-4 w-4 object-contain"

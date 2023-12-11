@@ -12,10 +12,10 @@ import {
 import { navigation } from '@/config/navigation/protocol';
 
 const getPageAndGroup = (
-    routes: routeGroup[],
+    routes: routeGroup[] | undefined,
     path: string
 ): routeElement[] | undefined => {
-    for (const group of routes) {
+    for (const group of routes ?? []) {
         for (const link of group.links) {
             if (isRouteLink(link) && link.href == path) {
                 return [group, link];
@@ -33,7 +33,7 @@ export const Breadcrumbs = () => {
         section.activePattern.test(path)
     );
 
-    const [group, page] = getPageAndGroup(section.links, path) || [
+    const [group, page] = getPageAndGroup(section?.links, path) || [
         undefined,
         undefined,
     ];
@@ -69,7 +69,6 @@ export const Breadcrumbs = () => {
     return (
         <nav className="breadcrumb" aria-label="Breadcrumb">
             <ul className="flex items-center gap-1">
-                {/* Todo make this work */}
                 {[
                     <Link
                         href="/"
