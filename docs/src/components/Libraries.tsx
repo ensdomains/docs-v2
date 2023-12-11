@@ -71,6 +71,12 @@ export const ensLibraries: Language[] = [
                 description: '',
                 logo: undefined,
             },
+            {
+                href: 'https://github.com/alloy-rs/',
+                name: 'Alloy',
+                description: '',
+                logo: undefined,
+            },
         ],
     },
     {
@@ -144,9 +150,9 @@ export const ensLibraries: Language[] = [
 export function Libraries() {
     return (
         <div className="not-prose mt-4">
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-3">
                 {ensLibraries.map((language) => (
-                    <div>
+                    <div className="card !m-0 p-3">
                         <div className="flex items-center gap-1 px-2 text-lg">
                             <div>{language.logo}</div>
                             <div className="grow">{language.name}</div>
@@ -166,7 +172,7 @@ export function Libraries() {
                                         className="inline-flex items-center gap-0.5 text-blue-500 hover:underline"
                                     >
                                         {library.logo &&
-                                        typeof library.logo == 'string' ? (
+                                            typeof library.logo == 'string' ? (
                                             <img
                                                 src={library.logo}
                                                 className="h-4 w-4 object-contain"

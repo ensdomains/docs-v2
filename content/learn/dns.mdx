@@ -48,58 +48,7 @@ If you would like to learn more, there is a guide to walk you through [importing
 
 ENS aims to extend the existing functionality of the DNS system. This also means that existing DNS names (such as `.com`, `.org`, or `.xyz`) should be able to leverage the benefits of the ENS resolution process.
 
-<div className="card1 not-prose">
-    <div className="flex flex-wrap gap-3 p-4 pl-6 text-ens-light-blue-500">
-        {[
-            '.com',
-            '.xyz',
-            '.nl',
-            '.net',
-            '.org',
-            '.amsterdam',
-            '.pizza',
-            '.cash',
-            '.money',
-            '.so',
-            '.info',
-            '.contact',
-            '.domains',
-            '.be',
-            '.de',
-            '.co.uk',
-            '.se',
-            '.tv',
-            '.pl',
-            '.es',
-            '.me',
-            '.us',
-            '.id',
-            '.fr',
-            '.hr',
-            '.com.au',
-            '.camera',
-            '.wtf',
-            '.capital',
-            '.finance',
-            '.home',
-            '.limo',
-            '.link',
-            '.uk',
-            '.nz',
-            '.dev',
-            '.ax',
-            '.pl',
-            '.md',
-        ].map((a) => (
-            <span className="cursor-pointer hover:drop-shadow" key={a}>
-                {a}
-            </span>
-        ))}
-        <span className="text-blue-500/50">
-            and any other DNSSEC-compatible domain...
-        </span>
-    </div>
-</div>
+<DNSGrid />
 
 ## DNS Names in the wild
 

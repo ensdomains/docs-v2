@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { createPublicClient, http, MulticallReturnType, namehash } from 'viem';
 import { mainnet } from 'viem/chains';
 
@@ -90,8 +91,52 @@ export const TLDList = async () => {
         results.push([chunk, result]);
     }
 
+    const unique_results: Record<string, number> = {};
+
+    for (const [chunks, returned] of results) {
+        let index = 0;
+
+        for (const _chunk in chunks) {
+            const result = returned[index].result as string;
+
+            const v = unique_results[result] || 0;
+
+            unique_results[result] = v + 1;
+
+            index++;
+        }
+    }
+
     return (
         <div>
+            <h2>Totals</h2>
+            <div className="card1 p-4">
+                {Object.entries(unique_results)
+                    .sort((a, b) => {
+                        return classifyOwner(b[0]) - classifyOwner(a[0]);
+                    })
+                    .map(([k, v]) => {
+                        return (
+                            <div className="flex items-center gap-1">
+                                <span className="flex rounded-md border px-2 py-0.5 leading-5">
+                                    {v}
+                                </span>
+                                <span>-</span>
+                                <span>{computeTLD(k)}</span>
+                                <span>-</span>
+                                <Link
+                                    className="text-xs"
+                                    href={'https://etherscan.io/address/' + k}
+                                    target="_blank"
+                                >
+                                    {k}
+                                </Link>
+                            </div>
+                        );
+                    })}
+            </div>
+            <h2>By Name</h2>
+            <p>Lorem ipsum dolor</p>
             <table>
                 <thead>
                     <tr>

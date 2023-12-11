@@ -145,7 +145,7 @@ export const ConnectKits = () => {
                     {kits.map((library) => (
                         <div
                             key={library.name}
-                            className="not-prose h-fit w-full min-w-[12rem] items-center justify-center rounded-md bg-neutral-100 p-2 text-center ring-1 ring-black/20 hover:ring-black/30 dark:bg-zinc-800 dark:ring-white/20 dark:hover:ring-white/30"
+                            className="not-prose card !m-0 h-fit w-full min-w-[12rem] items-center justify-center p-3"
                         >
                             <div className="flex items-center justify-between gap-2">
                                 <div className="flex items-center gap-2">

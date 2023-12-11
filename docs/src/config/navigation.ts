@@ -15,7 +15,7 @@ export type routeLink = {
     href: string;
     icon?: string;
     external?: boolean;
-    wip?: boolean;
+    wip?: number | boolean;
 };
 
 export type routeGroup = {

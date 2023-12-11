@@ -100,7 +100,7 @@ export const NavigationGroup = ({ group, className }) => {
                                 {link.external && <FiExternalLink />}
                                 {link.wip && (
                                     <div className="text-3xs bg-ens-light-blue-surface dark:bg-ens-dark-blue-surface dark:text-ens-dark-blue-primary text-ens-light-blue-primary rounded-md px-1 font-bold">
-                                        WIP
+                                        {link.wip == 1 ? 'WIP' : `${link.wip}%`}
                                     </div>
                                 )}
                             </NavLink>
