@@ -6,7 +6,8 @@ export const navigation: SectionData[] = [
         name: 'Intro',
         href: '/learn/protocol',
         icon: '🏠',
-        activePattern: /^\/((learn|glossary|changelog|bugs|dns|faq)(\/.*)?)?$/,
+        activePattern:
+            /^\/((learn|terminology|changelog|bugs|dns|faq)(\/.*)?)?$/,
         links: [
             // {
             //     title: '',
@@ -72,12 +73,11 @@ export const navigation: SectionData[] = [
                     {
                         title: 'Bug Bounties',
                         href: '/bugs',
-                        wip: 10,
                         icon: '🪲',
                     },
                     {
-                        title: 'Glossary',
-                        href: '/glossary',
+                        title: 'Terminology',
+                        href: '/terminology',
                         wip: 10,
                         icon: '📓',
                     },
