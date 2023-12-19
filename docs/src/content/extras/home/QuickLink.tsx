@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import { FC } from 'react';
-import { FiChevronRight } from 'react-icons/fi';
 
 export const QuickBannerLink: FC<{
     title: string;
@@ -12,18 +11,17 @@ export const QuickBannerLink: FC<{
         <Link
             href={href}
             target={href.startsWith('http') ? '_blank' : undefined}
-            className="card not-prose !m-0 flex flex-col !p-0 text-inherit hover:text-inherit hover:no-underline hover:brightness-95"
+            className="bg-ens-light-background-secondary dark:bg-ens-dark-background-secondary not-prose active:ring-ens-light-blue-primary active:dark:ring-ens-dark-blue-primary !m-0 flex flex-col overflow-hidden rounded-lg !p-0 text-inherit hover:text-inherit hover:no-underline hover:brightness-95 active:ring"
         >
             <div className="aspect-[21/9] w-full">
                 {image && <img src={image} alt="" className="h-auto w-full" />}
             </div>
-            <div className="flex grow p-3 pt-2">
+            <div className="flex grow items-center p-6">
                 <div className="w-full">
-                    <div className="font-bold">{title}</div>
+                    <div className="text-ens-light-blue-primary dark:text-ens-dark-blue-primary font-bold">
+                        {title}
+                    </div>
                     <div className="leading-5">{description}</div>
-                </div>
-                <div className="flex h-full items-center">
-                    <FiChevronRight />
                 </div>
             </div>
         </Link>

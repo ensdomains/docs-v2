@@ -100,7 +100,7 @@ export const navigation: SectionData[] = [
                 ],
             },
             {
-                title: 'Web / Querying',
+                title: 'Web & Querying',
                 icon: '🌐',
                 links: [
                     {

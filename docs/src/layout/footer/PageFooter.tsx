@@ -5,6 +5,7 @@ import { FC } from 'react';
 import { MdxPageProps } from '@/lib/mdxPageProps';
 
 import { ContributeLink } from './contribute/ContributeLink';
+import { Feedback } from './feedback/FeedbackSection';
 
 // function PageLink({ label, page, previous = false }) {
 //     return (
@@ -105,7 +106,7 @@ function SocialLink({ href, icon: Icon, children }) {
 
 function SmallPrint() {
     return (
-        <div className="flex flex-col items-center justify-between gap-5 border-t border-zinc-900/5 pt-8 dark:border-white/5 sm:flex-row">
+        <div className="flex flex-col items-center justify-between gap-5 sm:flex-row">
             <p className="text-xs text-zinc-600 dark:text-zinc-400">
                 &copy; Copyright {new Date().getFullYear()}. All rights
                 reserved.
@@ -132,13 +133,13 @@ export const Footer: FC<{
     mdxProperties: MdxPageProps;
 }> = ({ mdxProperties }) => {
     return (
-        <footer className="w-full space-y-4 pb-16">
+        <footer className="border-t-ens-light-border dark:border-t-ens-dark-border w-full space-y-4 border-t pb-16 pt-4">
             <div className="flex items-end justify-between">
+                <Feedback />
                 <div className="w-fit">
                     <ContributeLink url={mdxProperties.filepath} />
                 </div>
             </div>
-            {/* <PageNavigation /> */}
             <SmallPrint />
         </footer>
     );

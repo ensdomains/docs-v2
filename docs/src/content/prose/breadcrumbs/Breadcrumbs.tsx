@@ -29,6 +29,9 @@ const getPageAndGroup = (
 export const Breadcrumbs = () => {
     const path = usePathname();
 
+    // Hide on homepage
+    if (path == '/') return;
+
     const section = navigation.find((section) =>
         section.activePattern.test(path)
     );
@@ -74,7 +77,7 @@ export const Breadcrumbs = () => {
                         href="/"
                         className="text-inherit hover:scale-105 hover:text-inherit"
                     >
-                        <FaHome className="text-md" />
+                        Home
                     </Link>,
                     ...crumbs2,
                 ]

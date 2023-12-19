@@ -19,21 +19,13 @@ const ArrowIcon: FC = (properties) => {
 };
 
 const variantStyles = {
-    primary: cxWithTheme(
-        'rounded-lg py-1 px-3',
-        'bg-ens-light-blue-400/10 text-ens-light-blue-600 ring-1 ring-inset ring-ens-400/20 hover:bg-ens-light-blue-400/10 hover:text-ens-light-blue-300 hover:ring-ens-300',
-        'bg-ens-light-blue-400/10 text-ens-light-blue-400 ring-1 ring-inset ring-ens-400/20 hover:bg-ens-light-blue-400/10 hover:text-ens-light-blue-300 hover:ring-ens-300'
-    ),
+    primary: 'btn-blue-primary',
     red: cxWithTheme(
         'rounded-lg py-1 px-3',
         'bg-ens-light-blue-red-400/10 text-ens-light-blue-red-400 ring-1 ring-inset ring-ens-red-400/20 hover:bg-ens-light-blue-red-400/10 hover:text-ens-light-blue-red-300 hover:ring-ens-red-300',
         'bg-ens-light-blue-red-400/10 text-ens-light-blue-red-400 ring-1 ring-inset ring-ens-red-400/20 hover:bg-ens-light-blue-red-400/10 hover:text-ens-light-blue-red-300 hover:ring-ens-red-300'
     ),
-    secondary: cxWithTheme(
-        'rounded-lg py-1 px-3',
-        'bg-zinc-100 text-zinc-900 hover:bg-zinc-200 dark:bg-zinc-800/40 dark:text-zinc-400 dark:ring-1 dark:ring-inset dark:ring-zinc-800 dark:hover:bg-zinc-800 dark:hover:text-zinc-300',
-        'bg-zinc-100 text-zinc-900 hover:bg-zinc-200 dark:bg-zinc-800/40 dark:text-zinc-400 dark:ring-1 dark:ring-inset dark:ring-zinc-800 dark:hover:bg-zinc-800 dark:hover:text-zinc-300'
-    ),
+    secondary: 'btn-blue-surface',
     green: 'rounded-lg py-1 px-3 bg-green-400/10 text-green-600 ring-1 ring-inset ring-green-400/20 hover:bg-green-400/10 hover:text-green-300 hover:ring-green-300',
     filled: 'rounded-lg bg-zinc-900 py-1 px-3 text-white hover:bg-zinc-700 dark:bg-ens-light-blue-500 dark:text-white dark:hover:bg-ens-light-blue-400',
     outline:
@@ -60,11 +52,7 @@ export const Button: FC<
 > = ({ variant = 'primary', className, children, arrow, ...properties }) => {
     const Component = properties['href'] ? Link : 'button';
 
-    className = clsx(
-        'inline-flex justify-center gap-0.5 overflow-hidden text-sm font-medium transition',
-        variantStyles[variant],
-        className
-    );
+    className = clsx('btn', variantStyles[variant], className);
 
     const arrowIcon = (
         <ArrowIcon

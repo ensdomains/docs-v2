@@ -1,59 +1,60 @@
 {/* * @type {import('@/lib/mdxPageProps').MdxMetaProps} */}
 export const meta = {
-description: 'Learn everything about the Ethereum Name Service (ENS). How to integrate names into your dApp, issue subnames, and so much more!',
-title: 'ENS Documentation',
-emoji: '👋',
-showDetailsSection: false,
-contributors: [
-'lucemans'
-]
+    description: 'Learn everything about the Ethereum Name Service (ENS). How to integrate names into your dApp, issue subnames, and so much more!',
+    title: 'ENS Documentation',
+    emoji: '👋',
+    showDetailsSection: false,
+    contributors: [
+        'lucemans'
+    ]
 };
 
-<h1>Ethereum Name Service</h1>
+<h1>ENS Docs</h1>
 
-<p>Build applications with decentralized identity,</p>
+<p>Learn about building applications with decentralized identity.</p>
 
 <div className="flex gap-x-3">
-    <div className="border p-4 rounded-lg bg-ens-light-grey-surface dark:bg-ens-dark-grey-surface border-ens-light-border dark:border-ens-dark-border not-prose">
-        <h2 className="font-bold text-lg">⚡ Quick Start</h2>
-        <Button>Show me how!</Button>
-    </div>
-    <div className="grow border p-4 rounded-lg border-ens-light-border dark:border-ens-dark-border bg-ens-light-grey-surface dark:bg-ens-dark-grey-surface not-prose">
-        <h2 className="font-bold text-lg text-ens-light-t">
-            Add Decentralized Identity to your App!
-        </h2>
-        <Button>Show me how!</Button>
-    </div>
+    <Button>Quickstart guide</Button>
+    <Button variant="secondary">Integrate into your app!</Button>
 </div>
 
-<h2>Learn more</h2>
-<p>Try out ENS</p>
+<div className="w-full h-1 border-b border-b-ens-light-border dark:border-b-ens-dark-border"></div>
+
+<div>
+    <ul>
+        <li>Protocol Docs</li>
+        <li>Support Knowledgebase</li>
+        <li>Community Blog</li>
+    </ul>
+</div>
+
+<div className="w-full h-1 border-b border-b-ens-light-border dark:border-b-ens-dark-border"></div>
 
 <div className="grid grid-cols-2 gap-x-3 gap-y-3">
 <QuickBannerLink
     title="I'm building a dApp"
-    description="Learn how to integrate ENS into your dApp"
+    description="Learn how to integrate ENS into your dApp."
     href="/web"
     image="/content/home/grid_link_1.png"
 />
 
 <QuickBannerLink
-    title="I'm here to learn about resolution"
-    description="Learn how ENS works under the hood, register, renew, resolvers, registries, and much more!"
+    title="I'm here to learn"
+    description="Learn how ENS works under the hood."
     href="/resolution"
     image="/content/home/grid_link_2.png"
 />
 
 <QuickBannerLink
-    title="I'm looking for the DAO Governance Docs"
-    description="Everything about the ENS DAO you find here!"
+    title="I'm here for Governance"
+    description="Find everything about the ENS DAO here."
     href="/dao"
     image="/content/home/grid_link_3.png"
 />
 
 <QuickBannerLink
-    title="I'm not a developer how did I get here?"
-    description="The support knowledgebase is a wondeful resource for any questions you might have!"
+    title="I'm not a developer"
+    description="Head to the support knowledgebase."
     href="https://support.ens.domains/"
     image="/content/home/grid_link_4.png"
 />

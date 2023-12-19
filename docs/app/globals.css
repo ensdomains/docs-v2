@@ -242,3 +242,25 @@ tbody td {
 tbody tr:last-child td {
     @apply border-b-0;
 }
+
+.btn {
+    @apply inline-flex justify-center gap-0.5 overflow-hidden text-sm font-medium transition;
+}
+
+.btn-blue-primary {
+    @apply bg-ens-light-blue-primary dark:bg-ens-dark-blue-primary;
+    @apply text-ens-light-text-accent dark:text-ens-dark-text-accent;
+    @apply hover:bg-ens-light-blue-bright dark:hover:bg-ens-dark-blue-bright;
+    @apply active:bg-ens-light-blue-bright dark:active:bg-ens-dark-blue-bright; /* */
+    @apply focus:ring focus:ring-ens-light-blue-light dark:focus:ring-ens-dark-blue-light focus:outline-none;
+    @apply rounded-lg py-2.5 px-5;
+}
+
+.btn-blue-surface {
+    @apply bg-ens-light-blue-surface dark:bg-ens-dark-blue-surface;
+    @apply text-ens-light-blue-dim dark:text-ens-dark-blue-dim;
+    @apply hover:bg-ens-light-blue-light dark:hover:bg-ens-dark-blue-light;
+    @apply active:bg-ens-light-blue-bright dark:active:bg-ens-dark-blue-bright; /* */
+    @apply focus:ring focus:ring-ens-light-blue-bright dark:focus:ring-ens-dark-blue-bright focus:outline-none;
+    @apply rounded-lg py-2.5 px-5;
+}
