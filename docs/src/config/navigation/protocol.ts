@@ -178,6 +178,7 @@ export const navigation: SectionData[] = [
                         title: 'Do\'s and Dont\'s',
                         href: '/web/design',
                         wip: true,
+                        design_wip: true,
                     },
                     {
                         title: 'Media kit',

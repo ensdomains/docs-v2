@@ -47,6 +47,12 @@ export const LanguagePresets = configureLanguages({
         language: 'typescript',
         fallback: ['enstools', 'react', 'viem', 'typescript', 'javascript'],
     },
+    ensjs: {
+        icon: '/icons/libraries/ensjs.svg',
+        name: 'ENSjs v3',
+        language: 'typescript',
+        fallback: ['wagmi', 'react', 'viem', 'typescript', 'javascript'],
+    },
     rainbowkit: {
         icon: '/icons/libraries/rainbow.svg',
         name: 'Rainbowkit',
@@ -78,6 +84,12 @@ export const LanguagePresets = configureLanguages({
         name: 'ENS Tools',
         language: 'typescript',
         fallback: ['wagmi', 'react', 'viem', 'typescript', 'javascript'],
+    },
+    web3py: {
+        icon: '',
+        name: 'Web3.py',
+        language: 'python',
+        fallback: [],
     },
 });
 
