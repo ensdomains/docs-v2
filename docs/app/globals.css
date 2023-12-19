@@ -245,6 +245,8 @@ tbody tr:last-child td {
 
 .btn {
     @apply inline-flex justify-center gap-0.5 overflow-hidden text-sm font-medium transition;
+    @apply hover:-translate-y-[1px];
+    @apply active:translate-y-0;
 }
 
 .btn-blue-primary {
