@@ -163,7 +163,7 @@ export function Libraries() {
                                 <div className="flex items-center gap-2 px-2 text-lg">
                                     <div>{library.name}</div>
                                     <div>{language.logo}</div>
-                                    <div className="bg-ens-light-blue-surface text-ens-light-blue-primary dark:bg-ens-dark-blue-surface dark:text-ens-dark-blue-primary border-ens-light-border rounded-xl border px-2 text-xs">
+                                    <div className="bg-ens-light-blue-surface text-ens-light-blue-primary dark:bg-ens-dark-blue-surface dark:text-ens-dark-blue-primary border-ens-light-border dark:border-ens-dark-border rounded-xl border px-2 text-xs">
                                         {language.name}
                                     </div>
                                 </div>
