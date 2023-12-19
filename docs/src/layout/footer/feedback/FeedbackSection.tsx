@@ -35,7 +35,7 @@ const FeedbackForm = forwardRef(
             <form
                 ref={reference}
                 onSubmit={onSubmit}
-                className="flex items-center justify-center gap-6 md:justify-start"
+                className="text-ens-light-text-primary dark:text-ens-dark-text-primary flex items-center justify-center gap-6 md:justify-start "
             >
                 <p className="text-sm font-bold">Was this page helpful?</p>
                 <div className="group grid h-8 grid-cols-[1fr,1px,1fr] overflow-hidden rounded-xl">

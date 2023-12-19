@@ -254,7 +254,7 @@ tbody tr:last-child td {
     @apply text-ens-light-text-accent dark:text-ens-dark-text-accent;
     @apply hover:bg-ens-light-blue-bright dark:hover:bg-ens-dark-blue-bright;
     @apply active:bg-ens-light-blue-bright dark:active:bg-ens-dark-blue-bright; /* */
-    @apply focus:ring focus:ring-ens-light-blue-light dark:focus:ring-ens-dark-blue-light focus:outline-none;
+    @apply focus:ring focus:ring-offset-2 focus:ring-ens-light-blue-bright dark:focus:ring-ens-dark-blue-bright focus:outline-none; /* */
     @apply rounded-lg py-2.5 px-5;
 }
 
@@ -263,6 +263,6 @@ tbody tr:last-child td {
     @apply text-ens-light-blue-dim dark:text-ens-dark-blue-dim;
     @apply hover:bg-ens-light-blue-light dark:hover:bg-ens-dark-blue-light;
     @apply active:bg-ens-light-blue-bright dark:active:bg-ens-dark-blue-bright; /* */
-    @apply focus:ring focus:ring-ens-light-blue-bright dark:focus:ring-ens-dark-blue-bright focus:outline-none;
+    @apply focus:ring focus:ring-offset-2 focus:ring-ens-light-blue-bright dark:focus:ring-ens-dark-blue-bright focus:outline-none; /* */
     @apply rounded-lg py-2.5 px-5;
 }

@@ -15,7 +15,7 @@ export const SmartContractMap = () => {
 
     return (
         <div
-            className="card relative aspect-video px-6"
+            className="card1 relative aspect-video overflow-hidden px-6"
             style={{ width, height }}
             onMouseDown={(event) => {
                 setDragging(true);
@@ -38,7 +38,7 @@ export const SmartContractMap = () => {
             }}
         >
             <div
-                className="absolute h-[800px] w-[800px] border p-4"
+                className="border-ens-light-border dark:border-ens-dark-border absolute h-[800px] w-[800px] rounded-lg border p-4"
                 style={{ left: x, top: y }}
             >
                 <img

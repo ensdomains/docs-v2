@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { ReactNode } from 'react';
 import { FaJava, FaReact, FaRust } from 'react-icons/fa';
 import { SiDelphi, SiKotlin, SiNuget } from 'react-icons/si';
@@ -150,45 +151,25 @@ export const ensLibraries: Language[] = [
 export function Libraries() {
     return (
         <div className="not-prose mt-4">
-            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-3">
+            <div className="flex flex-wrap gap-3 sm:grid-cols-2 xl:grid-cols-3">
                 {ensLibraries.map((language) => (
-                    <div className="card !m-0 p-3">
-                        <div className="flex items-center gap-1 px-2 text-lg">
-                            <div>{language.logo}</div>
-                            <div className="grow">{language.name}</div>
-                            <div className="text-xs opacity-40">
-                                {language.libraries.length > 0
-                                    ? language.libraries.length
-                                    : ''}
-                            </div>
-                        </div>
-                        <ul>
-                            {language.libraries.map((library) => (
-                                <li className="flex items-center gap-2">
-                                    -
-                                    <a
-                                        href={library.href}
-                                        target="_blank"
-                                        className="inline-flex items-center gap-0.5 text-blue-500 hover:underline"
-                                    >
-                                        {library.logo &&
-                                        typeof library.logo == 'string' ? (
-                                            <img
-                                                src={library.logo}
-                                                className="h-4 w-4 object-contain"
-                                                alt=""
-                                            />
-                                        ) : (
-                                            <span className="h-fit">
-                                                {library.logo}
-                                            </span>
-                                        )}
-                                        {library.name}
-                                    </a>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
+                    <>
+                        {language.libraries.map((library) => (
+                            <Link
+                                href={library.href}
+                                className="card !m-0 p-3"
+                                target="_blank"
+                            >
+                                <div className="flex items-center gap-2 px-2 text-lg">
+                                    <div>{library.name}</div>
+                                    <div>{language.logo}</div>
+                                    <div className="bg-ens-light-blue-surface text-ens-light-blue-primary dark:bg-ens-dark-blue-surface dark:text-ens-dark-blue-primary border-ens-light-border rounded-xl border px-2 text-xs">
+                                        {language.name}
+                                    </div>
+                                </div>
+                            </Link>
+                        ))}
+                    </>
                 ))}
             </div>
         </div>

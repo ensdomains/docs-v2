@@ -61,7 +61,7 @@ export function Search() {
                 <SearchIcon className="h-5 w-5 stroke-current" />
                 Search Content...
                 <span className="ml-auto inline-flex p-1">
-                    <kbd className="text-2xs my-1 flex h-full items-center rounded-md border px-1">
+                    <kbd className="text-2xs border-ens-light-border dark:border-ens-dark-border my-1 flex h-full items-center rounded-md border px-1">
                         <kbd className="font-sans">{modifierKey}</kbd>+
                         <kbd className="font-sans">k</kbd>
                     </kbd>

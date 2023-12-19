@@ -25,7 +25,7 @@ export const GithubRepository: FC<RepositoryType> = async ({
             <a
                 href={html_url}
                 target="_blank"
-                className="mb-2 flex w-full border p-4 hover:bg-gray-50"
+                className="hover:bg-ens-light-background-secondary dark:hover:bg-ens-dark-background-secondary border-ens-light-border dark:border-ens-dark-border mb-2 flex w-full rounded-lg border p-4"
             >
                 <span className="block pt-1">
                     {is_template ? <FiFolderPlus /> : <FiGithub />}

@@ -107,7 +107,7 @@ function SocialLink({ href, icon: Icon, children }) {
 function SmallPrint() {
     return (
         <div className="flex flex-col items-center justify-between gap-5 sm:flex-row">
-            <p className="text-xs text-zinc-600 dark:text-zinc-400">
+            <p className="dark:text-ens-dark-text-secondary text-ens-light-text-secondary text-xs">
                 &copy; Copyright {new Date().getFullYear()}. All rights
                 reserved.
             </p>

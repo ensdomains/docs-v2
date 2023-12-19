@@ -51,17 +51,20 @@ export const Header = forwardRef<HTMLDivElement, { className?: string }>(
                     <div className="flex items-center gap-2">
                         <div className="flex items-center gap-5 lg:hidden">
                             <MobileNavigation />
-                            <Link href="/" aria-label="Home">
+                            <Link
+                                href="/"
+                                aria-label="Home"
+                                className="block h-16"
+                            >
                                 <img
                                     src="/ens/primary/ens_logo_primary.svg"
-                                    className="h-8"
+                                    className="block h-16 w-64"
                                     alt="ENS Logo"
-                                    height={'32'}
                                 />
                             </Link>
                         </div>
                         <div className="hidden w-fit lg:flex">
-                            <Link href={isDao ? '/dao' : '/'} aria-label="Home">
+                            <Link href="/" aria-label="Home">
                                 <img
                                     src={
                                         isDao
@@ -96,7 +99,7 @@ export const Header = forwardRef<HTMLDivElement, { className?: string }>(
                     <div className="mx-auto w-full max-w-lg">
                         <Search />
                     </div>
-                    <div className="flex h-full items-center gap-4 float-right">
+                    <div className="float-right flex h-full items-center gap-4">
                         <ThemeSwitcher />
                         <div className="md:dark:bg-white/15 hidden md:block md:h-5 md:w-px md:bg-zinc-900/10" />
                         <div className="flex gap-4">

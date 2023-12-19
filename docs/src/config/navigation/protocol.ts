@@ -42,6 +42,7 @@ export const navigation: SectionData[] = [
                         href: '/learn/multichain',
                         icon: '⛓️',
                         wip: 70,
+                        design_wip: true,
                     },
                     { title: 'DNS Names', href: '/learn/dns', icon: '🌐' },
                     {
@@ -114,6 +115,7 @@ export const navigation: SectionData[] = [
                         href: '/web/libraries',
                         icon: '🛠️',
                         wip: 70,
+                        design_wip: true,
                     },
                     {
                         title: 'Address Lookup',

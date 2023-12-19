@@ -21,7 +21,7 @@ function NavLink({ href, tag, active, isAnchorLink = false, children }) {
             href={href}
             aria-current={active ? 'page' : undefined}
             className={clsx(
-                'flex justify-between gap-2 rounded-lg py-1.5 pr-0 text-sm transition',
+                'ring-ens-light-blue-primary dark:ring-ens-dark-blue-primary flex justify-between gap-2 rounded-lg border-none py-1.5 pr-0 text-sm outline-none ring-offset-1 transition focus:ring',
                 isAnchorLink ? 'pl-8' : 'pl-4',
                 active
                     ? 'text-ens-light-text-primary dark:text-ens-dark-text-primary bg-ens-light-blue-surface dark:bg-ens-dark-blue-surface'
