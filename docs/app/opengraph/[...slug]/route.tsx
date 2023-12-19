@@ -216,7 +216,6 @@ export async function GET(request: NextRequest) {
                                     page.pageProperties.meta.title.length
                                 ),
                                 width: '100%',
-                                // height: '20%',
                                 display: 'flex',
                                 alignItems: 'flex-end',
                                 justifyContent: 'center',

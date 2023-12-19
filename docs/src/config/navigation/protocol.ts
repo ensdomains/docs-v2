@@ -121,7 +121,6 @@ export const navigation: SectionData[] = [
                         title: 'Address Lookup',
                         href: '/web/resolution',
                         icon: '🔍',
-                        wip: 95,
                     },
                     {
                         title: 'Text Records',
@@ -133,7 +132,6 @@ export const navigation: SectionData[] = [
                         title: 'Primary Names',
                         href: '/web/reverse',
                         icon: '🔍',
-                        wip: 70,
                     },
                     {
                         title: 'List Names',
@@ -160,7 +158,6 @@ export const navigation: SectionData[] = [
                     {
                         title: 'Subgraph',
                         href: '/web/subgraph',
-                        wip: true,
                     },
                     {
                         title: 'Sign In With Ethereum (SIWE)',

@@ -78,7 +78,7 @@ console.log(nfts);
 
 ## The Graph {{ title: "The Graph" }}
 
-The ENS Team has worked together closely with the graph to provide the [ENS Subgraph](https://thegraph.com/hosted-service/subgraph/ensdomains/ens). This subgraph indexes ENS name registrations & wrapping of names that are part of the [ETH Registrar](/registry/eth).
+The ENS Team has worked together closely with the graph to provide the [ENS Subgraph](/web/subgraph) ([The Graph](https://thegraph.com/hosted-service/subgraph/ensdomains/ens)). This subgraph indexes ENS name registrations & wrapping of names that are part of the [ETH Registrar](/registry/eth).
 
 <CodeGroup title="ENS Subgraph">
 
@@ -86,7 +86,7 @@ The ENS Team has worked together closely with the graph to provide the [ENS Subg
 // TODO: Write React Example
 ```
 
-```tsx {{ title: 'GraphQL', language: 'gql', variant: 'gql', link: "https://thegraph.com/hosted-service/subgraph/ensdomains/ens" }}
+```graphql {{ title: 'GraphQL', language: 'gql', variant: 'gql', link: "https://thegraph.com/hosted-service/subgraph/ensdomains/ens" }}
 {
   domains(where: {owner: "0x225f137127d9067788314bc7fcc1f36746a3c3b5"}) {
     name
