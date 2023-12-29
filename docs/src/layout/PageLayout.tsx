@@ -35,15 +35,15 @@ export const Layout: FC<{
             <div className="h-full max-h-screen" id="app">
                 <Header />
                 <Sidebar />
-                <div className="relative mt-24 px-4 sm:px-6">
+                <div className="relative mt-24">
                     {isHome ? (
                         <>
-                            <main className="relative space-y-4 py-4">
+                            <main className="relative min-h-[74vh] space-y-4 pb-4">
                                 <div className="prose mt-4 w-full space-y-6">
                                     {children}
                                 </div>
                             </main>
-                            <div className="prose">
+                            <div className="prose px-4 sm:px-6">
                                 <div className="notprose w-full">
                                     <Footer mdxProperties={mdxProperties} />
                                 </div>
