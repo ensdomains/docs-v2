@@ -17,7 +17,12 @@ export const generateMetadata = async (_x: any, parent: ResolvingMetadata) => {
             path: '/',
         },
         parentMetadata,
-        { openGraph: { type: 'article' } }
+        {
+            openGraph: {
+                type: 'article',
+                images: '/opengraph/index.png',
+            },
+        }
     );
 };
 
