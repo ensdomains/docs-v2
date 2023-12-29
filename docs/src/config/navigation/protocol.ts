@@ -569,7 +569,6 @@ export const navigation: SectionData[] = [
                     {
                         title: 'Explained',
                         href: '/ensip',
-                        wip: true,
                         icon: '🧑‍🏫',
                     },
                     { title: '1 - ENS', href: '/ensip/1' },
@@ -609,6 +608,14 @@ export const navigation: SectionData[] = [
                     {
                         title: '14 - On-chain Source Parameter',
                         href: '/ensip/14',
+                    },
+                    {
+                        title: '15 - ENS Name Normalization Standard',
+                        href: '/ensip/15',
+                    },
+                    {
+                        title: '16 - Offchain Metadata',
+                        href: '/ensip/16',
                     },
                 ],
             },

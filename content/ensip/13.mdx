@@ -64,15 +64,7 @@ In order for a non-hardware wallet to be used on multiple devices, you must impo
 
 Instead, each device can have its own unique wallet that is an authorized secondary wallet of the main wallet. If a device specific wallet was ever compromised or lost, you could simply remove the authorization to authenticate.
 
-Further, wallet authentication can be chained so that a secondary wallet could itself authorize one or many tertiary wallets, which then have signing rights for both the secondary address as well as the root main address. This, can allow teams to each have their own signer while the main wallet can easily invalidate an entire tree, just by revoking rights from the root stem.
-
-#### Improving Convenience
-Many invididuals use hardware wallets for maximum security. However, this is often inconvenient, since many do not want to carry their hardware wallet with them at all times.
-
-Instead, if you approve a non-hardware wallet for authentication activities (such as a mobile device), you would be able to use most dApps without the need to have your hardware wallet on hand.
-
-## Specification
-The key words “MUST”, “MUST NOT”, “REQUIRED”, “SHALL”, “SHALL NOT”, “SHOULD”, “SHOULD NOT”, “RECOMMENDED”, “MAY”, and “OPTIONAL” in this document are to be interpreted as described in RFC 2119.
+Further, wallet authentication can be matokenUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in RFC 2119.
 
 Let:
  - `mainAddress` represent the wallet address we are trying to authenticate or prove asset ownership for.
