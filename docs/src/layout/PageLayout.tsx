@@ -35,7 +35,7 @@ export const Layout: FC<{
             <div className="h-full max-h-screen" id="app">
                 <Header />
                 <Sidebar />
-                <div className="relative mt-24">
+                <div className="relative mt-16 lg:mt-24">
                     {isHome ? (
                         <>
                             <main className="relative min-h-[74vh] space-y-4 pb-4">
@@ -50,7 +50,7 @@ export const Layout: FC<{
                             </div>
                         </>
                     ) : (
-                        <div className="lg:ml-72 lg:px-8 xl:ml-80">
+                        <div className="px-6 lg:ml-72 lg:px-8 xl:ml-80">
                             <main className="relative my-4 space-y-4 py-4">
                                 <div className="prose x text-ens-light-text-secondary dark:text-ens-dark-text-secondary">
                                     <Breadcrumbs />

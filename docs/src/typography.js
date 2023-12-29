@@ -188,14 +188,14 @@ module.exports = ({ theme }) => ({
 
             // Headings
             h1: {
-                color: 'var(--tw-prose-headings)',
+                // color: '',
                 fontWeight: '700',
                 fontSize: theme('fontSize.4xl')[0],
                 ...theme('fontSize.2xl')[1],
                 marginBottom: theme('spacing.2'),
             },
             h2: {
-                color: 'var(--tw-prose-headings)',
+                // color: 'var(--tw-prose-headings)',
                 fontWeight: '600',
                 fontSize: theme('fontSize.3xl')[0],
                 ...theme('fontSize.lg')[1],
@@ -203,7 +203,7 @@ module.exports = ({ theme }) => ({
                 marginBottom: theme('spacing.2'),
             },
             h3: {
-                color: 'var(--tw-prose-headings)',
+                // color: 'var(--tw-prose-headings)',
                 fontSize: theme('fontSize.2xl')[0],
                 ...theme('fontSize.base')[1],
                 fontWeight: '600',

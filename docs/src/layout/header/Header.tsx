@@ -48,18 +48,19 @@ export const Header = forwardRef<HTMLDivElement, { className?: string }>(
                         } as any
                     }
                 >
-                    <div className="flex items-center gap-2">
-                        <div className="flex items-center gap-5 lg:hidden">
+                    <div className="flex w-fit items-center gap-2">
+                        <div className="flex w-fit items-center gap-5 lg:hidden">
                             <MobileNavigation />
                             <Link
                                 href="/"
                                 aria-label="Home"
-                                className="block h-16"
+                                className="block h-8 w-20"
                             >
                                 <img
                                     src="/ens/primary/ens_logo_primary.svg"
-                                    className="block h-16 w-64"
+                                    className="ml-1 h-8 w-auto"
                                     alt="ENS Logo"
+                                    height={'32'}
                                 />
                             </Link>
                         </div>

@@ -134,7 +134,7 @@ export const Footer: FC<{
 }> = ({ mdxProperties }) => {
     return (
         <footer className="border-t-ens-light-border dark:border-t-ens-dark-border w-full space-y-4 border-t pb-16 pt-4">
-            <div className="flex items-end justify-between">
+            <div className="flex flex-wrap items-end justify-between gap-2">
                 <Feedback />
                 <div className="w-fit">
                     <ContributeLink url={mdxProperties.filepath} />

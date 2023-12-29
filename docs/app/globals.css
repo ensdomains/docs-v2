@@ -92,6 +92,14 @@
     /* @apply !mt-0 mb-0; */
 }
 
+.prose {
+    @apply text-ens-light-text-primary dark:text-ens-dark-text-primary;
+}
+
+.prose h1, .prose h2, .prose h3, .prose h4 {
+    @apply text-ens-light-text-primary dark:text-ens-dark-text-primary;
+}
+
 html.dark {
     color-scheme: dark;
 }
