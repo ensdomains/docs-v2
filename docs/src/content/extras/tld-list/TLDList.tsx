@@ -44,7 +44,9 @@ const computeTLD = (owner_address: string) => {
 
     if (owner_address === '0x0000000000000000000000000000000000000000')
         return (
-            <span className="text-ens-light-grey-primary">Unsupported TLD</span>
+            <span className="text-ens-light-grey-primary">
+                Unsupported TLD (or no domains imported yet)
+            </span>
         );
 
     return owner_address;

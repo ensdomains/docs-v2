@@ -122,7 +122,7 @@
             },
             {
                 "pattern": "^/dapp-developer-guide/registering-and-renewing-names$",
-                "destination": "/registry/interacting"
+                "destination": "/registry/eth"
             },
             {
                 "pattern": "^/dapp-developer-guide/front-end-design-guidelines$",

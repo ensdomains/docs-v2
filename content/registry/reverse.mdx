@@ -9,46 +9,19 @@ export const meta = {
 
 # Reverse Registrar
 
-<WIP
-    missing={[
-        'Why Reverse?',
-        'How does it work?',
-        'What about multichain?',
-    ]}
-/>
+Reverse resolution in ENS - the process of mapping from an Ethereum address (eg, 0x1234...) to an ENS name - is handled using a special namespace, .addr.reverse. A special-purpose registrar controls this namespace and allocates subdomains to any caller based on their address. The reverse registrar is specified in EIP 181.
 
-*The registrar responsible for managing reverse resolution via the .addr.reverse special-purpose TLD.*
+For example, the account `0x314159265dd8dbb310642f98f50c066173c1259b` can claim `314159265dd8dbb310642f98f50c066173c1259b.addr.reverse`.
+After doing so, it can configure a resolver and expose metadata, such as a canonical ENS name for this address.
 
-Reverse resolution in ENS - the process of mapping from an Ethereum address (eg, 0x1234...) to an ENS name - is handled using a special namespace, .addr.reverse. A special-purpose registrar controls this namespace and allocates subdomains to any caller based on their address.
+The reverse registrar provides functions to `claim` a reverse record,
+as well as a convenience function (`setName`) to configure the record as it's most commonly used, as a way of specifying a canonical name for an address.
 
-For example, the account 0x314159265dd8dbb310642f98f50c066173c1259b can claim 314159265dd8dbb310642f98f50c066173c1259b.addr.reverse. After doing so, it can configure a resolver and expose metadata, such as a canonical ENS name for this address.
+## Lookup Primary Name
 
-The reverse registrar provides functions to claim a reverse record, as well as a convenience function to configure the record as it's most commonly used, as a way of specifying a canonical name for an address.
+If you are interested in [querying the primary name for an address](/web/reverse) you can checkout the web section.
 
-The reverse registrar is specified in EIP 181.
-
-## Claim Address
-
-```
-function claim(address owner) public returns (bytes32);
-```
-
-Claims the caller's address in the reverse registrar, assigning ownership of the reverse record to `owner`. Equivalent to calling `claimWithResolver(owner, 0)`.
-
-## Claim Address with Resolver
-
-```
-function claimWithResolver(address owner, address resolver) public returns (bytes32)
-```
-
-Claims the caller's address in the reverse registrar, assigning `ownership` of the reverse record to owner. If `resolver` is nonzero, also updates the record's resolver.
-
-After calling this function:
-
-- The reverse record for the caller (1234....addr.reverse) is owned by `owner`.
-- If `resolver` is nonzero, the reverse record for the caller has its resolver set to `resolver`; otherwise it is left unchanged.
-
-## Set Name
+## Set Primary Name
 
 ```
 function setName(string memory name) public returns (bytes32)
@@ -66,15 +39,32 @@ In short, after calling this, a user has a fully configured reverse record claim
 
 Users wanting more flexibility will need to use `claim` or `claimWithResolver` and configure records manually on their chosen resolver contract.
 
-## Get Reverse Record Node
+## Multichain Considerations
+
+The current infrastructure for primary names accross multiple chains is being worked on.
+
+## Other Functions
+
+### Claim Address
 
 ```
-function node(address addr) public pure returns (bytes32)
+function claim(address owner) public returns (bytes32);
 ```
 
-Accepts an address, and returns the node (namehash output) for the address's reverse record. This function is provided as a convenience for contracts wishing to look up metadata for an address, and avoids the need for those contracts to handle the hex encoding and hashing necessary to derive the required value.
+Claims the caller's address in the reverse registrar, assigning ownership of the reverse record to `owner`. Equivalent to calling `claimWithResolver(owner, 0)`.
 
-## Get Default Resolver
+```
+function claimWithResolver(address owner, address resolver) public returns (bytes32)
+```
+
+Claims the caller's address in the reverse registrar, assigning `ownership` of the reverse record to owner. If `resolver` is nonzero, also updates the record's resolver.
+
+After calling this function:
+
+- The reverse record for the caller (1234....addr.reverse) is owned by `owner`.
+- If `resolver` is nonzero, the reverse record for the caller has its resolver set to `resolver`; otherwise it is left unchanged.
+
+### Get Default Resolver
 
 ```
 Resolver public defaultResolver;
