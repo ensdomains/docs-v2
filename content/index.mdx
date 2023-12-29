@@ -17,8 +17,8 @@ contributors: [
 <p>Learn about building applications with decentralized identity.</p>
 
 <div className="flex gap-3 flex-col sm:flex-row">
-    <Button>Quickstart guide</Button>
-    <Button variant="secondary">Integrate into your app!</Button>
+    <Button href="/learn/protocol">Learn More</Button>
+    <Button variant="secondary" href="/web/quickstart">Integrate into your app!</Button>
 </div>
 </div>
 </div>
@@ -57,16 +57,20 @@ contributors: [
             {
                 title: 'Resolvers',
                 links: [
-                    ["ENS Registrar", "/registry/ens"],
-                    ["ETH Registrar", "/registry/eth"],
-                    ["DNS Registrar", "/registry/dns"],
-                    ["Reverse Registrar", "/registry/reverse"]
+                    ["Public Resolver", "/resolvers/public"],
+                    ["Writing a Resolver", "/resolvers/writing"],
+                    ["Interacting with a Resolver", "/resolvers/interacting"],
+                    ["Cross Chain Resolution", "/resolvers/ccip"],
+                    ["Interface Reference", "/resolvers/interfaces"]
                 ]
             },
             {
-                title: 'Community',
+                title: 'Governance',
                 links: [
-                    ["ENS Discord", "https://chat.ens.domains/"]
+                    ["Welcome", "/dao"],
+                    ["Constitution", "/dao/constitution"],
+                    ["Foundation", "/dao/foundation"],
+                    ["Airdrop", "/dao/airdrop"]
                 ]
             },
             {
@@ -90,8 +94,10 @@ contributors: [
             {
                 title: 'Support',
                 links: [
-                    ["Support Knowledgebase", "https://support.ens.domains/"],
-                    ["Community Blog", "https://medium.com/the-ethereum-name-service"]
+                    ["Knowledgebase", "https://support.ens.domains/"],
+                    ["Community Blog", "https://blog.ens.domains"],
+                    ["Medium", "https://medium.com/the-ethereum-name-service"],
+                    ["Discord", "https://chat.ens.domains/"]
                 ]
             }
         ].map((column) => (
