@@ -10,7 +10,7 @@ import {
     useConnect,
     useContractRead,
 } from 'wagmi';
-import { configureChains, createConfig, WagmiConfig } from 'wagmi';
+import { configureChains, createConfig } from 'wagmi';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { publicProvider } from 'wagmi/providers/public';
 
@@ -132,10 +132,10 @@ export const ResolverTestDemo = () => {
     return (
         <ClientOnly
             child={() => (
-                <WagmiConfig config={config}>
+                <>
                     {/* <Demo /> */}
                     This demo is in under construction
-                </WagmiConfig>
+                </>
             )}
         />
     );

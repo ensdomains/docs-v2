@@ -1,26 +1,28 @@
+import { TheConnector } from 'app/theme';
 import { FC } from 'react';
-import { goerli } from 'viem/chains';
 import {
     useAccount,
     useChainId,
     useConnect,
-    useNetwork,
+    useDisconnect,
     useSwitchNetwork,
 } from 'wagmi';
-import { InjectedConnector } from 'wagmi/connectors/injected';
 
 import { Button } from '@/components/Button';
 
 const available_chains = new Set([5]);
 
 export const ChainField: FC = () => {
-    const { switchNetwork } = useSwitchNetwork();
+    const { switchNetwork, chains, error, pendingChainId } = useSwitchNetwork();
     const chainId = useChainId();
-    const { isConnected, address } = useAccount();
-    const { chains } = useNetwork();
-    const { connect } = useConnect();
+    const { isConnected, address, connector } = useAccount();
+    const { connect } = useConnect({
+        connector: TheConnector,
+        chainId: 5,
+    });
+    const { disconnectAsync } = useDisconnect();
 
-    console.log(chains);
+    console.log({ switchNetwork });
 
     return (
         <div className="">
@@ -41,16 +43,18 @@ export const ChainField: FC = () => {
                                 ? 'secondary'
                                 : 'disabled') as unknown as 'primary'
                         }
-                        onClick={() => {
+                        onClick={async () => {
                             if (available_chains.has(id)) {
-                                // TODO: Change Chain ID
-                                // switchNetwork(id);
+                                // if (switchNetwork) {
+                                switchNetwork(id);
+                                // } else {
+                                await disconnectAsync();
                                 connect({
                                     chainId: id,
-                                    connector: new InjectedConnector({
-                                        chains: [goerli],
-                                    }),
+                                    connector: TheConnector,
                                 });
+
+                                // }
                             }
                         }}
                     >

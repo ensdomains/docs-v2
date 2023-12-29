@@ -49,7 +49,7 @@ export const navigation: SectionData[] = [
                         title: 'Offchain Names',
                         icon: '🔗',
                         href: '/learn/ccip',
-                        wip: 45,
+                        wip: 65,
                         design_wip: true,
                     },
                 ],

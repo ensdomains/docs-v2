@@ -8,12 +8,28 @@ export const meta = {
 # Resolution
 
 The process by which we load information about a name is called resolution. It's a simple process, but it's important to understand.
+Here is a diagram of some of the contracts involved when resolving a name.
 
 <div className="card1">
     <img src="/content/resolution/flow1.png" alt="" />
 </div>
 
-to resolve a name we first fetch the `resolver` of the name.
-once we have the resolver we can call it to ask it for say, the `addr` of a name.
+## Doing a lookup
 
-we get the result back, show it off in an app, and it works wonders.
+Here is a little peak at what happens under the hood of your favourite library when you do a name lookup.
+
+### 1. Find the Resolver
+
+To get the resolver responsible for a name you can query [The Registry](/registry/ens) for the `resolver` of a name.
+
+```
+ENS.resolver(bytes32 node) view returns (address)
+```
+
+If you would like you can verify it supports the resolver specifications by calling `supportsInterface(bytes4 interfaceID)` on the resolver.
+
+### 2. Query the Resolver
+
+Now you have found the resolver responsible for the name in question, you can query it for the information you need.
+If the resolver supports text records you can call `text()` to get that text record for the name.
+More about loading information from a resolver can be found [here](/resolvers/interacting).

@@ -1,11 +1,8 @@
 'use client';
 
+import { TheConnector } from 'app/theme';
 import { useEffect, useState } from 'react';
-import { createPublicClient, http } from 'viem';
-import { goerli } from 'viem/chains';
 import { useAccount, useChainId, useConnect } from 'wagmi';
-import { createConfig, WagmiConfig } from 'wagmi';
-import { InjectedConnector } from 'wagmi/connectors/injected';
 
 import { ClientOnly } from '@/ClientOnly';
 import { Button } from '@/components/Button';
@@ -21,34 +18,6 @@ import { CommitmentCheck } from './stage/CommitmentCheck';
 import { RentPriceCheck } from './stage/RentPriceCheck';
 import { MakeCommit } from './transactions/MakeCommit';
 import { RegisterName } from './transactions/RegisterName';
-
-// const {
-//     chains: _chains,
-//     publicClient,
-//     webSocketPublicClient,
-// } = configureChains(
-//     [goerli],
-//     [
-//         // publicProvider(),
-//         jsonRpcProvider({
-//             rpc: (chain) => {
-//                 return {
-//                     http: 'https://rpc.ankr.com/eth_goerli',
-//                 };
-//             },
-//         }),
-//     ]
-// );
-const publicClient = createPublicClient({
-    chain: goerli,
-    transport: http('https://rpc.ankr.com/eth_goerli'),
-});
-
-const config = createConfig({
-    autoConnect: false,
-    publicClient,
-    // webSocketPublicClient,
-});
 
 const RESOLVER_REGEX = /^0x[\dA-Fa-f]{40}$/;
 const NAME_REGEX = /^[\w-]+$/;
@@ -78,14 +47,8 @@ const Demo = () => {
     const [rentPrice, setRentPrice] = useState<bigint | null>(undefined);
 
     const { connect } = useConnect({
-        connector: new InjectedConnector({ chains: [goerli] }),
-        // TODO: Hardcoded chainid
-        chainId: 5,
+        connector: TheConnector,
     });
-
-    useEffect(() => {
-        connect();
-    }, []);
 
     const { isConnected } = useAccount();
 
@@ -143,13 +106,5 @@ const Demo = () => {
 };
 
 export const ETHRegistryDemo = () => {
-    return (
-        <ClientOnly
-            child={() => (
-                <WagmiConfig config={config}>
-                    <Demo />
-                </WagmiConfig>
-            )}
-        />
-    );
+    return <ClientOnly child={() => <Demo />} />;
 };

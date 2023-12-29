@@ -9,6 +9,7 @@ export const useRentPrice = (name: string, duration: number) => {
         functionName: 'rentPrice',
         args: [name, duration],
         enabled: !!name && name.length >= 3 && !!duration && duration > 0,
+        chainId: 5,
     });
 
     return {

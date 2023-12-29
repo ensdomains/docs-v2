@@ -9,6 +9,7 @@ export const useIsAvailable = (name: string) => {
         functionName: 'available',
         args: [name],
         enabled: !!name && name.length >= 3,
+        chainId: 5,
     });
 
     return {

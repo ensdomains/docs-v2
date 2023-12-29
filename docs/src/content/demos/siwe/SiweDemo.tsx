@@ -1,44 +1,25 @@
 'use client';
 
 import { formatAddress } from '@ens-tools/format';
+import { TheConnector } from 'app/theme';
 import { useEffect } from 'react';
 import { FaSignature, FaSpinner } from 'react-icons/fa';
 import { ImExit } from 'react-icons/im';
 import { SiweMessage } from 'siwe';
 import {
-    configureChains,
-    createConfig,
-    mainnet,
     useAccount,
     useConnect,
     useDisconnect,
     useEnsName,
     useSignMessage,
-    WagmiConfig,
 } from 'wagmi';
-import { InjectedConnector } from 'wagmi/connectors/injected';
-import { publicProvider } from 'wagmi/providers/public';
 
 import { ClientOnly } from '@/ClientOnly';
 import { Button } from '@/components/Button';
 
-const {
-    chains: _chains,
-    publicClient,
-    webSocketPublicClient,
-} = configureChains([mainnet], [publicProvider()]);
-
-const config = createConfig({
-    autoConnect: true,
-    publicClient,
-    webSocketPublicClient,
-});
-
 const Demo = () => {
     const { address, isConnected } = useAccount();
-    const { connect } = useConnect({
-        connector: new InjectedConnector(),
-    });
+    const { connect } = useConnect();
     const { disconnect } = useDisconnect();
     const { data: ensName } = useEnsName({ address });
     const {
@@ -114,7 +95,7 @@ const Demo = () => {
                 <Button
                     variant="primary"
                     onClick={() => {
-                        connect();
+                        connect({ connector: TheConnector });
                     }}
                 >
                     Connect Wallet
@@ -124,12 +105,4 @@ const Demo = () => {
     );
 };
 
-export const SiweDemo = () => (
-    <ClientOnly
-        child={() => (
-            <WagmiConfig config={config}>
-                <Demo />
-            </WagmiConfig>
-        )}
-    />
-);
+export const SiweDemo = () => <ClientOnly child={() => <Demo />} />;

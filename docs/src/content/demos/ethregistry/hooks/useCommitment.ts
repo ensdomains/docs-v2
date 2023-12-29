@@ -22,6 +22,7 @@ export const useCommitment = (
             duration > 0 &&
             !!secret &&
             !!resolver,
+        chainId: 5,
     });
 
     return {

@@ -1,11 +1,8 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { createPublicClient, http } from 'viem';
-import { goerli } from 'viem/chains';
+import { TheConnector } from 'app/theme';
+import { useState } from 'react';
 import { useAccount, useConnect } from 'wagmi';
-import { createConfig, WagmiConfig } from 'wagmi';
-import { InjectedConnector } from 'wagmi/connectors/injected';
 
 import { ClientOnly } from '@/ClientOnly';
 import { Button } from '@/components/Button';
@@ -15,17 +12,6 @@ import { DurationField } from '../ethregistry/inputs/DurationField';
 import { LabelField } from '../ethregistry/inputs/LabelField';
 import { RentPriceCheck } from '../ethregistry/stage/RentPriceCheck';
 import { RenewName } from './transactions/RenewName';
-
-const publicClient = createPublicClient({
-    chain: goerli,
-    transport: http('https://rpc.ankr.com/eth_goerli'),
-});
-
-const config = createConfig({
-    autoConnect: false,
-    publicClient,
-    // webSocketPublicClient,
-});
 
 const Demo = () => {
     const { address } = useAccount();
@@ -50,13 +36,8 @@ const Demo = () => {
     const [rentPrice, setRentPrice] = useState<bigint | null>(undefined);
 
     const { connect } = useConnect({
-        connector: new InjectedConnector({ chains: [goerli] }),
-        chainId: 5,
+        connector: TheConnector,
     });
-
-    useEffect(() => {
-        connect();
-    }, []);
 
     const { isConnected } = useAccount();
 
@@ -97,13 +78,5 @@ const Demo = () => {
 };
 
 export const ETHRegistryRenewDemo = () => {
-    return (
-        <ClientOnly
-            child={() => (
-                <WagmiConfig config={config}>
-                    <Demo />
-                </WagmiConfig>
-            )}
-        />
-    );
+    return <ClientOnly child={() => <Demo />} />;
 };

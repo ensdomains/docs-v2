@@ -7,10 +7,10 @@ export const meta = {
     contributors: []
 };
 
-# CCIP
+# Offchain Names
 
-[EIP-3668](https://eips.ethereum.org/EIPS/eip-3668), otherwise known as CCIP Read, is an Ethereum standard that enables any smart contract to load data from an external source (such as a database, rollup, L2, or http).
-This means that using CCIP we can load information about names and subnames, from for example an L2, Database, or a regular REST endpoint.
+Some names might have resolvers that leverage [EIP-3668](https://eips.ethereum.org/EIPS/eip-3668), otherwise known as CCIP Read, an Ethereum standard that enables any smart contracts to defer loading data to an external source (such as a database, rollup, L2, or just an http endpoint).
+This means that using CCIP we can write a resolver whose subdomains are on an L2, or in a database.
 
 <div className="card1 p-4 flex justify-center items-center gap-4">
     <Usertag name="lucemans.cb.id" image="https://metadata.ens.domains/mainnet/avatar/luc.eth" />
@@ -35,8 +35,11 @@ This means that using CCIP we can load information about names and subnames, fro
 
 By loading data from a gateway, write operations (and thereby gas costs) can be deferred to an L2, or completely circumvented using a database.
 This means subnames can be issued gaslessly, tokenized on an L2, inferred from live DNS data, and more.
+And records can be updated in a similar manner depending on the implementation.
 
 ## How does it work?
+
+TLDR; The smart contract reverts with a custom error code, client sdk's (such as ethers and viem) do a ccip read gateway request, the data is sent back to the callback function, the original function resolves.
 
 <img src="/content/learn/ccip/1.png" className="w-full card" />
 

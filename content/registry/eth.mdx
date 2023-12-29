@@ -98,6 +98,21 @@ If you would like to register a name through a smart contract, or your own inter
 
 For the process of `.eth` name registration the ETH Registrar uses a two transaction commit reveal process.
 
+<div className="card1 p-4 flex items-center justify-center gap-8">
+    <div className="text-center flex flex-col items-center">
+        <Icons.FiHash className="text-2xl" />
+        <span>Commit</span>
+    </div> 
+    <div className="text-center flex flex-col items-center">
+        <Icons.FiClock className="text-2xl" />
+        <span>Wait</span>
+    </div>
+    <div className="text-center flex flex-col items-center">
+        <Icons.FiBookOpen className="text-2xl" />
+        <span>Reveal</span>
+    </div>
+</div>
+
 ### Commit Reveal
 
 The ETHRegistrarController implements a commit reveal scheme to prevent frontrunning.
