@@ -266,3 +266,36 @@ tbody tr:last-child td {
     @apply focus:ring focus:ring-offset-2 focus:ring-ens-light-blue-bright dark:focus:ring-ens-dark-blue-bright focus:outline-none; /* */
     @apply rounded-lg py-2.5 px-5;
 }
+
+.btn-disabled {
+    @apply bg-ens-light-background-disabled dark:bg-ens-dark-background-disabled;
+    @apply text-ens-light-text-disabled dark:text-ens-dark-text-disabled;
+    @apply rounded-lg py-2.5 px-5;
+}
+
+.input {
+    @apply block w-full border border-ens-light-border dark:border-ens-dark-border;
+    @apply outline-none;
+    @apply focus:ring focus:ring-offset-2 focus:ring-ens-light-blue-bright dark:focus:ring-ens-dark-blue-bright focus:outline-none; /* */
+    @apply rounded-lg py-2 px-5;
+}
+
+.helper-green {
+    @apply flex items-center gap-2 text-ens-light-text-primary dark:text-ens-dark-text-primary rounded-lg p-4 bg-ens-light-green-surface dark:bg-ens-dark-green-surface border border-ens-light-green-primary dark:border-ens-dark-green-primary;
+}
+
+.helper-green svg {
+    @apply text-ens-light-green-primary dark:text-ens-dark-green-primary text-2xl;
+}
+
+.tag {
+    @apply inline-flex items-center justify-center gap-1 rounded-2xl px-3 py-0.5 w-fit text-sm h-fit;
+}
+
+.tag-blue {
+    @apply text-ens-light-blue-primary dark:text-ens-dark-blue-primary bg-ens-light-blue-surface dark:bg-ens-dark-blue-surface;
+}
+
+.tag-yellow {
+    @apply text-ens-light-yellow-active dark:text-ens-dark-yellow-active bg-ens-light-yellow-surface dark:bg-ens-dark-yellow-surface;
+}

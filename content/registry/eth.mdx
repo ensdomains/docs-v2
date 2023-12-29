@@ -16,3 +16,66 @@ export const meta = {
     'Censorship Resistance'
 ]} />
 
+The ETH Registrar is a special regisrar. It allows for trustless on-chain name registration and is in charge of the ".eth" TLD.
+
+## Ethereum Layer 1
+
+## Fees
+
+The ETH Registrar charges a fee for registrarion.
+This fee is paid in ETH and is set to prevent spamming the registrar.
+Any protocol fees are sent to the ENS Treasury.
+
+### 3, 4, and 5 Letter Names
+
+### Pricing Oracle
+
+## ERC721 Spec
+
+In the early days of ENS, 
+The original ETH Registrar formed the pre-cursor to the ERC721 standard.
+However since XXXX the ETH Registrar now supports the ERC721 standard meaning that 
+
+Users can interact with the ETH Registrar to transfer their name just like with any other ERC721 token.
+
+## Registering a Name
+
+To register a name you can use the [ENS Manager App](https://ens.app/).
+If you would like to register a name through a smart contract, or your own interface, you can use the following functions.
+
+### Commit Reveal
+
+The ETHRegistrarController implements a commit reveal scheme to prevent frontrunning.
+The way it works is that during the registration process we first call the `commit` function. Wait a few blocks and then call the `register` function.
+
+```solidity
+ETHRegistrarController.commit(commitment bytes32)
+```
+
+```solidity
+ETHRegistrarController.register(name string, owner address, duration uint256, secret bytes32, resolver address, data bytes[], reverseRecord bool, ownerControlledFuses uint16)
+
+// For example
+register(
+    "myname", // "myname.eth" but only the label
+    0x1234..., // The address you want to own the name
+    31536000, // 1 year (in seconds)
+    0x1234..., // A secret that you have generated (32 bytes)
+    0x1234..., // The address of the resolver you want to use
+    [],
+    false, // Set as primary name?
+    0
+);
+```
+
+If you would like to try registering a name live on a testnet you can use the live demo below.
+
+<LiveDemo id="ethregistry" />
+
+## Renewing a Name
+
+```
+ETHRegistrarController.renew()
+```
+
+<LiveDemo id="ethregistry_renew" />

@@ -16,7 +16,8 @@ export const Layout: FC<{
     children: ReactNode;
     mdxProperties: MdxPageProps;
     snapshotData?: ProposalData;
-}> = ({ children, mdxProperties, snapshotData }) => {
+    isHome?: boolean;
+}> = ({ children, mdxProperties, snapshotData, isHome = false }) => {
     const schema: WithContext<Article> = {
         '@context': 'https://schema.org',
         '@type': 'Article',
@@ -34,32 +35,50 @@ export const Layout: FC<{
             <div className="h-full max-h-screen" id="app">
                 <Header />
                 <Sidebar />
-                <div className="relative mt-28 px-4 sm:px-6 lg:ml-72 lg:px-8 xl:ml-80">
-                    <main className="relative space-y-4 py-4">
-                        <div className="prose text-ens-light-text-secondary dark:text-ens-dark-text-secondary">
-                            <Breadcrumbs />
-                        </div>
+                <div className="relative mt-24 px-4 sm:px-6">
+                    {isHome ? (
+                        <>
+                            <main className="relative space-y-4 py-4">
+                                <div className="prose mt-4 w-full space-y-6">
+                                    {children}
+                                </div>
+                            </main>
+                            <div className="prose">
+                                <div className="notprose w-full">
+                                    <Footer mdxProperties={mdxProperties} />
+                                </div>
+                            </div>
+                        </>
+                    ) : (
+                        <div className="lg:ml-72 lg:px-8 xl:ml-80">
+                            <main className="relative my-4 space-y-4 py-4">
+                                <div className="prose x text-ens-light-text-secondary dark:text-ens-dark-text-secondary">
+                                    <Breadcrumbs />
+                                </div>
 
-                        <script
-                            type="application/ld+json"
-                            dangerouslySetInnerHTML={{
-                                __html: JSON.stringify(schema),
-                            }}
-                        />
-                        <Prose>{children}</Prose>
+                                <script
+                                    type="application/ld+json"
+                                    dangerouslySetInnerHTML={{
+                                        __html: JSON.stringify(schema),
+                                    }}
+                                />
 
-                        <div className="prose">
-                            <PageDetails
-                                mdxProperties={mdxProperties}
-                                snapshotData={snapshotData}
-                            />
+                                <Prose>{children}</Prose>
+
+                                <div className="prose pt-8">
+                                    <PageDetails
+                                        mdxProperties={mdxProperties}
+                                        snapshotData={snapshotData}
+                                    />
+                                </div>
+                            </main>
+                            <div className="prose">
+                                <div className="notprose w-full">
+                                    <Footer mdxProperties={mdxProperties} />
+                                </div>
+                            </div>
                         </div>
-                    </main>
-                    <div className="prose">
-                        <div className="notprose w-full">
-                            <Footer mdxProperties={mdxProperties} />
-                        </div>
-                    </div>
+                    )}
                 </div>
             </div>
         </SectionProvider>

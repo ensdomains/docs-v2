@@ -20,6 +20,7 @@ const ArrowIcon: FC = (properties) => {
 
 const variantStyles = {
     primary: 'btn-blue-primary',
+    disabled: 'btn-disabled',
     red: cxWithTheme(
         'rounded-lg py-1 px-3',
         'bg-ens-light-blue-red-400/10 text-ens-light-blue-red-400 ring-1 ring-inset ring-ens-red-400/20 hover:bg-ens-light-blue-red-400/10 hover:text-ens-light-blue-red-300 hover:ring-ens-red-300',

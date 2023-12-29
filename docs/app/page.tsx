@@ -25,7 +25,7 @@ export default async function Page() {
     const { Page, pageProperties } = await getPageBySlug('index');
 
     return (
-        <Layout mdxProperties={pageProperties}>
+        <Layout mdxProperties={pageProperties} isHome={true}>
             <Page {...pageProperties} />
         </Layout>
     );

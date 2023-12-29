@@ -48,7 +48,7 @@ module.exports = ({ theme }) => ({
             lineHeight: theme('lineHeight.7'),
 
             // Layout
-            '> *': {
+            '.x > *': {
                 maxWidth: theme('maxWidth.2xl'),
                 marginLeft: 'auto',
                 marginRight: 'auto',

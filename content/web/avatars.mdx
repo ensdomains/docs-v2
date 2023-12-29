@@ -26,8 +26,6 @@ This page covers the very special **avatar** record that enables users to take t
 
 ## Getting the user's Avatar {{ navtitle: 'Getting an Avatar', id: 'avatars', tag: 'Avatar' }}
 
-### On-chain lookup
-
 Avatars are an awesome way for users to express themselves. To get the user's avatar, all you need is their **name**. If you only have their address, see [primary names](/web/reverse#get).
 The following code snippets let you get the avatar for a user.
 
@@ -44,7 +42,7 @@ function App() {
 
   return (
     <img
-      src={ensAvatar || "https://v3x.space/ens-docs/pfp.webp"}
+      src={ensAvatar || "https://avatars.jakerunzer.com/luc.eth"}
       alt="luc.eth"
     />
   );
