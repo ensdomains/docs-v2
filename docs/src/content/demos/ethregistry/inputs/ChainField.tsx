@@ -1,15 +1,30 @@
 import { FC } from 'react';
-import { useAccount, useSwitchNetwork } from 'wagmi';
+import { goerli } from 'viem/chains';
+import {
+    useAccount,
+    useChainId,
+    useConnect,
+    useNetwork,
+    useSwitchNetwork,
+} from 'wagmi';
+import { InjectedConnector } from 'wagmi/connectors/injected';
 
 import { Button } from '@/components/Button';
 
+const available_chains = new Set([5]);
+
 export const ChainField: FC = () => {
     const { switchNetwork } = useSwitchNetwork();
+    const chainId = useChainId();
     const { isConnected, address } = useAccount();
+    const { chains } = useNetwork();
+    const { connect } = useConnect();
+
+    console.log(chains);
 
     return (
         <div className="">
-            <span>Chain</span>
+            <span>Chain (currently {chainId})</span>
             <div className="flex gap-4">
                 {(
                     [
@@ -22,14 +37,20 @@ export const ChainField: FC = () => {
                     <Button
                         key={id}
                         variant={
-                            (id === 5
+                            (available_chains.has(id)
                                 ? 'secondary'
                                 : 'disabled') as unknown as 'primary'
                         }
                         onClick={() => {
-                            if (id === 5) {
+                            if (available_chains.has(id)) {
                                 // TODO: Change Chain ID
-                                switchNetwork(id);
+                                // switchNetwork(id);
+                                connect({
+                                    chainId: id,
+                                    connector: new InjectedConnector({
+                                        chains: [goerli],
+                                    }),
+                                });
                             }
                         }}
                     >

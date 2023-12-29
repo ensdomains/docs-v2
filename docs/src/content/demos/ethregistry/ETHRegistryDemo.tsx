@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { createPublicClient, http } from 'viem';
 import { goerli } from 'viem/chains';
-import { useAccount, useConnect } from 'wagmi';
+import { useAccount, useChainId, useConnect } from 'wagmi';
 import { createConfig, WagmiConfig } from 'wagmi';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 
@@ -45,7 +45,7 @@ const publicClient = createPublicClient({
 });
 
 const config = createConfig({
-    autoConnect: true,
+    autoConnect: false,
     publicClient,
     // webSocketPublicClient,
 });
@@ -56,6 +56,7 @@ const ALLOWED_METHODS = ['addr', 'text', 'contenthash', 'ttl'];
 
 const Demo = () => {
     const { address } = useAccount();
+    const chainId = useChainId();
 
     /* User Configurable Values */
     const [label, setLabel] = useState('testname123456');
@@ -78,6 +79,8 @@ const Demo = () => {
 
     const { connect } = useConnect({
         connector: new InjectedConnector({ chains: [goerli] }),
+        // TODO: Hardcoded chainid
+        chainId: 5,
     });
 
     useEffect(() => {
@@ -92,8 +95,8 @@ const Demo = () => {
                 Register a Name (Live Demo)
             </div>
             <div className="space-y-4 p-4">
-                <div>
-                    {!isConnected && (
+                {!isConnected && (
+                    <div>
                         <Button
                             variant="primary"
                             onClick={() => {
@@ -102,8 +105,8 @@ const Demo = () => {
                         >
                             Connect
                         </Button>
-                    )}
-                </div>
+                    </div>
+                )}
                 <ChainField />
                 <LabelField label={label} setLabel={setLabel} />
                 <AvailabilityCheck name={label} setAvailable={setAvailable} />

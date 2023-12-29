@@ -22,7 +22,7 @@ const publicClient = createPublicClient({
 });
 
 const config = createConfig({
-    autoConnect: true,
+    autoConnect: false,
     publicClient,
     // webSocketPublicClient,
 });
@@ -51,6 +51,7 @@ const Demo = () => {
 
     const { connect } = useConnect({
         connector: new InjectedConnector({ chains: [goerli] }),
+        chainId: 5,
     });
 
     useEffect(() => {
