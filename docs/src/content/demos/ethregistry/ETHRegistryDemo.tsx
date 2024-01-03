@@ -1,7 +1,7 @@
 'use client';
 
 import { TheConnector } from 'app/theme';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useAccount, useChainId, useConnect } from 'wagmi';
 
 import { ClientOnly } from '@/ClientOnly';
