@@ -21,7 +21,7 @@ const {
     publicClient,
     webSocketPublicClient,
 } = configureChains(
-    [mainnet, goerli, sepolia],
+    [goerli, sepolia, mainnet],
     [
         jsonRpcProvider({
             rpc: (chain) => {

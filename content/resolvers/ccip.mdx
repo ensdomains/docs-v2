@@ -5,7 +5,7 @@ export const meta = {
     title: 'Cross Chain Interoperability Protocol (CCIP)',
     description: '',
     emoji: '⛓️',
-    contributors: ['lucemans']
+    contributors: ['lucemans'],
 };
 
 # Cross Chain / Offchain Names
@@ -51,18 +51,22 @@ To build using CCIP there are two steps:
 
 ## Writing a Gateway
 
-A gateway must be implemented following the [Gateway Interface](https://eips.ethereum.org/EIPS/eip-3668#gateway-interface) as specified in EIP-3668.
+A gateway must be implemented using the [Gateway Interface](https://eips.ethereum.org/EIPS/eip-3668#gateway-interface) as specified in EIP-3668.
 This entails it must expose an API served over https, and must return data in a specific format.
 This service can be a server, a serverless function, worker, etc.
 The URL for this gateway is determined by the `OffchainLookup` error, and is passed as a parameter to the error.
 
 ### Template Repositories
+
 <Repository src="ensdomains/offchain-resolver" description="CCIP Offchain ENS Resolver with Cloudflare Workers"/>
 <Repository src="ensdomains/offchain-gateway-rs" description="Offchain CCIP Gateway Resolver implementation in Rust (& postgres)"/>
 <Repository src="ensdomains/offchain-resolver-example" />
 <Repository src="gskril/ens-offchain-resolver-read-from-api" />
 
-### Endpoint Implementation {{ navtitle: 'Implement Gateway', id: 'endpoint' }}
+### Implement Gateway Endpoint {{ navtitle: 'Implement Gateway', id: 'endpoint' }}
+
+There are two methods (GET and POST) you can choose to implement when writing a gateway. When your smart contract reverts with the `OffchainLookup` error you can decide the url it returns.
+If `{data}` can be successfully substituted out of the URL a GET request will be made, if no `{data}` is present a POST request will be made instead, with the data instead submitted as the post body.
 
 <Row>
   <Col>
@@ -110,7 +114,7 @@ The URL for this gateway is determined by the `OffchainLookup` error, and is pas
 
 Last but not least you need to instruct your name to use the gateway.
 
-```mermaid
+{/* ```mermaid
 sequenceDiagram
     participant Client
     box Ethereum L1
@@ -140,4 +144,4 @@ sequenceDiagram
         Client->>Resolver: Do these results look right?
         Resolver->>Client: 
     end
-```
+``` */}

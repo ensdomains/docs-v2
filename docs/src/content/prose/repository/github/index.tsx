@@ -4,6 +4,26 @@ import { FiFolderPlus, FiGitBranch, FiGithub, FiStar } from 'react-icons/fi';
 import { RepositoryType } from '../Repository';
 import { fetchGithubRepositoryData } from './fetch';
 
+const getLanguageColor = (language: string) => {
+    if (language === 'TypeScript') {
+        return '#2b7489';
+    }
+
+    if (language === 'JavaScript') {
+        return '#f1e05a';
+    }
+
+    if (language === 'HTML') {
+        return '#e34c26';
+    }
+
+    if (language === 'Rust') {
+        return '#dea584';
+    }
+
+    return '';
+};
+
 export const GithubRepository: FC<RepositoryType> = async ({
     src,
     name,
@@ -15,10 +35,14 @@ export const GithubRepository: FC<RepositoryType> = async ({
         forks_count,
         is_template,
         stargazers_count,
+        language,
+        languages_url,
     } = await fetchGithubRepositoryData(src);
 
     name = name || src;
     description = description || gh_description;
+
+    const languageColor = getLanguageColor(language);
 
     return (
         <span className="not-prose block">
@@ -35,6 +59,15 @@ export const GithubRepository: FC<RepositoryType> = async ({
                     <p>{description}</p>
                 </span>
                 <span className="hidden items-start gap-2 md:flex">
+                    {language && (
+                        <span
+                            style={{ color: languageColor }}
+                            className="flex items-center text-sm"
+                        >
+                            <span className="mr-0.5 text-xs leading-3">●</span>
+                            <span className="leading-3">{language}</span>
+                        </span>
+                    )}
                     {stargazers_count > 10 && (
                         <span className="flex items-center text-gray-400">
                             <FiStar className="mr-0.5" />
