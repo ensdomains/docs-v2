@@ -192,25 +192,23 @@ export const ConnectKits = () => {
                             </div>
                             <div className="mt-2 text-left text-sm">
                                 <ul>
-                                    {library.templates?.map(
-                                        (template, index) => (
-                                            <li className="px-3">
-                                                with{' '}
-                                                <a
-                                                    href={template.url}
-                                                    target="_blank"
-                                                    className="inline-flex items-center gap-0.5 text-blue-500 hover:underline"
-                                                >
-                                                    {template.icon && (
-                                                        <span className="h-fit">
-                                                            {template.icon}
-                                                        </span>
-                                                    )}
-                                                    {template.name}
-                                                </a>
-                                            </li>
-                                        )
-                                    )}
+                                    {library.templates?.map((template) => (
+                                        <li className="px-3">
+                                            with{' '}
+                                            <a
+                                                href={template.url}
+                                                target="_blank"
+                                                className="inline-flex items-center gap-0.5 text-blue-500 hover:underline"
+                                            >
+                                                {template.icon && (
+                                                    <span className="h-fit">
+                                                        {template.icon}
+                                                    </span>
+                                                )}
+                                                {template.name}
+                                            </a>
+                                        </li>
+                                    ))}
                                 </ul>
                             </div>
                         </div>

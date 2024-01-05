@@ -15,7 +15,7 @@ export function Code({ children, ...properties }) {
 
 export const Pre: FC<PropsWithChildren<CodePanelProperties>> = ({
     children,
-    title,
+    // title,
     isChild,
     ...properties
 }) => {

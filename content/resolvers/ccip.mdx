@@ -6,7 +6,7 @@ export const meta = {
     contributors: ['lucemans'],
 };
 
-# Cross Chain / Offchain Resolution
+# Cross Chain / Offchain Resolvers
 
 {/* This document covers what it takes to write a gateway resolver. */}
 
@@ -14,7 +14,24 @@ The source of truth for a name and its subdomains does not always have to be on-
 By leveraging [EIP-3668](https://eips.ethereum.org/EIPS/eip-3668), the Cross Chain Interoperability Protocol (or CCIP Read for short), we can load information by hitting a so called "Gateway".
 Within the context of ENS, this enables us, to read names, addresses, records, and more from other chains, or even off-chain.
 
-<img src="/content/learn/ccip/1.png" className="w-full card" />
+<div className="card1 p-4 flex justify-center items-center gap-4">
+    <Usertag name="lucemans.cb.id" image="https://metadata.ens.domains/mainnet/avatar/luc.eth" />
+    <div>➡️</div>
+    <div className="text-center leading-4">
+        <div className="font-bold">Resolver</div>
+        <div>0x1234</div>
+    </div>
+    <div>➡️</div>
+    <div className="text-center leading-4">
+        <div className="font-bold">Gateway</div>
+        <div>api.example.com</div>
+    </div>
+    <div>➡️</div>
+    <div className="text-center leading-4 card p-2 no-margin !bg-lime-50">
+        <div className="font-bold">Address:</div>
+        <div>0x225...c3b5</div>
+    </div>
+</div>
 
 ## How does it work?
 
@@ -87,20 +104,24 @@ Method: GET
 
 <Properties>
   <Property name="sender" type="address">
-    Limit the number of conversations returned.
+    Lowercased address of the contract reverting with the `OffchainLookup` error.
   </Property>
   <Property name="data" type="bytes">
     Only show conversations that are muted when set to `true`.
   </Property>
 </Properties>
 
-{/* ### Loading data from a layer 2 or database */}
+### Deploying a Resolver
 
-{/* ### Verifying the data on-chain (optional) */}
+Once you have written your gateway you need to deploy a resolver contract.
+For ready-to-deploy contracts check the demo's above or visit [ccip.tools](https://ccip.tools/ref=ens-docs).
+If you would like to read more about writing your own resolver checkout the [Writing a Resolver](/resolvers/writing) guide.
 
-{/* ## Configuring Name {{ navtitle: 'Setting Resolver', id: 'set' }} */}
+The gist is that this resolver must implement the specifications you plan to support (such as `addr()` or `resolve()`), and then revert with `OffchainLookup` and your gateway URL.
 
-{/* Last but not least you need to instruct your name to use the gateway. */}
+### Enabling your Resolver {{ navtitle: 'Setting Resolver', id: 'set' }}
+
+Last but not least you need to instruct your name to use the gateway.
 
 {/* ```mermaid
 sequenceDiagram

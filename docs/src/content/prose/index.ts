@@ -1,5 +1,3 @@
-import { default as a } from 'next/link';
-
 import { Button } from '@/components/Button';
 import { Col } from '@/components/mdx/Col';
 import { EmbedLink } from '@/components/mdx/EmbedLink';
@@ -11,11 +9,12 @@ import { Row } from '@/components/mdx/Row';
 
 import { Code, Pre } from './code/Code';
 import { CodeGroup } from './code/group/CodeGroup';
+import { ALink } from './link/ALink';
 import { Repository } from './repository/Repository';
 import { VideoComponent } from './video/Video';
 
 export const prose = {
-    a: a as any,
+    a: ALink,
     h2,
     Note,
     Row,

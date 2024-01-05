@@ -36,7 +36,6 @@ export const GithubRepository: FC<RepositoryType> = async ({
         is_template,
         stargazers_count,
         language,
-        languages_url,
     } = await fetchGithubRepositoryData(src);
 
     name = name || src;
@@ -45,7 +44,7 @@ export const GithubRepository: FC<RepositoryType> = async ({
     const languageColor = getLanguageColor(language);
 
     return (
-        <span className="not-prose block">
+        <span className="not-prose gh-repo block">
             <a
                 href={html_url}
                 target="_blank"

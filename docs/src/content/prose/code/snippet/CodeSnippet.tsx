@@ -29,9 +29,9 @@ export type CodePanelProperties = {
 } & CodeSnippetProperties;
 
 export const CodePanel: FC<PropsWithChildren<CodePanelProperties>> = ({
-    tag,
-    label,
-    code,
+    // tag,
+    // label,
+    // code,
     link,
     stackblitz,
     title,
@@ -94,7 +94,7 @@ export const CodePanel: FC<PropsWithChildren<CodePanelProperties>> = ({
             data-code-variant={variant ?? title ?? language}
             data-code-group={identifier}
         >
-            <div className="overflow-hidden rounded-b-xl border border-ens-light-border dark:border-ens-dark-border">
+            <div className="border-ens-light-border dark:border-ens-dark-border overflow-hidden rounded-b-xl border">
                 {isStandaloneCodeSnippet && preset && (
                     <div className="float-right flex items-center gap-1 pr-3.5 pt-3.5">
                         <div className="h-4 w-4 overflow-hidden rounded-full">
@@ -109,7 +109,7 @@ export const CodePanel: FC<PropsWithChildren<CodePanelProperties>> = ({
                 )}
                 <div className="relative">
                     <pre
-                        className="overflow-x-auto p-4 text-xs text-ens-light-text-primary dark:text-ens-dark-text-primary"
+                        className="text-ens-light-text-primary dark:text-ens-dark-text-primary overflow-x-auto p-4 text-xs"
                         // ref={preReference}
                     >
                         {children}
@@ -126,7 +126,7 @@ export const CodePanel: FC<PropsWithChildren<CodePanelProperties>> = ({
                             <Link
                                 href={link}
                                 target="_blank"
-                                className="flex items-center gap-1 text-ens-light-blue-primary hover:underline dark:text-ens-dark-blue-primary"
+                                className="text-ens-light-blue-primary dark:text-ens-dark-blue-primary flex items-center gap-1 hover:underline"
                             >
                                 <FiExternalLink />
                                 Read more
@@ -138,7 +138,7 @@ export const CodePanel: FC<PropsWithChildren<CodePanelProperties>> = ({
                             <Link
                                 href={stackblitz}
                                 target="_blank"
-                                className="rounded-md p-1 pr-2 text-xs text-ens-light-blue-primary transition hover:bg-gray-100 dark:text-ens-dark-blue-primary"
+                                className="text-ens-light-blue-primary dark:text-ens-dark-blue-primary rounded-md p-1 pr-2 text-xs transition hover:bg-gray-100"
                             >
                                 <img
                                     src="/icons/stackblitz.svg"

@@ -19,10 +19,6 @@ import { RentPriceCheck } from './stage/RentPriceCheck';
 import { MakeCommit } from './transactions/MakeCommit';
 import { RegisterName } from './transactions/RegisterName';
 
-const RESOLVER_REGEX = /^0x[\dA-Fa-f]{40}$/;
-const NAME_REGEX = /^[\w-]+$/;
-const ALLOWED_METHODS = ['addr', 'text', 'contenthash', 'ttl'];
-
 const Demo = () => {
     const { address } = useAccount();
     const chainId = useChainId();

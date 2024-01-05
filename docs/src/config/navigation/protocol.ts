@@ -252,7 +252,7 @@ export const navigation: SectionData[] = [
                         icon: '👉',
                     },
                     {
-                        title: 'Cross Chain Resolution',
+                        title: 'Cross Chain Resolvers',
                         href: '/resolvers/ccip',
                         wip: 60,
                         icon: '⛓️',

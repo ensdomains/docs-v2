@@ -9,7 +9,7 @@ module.exports = {
     darkMode: 'class',
     theme: {
         fontFamily: {
-            sans: ['Inter'],
+            sans: ['Inter', 'sans-serif'],
         },
         fontSize: {
             '3xs': ['0.625rem', { lineHeight: '1rem' }],

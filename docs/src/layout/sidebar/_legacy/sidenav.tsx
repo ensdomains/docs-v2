@@ -6,10 +6,10 @@ import { navigation } from '@/config/navigation';
 
 import { NavigationGroup } from './navgroup';
 
-export const Navigation = (properties) => {
+export const Navigation = (_properties) => {
     const pathname = usePathname();
 
-    const isDAO = pathname.match(/\/dao/);
+    // const isDAO = pathname.match(/\/dao/);
 
     const activeNavigation = navigation['protocol'];
 
@@ -42,7 +42,7 @@ export const Navigation = (properties) => {
                 </ul> */}
                 {/* {activeSection?.href == section.href && ( */}
                 <ul className="mb-32 px-3">
-                    {activeSection?.links.map((group, groupIndex) => (
+                    {activeSection?.links.map((group) => (
                         <NavigationGroup
                             key={group.title}
                             group={group}
