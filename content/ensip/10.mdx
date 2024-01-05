@@ -124,7 +124,7 @@ The DNS wire format is used for encoding names as it permits quick and gas-effic
 
 Existing ENS clients that are compliant with ENSIP-1 will fail to resolve wildcard records and refuse to interact with them, while those compliant with ENSIP-10 will continue to correctly resolve, or reject, existing ENS records. Resolvers wishing to implement the new `resolve` function for non-wildcard use-cases (eg, where the resolver is set directly on the name being resolved) should consider what to return to legacy clients that call the individual resolution functions for maximum compatibility.
 
-Requiring clients to avoid calling existing resolution functions (eg, `addr` etc) on wildcard resolvers prevents inadvertant backwards compatiability issues with resolvers that answer queries for all names.
+Requiring clients to avoid calling existing resolution functions (eg, `addr` etc) on wildcard resolvers prevents inadvertent backwards compatibility issues with resolvers that answer queries for all names.
 
 ## Security Considerations
 

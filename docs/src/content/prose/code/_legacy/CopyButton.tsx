@@ -14,32 +14,32 @@ const getCopiedLabel = (copyCount) => {
     }
 
     if (copyCount > 100) {
-        // Writen by co-pilot
+        // Written by co-pilot
         return 'Determination... I like it';
     }
 
     if (copyCount > 60) {
-        // Writen by co-pilot
+        // Written by co-pilot
         return 'Sigh.... you are still copying?';
     }
 
     if (copyCount > 50) {
-        // Writen by co-pilot
+        // Written by co-pilot
         return 'You are a mad lad';
     }
 
     if (copyCount > 45) {
-        // Writen by co-pilot
+        // Written by co-pilot
         return 'Ok... you are just showing off now';
     }
 
     if (copyCount > 35) {
-        // Writen by co-pilot
+        // Written by co-pilot
         return 'I hope you actually know what code youre copying 🤔';
     }
 
     if (copyCount > 30) {
-        // Writen by co-pilot
+        // Written by co-pilot
         return 'BUILD BUILD BUILD BUILD BUILD BUILD!!!!';
     }
 

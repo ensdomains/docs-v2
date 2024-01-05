@@ -21,7 +21,7 @@ export const mdxPagePropsSchema = z
              */
             emoji: z.string().default('📑'),
             /**
-             * Wether or not to show the details section
+             * Whether or not to show the details section
              */
             showDetailsSection: z.boolean().default(true),
             /**
