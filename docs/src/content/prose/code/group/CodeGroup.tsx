@@ -22,7 +22,7 @@ export const CodeGroup: FC<PropsWithChildren<CodeGroupProperties>> = ({
     presets = 'code',
     ...properties
 }) => {
-    // Generate a unique identifier to keep track of this code group accross dev reloads
+    // Generate a unique identifier to keep track of this code group across dev reloads
     const identifier = createHash('sha256')
         .update(title ?? Math.round(Math.random() * 10_000).toString())
         .digest('hex')

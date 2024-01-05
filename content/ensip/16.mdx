@@ -131,7 +131,7 @@ const dataLocation = await.resolver.graphqlUrl()
 
 ##### L1
 
-`Metada` is an optional schema that indexes `MetadataChanged` event.
+`Metadata` is an optional schema that indexes `MetadataChanged` event.
 
 ```graphql
 
@@ -155,7 +155,7 @@ type Metadata @entity {
   storageLocation: Bytes
   "optional field to store an arbitrary bytes string to define the namespace to which a record belongs"
   context: Bytes
-  "optional field if the name has expirty date offchain"
+  "optional field if the name has expiry date offchain"
   expiryDate: BigInt
 }
 
@@ -164,7 +164,7 @@ type Metadata @entity {
 ##### L2
 
 L2 graphql URL is discoverable via `metadata` function `graphqlUrl` field.
-Because the canonical ownership of the name exists on L1, some L2/offchain storage may choose to allow multiple entities to update the same node namespaced by `context`. When quering the domain data, the query should be filtered by `context` that is returned by `metadata`function `context` field
+Because the canonical ownership of the name exists on L1, some L2/offchain storage may choose to allow multiple entities to update the same node namespaced by `context`. When querying the domain data, the query should be filtered by `context` that is returned by `metadata`function `context` field
 
 ```graphql
 type Domain {
@@ -201,7 +201,7 @@ None
 
 ### Open Items
 
-- Should `owner` and `isApprovedForAll` be within graphql or shoud be own metadata function?
+- Should `owner` and `isApprovedForAll` be within graphql or should be own metadata function?
 
 ### Copyright
 

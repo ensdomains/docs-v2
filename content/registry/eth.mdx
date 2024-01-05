@@ -18,7 +18,7 @@ The ETH Registrar is a special registrar. It allows for trustless on-chain name 
 The ETH Registrar is split into two contracts. The [BaseRegistrar](#todo) and the [ETHRegistrarController](#todo).
 The BaseRegistrar is responsible for name ownership, transfers, etc (ownership related),
 while the Controller is responsible for registration & renewal (pricing related).
-This seperation is done to reduce the attack surface of the registrar, and provides users with the guarantees of continued ownership of a name so long as the registrar is in place.
+This separation is done to reduce the attack surface of the registrar, and provides users with the guarantees of continued ownership of a name so long as the registrar is in place.
 
 ### Controllers
 
@@ -147,7 +147,7 @@ ETHRegistrarController.commit(commitment bytes32)
 ```
 
 Note this does require an on-chain transaction.
-After having committed it is recommended to wait atleast the `MIN_COMMITMENT_AGE` (~60 seconds) before registering.
+After having committed it is recommended to wait at least the `MIN_COMMITMENT_AGE` (~60 seconds) before registering.
 
 ### Registering
 
@@ -190,10 +190,10 @@ If you would like to try registering a name live on a testnet you can use the li
 ETHRegistrarController.renew()
 ```
 
-Any user can renew a domain, not just the owner. This means that if you want to ensure a name doesnt expire you can renew it for someone.
+Any user can renew a domain, not just the owner. This means that if you want to ensure a name doesn't expire you can renew it for someone.
 
 By allowing renewal for any arbitrary amount of time users can ensure their name will not expire.
-As per the seperation between registry and controller, even with upgraded controller your name will still be yours.
+As per the separation between registry and controller, even with upgraded controller your name will still be yours.
 
 <LiveDemo id="ethregistry_renew" />
 
@@ -224,7 +224,7 @@ BaseRegistrar.transferPeriodEnds uint
 // Get Controller Status
 BaseRegistrar.controllers mapping(address=>bool)
 // Check Token Approval
-BaseRegistrar.getAppproved(uint256 tokenId) view returns (address operator)
+BaseRegistrar.getApproved(uint256 tokenId) view returns (address operator)
 // Check All Tokens Approval
 BaseRegistrar.isApprovedForAll(address owner, address operator) view returns (bool)
 // Get Token Owner

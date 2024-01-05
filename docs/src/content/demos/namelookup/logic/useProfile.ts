@@ -16,7 +16,7 @@ export type UseProfileParameters = {
     instance?: string;
 };
 
-// TODO: Naive approach, doesnt support extended character set
+// TODO: Naive approach, doesn't support extended character set
 const isValidDomain = /^([\da-z-]{1,63}\.)+[\da-z-]{1,63}$/i;
 
 export const useProfile = ({ name, instance }: UseProfileParameters) => {

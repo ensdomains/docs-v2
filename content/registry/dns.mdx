@@ -20,9 +20,9 @@ On this page we will explore the implementation of DNSSEC, the DNSRegistrar, and
 
 In the current DNS Registry approach you can [import a DNS name](/learn/dns#importing-a-dns-name).
 This process involves calling one of the `DNSRegistrar`'s `claim`, `proveAndClaim` or `proveAndClaimWithResolver` functions.
-Each of these functions takes in the name you want to register, aswell as a proof to verify.
+Each of these functions takes in the name you want to register, as well as a proof to verify.
 
-Under the hood the [DNSSECOracle](https://github.com/ensdomains/ens-contracts/tree/master/contracts/dnssec-oracle) is utalized to verify the proof.
+Under the hood the [DNSSECOracle](https://github.com/ensdomains/ens-contracts/tree/master/contracts/dnssec-oracle) is utilized to verify the proof.
 
 DNSSEC (Domain Name System Security Extensions) establishes a chain of trust from the root key (which is signed by ICANN) down to each key.
 This means that when submitted we can verify that our records have been signed by a key that is trusted for this domain.
@@ -31,7 +31,7 @@ The DNS Registrar grants ENS names to anyone who can prove ownership, through a 
 
 ### Claiming a name
 
-To claim a name you will need to enable DNSSEC for your domain, aswell as set a specific record.
+To claim a name you will need to enable DNSSEC for your domain, as well as set a specific record.
 You can learn more about [how to import a DNS name](/learn/dns#importing-a-dns-name) in the DNS section.
 
 Expect your TXT records to look something like this:
@@ -72,7 +72,7 @@ If domains have been imported for this TLD the owner will be the `DNSRegistrar` 
 However, if no domains for a TLD have been imported the `owner` might return `0x0`, this will update as soon as the first name is imported for that TLD.
 
 
-### Programmating DNSSEC Proofs
+### Programming DNSSEC Proofs
 
 To help you interact with DNSSEC data and the DNSRegistrar, we provide two libraries.
 
@@ -135,7 +135,7 @@ import { Oracle } from '@ensdomains/dnssecoraclejs'
 import { abi } from '@ensdomains/contracts/abis/dnsregistrar/DNSRegistrar.json'
 import { Contract } from 'ethers'
 
-// The registrar address nees to be hard-coded
+// The registrar address needs to be hard-coded
 const registrarAddress = '0x475e527d54b91b0b011DA573C69Ac54B2eC269ea'
 const registrar new Contract(registrarAddress, abi, provider)
 const oracleAddress = await registrar.oracle()
