@@ -41,7 +41,7 @@ export const Name = () => {
 };
 ```
 
-```ts {{ title: 'Ethers.js (TS)', variant: 'ethers' }}
+```ts {{ title: 'Ethers.js (TS)', variant: 'ethers-v5' }}
 const address = await provider.lookupAddress("luc.eth");
 ```
 
@@ -54,13 +54,13 @@ const ensAddress = await publicClient.getEnsAddress({
 });
 ```
 
-```rust {{ title: 'Ethers.rs (Rust)', variant: 'rust' }}
+```rust {{ variant: 'ethers-rs' }}
 let provider = Provider::<Http>::try_from("https://mainnet.infura.io/v3/...")?;
 
 let address = provider.lookup_address("luc.eth").await?;
 ```
 
-```go {{ title: 'Go-ens (Go)', variant: 'go' }}
+```go {{ variant: 'go-ens' }}
 package main
 
 import (
@@ -160,7 +160,7 @@ const ensName = await publicClient.getEnsAddress({
 });
 ```
 
-```ts {{ title: 'Ethers.js (TS)', variant: 'ethers', link: 'https://docs.ethers.org/v5/api/providers/provider/#EnsResolver' }}
+```ts {{ title: 'Ethers.js (TS)', variant: 'ethers-v5', link: 'https://docs.ethers.org/v5/api/providers/provider/#EnsResolver' }}
 const resolver = await provider.getResolver("luc.eth");
 const btcAddress = await resolver?.getAddress(0);
 ```

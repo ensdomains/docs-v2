@@ -1,5 +1,3 @@
-import { WIP } from '@/components/wip/WIP';
-
 {/** @type {import('@/lib/mdxPageProps').MdxMetaProps} */}
 export const meta = {
     title: 'Cross Chain Interoperability Protocol (CCIP)',
@@ -8,15 +6,15 @@ export const meta = {
     contributors: ['lucemans'],
 };
 
-# Cross Chain / Offchain Names
-
-<WIP />
+# Cross Chain / Offchain Resolution
 
 {/* This document covers what it takes to write a gateway resolver. */}
 
 The source of truth for a name and its subdomains does not always have to be on-chain or on Ethereum L1 at all.
 By leveraging [EIP-3668](https://eips.ethereum.org/EIPS/eip-3668), the Cross Chain Interoperability Protocol (or CCIP Read for short), we can load information by hitting a so called "Gateway".
 Within the context of ENS, this enables us, to read names, addresses, records, and more from other chains, or even off-chain.
+
+<img src="/content/learn/ccip/1.png" className="w-full card" />
 
 ## How does it work?
 
@@ -40,7 +38,7 @@ This example application allows you to claim a subname for 24 hours.
 The name [offchaindemo.eth](https://ens.app/offchaindemo.eth) with resolver [0xDB3...4D27](https://etherscan.io/address/0xDB34Da70Cfd694190742E94B7f17769Bc3d84D27#code), reverts with [OffchainLookup](https://eips.ethereum.org/eips/3668) and directs the client to a gateway url.
 The [gateway url](https://ens-gateway.gregskril.workers.dev/lookup/{sender}/{data}.json) returns the information and loads it from a temporary database.
 
-## Steps
+## Flow
 
 To build using CCIP there are two steps:
 
@@ -48,6 +46,8 @@ To build using CCIP there are two steps:
   - (Optional) Loading data from a layer 2 or database
   - (Optional) Verifying the data on-chain
 - [Point your name to the gateway](#set)
+
+<img src="/content/learn/ccip/1.png" className="w-full card" />
 
 ## Writing a Gateway
 
@@ -68,51 +68,39 @@ The URL for this gateway is determined by the `OffchainLookup` error, and is pas
 There are two methods (GET and POST) you can choose to implement when writing a gateway. When your smart contract reverts with the `OffchainLookup` error you can decide the url it returns.
 If `{data}` can be successfully substituted out of the URL a GET request will be made, if no `{data}` is present a POST request will be made instead, with the data instead submitted as the post body.
 
-<Row>
-  <Col>
-    The endpoint gets hit 
+<CodeGroup title="Request" presets="method">
 
-    #### Attributes
+```yaml {{ title: 'POST', variant: 'post' }}
+// POST if URL does not include '{data}' parameter
+URL: https://example.com/gateway/{sender}.json
+Method: POST
+Body: data
+```
 
-    <Properties>
-      <Property name="sender" type="address">
-        Limit the number of conversations returned.
-      </Property>
-      <Property name="data" type="bytes">
-        Only show conversations that are muted when set to `true`.
-      </Property>
-    </Properties>
+```yaml {{ title: 'GET', variant: 'get' }}
+// GET if URL includes '{data}' parameter
+URL: https://example.com/gateway/{sender}/{data}.json
+Method: GET
+```
 
-  </Col>
-  <Col sticky>
+</CodeGroup>
 
-    <CodeGroup title="Request" presets="method">
+<Properties>
+  <Property name="sender" type="address">
+    Limit the number of conversations returned.
+  </Property>
+  <Property name="data" type="bytes">
+    Only show conversations that are muted when set to `true`.
+  </Property>
+</Properties>
 
-    ```yaml {{ title: 'POST', variant: 'post' }}
-    // URL includes '{data}' parameter
-    URL: https://example.com/gateway/{sender}.json
-    Method: POST
-    Body: data
-    ```
+{/* ### Loading data from a layer 2 or database */}
 
-    ```yaml {{ title: 'GET', variant: 'get' }}
-    // URL includes '{data}' parameter
-    URL: https://example.com/gateway/{sender}/{data}.json
-    Method: GET
-    ```
+{/* ### Verifying the data on-chain (optional) */}
 
-    </CodeGroup>
+{/* ## Configuring Name {{ navtitle: 'Setting Resolver', id: 'set' }} */}
 
-  </Col>
-</Row>
-
-### Loading data from a layer 2 or database
-
-### Verifying the data on-chain (optional)
-
-## Configuring Name {{ navtitle: 'Setting Resolver', id: 'set' }}
-
-Last but not least you need to instruct your name to use the gateway.
+{/* Last but not least you need to instruct your name to use the gateway. */}
 
 {/* ```mermaid
 sequenceDiagram

@@ -37,20 +37,17 @@ export const navigation: SectionData[] = [
                         wip: 20,
                         design_wip: true,
                     },
-                    {
-                        title: 'Multichain',
-                        href: '/learn/multichain',
-                        icon: '⛓️',
-                        wip: 70,
-                        design_wip: true,
-                    },
                     { title: 'DNS Names', href: '/learn/dns', icon: '🌐' },
                     {
-                        title: 'Offchain Names',
+                        title: 'Layer 2 & Offchain',
                         icon: '🔗',
                         href: '/learn/ccip',
                         wip: 65,
                         design_wip: true,
+                    },
+                    {
+                        title: 'TLDs List',
+                        href: '/dns/tlds',
                     },
                 ],
             },
@@ -68,10 +65,6 @@ export const navigation: SectionData[] = [
                         title: 'Bug Bounties',
                         href: '/bugs',
                         icon: '🪲',
-                    },
-                    {
-                        title: 'TLDs List',
-                        href: '/dns/tlds',
                     },
                     {
                         title: 'Terminology',
@@ -132,6 +125,13 @@ export const navigation: SectionData[] = [
                         title: 'Primary Names',
                         href: '/web/reverse',
                         icon: '🔍',
+                    },
+                    {
+                        title: 'Multichain',
+                        href: '/web/multichain',
+                        icon: '⛓️',
+                        wip: 70,
+                        design_wip: true,
                     },
                     {
                         title: 'List Names',
@@ -211,7 +211,7 @@ export const navigation: SectionData[] = [
                 icon: '🌐',
                 links: [
                     {
-                        title: 'Start Here',
+                        title: 'Resolution Process',
                         href: '/resolution',
                         wip: true,
                         icon: '✨',

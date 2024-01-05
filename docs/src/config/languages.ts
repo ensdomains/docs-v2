@@ -13,10 +13,10 @@ export const LanguagePresets = configureLanguages({
         language: 'javascript',
         fallback: [],
     },
-    ethers: {
+    'ethers-v5': {
         icon: '/icons/libraries/ethers.svg',
         language: 'typescript',
-        name: 'Ethers',
+        name: 'Ethers.js v5',
         fallback: ['typescript', 'javascript'],
     },
     viem: {
@@ -25,15 +25,21 @@ export const LanguagePresets = configureLanguages({
         name: 'Viem',
         fallback: ['typescript', 'javascript'],
     },
-    rust: {
+    'ethers-rs': {
         icon: '/icons/libraries/rust.svg',
-        name: 'Rust',
+        name: 'Ethers.rs',
         language: 'rust',
     },
-    go: {
+    'go-ens': {
         icon: '/icons/libraries/go.svg',
         name: 'Go',
         language: 'go',
+    },
+    'alchemy-sdk': {
+        icon: '/icons/libraries/alchemy.svg',
+        name: 'Alchemy SDK',
+        language: 'typescript',
+        fallback: ['typescript', 'javascript'],
     },
     react: {
         icon: '/icons/libraries/react.svg',
@@ -89,6 +95,12 @@ export const LanguagePresets = configureLanguages({
         icon: '',
         name: 'Web3.py',
         language: 'python',
+        fallback: [],
+    },
+    solidity: {
+        icon: '/icons/libraries/solidity.svg',
+        name: 'Solidity',
+        language: 'solidity',
         fallback: [],
     },
 });
