@@ -6,12 +6,12 @@ export const Usertag: FC<{ name: string; image: string }> = ({
 }) => {
     return (
         <div className="not-prose">
-            <div className="border-ens-light-border dark:border-ens-dark-border flex h-fit items-center gap-1 overflow-hidden !rounded-full border pr-4 shadow-sm">
+            <div className="flex h-fit items-center gap-1 overflow-hidden !rounded-full border border-ens-light-border pr-4 shadow-sm dark:border-ens-dark-border">
                 <div className="ml-0.5 aspect-square h-12 w-12 overflow-hidden rounded-full p-1">
                     <img
                         src={image}
                         alt=""
-                        className="border-ens-light-border dark:border-ens-dark-border rounded-full border"
+                        className="rounded-full border border-ens-light-border dark:border-ens-dark-border"
                     />
                 </div>
                 <div className="text-base font-bold">{name}</div>

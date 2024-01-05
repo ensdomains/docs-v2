@@ -104,7 +104,7 @@ export const SearchResults: FC<{
                                 </span>
                                 <span className="flex gap-2">
                                     {hit.slug.startsWith('dao') && (
-                                        <span className="bg-ens-dao-400 h-fit rounded-md px-2 py-0.5 text-xs font-bold text-white">
+                                        <span className="h-fit rounded-md bg-ens-dao-400 px-2 py-0.5 text-xs font-bold text-white">
                                             DAO
                                         </span>
                                     )}
@@ -114,7 +114,7 @@ export const SearchResults: FC<{
                     ))}
                 </ul>
             </div>
-            <div className="text-2xs flex w-full justify-between rounded-b-xl border-t bg-neutral-50 px-4 py-1 text-neutral-400">
+            <div className="flex w-full justify-between rounded-b-xl border-t bg-neutral-50 px-4 py-1 text-2xs text-neutral-400">
                 <div>{data.estimatedTotalHits} hits for search</div>
                 <div>{data.processingTimeMs}ms</div>
             </div>

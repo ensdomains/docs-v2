@@ -21,7 +21,7 @@ function FeedbackButton(properties) {
     return (
         <button
             type="submit"
-            className="bg-ens-light-blue-surface dark:bg-ens-dark-blue-surface text-ens-light-blue-dim dark:ens-dark-blue-dim px-3 text-sm font-medium transition"
+            className="dark:ens-dark-blue-dim bg-ens-light-blue-surface px-3 text-sm font-medium text-ens-light-blue-dim transition dark:bg-ens-dark-blue-surface"
             {...properties}
         />
     );
@@ -35,7 +35,7 @@ const FeedbackForm = forwardRef(
             <form
                 ref={reference}
                 onSubmit={onSubmit}
-                className="text-ens-light-text-primary dark:text-ens-dark-text-primary flex items-center justify-center gap-6 md:justify-start "
+                className="flex items-center justify-center gap-6 text-ens-light-text-primary dark:text-ens-dark-text-primary md:justify-start "
             >
                 <p className="text-sm font-bold">Was this page helpful?</p>
                 <div className="group grid h-8 grid-cols-[1fr,1px,1fr] overflow-hidden rounded-xl">
@@ -56,8 +56,8 @@ const FeedbackThanks = forwardRef(
                 className="flex justify-center md:justify-start"
             >
                 <div className="flex h-fit items-center gap-1.5 overflow-hidden rounded-lg text-sm">
-                    <CheckIcon className="fill-ens-light-blue-primary dark:fill-ens-200/20 dark:stroke-ens-200 h-4 w-4 flex-none stroke-white" />
-                    <div className="text-ens-light-text-primary dark:text-ens-dark-text-primary flex gap-2 leading-5">
+                    <CheckIcon className="dark:fill-ens-200/20 dark:stroke-ens-200 h-4 w-4 flex-none fill-ens-light-blue-primary stroke-white" />
+                    <div className="flex gap-2 leading-5 text-ens-light-text-primary dark:text-ens-dark-text-primary">
                         <span>Thanks for your feedback!</span>
                         <span>
                             (

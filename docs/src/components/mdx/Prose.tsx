@@ -8,7 +8,7 @@ export const Prose: FC<{
 }> = ({ className, ...properties }) => {
     return (
         <article
-            className={clsx(className, 'prose dark:prose-invert x')}
+            className={clsx(className, 'prose x dark:prose-invert')}
             {...properties}
         />
     );

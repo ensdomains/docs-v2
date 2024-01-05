@@ -21,14 +21,14 @@ export const RentPriceCheck: FC<{
 
     return (
         <div>
-            <div className="border-ens-light-border dark:border-ens-dark-border space-y-2 rounded-lg border p-4">
+            <div className="space-y-2 rounded-lg border border-ens-light-border p-4 dark:border-ens-dark-border">
                 <div className="space-x-2">
                     <div className="tag tag-blue">ETH Call</div>
-                    <div className="text-ens-light-text-secondary dark:text-ens-dark-text-secondary inline">
+                    <div className="inline text-ens-light-text-secondary dark:text-ens-dark-text-secondary">
                         Get the price of the name.
                     </div>
                 </div>
-                <div className="border-ens-light-border dark:border-ens-dark-border break-all rounded-lg border p-2">
+                <div className="break-all rounded-lg border border-ens-light-border p-2 dark:border-ens-dark-border">
                     <span className="text-ens-light-blue-primary">
                         ETHRegistrarController
                     </span>
@@ -43,20 +43,20 @@ export const RentPriceCheck: FC<{
                     )
                 </div>
                 {isLoadingRentPrice ? (
-                    <div className="text-ens-light-blue-primary border-ens-light-blue-primary dark:border-ens-dark-blue-primary bg-ens-light-blue-surface dark:bg-ens-dark-blue-surface flex items-center gap-1 rounded-lg px-3 py-2">
+                    <div className="flex items-center gap-1 rounded-lg border-ens-light-blue-primary bg-ens-light-blue-surface px-3 py-2 text-ens-light-blue-primary dark:border-ens-dark-blue-primary dark:bg-ens-dark-blue-surface">
                         Loading...
                     </div>
                 ) : (
                     <div>
                         {rentPrice ? (
-                            <div className="text-ens-light-green-primary border-ens-light-green-primary dark:border-ens-dark-green-primary bg-ens-light-green-surface dark:bg-ens-dark-green-surface flex items-center gap-1 rounded-lg px-3 py-2">
+                            <div className="flex items-center gap-1 rounded-lg border-ens-light-green-primary bg-ens-light-green-surface px-3 py-2 text-ens-light-green-primary dark:border-ens-dark-green-primary dark:bg-ens-dark-green-surface">
                                 <FiCheck />
                                 Rent Price: (Base:{' '}
                                 {rentPrice?.base.toLocaleString()}, Premium:{' '}
                                 {rentPrice?.premium.toLocaleString()})
                             </div>
                         ) : (
-                            <div className="text-ens-light-red-primary border-ens-light-red-primary dark:border-ens-dark-red-primary bg-ens-light-red-surface dark:bg-ens-dark-red-surface flex items-center gap-1 rounded-lg px-3 py-2">
+                            <div className="flex items-center gap-1 rounded-lg border-ens-light-red-primary bg-ens-light-red-surface px-3 py-2 text-ens-light-red-primary dark:border-ens-dark-red-primary dark:bg-ens-dark-red-surface">
                                 <FiX />
                                 Problem
                             </div>

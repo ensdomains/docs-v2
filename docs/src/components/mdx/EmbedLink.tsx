@@ -11,7 +11,7 @@ export const EmbedLink: FC<{
     return (
         <Link
             href={href}
-            className="card1 not-prose text-ens-light-text-primary dark:text-ens-dark-text-primary flex items-center gap-1.5 p-6 no-underline outline-blue-500 transition-all hover:shadow-md hover:outline-2"
+            className="card1 not-prose flex items-center gap-1.5 p-6 text-ens-light-text-primary no-underline outline-blue-500 transition-all hover:shadow-md hover:outline-2 dark:text-ens-dark-text-primary"
         >
             <span className="flex w-full flex-col">
                 <span className="font-bold">{title}</span>
@@ -19,7 +19,7 @@ export const EmbedLink: FC<{
             </span>
 
             {tag && (
-                <span className="bg-ens-light-yellow-surface dark:bg-ens-dark-yellow-surface text-ens-light-yellow-active dark:text-ens-dark-yellow-active ml-2 rounded-full px-2 text-xs">
+                <span className="ml-2 rounded-full bg-ens-light-yellow-surface px-2 text-xs text-ens-light-yellow-active dark:bg-ens-dark-yellow-surface dark:text-ens-dark-yellow-active">
                     {tag}
                 </span>
             )}
