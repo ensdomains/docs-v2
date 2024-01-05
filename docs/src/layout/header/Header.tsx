@@ -72,7 +72,7 @@ export const Header = forwardRef<HTMLDivElement, { className?: string }>(
                                             ? '/ens/dao/ens_logo_dao.svg'
                                             : '/ens/primary/ens_logo_primary.svg'
                                     }
-                                    className="fill-ens-dao-400 ml-1 h-8"
+                                    className="ml-1 h-8 fill-ens-dao-400"
                                     alt="ENS Logo"
                                     height={'32'}
                                 />
@@ -102,7 +102,7 @@ export const Header = forwardRef<HTMLDivElement, { className?: string }>(
                     </div>
                     <div className="float-right flex h-full items-center gap-4">
                         <ThemeSwitcher />
-                        <div className="md:dark:bg-white/15 hidden md:block md:h-5 md:w-px md:bg-zinc-900/10" />
+                        <div className="hidden md:block md:h-5 md:w-px md:bg-zinc-900/10 md:dark:bg-white/15" />
                         <div className="flex gap-4">
                             <MobileSearch />
                             <Link

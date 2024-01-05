@@ -22,7 +22,7 @@ export const ContributeLink: FC<{ url?: string }> = ({ url }) => {
     return (
         <a
             href={`https://github.com/${ROOT_REPO}/edit/main${url}`}
-            className="text-ens-light-blue-primary dark:text-ens-dark-blue-primary flex items-center gap-2 text-xs"
+            className="flex items-center gap-2 text-xs text-ens-light-blue-primary dark:text-ens-dark-blue-primary"
             target="_blank"
             rel="nofollow"
         >

@@ -44,7 +44,7 @@ export const DAOProposalDetails: FC<{ mdxProperties: MdxDAOProposalProps }> = ({
                     <div>Discourse</div>
                     <a
                         href={`https://discuss.ens.domains/t/t/${mdxProperties.discourse}`}
-                        className="flex items-center gap-1 text-ens-light-blue-dao-400 hover:underline"
+                        className="text-ens-light-blue-dao-400 flex items-center gap-1 hover:underline"
                         target="_blank"
                     >
                         <FaDiscourse />#{mdxProperties.discourse}

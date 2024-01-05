@@ -38,7 +38,7 @@ export const SmartContractMap = () => {
             }}
         >
             <div
-                className="border-ens-light-border dark:border-ens-dark-border absolute h-[800px] w-[800px] rounded-lg border p-4"
+                className="absolute h-[800px] w-[800px] rounded-lg border border-ens-light-border p-4 dark:border-ens-dark-border"
                 style={{ left: x, top: y }}
             >
                 <img

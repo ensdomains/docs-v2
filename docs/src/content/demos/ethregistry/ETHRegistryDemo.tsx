@@ -54,7 +54,7 @@ const Demo = () => {
 
     return (
         <div className="-m-4">
-            <div className="border-ens-light-border dark:border-ens-dark-border w-full border-b px-4 py-2">
+            <div className="w-full border-b border-ens-light-border px-4 py-2 dark:border-ens-dark-border">
                 Register a Name (Live Demo)
             </div>
             <div className="space-y-4 p-4">

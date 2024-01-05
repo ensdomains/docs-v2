@@ -69,7 +69,7 @@ export const SnapshotDetails = async ({
                     'https://snapshot.org/#/ens.eth/proposal/' + data.snapshot
                 }
                 target="_blank"
-                className="border-ens-dao-400 mb-2 flex justify-between border-b font-bold"
+                className="mb-2 flex justify-between border-b border-ens-dao-400 font-bold"
             >
                 <div>Results</div>
                 <div>

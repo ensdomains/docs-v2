@@ -1,7 +1,7 @@
 export const DNSGrid = () => {
     return (
         <div className="card1 not-prose">
-            <div className="text-ens-light-blue-500 flex flex-wrap gap-3 p-4 pl-6">
+            <div className="flex flex-wrap gap-3 p-4 pl-6 text-ens-light-blue-500">
                 {[
                     '.com',
                     '.xyz',

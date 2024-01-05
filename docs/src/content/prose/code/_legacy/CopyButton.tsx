@@ -85,10 +85,10 @@ export const CopyButton = ({ code }) => {
             <motion.button
                 type="button"
                 className={clsx(
-                    'group/button text-2xs absolute right-4 top-3.5 h-7 w-auto overflow-hidden whitespace-nowrap rounded-full py-1 pl-2 pr-3 font-medium opacity-0 backdrop-blur transition focus:opacity-100 group-hover:opacity-100',
+                    'group/button absolute right-4 top-3.5 h-7 w-auto overflow-hidden whitespace-nowrap rounded-full py-1 pl-2 pr-3 text-2xs font-medium opacity-0 backdrop-blur transition focus:opacity-100 group-hover:opacity-100',
                     copied
-                        ? 'bg-ens-light-blue-400/10 ring-ens-400/20 ring-1 ring-inset'
-                        : 'hover:bg-white/7.5 dark:bg-white/2.5 bg-white/5 dark:hover:bg-white/5'
+                        ? 'ring-ens-400/20 bg-ens-light-blue-400/10 ring-1 ring-inset'
+                        : 'bg-white/5 hover:bg-white/7.5 dark:bg-white/2.5 dark:hover:bg-white/5'
                 )}
                 onClick={() => {
                     window.navigator.clipboard.writeText(code).then(() => {
@@ -116,7 +116,7 @@ export const CopyButton = ({ code }) => {
                     <motion.span
                         aria-hidden={!copied}
                         className={clsx(
-                            'text-ens-light-blue-400 pointer-events-none flex w-full items-center justify-end gap-1 whitespace-nowrap transition duration-300',
+                            'pointer-events-none flex w-full items-center justify-end gap-1 whitespace-nowrap text-ens-light-blue-400 transition duration-300',
                             !copied && 'opacity-0'
                         )}
                         initial={{ y: 0 }}

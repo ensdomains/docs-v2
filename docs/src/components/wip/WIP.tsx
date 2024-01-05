@@ -2,8 +2,8 @@ import { FC } from 'react';
 
 export const WIP: FC<{ missing?: string[] }> = ({ missing }) => {
     return (
-        <div className="not-prose border-ens-light-yellow-bright dark:border-ens-dark-yellow-bright dark:bg-ens-dark-yellow-surface bg-ens-light-yellow-surface rounded-md border p-6">
-            <h2 className="dark:text-ens-dark-yellow-dim text-ens-light-yellow-dim text-xl font-bold">
+        <div className="not-prose rounded-md border border-ens-light-yellow-bright bg-ens-light-yellow-surface p-6 dark:border-ens-dark-yellow-bright dark:bg-ens-dark-yellow-surface">
+            <h2 className="text-xl font-bold text-ens-light-yellow-dim dark:text-ens-dark-yellow-dim">
                 🚧 This page is work in progress 🚧
             </h2>
             <p className="mt-2">

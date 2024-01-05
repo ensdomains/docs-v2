@@ -127,7 +127,7 @@ export const TallyDetails: FC<{
             <a
                 href={'https://www.tally.xyz/gov/ens/proposal/' + data.tally}
                 target="_blank"
-                className="border-ens-dao-400 mb-2 flex justify-between border-b font-bold"
+                className="mb-2 flex justify-between border-b border-ens-dao-400 font-bold"
             >
                 <div>Results</div>
                 <div>

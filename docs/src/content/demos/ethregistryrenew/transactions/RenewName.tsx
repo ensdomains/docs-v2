@@ -33,14 +33,14 @@ export const RenewName: FC<{
 
     return (
         <div>
-            <div className="border-ens-light-border dark:border-ens-dark-border space-y-2 rounded-lg border p-4">
+            <div className="space-y-2 rounded-lg border border-ens-light-border p-4 dark:border-ens-dark-border">
                 <div className="space-x-2">
                     <div className="tag tag-yellow">Transaction</div>
-                    <div className="text-ens-light-text-secondary dark:text-ens-dark-text-secondary inline">
+                    <div className="inline text-ens-light-text-secondary dark:text-ens-dark-text-secondary">
                         Renew the name.
                     </div>
                 </div>
-                <div className="border-ens-light-border dark:border-ens-dark-border break-all rounded-lg border p-2">
+                <div className="break-all rounded-lg border border-ens-light-border p-2 dark:border-ens-dark-border">
                     <span className="text-ens-light-blue-primary">
                         ETHRegistrarController
                     </span>
@@ -67,13 +67,13 @@ export const RenewName: FC<{
                     </Button>
                 </div>
                 {!isReady && (
-                    <div className="text-ens-light-red-primary border-ens-light-red-primary dark:border-ens-dark-red-primary bg-ens-light-red-surface dark:bg-ens-dark-red-surface flex items-center gap-1 rounded-lg px-3 py-2">
+                    <div className="flex items-center gap-1 rounded-lg border-ens-light-red-primary bg-ens-light-red-surface px-3 py-2 text-ens-light-red-primary dark:border-ens-dark-red-primary dark:bg-ens-dark-red-surface">
                         <FiX />
                         Not Ready
                     </div>
                 )}
                 {isError && (
-                    <div className="text-ens-light-red-primary border-ens-light-red-primary dark:border-ens-dark-red-primary bg-ens-light-red-surface dark:bg-ens-dark-red-surface flex items-center gap-1 rounded-lg px-3 py-2">
+                    <div className="flex items-center gap-1 rounded-lg border-ens-light-red-primary bg-ens-light-red-surface px-3 py-2 text-ens-light-red-primary dark:border-ens-dark-red-primary dark:bg-ens-dark-red-surface">
                         <FiX />
                         Problem
                     </div>

@@ -107,7 +107,7 @@ function SocialLink({ href, icon: Icon, children }) {
 function SmallPrint() {
     return (
         <div className="flex flex-col items-center justify-between gap-5 sm:flex-row">
-            <p className="dark:text-ens-dark-text-secondary text-ens-light-text-secondary text-xs">
+            <p className="text-xs text-ens-light-text-secondary dark:text-ens-dark-text-secondary">
                 &copy; Copyright {new Date().getFullYear()}. All rights
                 reserved.
             </p>
@@ -133,7 +133,7 @@ export const Footer: FC<{
     mdxProperties: MdxPageProps;
 }> = ({ mdxProperties }) => {
     return (
-        <footer className="border-t-ens-light-border dark:border-t-ens-dark-border w-full space-y-4 border-t pb-16 pt-4">
+        <footer className="w-full space-y-4 border-t border-t-ens-light-border pb-16 pt-4 dark:border-t-ens-dark-border">
             <div className="flex flex-wrap items-end justify-between gap-2">
                 <Feedback />
                 <div className="w-fit">
