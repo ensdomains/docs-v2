@@ -20,6 +20,23 @@ export const CheckIcon = (properties) => {
 function FeedbackButton(properties) {
     return (
         <button
+            onClick={async () => {
+                const response = properties['data-response']
+                    .replace('yes', 'Positive Page Rating')
+                    .replace('no', 'Negative Page Rating');
+
+                await fetch('https://plausible.io/api/event', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        name: response,
+                        url: window.location.href,
+                        domain: 'alpha-docs.ens.domains',
+                    }),
+                });
+            }}
             type="submit"
             className="dark:ens-dark-blue-dim bg-ens-light-blue-surface px-3 text-sm font-medium text-ens-light-blue-dim transition dark:bg-ens-dark-blue-surface"
             {...properties}
