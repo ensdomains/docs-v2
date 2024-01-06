@@ -64,7 +64,8 @@ export const mdxPagePropsSchema = z
             z.object({
                 title: z.string(),
                 navtitle: z.string(),
-                id: z.string(),
+                id: z.string().optional(),
+                indent: z.string().optional(),
             })
         ),
         filepath: z.string({

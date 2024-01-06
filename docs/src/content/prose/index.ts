@@ -1,7 +1,7 @@
 import { Button } from '@/components/Button';
 import { Col } from '@/components/mdx/Col';
 import { EmbedLink } from '@/components/mdx/EmbedLink';
-import { h2 } from '@/components/mdx/h2';
+import { h2, h3, h4 } from '@/components/mdx/heading/h2';
 import { Note } from '@/components/mdx/Note';
 import { Properties } from '@/components/mdx/Properties';
 import { Property } from '@/components/mdx/Property';
@@ -16,6 +16,8 @@ import { VideoComponent } from './video/Video';
 export const prose = {
     a: ALink,
     h2,
+    h3,
+    h4,
     Note,
     Row,
     Col,

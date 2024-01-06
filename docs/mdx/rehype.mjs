@@ -3,7 +3,6 @@ import * as acorn from 'acorn';
 import { toString } from 'mdast-util-to-string';
 import { mdxAnnotations } from 'mdx-annotations';
 import rehypeMdxTitle from 'rehype-mdx-title';
-import rehypeMermaid from 'rehype-mermaidjs';
 import shiki from 'shiki';
 import { visit } from 'unist-util-visit';
 
@@ -91,7 +90,10 @@ function rehypeSlugify() {
         const slugify = slugifyWithCounter();
 
         visit(tree, 'element', (node) => {
-            if (node.tagName === 'h2' && !node.properties.id) {
+            if (
+                ['h2', 'h3', 'h4'].includes(node.tagName) &&
+                !node.properties.id
+            ) {
                 node.properties.id = slugify(toString(node));
             }
         });
@@ -134,13 +136,21 @@ function getSections(node) {
     const sections = [];
 
     for (const child of node.children ?? []) {
-        if (child.type === 'element' && child.tagName === 'h2') {
-            sections.push(`{
-        title: ${JSON.stringify(toString(child))},
-        navtitle: ${JSON.stringify(child.properties.navtitle ?? '')},
-        id: ${JSON.stringify(child.properties.id)},
-        ...${child.properties.annotation}
-      }`);
+        if (
+            child.type === 'element' &&
+            ['h2', 'h3', 'h4'].includes(child.tagName)
+        ) {
+            const indent = ['h2', 'h3', 'h4'].indexOf(child.tagName);
+
+            sections.push(
+                `{title: ${JSON.stringify(
+                    toString(child)
+                )}, navtitle: ${JSON.stringify(
+                    child.properties.navtitle ?? ''
+                )}, id: ${JSON.stringify(
+                    child.properties.id
+                )}, indent: '${indent}', ...${child.properties.annotation}}`
+            );
         } else if (child.children) {
             sections.push(...getSections(child));
         }
