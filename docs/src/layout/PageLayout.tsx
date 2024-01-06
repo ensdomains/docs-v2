@@ -52,7 +52,7 @@ export const Layout: FC<{
                         </>
                     ) : (
                         <div className="lg:ml-72 xl:ml-80">
-                            {mdxProperties.sections.length > 1 && (
+                            {mdxProperties?.sections?.length > 1 && (
                                 <div
                                     className="fixed z-10 ml-4 hidden 2xl:block"
                                     style={{ left: 'calc(50vw + 26rem)' }}
