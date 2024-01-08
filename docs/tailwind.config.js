@@ -49,7 +49,7 @@ module.exports = {
                 15: '0.15',
             },
             colors: {
-                //1E2122
+                searchbar: '#262929',
                 ens: {
                     light: {
                         blue: {
