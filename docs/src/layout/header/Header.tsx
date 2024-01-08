@@ -9,6 +9,7 @@ import { usePathname } from 'next/navigation';
 import { forwardRef } from 'react';
 import { FaGithub } from 'react-icons/fa';
 
+import { ClientOnly } from '@/ClientOnly';
 import { cx } from '@/lib/cx';
 import {
     useIsInsideMobileNavigation,
@@ -72,7 +73,7 @@ export const Header = forwardRef<HTMLDivElement, { className?: string }>(
                                             ? '/ens/dao/ens_logo_dao.svg'
                                             : '/ens/primary/ens_logo_primary.svg'
                                     }
-                                    className="ml-1 h-8 fill-ens-dao-400"
+                                    className="fill-ens-dao-400 ml-1 h-8"
                                     alt="ENS Logo"
                                     height={'32'}
                                 />
@@ -101,8 +102,8 @@ export const Header = forwardRef<HTMLDivElement, { className?: string }>(
                         <Search />
                     </div>
                     <div className="float-right flex h-full items-center gap-4">
-                        <ThemeSwitcher />
-                        <div className="hidden md:block md:h-5 md:w-px md:bg-zinc-900/10 md:dark:bg-white/15" />
+                        <ClientOnly child={() => <ThemeSwitcher />} />
+                        <div className="md:dark:bg-white/15 hidden md:block md:h-5 md:w-px md:bg-zinc-900/10" />
                         <div className="flex gap-4">
                             <MobileSearch />
                             <Link
