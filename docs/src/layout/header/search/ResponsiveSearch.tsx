@@ -21,15 +21,15 @@ export const ResponsiveSearch = () => {
     const showSearch = search.length > 0 && data;
 
     return (
-        <div id="searchbar" className="w-full text-[#18181b]">
-            <div className="relative z-10 rounded-xl border-2 border-transparent bg-white">
+        <div id="searchbar" className="w-full text-[#18181b] dark:text-white">
+            <div className="relative z-10 rounded-xl bg-transparent">
                 <input
                     type="text"
                     onClick={() => {
                         setSelect(-1);
                     }}
-                    className="outline-ens-500 w-full rounded-xl py-2 pl-10 text-xl outline-offset-4"
-                    placeholder="Search for anything..."
+                    className="dark:bg-searchbar w-full rounded-xl border-none py-2 pl-10 text-xl outline-none"
+                    placeholder="Search Content..."
                     // eslint-disable-next-line jsx-a11y/no-autofocus
                     autoFocus={true}
                     id="search-input"
