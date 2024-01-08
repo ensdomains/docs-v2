@@ -17,10 +17,6 @@
                 "destination": "/learn/ccip"
             },
             {
-                "pattern": "^/terminology$",
-                "destination": "/terminology"
-            },
-            {
                 "pattern": "^/frequently-asked-questions$",
                 "destination": "/faq"
             },
@@ -30,7 +26,7 @@
             },
             {
                 "pattern": "^/permanent-registrar-faq$",
-                "destination": "/dissapeared"
+                "destination": "/registry/eth"
             },
             {
                 "pattern": "^/deploying-ens-on-a-private-chain$",
@@ -101,6 +97,18 @@
                 "destination": "/ensip/14"
             },
             {
+                "pattern": "^/ens-improvement-proposals/ensip-15-normalization-standard$",
+                "destination": "/ensip/15"
+            },
+            {
+                "pattern": "^/ens-improvement-proposals/ensip-16-offchain-metadata$",
+                "destination": "/ensip/16"
+            },
+            {
+                "pattern": "^/dapp-developer-guide/quickstart$",
+                "destination": "/web/quickstart"
+            },
+            {
                 "pattern": "^/dapp-developer-guide/ens-enabling-your-dapp$",
                 "destination": "/web/quickstart"
             },
@@ -130,15 +138,19 @@
             },
             {
                 "pattern": "^/dapp-developer-guide/ens-as-nft$",
-                "destination": "/registry/about"
+                "destination": "/registry/eth"
             },
             {
                 "pattern": "^/dapp-developer-guide/ens-l2-offchain$",
-                "destination": "/resolvers/ccip"
+                "destination": "/learn/ccip"
             },
             {
                 "pattern": "^/dapp-developer-guide/ens-data-guide$",
                 "destination": "/web/libraries"
+            },
+            {
+                "pattern": "^/contract-api-reference/ens-contracts-overview$",
+                "destination": "/contracts"
             },
             {
                 "pattern": "^/contract-api-reference/name-processing$",
@@ -146,7 +158,7 @@
             },
             {
                 "pattern": "^/contract-api-reference/ens$",
-                "destination": "/registry/about"
+                "destination": "/registry/ens"
             },
             {
                 "pattern": "^/contract-api-reference/reverseregistrar$",
@@ -165,7 +177,23 @@
                 "destination": "/registry/eth"
             },
             {
+                "pattern": "^/contract-api-reference/.eth-permanent-registrar/registrar$",
+                "destination": "/registry/eth"
+            },
+            {
+                "pattern": "^/contract-api-reference/.eth-permanent-registrar/controller$",
+                "destination": "/registry/eth"
+            },
+            {
                 "pattern": "^/contract-api-reference/subgraphdata$",
+                "destination": "/web/subgraph"
+            },
+            {
+                "pattern": "^/contract-api-reference/dns-registrar$",
+                "destination": "/registry/dns"
+            },
+            {
+                "pattern": "^//contract-api-reference/subgraphdata$",
                 "destination": "/web/subgraph"
             },
             {
