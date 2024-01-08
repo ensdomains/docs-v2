@@ -32,9 +32,6 @@ export const SearchResults: FC<{
                 case 'Enter': {
                     break;
                 }
-                default: {
-                    setSelect(-1);
-                }
             }
         };
 
@@ -63,6 +60,10 @@ export const SearchResults: FC<{
         }
     }, [select]);
 
+    useEffect(() => {
+        setSelect(-1);
+    }, [data.hits]);
+
     return (
         <>
             <div className="dark:bg-ens-dark-grey-surface w-full bg-neutral-50 pt-4">
@@ -81,6 +82,9 @@ export const SearchResults: FC<{
                             key={hit.slug}
                         >
                             <Link
+                                onFocus={() => {
+                                    setSelect(index);
+                                }}
                                 href={'/' + hit.slug}
                                 id={'search-result-link-' + index}
                                 className="z-10 flex w-full px-4 py-1"
@@ -120,7 +124,7 @@ export const SearchResults: FC<{
                     ))}
                 </ul>
             </div>
-            <div className="text-2xs dark:bg-ens-dark-background-secondary flex w-full justify-between rounded-b-xl border-t bg-neutral-50 px-4 py-1 text-neutral-400">
+            <div className="text-2xs dark:bg-ens-dark-background-secondary border-t-ens-light-border dark:border-t-ens-dark-border flex w-full justify-between rounded-b-xl border-t bg-neutral-50 px-4 py-1 text-neutral-400">
                 <div>{data.estimatedTotalHits} hits for search</div>
                 <div>{data.processingTimeMs}ms</div>
             </div>
