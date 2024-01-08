@@ -1,4 +1,5 @@
 'use client';
+import clsx from 'clsx';
 import Link from 'next/link';
 import { FC, useEffect } from 'react';
 
@@ -99,7 +100,12 @@ export const SearchResults: FC<{
                                                 hit._formatted.content ??
                                                 hit._formatted.description,
                                         }}
-                                        className="dark:text-ens-light-blue-light block h-[2em] w-full truncate pl-8 text-[#3f3f46]"
+                                        className={clsx(
+                                            'block h-[2em] w-full truncate pl-8 text-[#3f3f46]',
+                                            hit.slug.startsWith('dao')
+                                                ? 'dark:text-ens-light-purple-light'
+                                                : 'dark:text-ens-light-blue-light'
+                                        )}
                                     />
                                 </span>
                                 <span className="flex gap-2">
