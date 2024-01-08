@@ -117,7 +117,23 @@ html.dark {
 }
 
 pre {
-    @apply bg-ens-light-background-primary dark:bg-ens-dark-background-primary;
+    @apply bg-ens-light-background-secondary/20 dark:bg-ens-dark-background-secondary/20;
+    @apply text-ens-light-text-primary dark:text-ens-dark-text-primary overflow-x-auto p-4 text-xs;
+}
+
+pre > code {
+    counter-reset: line;
+}
+pre > code > span:not(:last-child)::before {
+    content: counter(line);
+    counter-increment: line;
+    user-select: none;
+
+    @apply inline-block text-right w-8;
+    @apply text-ens-light-text-secondary dark:text-ens-dark-text-secondary;
+
+    padding-right: 0.5em;
+    margin-right: 1em;
 }
 
 .mermaid {
@@ -220,11 +236,11 @@ table {
     border-collapse: separate;
     border-width: 0;
     border-spacing: 0;
-    @apply rounded-xl overflow-hidden border border-ens-light-border dark:border-ens-dark-border;
+    @apply rounded-lg overflow-hidden border border-ens-light-border dark:border-ens-dark-border;
 }
 
 thead {
-    @apply bg-ens-light-grey-surface dark:bg-ens-dark-grey-surface;
+    @apply bg-ens-light-background-secondary dark:bg-ens-dark-background-secondary;
 
     display: table-header-group;
     vertical-align: middle;
@@ -238,6 +254,10 @@ thead tr {
 
 thead th {
     @apply p-4 last:border-r-0 border-b border-r text-ens-light-text-primary dark:text-ens-dark-text-primary border-ens-light-border dark:border-ens-dark-border;
+}
+
+tbody {
+    @apply bg-ens-light-background-secondary/20 dark:bg-ens-dark-background-secondary/20;
 }
 
 tbody tr {

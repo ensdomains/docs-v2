@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import Link from 'next/link';
 import { FC, PropsWithChildren } from 'react';
 import { FiExternalLink } from 'react-icons/fi';
@@ -94,8 +95,13 @@ export const CodePanel: FC<PropsWithChildren<CodePanelProperties>> = ({
             data-code-variant={variant ?? title ?? language}
             data-code-group={identifier}
         >
-            <div className="border-ens-light-border dark:border-ens-dark-border overflow-hidden rounded-b-xl border">
-                {isStandaloneCodeSnippet && preset && (
+            <div
+                className={clsx(
+                    'border-ens-light-border dark:border-ens-dark-border overflow-hidden border',
+                    isStandaloneCodeSnippet ? 'rounded-xl' : 'rounded-b-xl'
+                )}
+            >
+                {/* {isStandaloneCodeSnippet && preset && (
                     <div className="float-right flex items-center gap-1 pr-3.5 pt-3.5">
                         <div className="h-4 w-4 overflow-hidden rounded-full">
                             <img
@@ -106,11 +112,10 @@ export const CodePanel: FC<PropsWithChildren<CodePanelProperties>> = ({
                         </div>
                         <div>{preset?.name ?? variant ?? language}</div>
                     </div>
-                )}
+                )} */}
                 <div className="relative">
                     <pre
-                        className="text-ens-light-text-primary dark:text-ens-dark-text-primary overflow-x-auto p-4 text-xs"
-                        // ref={preReference}
+                    // ref={preReference}
                     >
                         {children}
                     </pre>
