@@ -11,6 +11,7 @@ import { PageDetails } from './details/PageDetails';
 import { ProposalData } from './details/variations/SnapshotDetails';
 import { Footer } from './footer/PageFooter';
 import { Header } from './header/Header';
+import { RouteCheck } from './RouteCheck';
 import { Sidebar } from './sidebar/Sidebar';
 
 export const Layout: FC<{
@@ -18,7 +19,14 @@ export const Layout: FC<{
     mdxProperties: MdxPageProps;
     snapshotData?: ProposalData;
     isHome?: boolean;
-}> = ({ children, mdxProperties, snapshotData, isHome = false }) => {
+    programmedSlug?: string;
+}> = ({
+    children,
+    mdxProperties,
+    snapshotData,
+    isHome = false,
+    programmedSlug = '/',
+}) => {
     const schema: WithContext<Article> = {
         '@context': 'https://schema.org',
         '@type': 'Article',
@@ -34,6 +42,7 @@ export const Layout: FC<{
     return (
         <SectionProvider sections={mdxProperties.sections}>
             <div className="h-full max-h-screen" id="app">
+                <RouteCheck slug={programmedSlug} />
                 <Header />
                 <Sidebar />
                 <div className="relative mt-16 lg:mt-24">

@@ -30,7 +30,11 @@ export default async function Page() {
     const { Page, pageProperties } = await getPageBySlug('index');
 
     return (
-        <Layout mdxProperties={pageProperties} isHome={true}>
+        <Layout
+            mdxProperties={pageProperties}
+            isHome={true}
+            programmedSlug={'/'}
+        >
             <Page {...pageProperties} />
         </Layout>
     );

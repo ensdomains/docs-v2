@@ -64,7 +64,10 @@ const Page = async ({ params }: PageProperties) => {
     const { Page, pageProperties } = await getPageBySlug(params.slug.join('/'));
 
     return (
-        <Layout mdxProperties={pageProperties}>
+        <Layout
+            mdxProperties={pageProperties}
+            programmedSlug={params.slug.join('/')}
+        >
             <Page {...pageProperties} />
         </Layout>
     );
