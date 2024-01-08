@@ -66,7 +66,7 @@ const Page = async ({ params }: PageProperties) => {
     return (
         <Layout
             mdxProperties={pageProperties}
-            programmedSlug={params.slug.join('/')}
+            programmedSlug={'/' + params.slug.join('/')}
         >
             <Page {...pageProperties} />
         </Layout>

@@ -8,7 +8,7 @@ export const RouteCheck: FC<{ slug: string }> = ({ slug }) => {
             const path = window.location.pathname;
 
             if (path !== slug) {
-                console.log('Navigating in favor to ' + slug);
+                console.log('Navigating in favor to ' + slug + ' from ' + path);
                 window.location.pathname = slug;
             }
         }
