@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { FC, PropsWithChildren } from 'react';
 import { FiExternalLink } from 'react-icons/fi';
 
+import { CopyButton } from '../_legacy/CopyButton';
 import { getLanguage } from '../languageSorter';
 import { LanguageSettings } from '../types/language';
 
@@ -42,6 +43,7 @@ export const CodePanel: FC<PropsWithChildren<CodePanelProperties>> = ({
     children,
     identifier,
     isChild,
+    code,
 }) => {
     // TODO: move this to shiki rehype
     // const focus = (() => {
@@ -119,9 +121,7 @@ export const CodePanel: FC<PropsWithChildren<CodePanelProperties>> = ({
                     >
                         {children}
                     </pre>
-                    {/* {child.props.hideCopy || (
-                    <CopyButton code={child.props.code ?? code} />
-                )} */}
+                    {_hideCopy || <CopyButton code={code} />}
                 </div>
             </div>
             {(link || stackblitz) && (
