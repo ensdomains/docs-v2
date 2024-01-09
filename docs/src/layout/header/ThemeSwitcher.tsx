@@ -5,13 +5,13 @@ import { useTheme } from 'next-themes';
 import { FiMoon, FiSun } from 'react-icons/fi';
 
 export const ThemeSwitcher = () => {
-    const { theme, setTheme } = useTheme();
+    const { resolvedTheme, setTheme } = useTheme();
 
     return (
         <button
             className="p-1"
             onClick={() => {
-                setTheme(theme === 'dark' ? 'light' : 'dark');
+                setTheme(resolvedTheme === 'dark' ? 'light' : 'dark');
             }}
         >
             <div className="bg-ens-light-background-secondary dark:bg-ens-dark-background-secondary relative flex gap-2 rounded-xl p-1 text-sm">
@@ -28,7 +28,7 @@ export const ThemeSwitcher = () => {
                             // @ts-ignore
                             '--knob-size': '50%',
                             left:
-                                theme == 'dark'
+                                resolvedTheme == 'dark'
                                     ? '0px'
                                     : 'calc(100% - var(--knob-size))',
                         }}
@@ -37,13 +37,13 @@ export const ThemeSwitcher = () => {
                 <FiMoon
                     className={clsx(
                         'relative z-20',
-                        theme == 'dark' && 'text-white'
+                        resolvedTheme == 'dark' && 'text-white'
                     )}
                 />
                 <FiSun
                     className={clsx(
                         'relative z-20',
-                        theme != 'dark'
+                        resolvedTheme != 'dark'
                             ? 'text-ens-light-text-accent dark:text-ens-light-text-accent'
                             : 'text-ens-light-text-secondary dark:text-ens-dark-text-secondary'
                     )}
