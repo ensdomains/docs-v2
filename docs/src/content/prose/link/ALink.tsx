@@ -13,7 +13,7 @@ export const ALink: FC<
 
     const className = hideExtras
         ? ''
-        : 'inline-flex my-0 items-center gap-1 ' + properties.className;
+        : clsx('my-0 inline-flex items-center gap-1', properties.className);
 
     return (
         <Link

@@ -328,6 +328,18 @@ tbody tr:last-child td {
     @apply text-ens-light-yellow-active dark:text-ens-dark-yellow-active bg-ens-light-yellow-surface dark:bg-ens-dark-yellow-surface;
 }
 
+.tag-grey {
+    @apply text-ens-light-text-secondary dark:text-ens-dark-text-secondary bg-ens-light-grey-surface dark:bg-ens-dark-grey-surface;
+}
+
+.tag-purple {
+    @apply text-ens-light-purple-active dark:text-ens-dark-purple-active bg-ens-light-purple-surface dark:bg-ens-dark-purple-surface;
+}
+
 .gh-repo {
     @apply mt-0 mb-0;
+}
+
+.ReactModal__Overlay {
+    @apply bg-ens-light-grey-active/20 dark:bg-ens-dark-grey-active/20;
 }

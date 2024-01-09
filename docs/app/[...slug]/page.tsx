@@ -2,7 +2,9 @@ import { getPageBySlug } from 'data/get_page';
 import { getAllPageSlugs } from 'data/get_pages';
 import { ResolvingMetadata } from 'next';
 
+import { ClientOnly } from '@/ClientOnly';
 import { Layout } from '@/layout/PageLayout';
+import { redirectToIndex } from '@/layout/RouteCheck';
 import { createMetadata } from '@/lib/metadata';
 
 type PageProperties = {
@@ -60,6 +62,10 @@ export async function generateStaticParams() {
 
 const Page = async ({ params }: PageProperties) => {
     console.log('🖥️ -> ' + params.slug.join('/'));
+
+    if (params.slug.length == 1 && params.slug[0] == 'index') {
+        return <ClientOnly child={redirectToIndex} />;
+    }
 
     const { Page, pageProperties } = await getPageBySlug(params.slug.join('/'));
 

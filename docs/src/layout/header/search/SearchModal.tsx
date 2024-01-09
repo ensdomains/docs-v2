@@ -29,8 +29,8 @@ export const SearchModal: FC<{ open: boolean; onClose: () => void }> = ({
             shouldReturnFocusAfterClose={true}
             style={{
                 overlay: {
-                    backgroundColor: 'rgba(0, 0, 0, 0.08)',
-                    backdropFilter: 'blur(2px)',
+                    backgroundColor: '',
+                    backdropFilter: 'blur(14px)',
                     zIndex: 99,
                 },
                 content: {

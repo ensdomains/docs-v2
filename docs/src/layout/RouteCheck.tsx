@@ -16,3 +16,5 @@ export const RouteCheck: FC<{ slug: string }> = ({ slug }) => {
 
     return <></>;
 };
+
+export const redirectToIndex = () => <RouteCheck slug="/" />;

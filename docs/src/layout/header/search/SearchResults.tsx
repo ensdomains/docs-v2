@@ -30,6 +30,18 @@ export const SearchResults: FC<{
                     break;
                 }
                 case 'Enter': {
+                    // Select the first entry and trigger it
+                    if (select === -1) {
+                        const element = document.querySelector(
+                            '#search-result-link-0'
+                        );
+
+                        if (element && element instanceof HTMLElement) {
+                            element.focus();
+                            element.click();
+                        }
+                    }
+
                     break;
                 }
             }
@@ -66,18 +78,18 @@ export const SearchResults: FC<{
 
     return (
         <>
-            <div className="dark:bg-ens-dark-grey-surface w-full bg-neutral-50 pt-4">
+            <div className="w-full">
                 {data.hits.length === 0 && (
-                    <div className="dark:bg-ens-dark-grey-surface flex w-full flex-col items-center bg-neutral-50 py-8 text-center">
+                    <div className="dark:bg-ens-dark-grey-surface text-ens-light-text-primary dark:text-ens-dark-text-primary flex w-full flex-col items-center py-8 text-center">
                         <div className="text-4xl">🤷‍♀️</div>
                         <div className="">No results found</div>
                         <div className="text-sm">Try a different search</div>
                     </div>
                 )}
-                <ul className="dark:bg-ens-dark-grey-surface bg-neutral-50 py-2">
+                <ul className="border-t-ens-light-border dark:border-t-ens-dark-border border-t">
                     {data.hits.map((hit, index) => (
                         <li
-                            className="hlem outline-0 focus-within:bg-neutral-200 dark:focus-within:bg-neutral-800"
+                            className="hlem focus-within:bg-ens-light-background-secondary focus-within:dark:bg-ens-dark-background-secondary outline-0"
                             id={'search-result-' + index}
                             key={hit.slug}
                         >
@@ -87,11 +99,11 @@ export const SearchResults: FC<{
                                 }}
                                 href={'/' + hit.slug}
                                 id={'search-result-link-' + index}
-                                className="z-10 flex w-full px-4 py-1"
+                                className="z-10 flex w-full p-4"
                             >
                                 <span className="grow overflow-hidden">
                                     <span className="w-full truncate font-bold">
-                                        {hit.emoji || '✨'}&nbsp;&nbsp;
+                                        {/* {hit.emoji || '✨'}&nbsp;&nbsp; */}
                                         <span
                                             dangerouslySetInnerHTML={{
                                                 __html: hit._formatted.title,
@@ -100,21 +112,18 @@ export const SearchResults: FC<{
                                     </span>
                                     <span
                                         dangerouslySetInnerHTML={{
-                                            __html:
-                                                hit._formatted.content ??
-                                                hit._formatted.description,
+                                            __html: hit.description,
+                                            // hit._formatted.content ??
+                                            // hit._formatted.description,
                                         }}
                                         className={clsx(
-                                            'block h-[2em] w-full truncate pl-8 text-[#3f3f46]',
-                                            hit.slug.startsWith('dao')
-                                                ? 'dark:text-ens-light-purple-light'
-                                                : 'dark:text-ens-light-blue-light'
+                                            'block h-[2em] w-full truncate pl-8'
                                         )}
                                     />
                                 </span>
                                 <span className="flex gap-2">
                                     {hit.slug.startsWith('dao') && (
-                                        <span className="bg-ens-dao-400 h-fit rounded-md px-2 py-0.5 text-xs font-bold text-white">
+                                        <span className="tag tag-purple">
                                             DAO
                                         </span>
                                     )}
@@ -124,10 +133,10 @@ export const SearchResults: FC<{
                     ))}
                 </ul>
             </div>
-            <div className="text-2xs dark:bg-ens-dark-background-secondary border-t-ens-light-border dark:border-t-ens-dark-border flex w-full justify-between rounded-b-xl border-t bg-neutral-50 px-4 py-1 text-neutral-400">
+            {/* <div className="text-2xs dark:bg-ens-dark-background-secondary border-t-ens-light-border dark:border-t-ens-dark-border flex w-full justify-between rounded-b-xl border-t bg-neutral-50 px-4 py-1 text-neutral-400">
                 <div>{data.estimatedTotalHits} hits for search</div>
                 <div>{data.processingTimeMs}ms</div>
-            </div>
+            </div> */}
         </>
     );
 };
