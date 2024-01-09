@@ -34,7 +34,7 @@ export const SearchModal: FC<{ open: boolean; onClose: () => void }> = ({
                     zIndex: 99,
                 },
                 content: {
-                    width: '100%',
+                    width: '',
                     // Search Menu Width
                     maxWidth: '760px',
                     height: 'auto',
@@ -43,7 +43,8 @@ export const SearchModal: FC<{ open: boolean; onClose: () => void }> = ({
                     background: 'transparent',
                     border: 'none',
                     padding: '4px',
-                    inset: '40px 40px auto 40px',
+                    inset: '2vw 2vw auto 2vw',
+                    // inset: '40px 40px auto 40px',
                 },
             }}
         >

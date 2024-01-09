@@ -61,28 +61,30 @@ export const ResponsiveSearch = () => {
                         {isLoading && <FiLoader />}
                     </div>
                 </div>
-                <div className="flex gap-2">
-                    {[
-                        'All',
-                        'Intro',
-                        'Using ENS',
-                        'Smart Contracts',
-                        'Governance',
-                        'Improvement Proposals',
-                    ].map((item, _index) => (
-                        <button
-                            className={clsx(
-                                'tag',
-                                _index == 0 ? 'tag-blue' : 'tag-grey'
-                            )}
-                            key={_index}
-                            onClick={() => {
-                                // TODO: Implement filtering by category
-                            }}
-                        >
-                            {item}
-                        </button>
-                    ))}
+                <div className="overflow-x-auto">
+                    <div className="flex w-fit gap-2 whitespace-nowrap">
+                        {[
+                            'All',
+                            'Intro',
+                            'Using ENS',
+                            'Smart Contracts',
+                            'Governance',
+                            'Improvement Proposals',
+                        ].map((item, _index) => (
+                            <button
+                                className={clsx(
+                                    'tag',
+                                    _index == 0 ? 'tag-blue' : 'tag-grey'
+                                )}
+                                key={_index}
+                                onClick={() => {
+                                    // TODO: Implement filtering by category
+                                }}
+                            >
+                                {item}
+                            </button>
+                        ))}
+                    </div>
                 </div>
             </div>
             <div className="w-full">

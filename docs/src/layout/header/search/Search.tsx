@@ -79,15 +79,19 @@ export function Search() {
 }
 
 export function MobileSearch() {
+    const [isOpen, setOpen] = useState<boolean>(false);
+
     return (
         <div className="contents lg:hidden">
             <button
                 type="button"
                 className="flex h-6 w-6 items-center justify-center rounded-md transition-all hover:bg-zinc-900/5 dark:hover:bg-white/5 lg:hidden"
                 aria-label="Search Content..."
+                onClick={() => setOpen(true)}
             >
                 <SearchIcon className="h-5 w-5 stroke-zinc-900 dark:stroke-white" />
             </button>
+            <SearchModal open={isOpen} onClose={() => setOpen(false)} />
         </div>
     );
 }
