@@ -405,8 +405,16 @@ export const navigation: SectionData[] = [
                         href: '/dao/proposals/submit',
                     },
                     {
-                        title: 'Voting Procedure',
-                        href: '/dao/proposals/voting',
+                        title: 'DAO Stewards',
+                        href: '/dao/stewards',
+                    },
+                    // {
+                    //     title: 'Voting Procedure',
+                    //     href: '/dao/proposals/voting',
+                    // },
+                    {
+                        title: 'Working Group Rules',
+                        href: '/dao/wg/rules',
                     },
                 ],
             },

@@ -229,6 +229,14 @@
                 "destination": "/dao"
             },
             {
+                "pattern": "^/v/governance/stewards$",
+                "destination": "/dao/stewards"
+            },
+            {
+                "pattern": "^/v/governance/stewards/active-working-group-rules$",
+                "destination": "/dao/wg/rules"
+            },
+            {
                 "pattern": "^/v/governance/process$",
                 "destination": "/dao/governance/process"
             },
