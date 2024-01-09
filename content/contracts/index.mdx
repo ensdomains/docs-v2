@@ -43,14 +43,17 @@ The smart contracts can be found on github at [ensdomains/ens-contracts]().
 <div className="grid grid-cols-3 gap-4">
     {
         [
-            ['The Registry'],
-            ['ETH Registrar'],
-            ['DNS Registrar'],
-            ['Reverse Registrar']
+            ['The Registry', '/registry/ens'],
+            ['ETH Registrar', '/registry/eth'],
+            ['DNS Registrar', '/registry/dns'],
+            ['Reverse Registrar', '/registry/reverse']
         ].map((list, i) => (
-            <div className="card1 p-4">
-                <div>{list[0]}</div>
-            </div>
+            <EmbedLink
+                title={list[0]}
+                description="The resolution process"
+                href={list[1]}
+                key={i}
+            />
         ))
     }
 </div>

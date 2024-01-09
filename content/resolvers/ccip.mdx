@@ -88,7 +88,7 @@ The URL for this gateway is determined by the `OffchainLookup` error, and is pas
 
 ### Implement Gateway Endpoint {{ navtitle: 'Implement Gateway', id: 'endpoint' }}
 
-There are two methods (GET and POST) you can choose to implement when writing a gateway. When your smart contract reverts with the `OffchainLookup` error you can decide the url it returns.
+There are two methods (GET and POST) you can choose to implement when writing a gateway. When your smart-contract reverts with the `OffchainLookup` error you can decide the url it returns.
 If `{data}` can be successfully substituted out of the URL a GET request will be made, if no `{data}` is present a POST request will be made instead, with the data instead submitted as the post body.
 
 <CodeGroup title="Request" presets="method">
@@ -146,7 +146,7 @@ An alternative option is to [set the Resolver manually](/resolvers/interacting) 
 
 ## Testing your Gateway
 
-To test your gateway you can use the [ENS Manager App](https://ens.app/) or for a more detailed try using [enstate](https://enstate.rs/n/luc.willbreak.eth) and notice the `ccip_urls` field.
+To test your gateway you can use the [ENS Manager App](https://ens.app/) or if you want more detail try using [enstate](https://enstate.rs/n/luc.willbreak.eth) and notice the `ccip_urls` field.
 If your results are loaded successfully, you have successfully implemented a gateway resolver.
 
 A testing tool for CCIP functions will be available soon.

@@ -28,14 +28,9 @@ Forwards resolution is the process of going **from name to address**. As well as
 These records include but are not limited to **discord**, **twitter**, **github**, **email**, **timezone**, and more.
 
 <div className="not-prose card1 p-4">
-  <div className="flex justify-center items-center gap-6">
+  <div className="flex justify-center items-start gap-6">
     <Usertag />
-    <div className="flex h-20 items-center">➡️</div>
-    <div className="flex flex-col gap-2 items-center">
-        <img src="/logo.svg" className="h-16 -mx-4 -mb-2" />
-        <div>ENS Magic</div>
-    </div>
-    <div className="flex h-20 items-center">➡️</div>
+    <div className="flex h-14 items-center">➡️</div>
     <div className="card1 p-4 !my-0 rounded-md w-64 whitespace-normal break-all">
         <div>
             <span className="font-extrabold">Address:</span> 0x225...c3B5
@@ -54,6 +49,9 @@ These records include but are not limited to **discord**, **twitter**, **github*
   </div>
 </div>
 
+Implementing forwards resolution in a dApp can be as simple as using a single line of code!
+To learn more about how to implement forwards resolution, check out the [Address Resolution](/web/address) documentation.
+
 ## Reverse Resolution
 
 Reverse resolution is the process of going **from address to name**. As well as to load the records associated to a users name.
@@ -70,11 +68,9 @@ This tends to be used for things like:
             <div>0x225...c3B5</div>
         </div>
         <div className="flex h-20 items-center">➡️</div>
-        <div className="flex flex-col gap-2 items-center">
-            <img src="/logo.svg" className="h-16 -mx-4 -mb-2" />
-            <div>ENS Magic</div>
-        </div>
-        <div className="flex h-20 items-center">➡️</div>
         <Usertag />
     </div>
 </div>
+
+Implementing reverse resolution in a dApp can be as simple as using a single line of code!
+To learn more about how to implement reverse resolution, check out the [Address Resolution](/web/reverse) documentation.
