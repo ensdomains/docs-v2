@@ -1,5 +1,3 @@
-'use client';
-import { usePathname } from 'next/navigation';
 import { FC } from 'react';
 import { FiClock, FiGitCommit } from 'react-icons/fi';
 
@@ -19,8 +17,8 @@ export const PageDetails: FC<{
 }> = ({ mdxProperties, snapshotData }) => {
     const shouldShowPageDetails = mdxProperties.meta?.showDetailsSection;
 
-    const pathname = usePathname();
-    const isDAO = pathname.startsWith('/dao');
+    // const pathname = usePathname();
+    // const isDAO = pathname.startsWith('/dao');
 
     if (!shouldShowPageDetails) {
         return <></>;
@@ -32,7 +30,7 @@ export const PageDetails: FC<{
 
     return (
         <>
-            <div className="border-t border-ens-light-border pt-2 text-ens-light-text-primary dark:border-ens-dark-border dark:text-ens-dark-text-primary">
+            <div className="border-ens-light-border text-ens-light-text-primary dark:border-ens-dark-border dark:text-ens-dark-text-primary border-t pt-2">
                 <div className="leading-6">
                     {mdxProperties.meta?.ensip && (
                         <ENSIPDetails

@@ -6,13 +6,8 @@ export const navigation: SectionData[] = [
         name: 'Intro',
         href: '/learn/protocol',
         icon: '🏠',
-        activePattern:
-            /^\/((learn|terminology|changelog|bugs|dns|faq)(\/.*)?)?$/,
+        activePattern: /^\/((learn|terminology|changelog|bugs|faq)(\/.*)?)?$/,
         links: [
-            // {
-            //     title: '',
-            //     links: [{ title: 'Welcome', href: '/', icon: '👋' }],
-            // },
             {
                 title: 'Learn',
                 icon: '🧑‍🎓',
@@ -45,10 +40,6 @@ export const navigation: SectionData[] = [
                         wip: 65,
                         design_wip: true,
                     },
-                    {
-                        title: 'TLDs List',
-                        href: '/dns/tlds',
-                    },
                 ],
             },
             {
@@ -56,10 +47,15 @@ export const navigation: SectionData[] = [
                 icon: '📰',
                 links: [
                     {
-                        title: 'Changelog',
-                        href: '/changelog',
-                        wip: 5,
-                        icon: '📝',
+                        title: 'Frequently Asked Questions',
+                        href: '/faq',
+                        icon: '📓',
+                    },
+                    {
+                        title: 'Terminology',
+                        href: '/terminology',
+                        wip: 10,
+                        icon: '📓',
                     },
                     {
                         title: 'Bug Bounties',
@@ -67,10 +63,10 @@ export const navigation: SectionData[] = [
                         icon: '🪲',
                     },
                     {
-                        title: 'Terminology',
-                        href: '/terminology',
-                        wip: 10,
-                        icon: '📓',
+                        title: 'Changelog',
+                        href: '/changelog',
+                        wip: 5,
+                        icon: '📝',
                     },
                 ],
             },
@@ -193,7 +189,7 @@ export const navigation: SectionData[] = [
         href: '/contracts',
         icon: '⚙️',
         activePattern:
-            /^\/(resolvers|contracts|subnames|registry|resolution)(\/.*)?/,
+            /^\/(resolvers|contracts|subnames|registry|resolution|dns)(\/.*)?/,
         links: [
             {
                 title: '',
@@ -285,6 +281,10 @@ export const navigation: SectionData[] = [
                         href: '/registry/dns',
                         wip: 80,
                         icon: '🗒️',
+                    },
+                    {
+                        title: 'TLDs List',
+                        href: '/dns/tlds',
                     },
                     // {
                     //     title: 'Test Registrar',
@@ -411,8 +411,61 @@ export const navigation: SectionData[] = [
                 ],
             },
             {
-                title: '📖 Proposals Term 3',
+                title: '📖 Proposals Term 4',
                 links: [
+                    {
+                        title: '4.10 - [Social] Transfer ENS Root Key Ownership to the ENS DAO',
+                        href: '/dao/proposals/4.10',
+                    },
+                    {
+                        title: '4.9 - [Social] Select providers for EP4.7 streams',
+                        href: '/dao/proposals/4.9',
+                    },
+                    {
+                        title: '4.8 - [Social] Amend working groups rules to extend to a full year',
+                        href: '/dao/proposals/4.8',
+                    },
+                    {
+                        title: '4.7 - [Social] Create Service Provider Streams',
+                        href: '/dao/proposals/4.7',
+                    },
+                    {
+                        title: '4.6 - [Executable] October 2023 Working Group Funding',
+                        href: '/dao/proposals/4.6',
+                    },
+                    {
+                        title: '4.5 - [Executable] Endowment permissions to karpatkey - Update #3',
+                        href: '/dao/proposals/4.5',
+                    },
+                    {
+                        title: '4.4 - [Executable] ENS Working Group Budget Proposals',
+                        href: '/dao/proposals/4.4',
+                    },
+                    {
+                        title: '4.3 - [Executable] Refund Invalid .eth Names',
+                        href: '/dao/proposals/4.3',
+                    },
+                    {
+                        title: '4.2 - [Executable] Fund the Endowment (second tranche)',
+                        href: '/dao/proposals/4.2',
+                    },
+                    {
+                        title: '4.1 - [Executable] Approve further actions and strategies for the Endowment',
+                        href: '/dao/proposals/4.1',
+                    },
+                ],
+            },
+            {
+                title: '📙 Proposals Term 3',
+                links: [
+                    {
+                        title: '3.7 - [Social] Approval of ENS Name Normalization Standard (ENSIP-15)',
+                        href: '/dao/proposals/3.7',
+                    },
+                    {
+                        title: '3.6 - [Social] Election of new ENS Foundation director',
+                        href: '/dao/proposals/3.6',
+                    },
                     {
                         title: '3.5 - [Executable] Activate new .eth Controller and Reverse Registrar',
                         href: '/dao/proposals/3.5',

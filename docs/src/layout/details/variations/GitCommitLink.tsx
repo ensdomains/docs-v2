@@ -1,3 +1,5 @@
+'use client';
+
 // eslint-disable-next-line unicorn/prefer-node-protocol
 import crypto from 'crypto';
 import { usePathname } from 'next/navigation';
