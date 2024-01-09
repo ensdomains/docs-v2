@@ -55,21 +55,27 @@ This example application allows you to claim a subname for 24 hours.
 The name [offchaindemo.eth](https://ens.app/offchaindemo.eth) with resolver [0xDB3...4D27](https://etherscan.io/address/0xDB34Da70Cfd694190742E94B7f17769Bc3d84D27#code), reverts with [OffchainLookup](https://eips.ethereum.org/eips/3668) and directs the client to a gateway url.
 The [gateway url](https://ens-gateway.gregskril.workers.dev/lookup/{sender}/{data}.json) returns the information and loads it from a temporary database.
 
-## Flow
+## EVMGateway
 
-To build using CCIP there are two steps:
+The EVMGateway is a gateway that allows you to load data from specific Layer 2's whose proofs are verifyable on L1.
+This means if you are looking to load data from Optimism or Arbitrum, the EVMGateway allows you to trustlessly do so.
 
-- [Write an offchain gateway](#writing-a-gateway)
-  - (Optional) Loading data from a layer 2 or database
-  - (Optional) Verifying the data on-chain
-- [Point your name to the gateway](#set)
+<Repository src="ensdomains/evmgateway" />
+
+## CCIP Read Flow
+
+When a name is looked up the resolver responsible is called to resolve the name.
+During this execution the `OffchainLookup` error is thrown, and the client will attempt to reach out to the gateway specified by the error.
+If successful the gateways results are returned to the callback function specified in the error.
+The output of the callback function is then returned to the client and considered the result of the original lookup.
 
 <img src="/content/learn/ccip/1.png" className="w-full card" />
 
 ## Writing a Gateway
 
+A gateway is an off-chain service that is responsible for returning the data requested by a client.
 A gateway must be implemented using the [Gateway Interface](https://eips.ethereum.org/EIPS/eip-3668#gateway-interface) as specified in EIP-3668.
-This entails it must expose an API served over https, and must return data in a specific format.
+This means it must expose an API served over https, and return data in a specific format.
 This service can be a server, a serverless function, worker, etc.
 The URL for this gateway is determined by the `OffchainLookup` error, and is passed as a parameter to the error.
 
@@ -107,9 +113,14 @@ Method: GET
     Lowercased address of the contract reverting with the `OffchainLookup` error.
   </Property>
   <Property name="data" type="bytes">
-    Only show conversations that are muted when set to `true`.
+    0x prefixed bytes of the data passed to the `OffchainLookup` error.
   </Property>
 </Properties>
+
+#### Trust Assumptions
+
+The gateways response is returned to a callback function on the resolver, we assume this function verifies the data returned by the gateway.
+Gateways form a "one-of-many" trust relationship as we require only one gateway to be honest for the system to keep functioning.
 
 ### Deploying a Resolver
 
@@ -119,9 +130,26 @@ If you would like to read more about writing your own resolver checkout the [Wri
 
 The gist is that this resolver must implement the specifications you plan to support (such as `addr()` or `resolve()`), and then revert with `OffchainLookup` and your gateway URL.
 
+#### Callback Function
+
+When reverting with an `OffchainLookup` error you can specify a callback function.
+The callback function is evaluated on the client side with the data returned from the gateway.
+This makes it a perfect place to validate proofs, signatures, or other data.
+
 ### Enabling your Resolver {{ navtitle: 'Setting Resolver', id: 'set' }}
 
-Last but not least you need to instruct your name to use the gateway.
+Last but not least you need to instruct your name to use the resolver-gateway combo.
+To do this, simply visit the [ENS Manager App](https://ens.app/) and set the resolver of your name to the contract address of your resolver.
+This means that all resolution for this name from now on will be handled by your resolver.
+
+An alternative option is to [set the Resolver manually](/resolvers/interacting) or [from a dApp](/resolvers/interacting).
+
+## Testing your Gateway
+
+To test your gateway you can use the [ENS Manager App](https://ens.app/) or for a more detailed try using [enstate](https://enstate.rs/n/luc.willbreak.eth) and notice the `ccip_urls` field.
+If your results are loaded successfully, you have successfully implemented a gateway resolver.
+
+A testing tool for CCIP functions will be available soon.
 
 {/* ```mermaid
 sequenceDiagram
