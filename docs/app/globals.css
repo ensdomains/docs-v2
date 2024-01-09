@@ -182,6 +182,10 @@ svg[role~='graphics-document'] {
     @apply bg-neutral-300/25 underline;
 }
 
+.hlem:last-child {
+    @apply rounded-b-2xl;
+}
+
 .hidable-code + * {
     display: none;
 }

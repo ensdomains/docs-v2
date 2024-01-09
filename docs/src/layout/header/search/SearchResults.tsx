@@ -30,18 +30,6 @@ export const SearchResults: FC<{
                     break;
                 }
                 case 'Enter': {
-                    // Select the first entry and trigger it
-                    if (select === -1) {
-                        const element = document.querySelector(
-                            '#search-result-link-0'
-                        );
-
-                        if (element && element instanceof HTMLElement) {
-                            element.focus();
-                            element.click();
-                        }
-                    }
-
                     break;
                 }
             }
@@ -89,7 +77,7 @@ export const SearchResults: FC<{
                 <ul className="border-t-ens-light-border dark:border-t-ens-dark-border border-t">
                     {data.hits.map((hit, index) => (
                         <li
-                            className="hlem focus-within:bg-ens-light-background-secondary focus-within:dark:bg-ens-dark-background-secondary outline-0"
+                            className="hlem focus-within:bg-ens-light-background-secondary hover:bg-ens-light-background-secondary focus-within:dark:bg-ens-dark-background-secondary hover:dark:bg-ens-dark-background-secondary outline-0"
                             id={'search-result-' + index}
                             key={hit.slug}
                         >
@@ -97,9 +85,16 @@ export const SearchResults: FC<{
                                 onFocus={() => {
                                     setSelect(index);
                                 }}
+                                onKeyDown={(event) => {
+                                    if (event.key === 'Enter') {
+                                        // setSelect(-1);
+                                        // @ts-ignore
+                                        event.target.click();
+                                    }
+                                }}
                                 href={'/' + hit.slug}
                                 id={'search-result-link-' + index}
-                                className="z-10 flex w-full p-4"
+                                className="focus:outline-ens-light-blue-primary outline-ens-dark-blue-primary z-10 flex w-full p-4"
                             >
                                 <span className="grow overflow-hidden">
                                     <span className="w-full truncate font-bold">

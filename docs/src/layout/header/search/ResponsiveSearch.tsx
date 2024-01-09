@@ -41,6 +41,18 @@ export const ResponsiveSearch = () => {
                         onChange={(event) => {
                             setSearch(event.target.value);
                         }}
+                        onKeyDown={(event) => {
+                            if (event.key === 'Enter') {
+                                const element = document.querySelector(
+                                    '#search-result-link-0'
+                                );
+
+                                if (element && element instanceof HTMLElement) {
+                                    element.focus();
+                                    element.click();
+                                }
+                            }
+                        }}
                     />
                     <div className="absolute inset-y-0 left-3 flex h-full items-center text-neutral-300">
                         <MagnifyingGlassSVG />
