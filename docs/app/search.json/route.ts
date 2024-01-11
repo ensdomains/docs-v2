@@ -15,8 +15,8 @@ export async function GET() {
     const posts = await Promise.all(
         slugs.map(async (slug) => {
             const tag =
-                protocol.find((tag) => {
-                    return ('/' + slug).startsWith(tag.href);
+                protocol.find((section) => {
+                    return section.activePattern.test(`/${slug}`);
                 })?.name || '';
             const { pageProperties } = await getPageBySlug(slug);
 
