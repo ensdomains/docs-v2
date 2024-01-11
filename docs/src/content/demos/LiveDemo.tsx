@@ -1,6 +1,5 @@
 import { FC } from 'react';
 
-import { ConnectedWalletDemo } from './connected-wallet/ConnectedWallet';
 import { ETHRegistryDemo } from './ethregistry/ETHRegistryDemo';
 import { ETHRegistryRenewDemo } from './ethregistryrenew/ETHRegistryRenewDemo';
 import { NameLookupDemo } from './namelookup/NameLookup';
@@ -16,7 +15,6 @@ export const LiveDemo: FC<{ id?: string }> = ({ id }) => {
             {id == 'name_lookup' && <NameLookupDemo />}
             {id == 'siwe' && <SiweDemo />}
             {id == 'resolver_test' && <ResolverTestDemo />}
-            {id == 'connected_wallet' && <ConnectedWalletDemo />}
             {id == 'send_transaction' && <SendTransactionDemo />}
         </div>
     );

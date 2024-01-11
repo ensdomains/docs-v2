@@ -5,6 +5,8 @@ import { useDebounce } from 'use-debounce';
 import { isAddress } from 'viem';
 import { useEnsAddress } from 'wagmi';
 
+import { Button } from '@/components/Button';
+
 // TODO: make this look nice, for example https://ens-frontend-template.vercel.app/input
 export const SendTransactionDemo: FC = () => {
     const [input, setInput] = useState('');
@@ -34,19 +36,22 @@ export const SendTransactionDemo: FC = () => {
             </label>
             <input
                 id="input"
-                className="px-1 py-0.5 shadow-sm"
+                className="bg-ens-light-background-primary dark:bg-ens-dark-background-primary border-ens-light-border dark:border-ens-dark-border w-full rounded-md border px-3 py-2"
                 placeholder="ens.eth"
                 onChange={(event) => setInput(event.target.value)}
             />
 
             {ensAddress && address && <span>{address}</span>}
 
-            <button
-                className="bg-ens-light-blue-primary text-ens-light-text-accent disabled:bg-ens-light-blue-300"
+            <Button
+                variant="primary"
+                onClick={() => {
+                    // TODO:
+                }}
                 disabled={!address}
             >
                 Send ETH
-            </button>
+            </Button>
         </div>
     );
 };
