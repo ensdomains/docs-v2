@@ -163,16 +163,17 @@ export const navigation: SectionData[] = [
                 ],
             },
             {
-                title: 'Design Guidelines',
+                title: 'Design',
                 icon: '🖼️',
                 links: [
-                    // eslint-disable-next-line quotes
                     {
-                        // eslint-disable-next-line prettier/prettier
-                        title: 'Do\'s and Dont\'s',
+                        title: 'Guidelines',
                         href: '/web/design',
-                        wip: true,
-                        design_wip: true,
+                    },
+                    {
+                        title: 'Thorin',
+                        href: 'https://thorin.ens.domains/',
+                        external: true,
                     },
                     {
                         title: 'Media kit',
