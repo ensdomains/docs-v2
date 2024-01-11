@@ -1,14 +1,119 @@
 import { WIP } from '@/components/wip/WIP';
+import { Mermaid } from '@/content/prose/mermaid';
 
 {/** @type {import('@/lib/mdxPageProps').MdxMetaProps} */}
 export const meta = {
     description: '',
     emoji: '🎁',
-    contributors: []
+    contributors: [
+        'serenae-fansubs'
+    ]
 };
 
-# Namewrapper
+# The ENS Name Wrapper
 
 <WIP />
 
-<iframe className="w-full aspect-video rounded-lg shadow-sm" src="https://www.youtube-nocookie.com/embed/njb7jp5_Qoo?si=YyESSjAk4W5btawz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe className="w-full aspect-video rounded-lg shadow-sm" src="https://www.youtube-nocookie.com/embed/njb7jp5_Qoo?si=YyESSjAk4W5btawz" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+
+## Overview
+
+The <b>Name Wrapper</b> is a new contract for ENS that allows you to "wrap" any ENS name into a ERC-1155 NFT.
+
+### Without the Name Wrapper
+Before the Name Wrapper, only .eth 2LDs (second-level domains, like `ens.eth`) had ERC-721 NFTs associated with them, unless the owner created a separate custom contract.
+
+<div className="card1">
+    <img src="/content/namewrapper/namewrapper-overview-subnames.jpg" alt="Subnames without NFTs" />
+</div>
+
+### With the Name Wrapper
+
+<div className="border border-ens-light-border dark:border-ens-dark-border rounded-md not-prose grid grid-cols-2">
+  <div className="flex flex-col">
+    <div className="grow p-2 flex items-center justify-center">
+        <div className="card1">
+            <img src="/content/namewrapper/namewrapper-overview-wrapped.jpg" alt="Name Wrapper Diagram" />
+        </div>
+    </div>
+  </div>
+  <div className="flex flex-col border-l border-ens-light-border dark:border-ens-dark-border">
+    <div className="grow p-2 flow items-left justify-left">
+        <p><b>Parent-Controlled Fuses:</b></p>
+        <ul style={{listStyle: 'inside'}}>
+            <li key="pcf1"><a href="#Fuses" style={{color: '#5298ff', textDecoration: 'underline transparent'}}>Fuses</a> that only the parent owner can burn</li>
+            <li key="pcf2">"Perks" that can be given to the owner of a name</li>
+        </ul>
+        <p><b>Example:</b> By burning `CAN_EXTEND_EXPIRY`, you allow the owner to extend/renew their own subname</p>
+        <br/>
+
+        <p><b>Owner-Controlled Fuses:</b></p>
+        <ul style={{listStyle: 'inside'}}>
+            <li key="ocf1"><a href="#Fuses" style={{color: '#5298ff', textDecoration: 'underline transparent'}}>Fuses</a> that either the owner or parent owner can burn</li>
+            <li key="ocf2">"Permissions" that can be revoked on a name</li>
+        </ul>
+        <p><b>Example:</b> By burning `CANNOT_TRANSFER`, the wrapped NFT can no longer be transferred or sold.</p>
+        <br/>
+
+        <p><b>Subname Fuses:</b></p>
+        <ul style={{listStyle: 'inside'}}>
+            <li key="sf1">The parent owner has the power to burn fuses when creating subnames</li>
+            <li key="sf2">Decides what perks, permissions, or guarantees to give to subname owners</li>
+        </ul>
+    </div>
+  </div>
+</div>
+
+<b>With this new contract, you can wrap:</b>
+<ul>
+    <li key="wrapex1">
+        <p>Any .eth name or subname</p>
+        <p><b>​Examples:</b> `name.eth`, `sub.name.eth`</p>
+    </li>
+    <li key="wrapex2">
+        <p>Any DNS name or subname</p>
+        <p><b>​Examples:</b> `name.com`, `sub.name.com`</p>
+    </li>
+</ul>
+
+Unwrapped .eth 2LDs have the concept of a separate **Owner** (Registrant) and **Manager** (Controller). 
+
+This changes after you wrap the name, because there is only a single account that serves as both the **Owner** and **Manager** for the wrapped name.
+
+### Wrapping and Unwrapping
+
+When wrapping a .eth 2LD, you transfer the Owner (Registrant) of the ERC-721 NFT to the Name Wrapper contract.
+
+The contract will then automatically take over the Manager (Controller) for the name as well. 
+
+You can do this by calling the <a href="https://github.com/ensdomains/ens-contracts/tree/master/contracts/wrapper#wrapeth2ld">wrapETH2LD</a> method. Or, you can directly transfer the ERC-721 NFT to the Name Wrapper contract. In return, the contract issues you an ERC-1155 NFT.
+
+When wrapping any other ENS name, you transfer the Manager (Controller) of the name to the Name Wrapper contract. You can do this by calling the <a href="https://github.com/ensdomains/ens-contracts/tree/master/contracts/wrapper#wrap">wrap</a> method. In return, the contract issues you an ERC-1155 NFT.
+
+As the owner of the wrapped name, you can unwrap at any time by calling either <a href="https://github.com/ensdomains/ens-contracts/tree/master/contracts/wrapper#unwrapeth2ld">unwrapETH2LD</a> or <a href="https://github.com/ensdomains/ens-contracts/tree/master/contracts/wrapper#unwrap">unwrap</a>. You can do this as long as the permission to unwrap has not been revoked.
+
+## Wrapped States
+
+<Mermaid chart={`graph LR;
+  unregistered((Unregistered));
+  unwrapped(Unwrapped);
+  wrapped(Wrapped);
+  emancipated(Emancipated);
+  locked(Locked);
+  unregistered--->|register|unwrapped;
+  unwrapped--->|wrap|wrapped;
+  wrapped--->|unwrap|unwrapped;
+  wrapped--->|protect|emancipated;
+  emancipated--->|lock|locked;
+  emancipated--->|unwrap|unwrapped;
+  emancipated--->|expire|unregistered;
+  locked-->|expire|unregistered;
+`} />
+
+## Fuses
+
+## Expiry
+
+## Approved Operators
+
+

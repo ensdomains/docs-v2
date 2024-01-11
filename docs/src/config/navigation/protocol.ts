@@ -151,6 +151,11 @@ export const navigation: SectionData[] = [
                         wip: true,
                     },
                     {
+                        title: 'Name Wrapper',
+                        href: '/subnames/wrapper',
+                        wip: true,
+                    },
+                    {
                         title: 'Subgraph',
                         href: '/web/subgraph',
                     },
