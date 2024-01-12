@@ -29,7 +29,7 @@ export const searchFetcher: Fetcher<
                     'tag',
                     'emoji',
                 ],
-                filter: tag === 'All' ? undefined : 'tag = ' + tag,
+                filter: tag === 'All' ? undefined : `tag = '${tag}'`,
                 cropLength: 10,
                 attributesToHighlight: ['content', 'title'],
             }) as any,

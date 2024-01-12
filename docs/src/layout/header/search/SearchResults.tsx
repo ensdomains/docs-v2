@@ -12,6 +12,10 @@ export const SearchResults: FC<{
 }> = ({ data, select, setSelect }) => {
     useEffect(() => {
         const thateventlistener = (event) => {
+            if (!data?.hits?.length) {
+                return;
+            }
+
             switch (event.key) {
                 case 'ArrowDown': {
                     event.preventDefault();
