@@ -13,6 +13,8 @@ export const searchFetcher: Fetcher<
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                Authorization:
+                    'Bearer b77dacb494c3272351784097847e34c59b22510b30aa0ed662f1e79e1df658a0',
             } as any,
             body: JSON.stringify({
                 q: search,
