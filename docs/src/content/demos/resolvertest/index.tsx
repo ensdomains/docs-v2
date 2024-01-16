@@ -3,31 +3,10 @@
 import { useState } from 'react';
 import { encodeAbiParameters, labelhash } from 'viem';
 import { namehash, normalize } from 'viem/ens';
-import {
-    mainnet,
-    useAccount,
-    useChainId,
-    useConnect,
-    useContractRead,
-} from 'wagmi';
-import { configureChains, createConfig } from 'wagmi';
-import { InjectedConnector } from 'wagmi/connectors/injected';
-import { publicProvider } from 'wagmi/providers/public';
+import { useAccount, useChainId, useConnect, useReadContract } from 'wagmi';
 
 import { ClientOnly } from '@/ClientOnly';
 import { Button } from '@/components/Button';
-
-const {
-    chains: _chains,
-    publicClient,
-    webSocketPublicClient,
-} = configureChains([mainnet], [publicProvider()]);
-
-const config = createConfig({
-    autoConnect: true,
-    publicClient,
-    webSocketPublicClient,
-});
 
 const RESOLVER_REGEX = /^0x[\dA-Fa-f]{40}$/;
 const NAME_REGEX = /^[\w-]+$/;
@@ -44,9 +23,7 @@ const Demo = () => {
     const [method, setMethod] = useState('addr');
     const chainId = useChainId();
 
-    const { connect } = useConnect({
-        connector: new InjectedConnector({ chains: [mainnet] }),
-    });
+    const { connect } = useConnect();
 
     const { isConnected } = useAccount();
 
@@ -60,7 +37,7 @@ const Demo = () => {
 
     console.log({ a1, a2 });
 
-    const { data, refetch } = useContractRead({
+    const { data, refetch } = useReadContract({
         chainId,
         address: resolver as `0x${string}`,
         abi: [

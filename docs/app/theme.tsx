@@ -1,55 +1,35 @@
 'use client';
 
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ThemeProvider } from 'next-themes';
-import { goerli, sepolia } from 'viem/chains';
-import { configureChains, createConfig, mainnet, WagmiConfig } from 'wagmi';
-import { InjectedConnector } from 'wagmi/connectors/injected';
-import { jsonRpcProvider } from 'wagmi/providers/jsonRpc';
-import { publicProvider } from 'wagmi/providers/public';
+import { goerli, mainnet, sepolia } from 'viem/chains';
+import { createConfig, http, WagmiProvider } from 'wagmi';
+import { injected } from 'wagmi/connectors';
 
-export const TheConnector = new InjectedConnector({
-    options: {
-        name: 'My Injected Wallet',
-        shimDisconnect: true,
-        getProvider: () =>
-            typeof window !== 'undefined' ? window['ethereum'] : undefined,
+const config = createConfig({
+    chains: [mainnet, goerli, sepolia],
+    connectors: [injected({})],
+    transports: {
+        [mainnet.id]: http(),
+        [goerli.id]: http(),
+        [sepolia.id]: http(),
     },
 });
 
-const {
-    chains: _chains,
-    publicClient,
-    webSocketPublicClient,
-} = configureChains(
-    [goerli, sepolia, mainnet],
-    [
-        jsonRpcProvider({
-            rpc: (chain) => {
-                if (chain.id == 5)
-                    return {
-                        http: 'https://rpc.ankr.com/eth_goerli',
-                        webSocket: undefined,
-                    };
+declare module 'wagmi' {
+    interface Register {
+        config: typeof config;
+    }
+}
 
-                // eslint-disable-next-line unicorn/no-useless-undefined
-                return undefined;
-            },
-        }),
-        publicProvider(),
-    ]
-);
-
-const config = createConfig({
-    autoConnect: true,
-    publicClient,
-    webSocketPublicClient,
-    connectors: [TheConnector],
-});
+const queryClient = new QueryClient();
 
 export const Theme = ({ children }) => {
     return (
         <ThemeProvider attribute="class">
-            <WagmiConfig config={config}>{children}</WagmiConfig>
+            <QueryClientProvider client={queryClient}>
+                <WagmiProvider config={config}>{children}</WagmiProvider>
+            </QueryClientProvider>
         </ThemeProvider>
     );
 };

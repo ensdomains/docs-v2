@@ -1,7 +1,12 @@
 import { FC } from 'react';
 import { FiX } from 'react-icons/fi';
 import { formatEther } from 'viem';
-import { useContractWrite, usePrepareContractWrite } from 'wagmi';
+import {
+    useAccount,
+    useEstimateGas,
+    useSimulateContract,
+    useWriteContract,
+} from 'wagmi';
 
 import { Button } from '@/components/Button';
 
@@ -14,33 +19,37 @@ export const RenewName: FC<{
 }> = ({ name, duration, rentPrice }) => {
     const isReady = name && duration && rentPrice > 0;
 
-    const {
-        data: renewCallResult,
-        config: renewConfig,
-        isError,
-    } = usePrepareContractWrite({
+    const { address } = useAccount();
+
+    const { writeContract, isError: isUserDecline } = useWriteContract();
+
+    const config = {
         abi: ETHRegistrarABI,
-        address: '0xcc5e7db10e65eed1bbd105359e7268aa660f6734',
+        from: address,
+        to: '0xcc5e7db10e65eed1bbd105359e7268aa660f6734',
         functionName: 'renew',
         args: [name, duration],
         value: rentPrice,
         enabled: isReady,
-    });
+    };
 
-    const { write: renew } = useContractWrite(renewConfig);
+    const { data: gas2, isError } = useSimulateContract(config);
+    const { data: gas } = useEstimateGas(config);
+
+    console.log({ gas, gas2 });
 
     const rentPriceFormatted = formatEther(rentPrice || BigInt(0));
 
     return (
         <div>
-            <div className="space-y-2 rounded-lg border border-ens-light-border p-4 dark:border-ens-dark-border">
+            <div className="border-ens-light-border dark:border-ens-dark-border space-y-2 rounded-lg border p-4">
                 <div className="space-x-2">
                     <div className="tag tag-yellow">Transaction</div>
-                    <div className="inline text-ens-light-text-secondary dark:text-ens-dark-text-secondary">
+                    <div className="text-ens-light-text-secondary dark:text-ens-dark-text-secondary inline">
                         Renew the name.
                     </div>
                 </div>
-                <div className="break-all rounded-lg border border-ens-light-border p-2 dark:border-ens-dark-border">
+                <div className="border-ens-light-border dark:border-ens-dark-border break-all rounded-lg border p-2">
                     <span className="text-ens-light-blue-primary">
                         ETHRegistrarController
                     </span>
@@ -55,11 +64,11 @@ export const RenewName: FC<{
                     )
                 </div>
                 <div className="flex w-full items-center justify-end gap-4">
-                    <div>xxx gas</div>
+                    <div>{gas?.toString()} gas</div>
                     <div>{rentPriceFormatted} eth</div>
                     <Button
                         onClick={() => {
-                            renew();
+                            writeContract(config);
                         }}
                         variant="primary"
                     >
@@ -67,13 +76,13 @@ export const RenewName: FC<{
                     </Button>
                 </div>
                 {!isReady && (
-                    <div className="flex items-center gap-1 rounded-lg border-ens-light-red-primary bg-ens-light-red-surface px-3 py-2 text-ens-light-red-primary dark:border-ens-dark-red-primary dark:bg-ens-dark-red-surface">
+                    <div className="border-ens-light-red-primary bg-ens-light-red-surface text-ens-light-red-primary dark:border-ens-dark-red-primary dark:bg-ens-dark-red-surface flex items-center gap-1 rounded-lg px-3 py-2">
                         <FiX />
                         Not Ready
                     </div>
                 )}
                 {isError && (
-                    <div className="flex items-center gap-1 rounded-lg border-ens-light-red-primary bg-ens-light-red-surface px-3 py-2 text-ens-light-red-primary dark:border-ens-dark-red-primary dark:bg-ens-dark-red-surface">
+                    <div className="border-ens-light-red-primary bg-ens-light-red-surface text-ens-light-red-primary dark:border-ens-dark-red-primary dark:bg-ens-dark-red-surface flex items-center gap-1 rounded-lg px-3 py-2">
                         <FiX />
                         Problem
                     </div>

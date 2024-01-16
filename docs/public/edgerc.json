@@ -5,12 +5,16 @@
         },
         "redirects": [
             {
-                "pattern": "^/quickstart$",
-                "destination": "/web/quickstart"
-            },
-            {
                 "pattern": "^/namewrapper$",
                 "destination": "/subnames/wrapper"
+            },
+            {
+                "pattern": "^/(tools|sdk)$",
+                "destination": "/web/libraries"
+            },
+            {
+                "pattern": "^/quickstart$",
+                "destination": "/web/quickstart"
             },
             {
                 "pattern": "^/ccip$",

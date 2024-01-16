@@ -1,7 +1,6 @@
 'use client';
 
 import { formatAddress } from '@ens-tools/format';
-import { TheConnector } from 'app/theme';
 import { useEffect } from 'react';
 import { FaSignature, FaSpinner } from 'react-icons/fa';
 import { ImExit } from 'react-icons/im';
@@ -25,9 +24,9 @@ const Demo = () => {
     const {
         data: signatureData,
         signMessage,
-        isLoading,
+        isPending,
         reset,
-    } = useSignMessage();
+    } = useSignMessage({});
 
     useEffect(() => {
         reset();
@@ -63,17 +62,15 @@ const Demo = () => {
                                     chainId: 1,
                                 });
 
-                                signMessage({
-                                    message: message.prepareMessage(),
-                                });
+                                signMessage();
                             }}
                         >
-                            {isLoading ? (
+                            {isPending ? (
                                 <FaSpinner className="animate-spin" />
                             ) : (
                                 <FaSignature />
                             )}
-                            {isLoading ? 'Opening wallet...' : 'Sign in'}
+                            {isPending ? 'Opening wallet...' : 'Sign in'}
                         </Button>
                         <Button
                             variant="secondary"
@@ -95,7 +92,7 @@ const Demo = () => {
                 <Button
                     variant="primary"
                     onClick={() => {
-                        connect({ connector: TheConnector });
+                        connect();
                     }}
                 >
                     Connect Wallet
