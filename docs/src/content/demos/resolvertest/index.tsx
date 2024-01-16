@@ -59,7 +59,7 @@ const Demo = () => {
             },
         ],
         functionName: 'resolve',
-        args: [a1, a2],
+        args: [a1, a2 as any],
     });
 
     if (!isConnected) {
