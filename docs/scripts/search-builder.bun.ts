@@ -72,8 +72,5 @@ const out = metadata.map((meta) => ({
 }));
 
 // eslint-disable-next-line no-undef
-Bun.write(
-    join(docsOutputDir, 'search.json'),
-    JSON.stringify(out, undefined, 4)
-);
+Bun.write(join(docsOutputDir, 'search.json'), JSON.stringify(out));
 console.log('Done!');
