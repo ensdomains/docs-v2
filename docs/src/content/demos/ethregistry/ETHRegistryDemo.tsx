@@ -1,8 +1,7 @@
 'use client';
 
-import { TheConnector } from 'app/theme';
 import { useState } from 'react';
-import { useAccount, useChainId, useConnect } from 'wagmi';
+import { useAccount, useChainId } from 'wagmi';
 
 import { ClientOnly } from '@/ClientOnly';
 import { Button } from '@/components/Button';
@@ -42,10 +41,6 @@ const Demo = () => {
     // eslint-disable-next-line unicorn/no-useless-undefined
     const [rentPrice, setRentPrice] = useState<bigint | null>(undefined);
 
-    const { connect } = useConnect({
-        connector: TheConnector,
-    });
-
     const { isConnected } = useAccount();
 
     return (
@@ -59,7 +54,7 @@ const Demo = () => {
                         <Button
                             variant="primary"
                             onClick={() => {
-                                connect();
+                                // connect();
                             }}
                         >
                             Connect

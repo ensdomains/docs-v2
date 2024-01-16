@@ -82,11 +82,11 @@
     /* width: 720px; */
 }
 
-@media (max-width: 1400px) {
+/* @media (max-width: 1400px) {
     .prose > * {
         margin-left: 0;
     }
-}
+} */
 
 .prose > p + p {
     /* @apply !mt-0 mb-0; */

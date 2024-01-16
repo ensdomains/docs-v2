@@ -143,12 +143,10 @@ export const navigation: SectionData[] = [
                     {
                         title: 'Naming Smart-contracts',
                         href: '/web/naming-contracts',
-                        wip: true,
                     },
                     {
                         title: 'Issuing Subdomains',
                         href: '/web/subdomains',
-                        wip: true,
                     },
                     {
                         title: 'Subgraph',
@@ -320,18 +318,6 @@ export const navigation: SectionData[] = [
                         href: '/subnames/wrapper',
                         wip: true,
                         icon: '🎁',
-                    },
-                    {
-                        title: 'Subdomain for every NFT Holder',
-                        href: '/subnames/nfts',
-                        wip: true,
-                        icon: '🫂',
-                    },
-                    {
-                        title: 'Writing your own Subdomain System',
-                        href: '/subnames/writing-a-subdomain-system',
-                        wip: true,
-                        icon: '✍️',
                     },
                 ],
             },

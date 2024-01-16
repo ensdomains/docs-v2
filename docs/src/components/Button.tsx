@@ -45,7 +45,7 @@ type ButtonProperties = {
 
 export const Button: FC<
     {
-        variant: string;
+        variant?: string;
         className?: string;
         arrow?: 'left' | 'right';
         disabled?: boolean;
