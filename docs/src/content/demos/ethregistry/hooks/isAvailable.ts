@@ -17,7 +17,7 @@ export const useIsAvailable = (name: string) => {
         abi: ETHRegistrarABI,
         functionName: 'available',
         args: [name],
-        enabled: !!name && name.length >= 3,
+        // enabled: !!name && name.length >= 3,
         chainId,
     });
 

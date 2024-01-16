@@ -23,14 +23,14 @@ export const useCommitment = (
         abi: ETHRegistrarABI,
         functionName: 'makeCommitment',
         args: [name, owner, duration, secret, resolver, [], false, 0],
-        enabled:
-            !!name &&
-            name.length >= 3 &&
-            !!owner &&
-            !!duration &&
-            duration > 0 &&
-            !!secret &&
-            !!resolver,
+        // enabled:
+        //     !!name &&
+        //     name.length >= 3 &&
+        //     !!owner &&
+        //     !!duration &&
+        //     duration > 0 &&
+        //     !!secret &&
+        //     !!resolver,
         chainId,
     });
 
