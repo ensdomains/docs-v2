@@ -36,7 +36,6 @@ export async function GET() {
         ...post.pageProperties.meta,
         id: post.slug.replace('/', '--').replace(/[^\w-]/g, ''),
         slug: post.slug,
-        content: post.pageProperties.plainContent,
         tag: post.tag,
     }));
 
