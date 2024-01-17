@@ -45,15 +45,25 @@ type ButtonProperties = {
 
 export const Button: FC<
     {
-        variant: string;
+        variant?: string;
         className?: string;
         arrow?: 'left' | 'right';
+        disabled?: boolean;
     } & (HrefProperties | ButtonProperties) &
         PropsWithChildren
-> = ({ variant = 'primary', className, children, arrow, ...properties }) => {
+> = ({
+    variant = 'primary',
+    disabled = false,
+    className,
+    children,
+    arrow,
+    ...properties
+}) => {
     const Component = properties['href'] ? Link : 'button';
 
-    className = clsx('btn', variantStyles[variant], className);
+    const newVariant = disabled ? 'disabled' : variant;
+
+    className = clsx('btn', variantStyles[newVariant], className);
 
     const arrowIcon = (
         <ArrowIcon
@@ -73,6 +83,7 @@ export const Button: FC<
             target={properties['target']}
             onClick={properties['onClick']}
             className={className}
+            disabled={disabled}
             {...properties}
         >
             {arrow === 'left' && arrowIcon}

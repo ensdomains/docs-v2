@@ -143,12 +143,10 @@ export const navigation: SectionData[] = [
                     {
                         title: 'Naming Smart-contracts',
                         href: '/web/naming-contracts',
-                        wip: true,
                     },
                     {
                         title: 'Issuing Subdomains',
                         href: '/web/subdomains',
-                        wip: true,
                     },
                     {
                         title: 'Name Wrapper',
@@ -168,16 +166,17 @@ export const navigation: SectionData[] = [
                 ],
             },
             {
-                title: 'Design Guidelines',
+                title: 'Design',
                 icon: '🖼️',
                 links: [
-                    // eslint-disable-next-line quotes
                     {
-                        // eslint-disable-next-line prettier/prettier
-                        title: 'Do\'s and Dont\'s',
+                        title: 'Guidelines',
                         href: '/web/design',
-                        wip: true,
-                        design_wip: true,
+                    },
+                    {
+                        title: 'Thorin',
+                        href: 'https://thorin.ens.domains/',
+                        external: true,
                     },
                     {
                         title: 'Media kit',
@@ -324,18 +323,6 @@ export const navigation: SectionData[] = [
                         href: '/subnames/wrapper',
                         wip: true,
                         icon: '🎁',
-                    },
-                    {
-                        title: 'Subdomain for every NFT Holder',
-                        href: '/subnames/nfts',
-                        wip: true,
-                        icon: '🫂',
-                    },
-                    {
-                        title: 'Writing your own Subdomain System',
-                        href: '/subnames/writing-a-subdomain-system',
-                        wip: true,
-                        icon: '✍️',
                     },
                 ],
             },

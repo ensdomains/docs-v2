@@ -1,8 +1,8 @@
 'use client';
 
-import { TheConnector } from 'app/theme';
 import { useState } from 'react';
-import { useAccount, useConnect } from 'wagmi';
+import { goerli, mainnet, sepolia } from 'viem/chains';
+import { useAccount, useChainId } from 'wagmi';
 
 import { ClientOnly } from '@/ClientOnly';
 import { Button } from '@/components/Button';
@@ -15,6 +15,7 @@ import { RenewName } from './transactions/RenewName';
 
 const Demo = () => {
     const { address } = useAccount();
+    const chainId = useChainId();
 
     /* User Configurable Values */
     const [label, setLabel] = useState('testname123456');
@@ -35,15 +36,11 @@ const Demo = () => {
     // eslint-disable-next-line unicorn/no-useless-undefined
     const [rentPrice, setRentPrice] = useState<bigint | null>(undefined);
 
-    const { connect } = useConnect({
-        connector: TheConnector,
-    });
-
     const { isConnected } = useAccount();
 
     return (
         <div className="-m-4">
-            <div className="w-full border-b border-ens-light-border px-4 py-2 dark:border-ens-dark-border">
+            <div className="border-ens-light-border dark:border-ens-dark-border w-full border-b px-4 py-2">
                 Renew a Name (Live Demo)
             </div>
             <div className="space-y-4 p-4">
@@ -52,14 +49,16 @@ const Demo = () => {
                         <Button
                             variant="primary"
                             onClick={() => {
-                                connect();
+                                // connect();
                             }}
                         >
                             Connect
                         </Button>
                     </div>
                 )}
-                <ChainField />
+                <ChainField
+                    available={new Set([goerli.id, mainnet.id, sepolia.id])}
+                />
                 <LabelField label={label} setLabel={setLabel} />
                 <DurationField duration={duration} setDuration={setDuration} />
                 <RentPriceCheck

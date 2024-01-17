@@ -1,14 +1,14 @@
 :root.dark {
-    --shiki-color-text: theme('colors.white');
-    --shiki-color-background: theme('colors.zinc.900');
-    --shiki-token-constant: theme('colors.ens.light.blue.300');
-    --shiki-token-string: theme('colors.ens.light.blue.300');
-    --shiki-token-comment: theme('colors.zinc.500');
-    --shiki-token-keyword: theme('colors.sky.300');
-    --shiki-token-parameter: theme('colors.pink.300');
-    --shiki-token-function: theme('colors.violet.300');
-    --shiki-token-string-expression: theme('colors.ens.light.blue.300');
-    --shiki-token-punctuation: theme('colors.zinc.200');
+    --shiki-color-text: theme('colors.ens.dark.text.primary');
+    --shiki-color-background: theme('colors.ens.dark.background.primary');
+    --shiki-token-constant: theme('colors.ens.dark.blue.primary');
+    --shiki-token-string: theme('colors.ens.dark.green.primary');
+    --shiki-token-comment: theme('colors.ens.dark.text.secondary');
+    --shiki-token-keyword: theme('colors.ens.dark.blue.primary');
+    --shiki-token-parameter: theme('colors.ens.dark.pink.light');
+    --shiki-token-function: theme('colors.ens.dark.orange.primary');
+    --shiki-token-string-expression: theme('colors.ens.dark.pink.primary');
+    --shiki-token-punctuation: theme('colors.ens.dark.text.disabled');
 }
 
 :root {
@@ -82,11 +82,11 @@
     /* width: 720px; */
 }
 
-@media (max-width: 1400px) {
+/* @media (max-width: 1400px) {
     .prose > * {
         margin-left: 0;
     }
-}
+} */
 
 .prose > p + p {
     /* @apply !mt-0 mb-0; */
@@ -96,7 +96,10 @@
     @apply text-ens-light-text-primary dark:text-ens-dark-text-primary;
 }
 
-.prose h1, .prose h2, .prose h3, .prose h4 {
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4 {
     @apply text-ens-light-text-primary dark:text-ens-dark-text-primary;
 }
 

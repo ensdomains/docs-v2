@@ -56,7 +56,7 @@ export const TLDList = async () => {
     const client = createPublicClient({
         chain: mainnet,
         transport: http(
-            process.env.RPC_URL ?? 'https://cloudflare-eth.com/rpc'
+            process.env.RPC_URL ?? '' //?? 'https://cloudflare-eth.com/rpc'
         ),
     });
 

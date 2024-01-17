@@ -2,6 +2,9 @@ import { getPageBySlug } from 'data/get_page';
 import { getAllPageSlugs } from 'data/get_pages';
 import { NextResponse } from 'next/server';
 
+import { navigation } from '../../src/config/navigation';
+const { protocol } = navigation;
+
 export async function GET() {
     if (process.env.NODE_ENV !== 'production') return NextResponse.json([]);
 
@@ -11,11 +14,20 @@ export async function GET() {
 
     const posts = await Promise.all(
         slugs.map(async (slug) => {
+            const tag =
+                protocol.find((section) => {
+                    if (slug == 'index' && section.name == 'Intro') return true;
+
+                    if (slug == 'dissapeared') return false;
+
+                    return section.activePattern.test(`/${slug}`);
+                })?.name || '';
             const { pageProperties } = await getPageBySlug(slug);
 
             return {
                 pageProperties,
                 slug,
+                tag,
             };
         })
     );
@@ -24,7 +36,7 @@ export async function GET() {
         ...post.pageProperties.meta,
         id: post.slug.replace('/', '--').replace(/[^\w-]/g, ''),
         slug: post.slug,
-        content: post.pageProperties.plainContent,
+        tag: post.tag,
     }));
 
     return NextResponse.json(data);

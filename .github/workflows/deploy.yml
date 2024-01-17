@@ -46,6 +46,18 @@ jobs:
           token: ${{ secrets.EDGESERVER_TOKEN }}
           directory: docs/out
 
+      - uses: oven-sh/setup-bun@v1
+
+      - name: Install dependencies
+        run: bun install
+        working-directory: docs/scripts
+        shell: bash
+
+      - name: Build search.json
+        run: bun run build-search
+        working-directory: docs/scripts
+        shell: bash
+
       - name: Index search.json
         shell: bash
         run: |
