@@ -276,7 +276,6 @@ export const navigation: SectionData[] = [
                     {
                         title: 'DNS Registrar',
                         href: '/registry/dns',
-                        wip: 80,
                         icon: '🗒️',
                     },
                     {
@@ -304,18 +303,18 @@ export const navigation: SectionData[] = [
                 ],
             },
             {
-                title: 'Subnames',
+                title: 'Namewrapper',
                 icon: '📰',
                 links: [
                     {
                         title: 'Quickstart',
-                        href: '/subnames/quickstart',
+                        href: '/wrapper/quickstart',
                         wip: true,
                         icon: '⚡',
                     },
                     {
                         title: 'Namewrapper',
-                        href: '/subnames/wrapper',
+                        href: '/wrapper/wrapper',
                         icon: '🎁',
                     },
                 ],
