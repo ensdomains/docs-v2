@@ -151,7 +151,6 @@ export const navigation: SectionData[] = [
                     {
                         title: 'Name Wrapper',
                         href: '/subnames/wrapper',
-                        wip: true,
                     },
                     {
                         title: 'Subgraph',
@@ -321,7 +320,6 @@ export const navigation: SectionData[] = [
                     {
                         title: 'Namewrapper',
                         href: '/subnames/wrapper',
-                        wip: true,
                         icon: '🎁',
                     },
                 ],
