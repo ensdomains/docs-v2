@@ -187,7 +187,7 @@ export const navigation: SectionData[] = [
         href: '/contracts',
         icon: '⚙️',
         activePattern:
-            /^\/(resolvers|contracts|subnames|registry|resolution|dns)(\/.*)?/,
+            /^\/(resolvers|contracts|wrapper|registry|resolution|dns)(\/.*)?/,
         links: [
             {
                 title: '',
