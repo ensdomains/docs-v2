@@ -18,8 +18,6 @@ const getGitLastUpdatedTimeStamp = async (slug: string) => {
     return new Date(lastUpdatedTimeStamp.latest.date);
 };
 
-const mapIgnore = new Set(['dissapeared']);
-
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const files = await glob('**/*.mdx', {
         cwd: join(process.cwd(), '../content'),
