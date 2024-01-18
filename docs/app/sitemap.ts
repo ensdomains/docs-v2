@@ -4,7 +4,7 @@ import { join } from 'node:path';
 import simpleGit from 'simple-git';
 
 const processSlugs = (slug: string) => {
-    return slug.replace('index', '');
+    return slug.replace('/index', '/');
 };
 
 const getGitLastUpdatedTimeStamp = async (slug: string) => {
@@ -17,21 +17,28 @@ const getGitLastUpdatedTimeStamp = async (slug: string) => {
 
     return new Date(lastUpdatedTimeStamp.latest.date);
 };
+const mapIgnore = new Set(['dissapeared']);
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const files = await glob('**/*.mdx', {
         cwd: join(process.cwd(), '../content'),
     });
 
-    const routes = files.map(async (file) => {
-        const slug = file.replace(/(\/index)?\.mdx$/, '');
-        const lastUpdated = await getGitLastUpdatedTimeStamp(file);
+    const routes = await Promise.all(
+        files.map(async (file) => {
+            const slug = file.replace(/(\/index)?\.mdx$/, '');
+            const lastUpdated = await getGitLastUpdatedTimeStamp(file);
 
-        return {
-            url: 'https://alpha-docs.ens.domains/' + processSlugs(slug),
-            lastModified: lastUpdated,
-        };
-    });
+            if (mapIgnore.has(slug)) {
+                return;
+            }
 
-    return await Promise.all(routes);
+            return {
+                url: 'https://alpha-docs.ens.domains/' + processSlugs(slug),
+                lastModified: lastUpdated,
+            };
+        })
+    );
+
+    return routes.filter(Boolean);
 }
