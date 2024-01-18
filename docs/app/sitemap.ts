@@ -2,6 +2,7 @@ import { glob } from 'glob';
 import { MetadataRoute } from 'next';
 import { join } from 'node:path';
 import simpleGit from 'simple-git';
+
 const processSlugs = (slug: string) => {
     return slug.replace('index', '');
 };
@@ -13,8 +14,6 @@ const getGitLastUpdatedTimeStamp = async (slug: string) => {
     const lastUpdatedTimeStamp = await git.log({
         file: process.cwd().replace(/\/docs$/, '') + `/content/${slug}`,
     });
-
-    console.log(lastUpdatedTimeStamp.latest.date);
 
     return new Date(lastUpdatedTimeStamp.latest.date);
 };
