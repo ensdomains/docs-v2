@@ -316,7 +316,6 @@ export const navigation: SectionData[] = [
                     {
                         title: 'Namewrapper',
                         href: '/subnames/wrapper',
-                        wip: true,
                         icon: '🎁',
                     },
                 ],

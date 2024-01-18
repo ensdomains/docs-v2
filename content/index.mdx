@@ -10,17 +10,16 @@ export const meta = {
 };
 
 <div className="bg-ens-light-background-secondary dark:bg-ens-dark-background-secondary">
-<div className="max-w-5xl mx-auto space-y-4 py-16 px-4 sm:px-6">
+    <div className="max-w-5xl mx-auto space-y-4 py-16 px-4 sm:px-6">
+        <h1>ENS Docs</h1>
 
-<h1>ENS Docs</h1>
+        <p>Learn about building applications with decentralized identity.</p>
 
-<p>Learn about building applications with decentralized identity.</p>
-
-<div className="flex gap-3 flex-col sm:flex-row">
-    <Button href="/learn/protocol">Open Docs</Button>
-    <Button variant="secondary" href="/web/quickstart">Integrate into your app!</Button>
-</div>
-</div>
+        <div className="flex gap-3 flex-col sm:flex-row">
+            <Button href="/learn/protocol">Open Docs</Button>
+            <Button variant="secondary" href="/web/quickstart">Integrate into your app!</Button>
+        </div>
+    </div>
 </div>
 
 <div className="max-w-5xl !mx-auto space-y-6 pt-6 px-4 sm:px-6 w-full">
@@ -79,6 +78,7 @@ export const meta = {
                 links: [
                     ["Naming Smart-Contracts", "/web/naming-contracts"],
                     // ["Issuing Subdomains", "/web/subdomains"],
+                    ["Name Wrapper", "/subnames/wrapper"],
                     ["Subgraph", "/web/subgraph"],
                     ["Sign In With Ethereum (SIWE)", "/web/siwe"]
                 ]
