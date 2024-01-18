@@ -11,7 +11,9 @@ export const meta = {
 
 # The ENS Name Wrapper
 
-<Note>Are you looking for user-facing guides on how to interact with the Name Wrapper in the ENS Manager App? If so, see here instead: <a href="https://support.ens.domains/en/collections/4194784-name-wrapper-guides">Name Wrapper Guides</a></Note>
+<Note>
+    Are you looking for user-facing guides on how to interact with the Name Wrapper in the ENS Manager App? If so, see here instead: <a href="https://support.ens.domains/en/collections/4194784-name-wrapper-guides">Name Wrapper Guides</a>
+</Note>
 
 <iframe className="w-full aspect-video rounded-lg shadow-sm" src="https://www.youtube-nocookie.com/embed/njb7jp5_Qoo?si=YyESSjAk4W5btawz" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
 
@@ -20,6 +22,7 @@ export const meta = {
 The <b>Name Wrapper</b> is a new contract for ENS that allows you to "wrap" any ENS name into a ERC-1155 NFT.
 
 ### Without the Name Wrapper
+
 Before the Name Wrapper, only .eth 2LDs (second-level domains, like `ens.eth`) had ERC-721 NFTs associated with them, unless the owner created a separate custom contract.
 
 <div className="card1">
@@ -28,16 +31,14 @@ Before the Name Wrapper, only .eth 2LDs (second-level domains, like `ens.eth`) h
 
 ### With the Name Wrapper
 
-<div className="border border-ens-light-border dark:border-ens-dark-border rounded-md not-prose grid grid-cols-2">
+<div className="card1 not-prose grid grid-cols-1 md:grid-cols-2">
   <div className="flex flex-col">
-    <div className="grow p-2 flex items-center justify-center">
-        <div className="card1">
-            <img src="/content/namewrapper/namewrapper-overview-wrapped.jpg" alt="Name Wrapper Diagram" />
-        </div>
+    <div className="grow p-4 flex items-center justify-center">
+        <img src="/content/namewrapper/namewrapper-overview-wrapped.jpg" alt="Name Wrapper Diagram" />
     </div>
   </div>
   <div className="flex flex-col border-l border-ens-light-border dark:border-ens-dark-border">
-    <div className="grow p-2 flow items-left justify-left">
+    <div className="grow p-4 flow items-left justify-left">
         <p><b>Parent-Controlled Fuses:</b></p>
         <ul style={{listStyle: 'inside'}}>
             <li key="pcf1"><a href="#fuses" style={{color: '#5298ff', textDecoration: 'underline transparent'}}>Fuses</a> that only the parent owner can burn</li>
@@ -67,19 +68,17 @@ Before the Name Wrapper, only .eth 2LDs (second-level domains, like `ens.eth`) h
 <ul>
     <li key="wrapex1">
         <p>Any .eth name or subname</p>
-        <p><b>​Examples:</b> `name.eth`, `sub.name.eth`</p>
+        <p><b>Examples:</b> `name.eth`, `sub.name.eth`</p>
     </li>
     <li key="wrapex2">
         <p>Any DNS name or subname</p>
-        <p><b>​Examples:</b> `name.com`, `sub.name.com`</p>
+        <p><b>Examples:</b> `name.com`, `sub.name.com`</p>
     </li>
 </ul>
 
 Unwrapped .eth 2LDs have the concept of a separate **Owner** (Registrant) and **Manager** (Controller). 
 
 This changes after you wrap the name, because there is only a single account that serves as both the **Owner** and **Manager** for the wrapped name.
-
----
 
 ## Wrapped States
 
@@ -100,7 +99,8 @@ This changes after you wrap the name, because there is only a single account tha
   locked-->|expire|unregistered;
 `} />
 */}
-<div className="card1">
+
+<div className="card1 p-4">
     <img src="/content/namewrapper/namewrapper-state-diagram.png" alt="State Diagram" />
 </div>
 
@@ -128,8 +128,6 @@ The name can still be unwrapped and rewrapped by the owner.
 
 #### Locked
 The name can no longer be unwrapped. The owner can now burn owner-controlled fuses on the name. Fuses for subnames of this name can now be burned as well.
-
----
 
 ## Fuses
 
@@ -266,11 +264,9 @@ The DNS TLD owner would need to:
 
 However, this still does not have all the immutable guarantees that .eth names do. This is because for DNS names, the "source of truth" always lies not in the Ethereum network, but in the DNS network, and the DNS root zone governed by ICANN stakeholders.
 
-So even if the DNS TLD owner "Locks" that TLD in the ENS Name Wrapper, if that TLD were to ever change ownership on the DNS side, then (per the <a href="https://docs.ens.domains/v/governance/ens-dao-constitution#iv.-ens-integrates-with-the-global-namespace">ENS DAO Constitution</a>) the new owner would be able to override control of that TLD on the ENS side, unwrap it, and replace/revoke all 2LDs. This is just something to keep in mind for wrapped DNS domains.
+So even if the DNS TLD owner "Locks" that TLD in the ENS Name Wrapper, if that TLD were to ever change ownership on the DNS side, then (per the [ENS DAO Constitution](https://docs.ens.domains/v/governance/ens-dao-constitution#iv.-ens-integrates-with-the-global-namespace)) the new owner would be able to override control of that TLD on the ENS side, unwrap it, and replace/revoke all 2LDs. This is just something to keep in mind for wrapped DNS domains.
 
 Even if wrapped DNS domains do not support fuses, you can still use them as ERC-1155 NFTs. They will still have their own NFT metadata and show up in your wallet, with whatever avatar you have set, etc. They just won't have all the extra functionality that comes with the fuse/permission system.
-
----
 
 ## Expiry
 
@@ -286,7 +282,7 @@ For example, say a name expires in 5 years. The owner of the name can then set t
 
 Then in turn, the owner of the subname can set the expiry of its own subnames up to a maximum of 2 years, but it could also set it to something less, like 1 year.
 
-<div className="card1">
+<div className="card1 p-4">
     <img src="/content/namewrapper/namewrapper-expiry-subnames.jpg" alt="Expiry Diagram" />
 </div>
 
@@ -306,7 +302,7 @@ The parent can further lock this approved contract in by burning the **`CANNOT_A
 
 There is also a special parent-controlled fuse called **`CAN_EXTEND_EXPIRY`**. If the parent burns this fuse on a subname, then the owner of that subname (or any approved controller) can also extend the expiry.
 
-So, if you are running a subname registrar and you want to enable “unruggable renewals”, you can use one of the above options (or both).
+So, if you are running a subname registrar and you want to enable "unruggable renewals", you can use one of the above options (or both).
 
 ### Special Cases for .eth 2LDs
 
@@ -325,8 +321,6 @@ When a name is merely **Wrapped** but not **Emancipated** or **Locked**, parent-
 When the expiry is reached, all fuses will be reset, but the name will otherwise be unaffected.
 
 When a name is **Emancipated** or **Locked**, the expiry has an important additional effect. In this scenario, when the expiry has been reached, **the name itself will expire**, and the owner **loses ownership** of the name.
-
----
 
 ## Contract Details
 
@@ -353,6 +347,7 @@ As the owner of the wrapped name, you can unwrap at any time by calling either <
 ### Approved Operators
 
 #### Full-Control Operator Batch Approvals
+
 Your wrapped name is an ERC-1155 NFT that supports the `setApprovalForAll` method. When you approve an address using this method, it will have **full control** over all wrapped ENS names that you own.
 
 This method is typically used by NFT marketplace contracts.
@@ -378,8 +373,6 @@ Then, to enable "unruggable renewals", you could call `approve` on that same con
 If you need to later on, you would still be able to revoke with `setApprovalForAll`. So the contract would lose full control over your name (and the ability to create new subnames), but it would still be able to perpetually renew/extend existing subnames.
 
 And you can do all of this **without** needing to send your wrapped NFT to that contract.
-
----
 
 ## Use-Cases
 
@@ -449,7 +442,7 @@ To accomplish this, you will want to create a **subname registrar**. This is a c
 
 In fact, this is exactly how .eth 2LDs are registered. The owner of the `eth` TLD (the NFT contract) delegates registration / renewal to the ETHRegistrarController contract. It is acting as a subname registrar for the name `eth`.
 
-Your contract would expose a `register` method that anyone can call. Under the hood it will use the <a href="https://github.com/ensdomains/ens-contracts/tree/master/contracts/wrapper#setsubnodeowner">setSubnodeOwner</a> or <a href="https://github.com/ensdomains/ens-contracts/tree/master/contracts/wrapper#setsubnoderecord">setSubnodeRecord</a> methods to create subnames, passing in the **fuses** and **expiry** you want to set.
+Your contract would expose a `register` method that anyone can call. Under the hood it will use the [setSubnodeOwner](https://github.com/ensdomains/ens-contracts/tree/master/contracts/wrapper#setsubnodeowner) or [setSubnodeRecord](https://github.com/ensdomains/ens-contracts/tree/master/contracts/wrapper#setsubnoderecord) methods to create subnames, passing in the **fuses** and **expiry** you want to set.
 
 #### What fuses should I burn???
 
@@ -543,7 +536,7 @@ If you are creating a new NFT contract, you could even bake this functionality *
 
 If you decide to not Emancipate the subnames that you issue, you *will* still be able to burn any Parent-Controlled Fuses. There are 13 unreserved parent-controlled fuses that you can use however you wish!
 
-For example, perhaps you want to grant on-chain "perks" or "roles" to certain holders. You would call <a href="https://github.com/ensdomains/ens-contracts/tree/master/contracts/wrapper#setchildfuses">`setChildFuses`</a> on the Name Wrapper and pass in the fuses you want to burn, and the expiry.
+For example, perhaps you want to grant on-chain "perks" or "roles" to certain holders. You would call [setChildFuses](https://github.com/ensdomains/ens-contracts/tree/master/contracts/wrapper#setchildfuses) on the Name Wrapper and pass in the fuses you want to burn, and the expiry.
 
 This means that those "perks" or "roles" can also be time-boxed if you want. Maybe a perk expires in 1 week or something, up to you.
 
