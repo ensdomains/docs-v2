@@ -3,6 +3,8 @@ import { MetadataRoute } from 'next';
 import { join } from 'node:path';
 import simpleGit from 'simple-git';
 
+const SLUG_IGNORE = new Set(['dissapeared']);
+
 const processSlugs = (slug: string) => {
     return slug.replace('/index', '/');
 };
