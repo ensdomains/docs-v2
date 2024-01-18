@@ -1,28 +1,24 @@
-import { TheConnector } from 'app/theme';
+/* eslint-disable unicorn/no-nested-ternary */
 import { FC } from 'react';
+import { goerli, holesky, mainnet, sepolia } from 'viem/chains';
 import {
     useAccount,
     useChainId,
     useConnect,
     useDisconnect,
-    useSwitchNetwork,
+    useSwitchChain,
 } from 'wagmi';
 
 import { Button } from '@/components/Button';
 
-const available_chains = new Set([5]);
-
-export const ChainField: FC = () => {
-    const { switchNetwork, chains, error, pendingChainId } = useSwitchNetwork();
+export const ChainField: FC<{ available?: Set<number> }> = ({
+    available = new Set([5]),
+}) => {
+    const { chains, error, switchChain } = useSwitchChain();
     const chainId = useChainId();
     const { isConnected, address, connector } = useAccount();
-    const { connect } = useConnect({
-        connector: TheConnector,
-        chainId: 5,
-    });
+    const { connect, connectors } = useConnect();
     const { disconnectAsync } = useDisconnect();
-
-    console.log({ switchNetwork });
 
     return (
         <div className="">
@@ -30,37 +26,39 @@ export const ChainField: FC = () => {
             <div className="flex gap-4">
                 {(
                     [
-                        [5, 'Goerli'],
-                        [1, 'Mainnet'],
-                        [11_155_111, 'Sepolia'],
-                        [17_000, 'Holesky'],
+                        [mainnet.id, 'Mainnet'],
+                        [goerli.id, 'Goerli'],
+                        [sepolia.id, 'Sepolia'],
+                        [holesky.id, 'Holesky'],
                     ] as [number, string][]
-                ).map(([id, name]) => (
-                    <Button
-                        key={id}
-                        variant={
-                            (available_chains.has(id)
-                                ? 'secondary'
-                                : 'disabled') as unknown as 'primary'
-                        }
-                        onClick={async () => {
-                            if (available_chains.has(id)) {
-                                // if (switchNetwork) {
-                                switchNetwork(id);
-                                // } else {
-                                await disconnectAsync();
-                                connect({
-                                    chainId: id,
-                                    connector: TheConnector,
-                                });
+                ).map(([id, name]) => {
+                    const is_active = id === chainId;
+                    const is_available = available.has(id);
+                    const variant = is_active
+                        ? 'primary'
+                        : is_available
+                        ? 'secondary'
+                        : 'disabled';
 
-                                // }
-                            }
-                        }}
-                    >
-                        <span>{name}</span>
-                    </Button>
-                ))}
+                    return (
+                        <Button
+                            key={id}
+                            variant={variant}
+                            onClick={async () => {
+                                if (is_available) {
+                                    if (isConnected) {
+                                        switchChain({ chainId: id as any });
+                                    } else {
+                                        console.log({ connectors });
+                                        connect({ connector: connectors[0] });
+                                    }
+                                }
+                            }}
+                        >
+                            <span>{name}</span>
+                        </Button>
+                    );
+                })}
             </div>
         </div>
     );

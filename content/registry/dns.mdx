@@ -1,158 +1,126 @@
 {/* * @type {import('@/lib/mdxPageProps').MdxMetaProps} */}
 export const meta = {
-  description: 'Registrar responsible for all DNSSEC enabled names',
-  emoji: '🗒️',
-  contributors: ['lucemans']
+description: 'Registrar responsible for all DNSSEC enabled names',
+emoji: '🗒️',
+contributors: ['lucemans', 'gskril']
 };
 
 # DNS Registrar
 
 In [DNS on ENS](/learn/dns) we learned how ENS aims to extend the functionality of the DNS.
-On this page we will explore the implementation of DNSSEC, the DNSRegistrar, and the building blocks for gassless DNSSEC.
+On this page we will explore the implementation of DNSSEC, the DNSRegistrar, and the building blocks for gasless DNSSEC.
 
 <Note>
-    Not all top level domains support DNSSEC, and some might have custom ENS
-    implementations. Please refer to the [TLD List](/dns/tlds) for TLD-specific
-    information.
+  Not all top level domains support DNSSEC, and some might have custom ENS
+  implementations. Please refer to the [TLD List](/dns/tlds) for TLD-specific
+  information.
 </Note>
 
 ## DNSSEC
 
-In the current DNS Registry approach you can [import a DNS name](/learn/dns#importing-a-dns-name).
-This process involves calling one of the `DNSRegistrar`'s `claim`, `proveAndClaim` or `proveAndClaimWithResolver` functions.
-Each of these functions takes in the name you want to register, as well as a proof to verify.
+DNSSEC (Domain Name System Security Extensions) is an added layer of security on top of DNS that allows for cryptographic verification of records. It establishes a chain of trust from the root key (which is signed by ICANN) down to each key.
 
-Under the hood the [DNSSECOracle](https://github.com/ensdomains/ens-contracts/tree/master/contracts/dnssec-oracle) is utilized to verify the proof.
+All ENS-enabled DNS names are required to use DNSSEC, and the [DNSSECOracle](https://github.com/ensdomains/ens-contracts/tree/master/contracts/dnssec-oracle) is responsible for verifying the signatures.
 
-DNSSEC (Domain Name System Security Extensions) establishes a chain of trust from the root key (which is signed by ICANN) down to each key.
-This means that when submitted we can verify that our records have been signed by a key that is trusted for this domain.
+### Claiming a Name Onchain
 
-The DNS Registrar grants ENS names to anyone who can prove ownership, through a DNSSEC proof, of the corresponding domain in DNS.
+Since 2021, it has been possible to [import a DNS name](/learn/dns#importing-a-dns-name) and use that as an ENS name. This process involves enabling DNSSEC, setting a specific TXT record, and submitting a proof to the [DNSRegistrar](https://github.com/ensdomains/ens-contracts/tree/master/contracts/dnsregistrar) smart contract.
 
-### Claiming a name
-
-To claim a name you will need to enable DNSSEC for your domain, as well as set a specific record.
-You can learn more about [how to import a DNS name](/learn/dns#importing-a-dns-name) in the DNS section.
-
-Expect your TXT records to look something like this:
+Expect your `TXT` record to look something like this:
 
 ```
 TXT @ _ens a=&lt;eth-address&gt;
-TXT @ _ens a=0x225f137127d9067788314bc7fcc1f36746a3c3B5
 ```
 
-## Offchain Verification (Gassless)
+You can learn more about [how to import a DNS name](/learn/dns#importing-a-dns-name) in the DNS section, or see how to [programatically complete these steps](#programming-dnssec-proofs).
 
-<Note>
-    This is currently not implemented but might exist in some potential future.
-</Note>
+There is no ENS protocol fee to import a DNS name, but it requires a large amount of gas (up to a few million) to submit the proof onchain. Continue reading to learn how this has been mitigated.
 
-In an ideal future we would like to be able to verify DNSSEC proofs offchain.
-This entails leveraging [EIP-3668](https://eips.ethereum.org/EIPS/eip-3668) to verify the proof on name lookup.
+## Offchain Verification (Gasless)
 
-When you lookup a name (such as `luc.computer`), the contract responsible would revert with CCIP, generate a DNSSEC Proof, return the proof, and through the magic of solidity verify it, and decode records, or defer to the users preferred resolver.
+{/* TODO: insert link here to EP5.1 once the page is created. Nick's draft is on the forum now https://discuss.ens.domains/t/ep5-1-executable-upgrade-dnssec-support/18535 */}
+EP5.1 introduced a new DNSSECOracle and DNSRegistrar which makes it possible to perform DNSSEC verification at query time, enabling truly free usage of DNS names in ENS. We call this "gasless DNSSEC".
 
-This ensures we can still use our preferred resolver and reconfigure on the fly using DNS records.
+It works by enabling [wildcard resolution](/ensip/10) at the DNS TLD level. During the [name resolution process](/resolution), if a name doesn't already exist onchain but has been configured for usage in ENS, the DNSSEC proof will be fetched offchain via [CCIP Read](https://eips.ethereum.org/EIPS/eip-3668) and then verified onchain with the same DNSSECOracle mentioned above.
 
-An example `TXT` record would be:
+To configure a DNS name for usage in ENS, simply add a `TXT` record with the following format:
+
+```
+TXT @ ENS1 &lt;resolver-address&gt;
+```
+
+The `resolver-address` implementation is customizable just like any other ENS resolver. To get started quickly, a special ExtendedDNSResolver has been deployed which allows users to specify an ETH address that the name should resolve to within the same `TXT` record. To use this setup, simply add a record with the following format:
 
 ```
 TXT @ ENS1 &lt;extended-resolver-address&gt; &lt;eth-address&gt;
-TXT @ ENS1 0x0EF1aF80c24B681991d675176D9c07d8C9236B9a 0x225f137127d9067788314bc7fcc1f36746a3c3B5
+TXT @ ENS1 0x238A8F792dFA6033814B18618aD4100654aeef01 0x225f137127d9067788314bc7fcc1f36746a3c3B5
 ```
-
-To test if your DNS name is ready for the gassless future, you can use [Greg's ENS Lookup](https://ens-sepolia.vercel.app/) Utility.
 
 ## Other
 
 ### TLD Ownership
 
 You can lookup the `owner` of any TLD by calling the `Registry.owner(bytes32 node)` function.
-If domains have been imported for this TLD the owner will be the `DNSRegistrar` contract.
-However, if no domains for a TLD have been imported the `owner` might return `0x0`, this will update as soon as the first name is imported for that TLD.
+If at least one domain has been imported for this TLD (via the onchain method), the owner will be either the `DNSRegistrar` or a smart contract controlled by the respective registry operator.
 
+If a TLD has not yet been activated, the `owner` will return `0x0` and it may require one user to import a name onchain to activate the TLD. See the [supported TLD list](/dns/tlds) for more info.
 
 ### Programming DNSSEC Proofs
 
-To help you interact with DNSSEC data and the DNSRegistrar, we provide two libraries.
+To help you interact with DNSSEC data and the DNSRegistrar, we provide a few libraries.
 
 - [DNSProvejs](https://github.com/ensdomains/dnsprovejs) = A library for querying and validating DNSSEC data from DNS
-- [dnssecoraclejs](https://github.com/ensdomains/dnssecoraclejs) = A library for generating proof data for the ENS DNSSEC Oracle.
+- [ENSjs](https://github.com/ensdomains/ensjs-v3) = A library for interacting with ENS smart contracts
 
 #### Retrieving a proof
 
 ```ts
-import { Oracle } from '@ensdomains/dnssecoraclejs'
-import { DNSProver } from '@ensdomains/dnsprovejs'
+import { createPublicClient, http } from 'viem'
+import { mainnet } from 'viem/chains'
+import { addEnsContracts } from '@ensdomains/ensjs'
+import { getDnsImportData } from '@ensdomains/ensjs/dns'
 
-const textDomain = '_ens.matoken.xyz'
-const prover = DNSProver.create("https://cloudflare-dns.com/dns-query")
-const result = await prover.queryWithProof('TXT', textDomain)
+const client = createPublicClient({
+  chain: addEnsContracts(mainnet),
+  transport: http(),
+})
+
+const dnsImportData = await getDnsImportData(client, {
+  name: 'example.com',
+})
 ```
-
-#### Retrieving a DNS text record
-
-```ts
-const result = {
-  answer: SignedSet {
-    records: [{
-      name: '_ens.matoken.xyz',
-      type: 'TXT',
-      ttl: 300,
-      class: 'IN',
-      flush: false,
-      data: [Array]
-    }],
-    signature: {
-      name: '_ens.matoken.xyz',
-      type: 'RRSIG',
-      ttl: 300,
-      class: 'IN',
-      flush: false,
-      data: [Object]
-    }
-  },
-  proofs: [
-    SignedSet { records: [Array], signature: [Object] },
-    SignedSet { records: [Array], signature: [Object] },
-    SignedSet { records: [Array], signature: [Object] },
-    SignedSet { records: [Array], signature: [Object] },
-    SignedSet { records: [Array], signature: [Object] }
-  ]
-}
-
-// Retrieving the text record
-result.answer.records[0].data.toString()
-// 'a=0xa5313060f9fa6b607ac8ca8728a851166c9f612'
-```
-
-`queryWithProof` returns `answer` and `proofs`. `answer` contains the human-readable record of the DNS record and its signing signature (RRSIG). The example above shows that the leaf of the chain (the first returned record) contains the `TXT` record type in `a=$ETHEREUM_ADDRESS` format.
 
 #### Submitting the proof to the DNSRegistrar
 
 ```ts
-import { Oracle } from '@ensdomains/dnssecoraclejs'
-import { abi } from '@ensdomains/contracts/abis/dnsregistrar/DNSRegistrar.json'
-import { Contract } from 'ethers'
+import { createPublicClient, createWalletClient, http, custom } from 'viem'
+import { mainnet } from 'viem/chains'
+import { addEnsContracts } from '@ensdomains/ensjs'
+import { getDnsImportData, importDnsName } from '@ensdomains/ensjs/dns'
 
-// The registrar address needs to be hard-coded
-const registrarAddress = '0x475e527d54b91b0b011DA573C69Ac54B2eC269ea'
-const registrar new Contract(registrarAddress, abi, provider)
-const oracleAddress = await registrar.oracle()
-const oracle = new Oracle(oracleAddress, provider)
-const { data, proof } = oracle.getProofData(result)
+const mainnetWithEns = addEnsContracts(mainnet)
 
-if(data.length === 0) {
-    // This happens if someone has submitted the proof directly to DNSSECOracle, hence only claim a name on the registrar.
-    return registrar.claim(claim.encodedName, proof)
-} else {
-    // This submits proof to DNSSECOracle, then claim a name.
-    return registrar.proveAndClaim(claim.encodedName, data, proof)
-}
+const client = createPublicClient({
+  chain: mainnetWithEns,
+  transport: http(),
+})
+
+const wallet = createWalletClient({
+  chain: mainnetWithEns,
+  transport: custom(window.ethereum),
+})
+
+const dnsImportData = await getDnsImportData(client, {
+  name: 'example.com',
+})
+
+await importDnsName(wallet, {
+  name: 'example.com',
+  dnsImportData,
+})
 ```
 
 ## Other functions
-
 
 ```ts
 // Get the list of suffixes

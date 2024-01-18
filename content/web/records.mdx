@@ -75,10 +75,10 @@ export const MyProfile: FC<{ name: string }> = ({ name }) => {
 // Warning, wagmi does not include a nice "hook" for records yet.
 // We recommend you use ENS Tools or Viem for now.
 
-import { useContractRead } from "wagmi";
+import { useReadContract } from "wagmi";
 
 export const MyProfile: FC<{ name: string }> = ({ name }) => {
-    const {} = useContractRead({
+    const {} = useReadContract({
         address: "0xc0497E381f536Be9ce14B0dD3817cBcAe57d2F62",
         abi: universalResolverABI,
         functionName: "resolve",
