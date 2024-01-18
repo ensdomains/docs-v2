@@ -4,7 +4,7 @@ import { join } from 'node:path';
 import simpleGit from 'simple-git';
 
 const processSlugs = (slug: string) => {
-    return slug.replace('/index', '/');
+    return slug.replace('index', '');
 };
 
 const getGitLastUpdatedTimeStamp = async (slug: string) => {
