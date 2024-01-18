@@ -149,10 +149,6 @@ export const navigation: SectionData[] = [
                         href: '/web/subdomains',
                     },
                     {
-                        title: 'Name Wrapper',
-                        href: '/subnames/wrapper',
-                    },
-                    {
                         title: 'Subgraph',
                         href: '/web/subgraph',
                     },
