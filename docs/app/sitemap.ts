@@ -28,7 +28,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
             const slug = file.replace(/(\/index)?\.mdx$/, '');
             const lastUpdated = await getGitLastUpdatedTimeStamp(file);
 
-            if (mapIgnore.has(slug)) {
+            if (SLUG_IGNORE.has(slug)) {
                 return;
             }
 
