@@ -6,7 +6,7 @@ import simpleGit from 'simple-git';
 const SLUG_IGNORE = new Set(['dissapeared']);
 
 const processSlugs = (slug: string) => {
-    return slug.replace('/index', '/');
+    return slug.replace('index', '');
 };
 
 const getGitLastUpdatedTimeStamp = async (slug: string) => {
