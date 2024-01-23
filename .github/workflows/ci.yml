@@ -31,7 +31,7 @@ jobs:
         uses: ./.github/actions/install
 
       - name: Run typecheck
-        working-directory: ./docs
+        working-directory: ./app
         run: pnpm run typecheck
   eslint:
     name: 👕 Linting
@@ -46,7 +46,7 @@ jobs:
         uses: ./.github/actions/install
 
       - name: Run eslint
-        working-directory: ./docs
+        working-directory: ./app
         run: pnpm run lint
   build:
     name: 🛠️ Build
@@ -61,5 +61,5 @@ jobs:
         uses: ./.github/actions/install
 
       - name: Build
-        working-directory: ./docs
+        working-directory: ./app
         run: pnpm run build

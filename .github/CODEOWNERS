@@ -1,6 +1,6 @@
-content/ @lucemans
+docus/ @lucemans
 .github/ @lucemans
-docs/ @lucemans @svemat01
+app/ @lucemans @svemat01
 
-content/ensip/ @arachnid
-content/ensip/index @lucemans
+docus/ensip/ @arachnid
+docus/ensip/index @lucemans

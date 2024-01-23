@@ -2,7 +2,7 @@
 
 ## 🏠 Use node version
 
-Ensure you are on the right version of NodeJS. To see the active version, check [the .nvmrc file](../docs/.nvmrc).
+Ensure you are on the right version of NodeJS. To see the active version, check [the .nvmrc file](../app/.nvmrc).
 
 ```
 nvm use

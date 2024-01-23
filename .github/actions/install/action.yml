@@ -9,7 +9,7 @@ runs:
       with:
         run_install: false
         standalone: true
-        package_json_file: docs/package.json
+        package_json_file: app/package.json
         version: 8
 
     - name: Setup Node
@@ -17,8 +17,8 @@ runs:
       with:
         node-version: 19
         cache: pnpm
-        cache-dependency-path: 'docs'
+        cache-dependency-path: 'app'
 
     - name: Install dependencies
-      run: cd docs && pnpm install
+      run: cd app && pnpm install
       shell: bash
