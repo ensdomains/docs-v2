@@ -25,7 +25,7 @@ jobs:
         uses: ./.github/actions/install
 
       - name: Build
-        working-directory: ./docs
+        working-directory: ./app
         run: pnpm run build
         env:
           TALLY_API_KEY: ${{ secrets.TALLY_API_KEY }}
@@ -44,21 +44,21 @@ jobs:
           app_id: "192287499052126208"
           server: https://api.edgeserver.io
           token: ${{ secrets.EDGESERVER_TOKEN }}
-          directory: docs/out
+          directory: app/out
 
       - uses: oven-sh/setup-bun@v1
 
       - name: Install dependencies
         run: bun install
-        working-directory: docs/scripts
+        working-directory: app/scripts
         shell: bash
 
       - name: Build search.json
         run: bun run build-search
-        working-directory: docs/scripts
+        working-directory: app/scripts
         shell: bash
 
       - name: Index search.json
         shell: bash
         run: |
-          curl --silent -X POST -H "Content-Type: application/json" -H "Authorization: Bearer ${{secrets.SEARCH_TOKEN}}" -d @docs/out/search.json https://search.v3x.systems/indexes/ens-docs/documents?primaryKey=id
+          curl --silent -X POST -H "Content-Type: application/json" -H "Authorization: Bearer ${{secrets.SEARCH_TOKEN}}" -d @app/out/search.json https://search.v3x.systems/indexes/ens-docs/documents?primaryKey=id
