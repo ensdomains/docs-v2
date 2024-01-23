@@ -1,8 +1,8 @@
 {
     "compilerOptions": {
         "paths": {
-            "@/*": ["./content/src/*"],
-            "#/*": ["./content/local/*"]
+            "@/*": ["./app/src/*"],
+            "#/*": ["./app/local/*"]
         }
     }
 }
