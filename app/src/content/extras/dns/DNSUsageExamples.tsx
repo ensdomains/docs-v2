@@ -1,6 +1,6 @@
 import { FiChevronRight } from 'react-icons/fi';
 
-import { LinkCard } from '../LinkCard';
+import { LinkCard } from '../linkcard/LinkCard';
 
 export const DNSUsageExamples = () => {
     return (
