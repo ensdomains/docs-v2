@@ -61,12 +61,12 @@ export const navigation: SectionData[] = [
                         href: '/bugs',
                         icon: '🪲',
                     },
-                    {
-                        title: 'Changelog',
-                        href: '/changelog',
-                        wip: 5,
-                        icon: '📝',
-                    },
+                    // {
+                    //     title: 'Changelog',
+                    //     href: '/changelog',
+                    //     wip: 5,
+                    //     icon: '📝',
+                    // },
                 ],
             },
         ],
