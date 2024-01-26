@@ -53,7 +53,6 @@ export const navigation: SectionData[] = [
                     {
                         title: 'Terminology',
                         href: '/terminology',
-                        wip: 10,
                         icon: '📓',
                     },
                     {
