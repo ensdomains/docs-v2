@@ -12,7 +12,7 @@ import { remToPx } from '@/lib/remToPx';
 
 import { useInitialValue } from './useInitialValue';
 
-function NavLink({ href, tag, active, isAnchorLink = false, children }) {
+export function NavLink({ href, tag, active, isAnchorLink = false, children }) {
     // To hide the sections of a page, uncomment this line:
     if (isAnchorLink) return <></>;
 
