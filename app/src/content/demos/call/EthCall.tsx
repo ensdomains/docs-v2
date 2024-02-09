@@ -24,11 +24,11 @@ export const EthCall: FC<
 
     return (
         <div className="pt-2">
-            <div className="border-ens-light-border dark:border-ens-dark-border space-y-2 rounded-lg border p-4">
+            <div className="space-y-2 rounded-lg border border-ens-light-border p-4 dark:border-ens-dark-border">
                 <div className="relative">
                     <div
                         className={clsx(
-                            'bg-ens-light-background-primary dark:bg-ens-dark-background-primary absolute -top-4 w-fit -translate-y-1/2 px-2 font-bold',
+                            'absolute -top-4 w-fit -translate-y-1/2 bg-ens-light-background-primary px-2 font-bold dark:bg-ens-dark-background-primary',
                             is_transaction
                                 ? 'text-ens-light-orange-primary dark:text-ens-dark-orange-primary'
                                 : 'text-ens-light-blue-primary dark:text-ens-dark-blue-primary'
@@ -37,10 +37,10 @@ export const EthCall: FC<
                         {is_transaction ? 'Transaction' : 'ETH Call'}
                     </div>
                 </div>
-                <div className="text-ens-light-text-secondary dark:text-ens-dark-text-secondary inline">
+                <div className="inline text-ens-light-text-secondary dark:text-ens-dark-text-secondary">
                     {description}
                 </div>
-                <div className="border-ens-light-border dark:border-ens-dark-border break-all rounded-lg border p-2">
+                <div className="break-all rounded-lg border border-ens-light-border p-2 dark:border-ens-dark-border">
                     {call}
                 </div>
                 {children}

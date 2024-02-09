@@ -24,7 +24,7 @@ export const ConnectModal: FC<{ isOpen: boolean; onClose: () => void }> = ({
                     <div className="flex items-start justify-between">
                         <div className="font-bold">Connected</div>
                         <button
-                            className="hover:border-ens-light-border dark:hover:border-ens-dark-border rounded-full border border-transparent p-1"
+                            className="rounded-full border border-transparent p-1 hover:border-ens-light-border dark:hover:border-ens-dark-border"
                             onClick={onClose}
                         >
                             <FiX />
@@ -55,7 +55,7 @@ export const ConnectModal: FC<{ isOpen: boolean; onClose: () => void }> = ({
                     <div className="flex items-start justify-between">
                         <div className="font-bold">Connect Wallet</div>
                         <button
-                            className="hover:border-ens-light-border dark:hover:border-ens-dark-border rounded-full border border-transparent p-1"
+                            className="rounded-full border border-transparent p-1 hover:border-ens-light-border dark:hover:border-ens-dark-border"
                             onClick={onClose}
                         >
                             <FiX />

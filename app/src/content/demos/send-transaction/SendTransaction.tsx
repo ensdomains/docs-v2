@@ -30,13 +30,13 @@ export const SendTransactionDemo: FC = () => {
             : ensAddress;
 
     return (
-        <div className="text-ens-light-text-primary bg-ens-light-background-primary flex flex-col gap-2">
+        <div className="flex flex-col gap-2 bg-ens-light-background-primary text-ens-light-text-primary">
             <label htmlFor="input" className="text-base font-semibold">
                 Address or ENS Name
             </label>
             <input
                 id="input"
-                className="bg-ens-light-background-primary dark:bg-ens-dark-background-primary border-ens-light-border dark:border-ens-dark-border w-full rounded-md border px-3 py-2"
+                className="w-full rounded-md border border-ens-light-border bg-ens-light-background-primary px-3 py-2 dark:border-ens-dark-border dark:bg-ens-dark-background-primary"
                 placeholder="ens.eth"
                 onChange={(event) => setInput(event.target.value)}
             />

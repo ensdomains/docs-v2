@@ -38,7 +38,7 @@ export const LinkCard = ({
                 </div>
                 {domain && (
                     <div
-                        className="my-auto h-fit w-fit px-2 text-xs"
+                        className="my-auto size-fit px-2 text-xs"
                         style={{ background: fgColor, color: bgColor }}
                     >
                         {domain}

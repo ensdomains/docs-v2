@@ -177,11 +177,11 @@ export function Libraries() {
                                 >
                                     <div className="flex items-center gap-2 px-2 text-lg">
                                         {library.logo ? (
-                                            <div className="flex h-5 w-5 items-center justify-center">
+                                            <div className="flex size-5 items-center justify-center">
                                                 <img
                                                     src={library.logo}
                                                     alt={library.name}
-                                                    className="h-5 w-5 object-contain"
+                                                    className="size-5 object-contain"
                                                 />
                                             </div>
                                         ) : (

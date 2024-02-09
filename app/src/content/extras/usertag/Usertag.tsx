@@ -9,17 +9,17 @@ export const Usertag: FC<{
 }> = ({ name = 'nick.eth', image = '/nick.eth.png', variant = 'full' }) => {
     return (
         <div className="not-prose">
-            <div className="border-ens-light-border dark:border-ens-dark-border flex h-fit items-center gap-1 overflow-hidden !rounded-full border">
+            <div className="flex h-fit items-center gap-1 overflow-hidden !rounded-full border border-ens-light-border dark:border-ens-dark-border">
                 {variant == 'full' && (
-                    <div className="aspect-square h-12 w-12 overflow-hidden rounded-full p-1">
+                    <div className="aspect-square size-12 overflow-hidden rounded-full p-1">
                         <img
                             src={image}
                             alt=""
-                            className="border-ens-light-border dark:border-ens-dark-border rounded-full border"
+                            className="rounded-full border border-ens-light-border dark:border-ens-dark-border"
                         />
                     </div>
                 )}
-                <div className="text-ens-light-blue-primary dark:text-ens-dark-blue-primary px-3 pl-0 font-bold first-of-type:pl-3">
+                <div className="px-3 pl-0 font-bold text-ens-light-blue-primary first-of-type:pl-3 dark:text-ens-dark-blue-primary">
                     {name}
                 </div>
             </div>

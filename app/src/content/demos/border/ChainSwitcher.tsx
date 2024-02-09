@@ -34,7 +34,7 @@ export const ChainSwitcher: FC<{ available?: Set<number> }> = ({
                         chainId: Number.parseInt(event.target.value, 10) as any,
                     });
                 }}
-                className="chainselector bg-ens-light-background-primary dark:bg-ens-dark-background-primary border-ens-light-border dark:border-ens-dark-border h-full rounded-xl px-2"
+                className="chainselector h-full rounded-xl border-ens-light-border bg-ens-light-background-primary px-2 dark:border-ens-dark-border dark:bg-ens-dark-background-primary"
             >
                 {(
                     [

@@ -43,14 +43,14 @@ export const RentPriceCheck: FC<{
             >
                 <div>
                     {rentPrice ? (
-                        <div className="border-ens-light-green-primary bg-ens-light-green-surface text-ens-light-green-primary dark:border-ens-dark-green-primary dark:bg-ens-dark-green-surface flex items-center gap-1 rounded-lg px-3 py-2">
+                        <div className="flex items-center gap-1 rounded-lg border-ens-light-green-primary bg-ens-light-green-surface px-3 py-2 text-ens-light-green-primary dark:border-ens-dark-green-primary dark:bg-ens-dark-green-surface">
                             <FiCheck />
                             Rent Price: (Base:{' '}
                             {rentPrice?.base.toLocaleString()}, Premium:{' '}
                             {rentPrice?.premium.toLocaleString()})
                         </div>
                     ) : (
-                        <div className="border-ens-light-red-primary bg-ens-light-red-surface text-ens-light-red-primary dark:border-ens-dark-red-primary dark:bg-ens-dark-red-surface flex items-center gap-1 rounded-lg px-3 py-2">
+                        <div className="flex items-center gap-1 rounded-lg border-ens-light-red-primary bg-ens-light-red-surface px-3 py-2 text-ens-light-red-primary dark:border-ens-dark-red-primary dark:bg-ens-dark-red-surface">
                             <FiX />
                             Problem
                         </div>

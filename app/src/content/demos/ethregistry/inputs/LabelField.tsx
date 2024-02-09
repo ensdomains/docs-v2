@@ -10,7 +10,7 @@ export const LabelField: FC<{
         <div>
             <label
                 htmlFor={id + 'label'}
-                className="text-ens-light-text-secondary px-2 font-bold"
+                className="px-2 font-bold text-ens-light-text-secondary"
             >
                 Label (name without ".eth"):
             </label>

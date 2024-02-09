@@ -12,7 +12,7 @@ export const DurationField: FC<{
         <div>
             <label
                 htmlFor={id + 'duration'}
-                className="text-ens-light-text-secondary px-2 font-bold"
+                className="px-2 font-bold text-ens-light-text-secondary"
             >
                 Duration (in seconds)
             </label>

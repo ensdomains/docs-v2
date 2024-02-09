@@ -1,5 +1,4 @@
 import { FC, PropsWithChildren } from 'react';
-import { FiX } from 'react-icons/fi';
 import ReactModal from 'react-modal';
 
 export const ConnectModalInner: FC<

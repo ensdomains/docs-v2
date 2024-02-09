@@ -55,7 +55,7 @@ export const MakeCommit: FC<{ commithash: string }> = ({ commithash }) => {
                     </Button>
                 </div>
                 {isError && (
-                    <div className="border-ens-light-red-primary bg-ens-light-red-surface text-ens-light-red-primary dark:border-ens-dark-red-primary dark:bg-ens-dark-red-surface flex items-center gap-1 rounded-lg px-3 py-2">
+                    <div className="flex items-center gap-1 rounded-lg border-ens-light-red-primary bg-ens-light-red-surface px-3 py-2 text-ens-light-red-primary dark:border-ens-dark-red-primary dark:bg-ens-dark-red-surface">
                         <FiX />
                         Problem
                     </div>

@@ -49,7 +49,7 @@ export const ChainDeployments: FC = () => {
                                 (deployment, data) => (
                                     <div
                                         key={deployment.name}
-                                        className="border-b-ens-light-border dark:border-b-ens-dark-border group flex items-center justify-between border-b p-4 last:border-b-0"
+                                        className="group flex items-center justify-between border-b border-b-ens-light-border p-4 last:border-b-0 dark:border-b-ens-dark-border"
                                     >
                                         <div className="h-fit">
                                             <div className="text-base font-bold leading-4">
@@ -115,7 +115,7 @@ export const ChainDeployments: FC = () => {
                                             </div>
                                         </div>
                                         <button
-                                            className="border-ens-light-border dark:border-ens-dark-border bg-ens-light-background-secondary dark:bg-ens-dark-background-secondary truncate rounded-lg border text-xs"
+                                            className="truncate rounded-lg border border-ens-light-border bg-ens-light-background-secondary text-xs dark:border-ens-dark-border dark:bg-ens-dark-background-secondary"
                                             style={{
                                                 fontFamily: 'monospace',
                                             }}
