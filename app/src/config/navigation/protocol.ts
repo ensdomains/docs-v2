@@ -22,8 +22,6 @@ export const navigation: SectionData[] = [
                         title: 'Deployments',
                         href: '/learn/deployments',
                         icon: '📰',
-                        wip: 60,
-                        design_wip: true,
                     },
                     {
                         title: 'Resolution',

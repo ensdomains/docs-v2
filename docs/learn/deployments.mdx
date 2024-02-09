@@ -21,152 +21,146 @@ If you are looking for our legacy contracts please refer to the [changelog secti
 
 ## Active Deployments
 
-<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-
 <ChainDeployments
-    chain="mainnet"
-    deployments={[
+    chains={[
         {
-            name: "Registry",
-            path: "ENSRegistry",
+            name: 'Mainnet',
+            slug: 'mainnet',
+            contracts: [
+                {
+                    name: "Registry",
+                    path: "ENSRegistry",
+                },
+                {
+                    name: "Base Registrar",
+                    path: "BaseRegistrarImplementation",
+                },
+                {
+                    name: "ETH Registrar Controller",
+                    path: "ETHRegistrarController",
+                },
+                {
+                    name: "DNS Registrar",
+                    path: "DNSRegistrar",
+                },
+                {
+                    name: "Reverse Registrar",
+                    path: "ReverseRegistrar",
+                },
+                {
+                    name: "Name Wrapper",
+                    path: "NameWrapper",
+                },
+                {
+                    name: "Public Resolver",
+                    path: "PublicResolver",
+                },
+            ]
         },
         {
-            name: "Base Registrar",
-            path: "BaseRegistrarImplementation",
+            name: 'Goerli',
+            slug: 'goerli',
+            contracts: [
+                {
+                    name: "Registry",
+                    path: "ENSRegistry",
+                },
+                {
+                    name: "Base Registrar",
+                    path: "BaseRegistrarImplementation",
+                },
+                {
+                    name: "ETH Registrar Controller",
+                    path: "ETHRegistrarController",
+                },
+                {
+                    name: "DNS Registrar",
+                    path: "DNSRegistrar",
+                },
+                {
+                    name: "Reverse Registrar",
+                    path: "ReverseRegistrar",
+                },
+                {
+                    name: "Name Wrapper",
+                    path: "NameWrapper",
+                },
+                {
+                    name: "Public Resolver",
+                    path: "PublicResolver",
+                },
+            ]
         },
         {
-            name: "ETH Registrar Controller",
-            path: "ETHRegistrarController",
+            name: 'Sepolia',
+            slug: 'sepolia',
+            contracts: [
+                {
+                    name: "Registry",
+                    path: "ENSRegistry",
+                },
+                {
+                    name: "Base Registrar",
+                    path: "BaseRegistrarImplementation",
+                },
+                {
+                    name: "ETH Registrar Controller",
+                    path: "ETHRegistrarController",
+                },
+                {
+                    name: "DNS Registrar",
+                    path: "DNSRegistrar",
+                },
+                {
+                    name: "Reverse Registrar",
+                    path: "ReverseRegistrar",
+                },
+                {
+                    name: "Name Wrapper",
+                    path: "NameWrapper",
+                },
+                {
+                    name: "Public Resolver",
+                    path: "PublicResolver",
+                },
+            ]
         },
         {
-            name: "DNS Registrar",
-            path: "DNSRegistrar",
-        },
-        {
-            name: "Reverse Registrar",
-            path: "ReverseRegistrar",
-        },
-        {
-            name: "Name Wrapper",
-            path: "NameWrapper",
-        },
-        {
-            name: "Public Resolver",
-            path: "PublicResolver",
-        },
+            name: 'Holesky',
+            slug: 'holesky',
+            contracts: [
+                {
+                    name: "Registry",
+                    path: "ENSRegistry",
+                },
+                {
+                    name: "Base Registrar",
+                    path: "BaseRegistrarImplementation",
+                },
+                {
+                    name: "ETH Registrar Controller",
+                    path: "ETHRegistrarController",
+                },
+                {
+                    name: "DNS Registrar",
+                    path: "DNSRegistrar",
+                },
+                {
+                    name: "Reverse Registrar",
+                    path: "ReverseRegistrar",
+                },
+                {
+                    name: "Name Wrapper",
+                    path: "NameWrapper",
+                },
+                {
+                    name: "Public Resolver",
+                    path: "PublicResolver",
+                },
+            ]
+        }
     ]}
 />
-
-<ChainDeployments
-    chain="goerli"
-    deployments={[
-        {
-            name: "Registry",
-            path: "ENSRegistry",
-        },
-        {
-            name: "Base Registrar",
-            path: "BaseRegistrarImplementation",
-        },
-        {
-            name: "ETH Registrar Controller",
-            path: "ETHRegistrarController",
-        },
-        {
-            name: "DNS Registrar",
-            path: "DNSRegistrar",
-        },
-        {
-            name: "Reverse Registrar",
-            path: "ReverseRegistrar",
-        },
-        {
-            name: "Name Wrapper",
-            path: "NameWrapper",
-        },
-        {
-            name: "Public Resolver",
-            path: "PublicResolver",
-        },
-    ]}
-/>
-
-<ChainDeployments
-    chain="sepolia"
-    deployments={[
-        {
-            name: "Registry",
-            path: "ENSRegistry",
-        },
-        {
-            name: "Base Registrar",
-            path: "BaseRegistrarImplementation",
-        },
-        {
-            name: "ETH Registrar Controller",
-            path: "ETHRegistrarController",
-        },
-        {
-            name: "DNS Registrar",
-            path: "DNSRegistrar",
-        },
-        {
-            name: "Reverse Registrar",
-            path: "ReverseRegistrar",
-        },
-        {
-            name: "Name Wrapper",
-            path: "NameWrapper",
-        },
-        {
-            name: "Public Resolver",
-            path: "PublicResolver",
-        },
-    ]}
-/>
-
-<ChainDeployments
-    chain="holesky"
-    deployments={[
-        {
-            name: "Registry",
-            branch: "141eda59e777319a73073b4f3654b4f5ece9d0bc",
-            path: "ENSRegistry",
-        },
-        {
-            name: "Base Registrar",
-            branch: "141eda59e777319a73073b4f3654b4f5ece9d0bc",
-            path: "BaseRegistrarImplementation",
-        },
-        {
-            name: "ETH Registrar Controller",
-            branch: "141eda59e777319a73073b4f3654b4f5ece9d0bc",
-            path: "ETHRegistrarController",
-        },
-        {
-            name: "DNS Registrar",
-            branch: "141eda59e777319a73073b4f3654b4f5ece9d0bc",
-            path: "DNSRegistrar",
-        },
-        {
-            name: "Reverse Registrar",
-            branch: "141eda59e777319a73073b4f3654b4f5ece9d0bc",
-            path: "ReverseRegistrar",
-        },
-        {
-            name: "Name Wrapper",
-            branch: "141eda59e777319a73073b4f3654b4f5ece9d0bc",
-            path: "NameWrapper",
-        },
-        {
-            name: "Public Resolver",
-            branch: "141eda59e777319a73073b4f3654b4f5ece9d0bc",
-            path: "PublicResolver",
-        },
-    ]}
-/>
-
-</div>
 
 ## But what about multichain? {{ tag: "Multichain", title: "Multichain", id: "multichain" }}
 

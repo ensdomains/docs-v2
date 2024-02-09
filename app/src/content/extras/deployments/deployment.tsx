@@ -2,7 +2,12 @@ import Link from 'next/link';
 import { FC } from 'react';
 import { FiExternalLink } from 'react-icons/fi';
 
-import { CopyButton } from './copy';
+const ETHERSCAN_URI = {
+    mainnet: 'etherscan.io/address',
+    goerli: 'ropsten.etherscan.io/address',
+    sepolia: 'sepolia.etherscan.io/address',
+    holesky: 'holesky.etherscan.io/address',
+};
 
 type githubDeploymentReturn = {
     address: string;
@@ -33,54 +38,98 @@ export const getGithubDeployment = async (
 };
 
 export const ChainDeployments: FC<{
-    chain: string;
-    deployments: DeploymentData[];
-}> = ({ chain, deployments }) => {
+    chains: {
+        name: string;
+        slug: string;
+        contracts: DeploymentData[];
+    }[];
+}> = ({ chains }) => {
     return (
-        <div className="card no-margin p-2">
-            <div className="flex items-center gap-2 p-1 pt-0">
-                <div className="h-4 w-4 rounded-full border bg-white"></div>
-                <div>{chain}</div>
-            </div>
+        <div className="card1 no-margin">
             <div className="">
-                {deployments.map(
-                    withDeploymentData(chain, (deployment, data) => (
-                        <div key={deployment.name} className="group">
-                            <div className="flex justify-between gap-2 px-1 leading-4">
-                                <div className="text-xs font-bold leading-4">
-                                    {deployment.name}
-                                </div>
-                                <div className="hidden group-hover:block">
-                                    {deployment.path && (
-                                        <Link
-                                            href={`https://github.com/ensdomains/ens-contracts/blob/${
-                                                deployment.branch || 'staging'
-                                            }/deployments/${chain}/${
-                                                deployment.path
-                                            }.json`}
-                                            target="_blank"
-                                            className="inline-flex items-center text-xs font-bold leading-4"
+                {chains.map((chain, index) => (
+                    <div
+                        key={chain.slug}
+                        // TODO: Undo temporarily hiding all other chains then the first
+                        className={index == 0 ? '' : 'hidden'}
+                    >
+                        {chain.contracts.map(
+                            withDeploymentData(
+                                chain.slug,
+                                (deployment, data) => (
+                                    <div
+                                        key={deployment.name}
+                                        className="border-b-ens-light-border dark:border-b-ens-dark-border group flex items-center justify-between border-b p-4 last:border-b-0"
+                                    >
+                                        <div className="h-fit">
+                                            <div className="text-base font-bold leading-4">
+                                                {deployment.name}
+                                            </div>
+                                            <div className="space-x-2 text-sm">
+                                                {deployment.path && (
+                                                    <Link
+                                                        href={`https://github.com/ensdomains/ens-contracts/blob/${
+                                                            deployment.branch ||
+                                                            'staging'
+                                                        }/deployments/${
+                                                            chain.slug
+                                                        }/${
+                                                            deployment.path
+                                                        }.json`}
+                                                        target="_blank"
+                                                        className="inline-flex items-center text-xs font-bold leading-4"
+                                                    >
+                                                        <FiExternalLink />
+                                                        ABI
+                                                    </Link>
+                                                )}
+                                                {/* {deployment.path && (
+                                                    <Link
+                                                        href={`https://github.com/ensdomains/ens-contracts/blob/${
+                                                            deployment.branch ||
+                                                            'staging'
+                                                        }/deployments/${
+                                                            chain.slug
+                                                        }/${
+                                                            deployment.path
+                                                        }.json`}
+                                                        target="_blank"
+                                                        className="inline-flex items-center text-xs font-bold leading-4"
+                                                    >
+                                                        <FiExternalLink />
+                                                        Source
+                                                    </Link>
+                                                )} */}
+                                                {data?.address && (
+                                                    <Link
+                                                        href={`https://${
+                                                            ETHERSCAN_URI[
+                                                                chain.slug
+                                                            ]
+                                                        }/${data?.address}`}
+                                                        target="_blank"
+                                                        className="inline-flex items-center text-xs font-bold leading-4"
+                                                    >
+                                                        <FiExternalLink />
+                                                        Etherscan
+                                                    </Link>
+                                                )}
+                                            </div>
+                                        </div>
+                                        <button
+                                            className="border-ens-light-border dark:border-ens-dark-border bg-ens-light-background-secondary dark:bg-ens-dark-background-secondary truncate rounded-lg border text-xs"
+                                            style={{
+                                                fontFamily: 'monospace',
+                                            }}
                                         >
-                                            ABI <FiExternalLink />
-                                        </Link>
-                                    )}
-                                </div>
-                            </div>
-                            <div className="flex justify-between gap-2 px-1 leading-4">
-                                <div className="w-fit truncate text-xs">
-                                    {deployment.address || data.address}
-                                </div>
-                                <div className="hidden group-hover:block">
-                                    <CopyButton
-                                        text={
-                                            deployment.address || data.address
-                                        }
-                                    />
-                                </div>
-                            </div>
-                        </div>
-                    ))
-                )}
+                                            {deployment.address || data.address}
+                                        </button>
+                                    </div>
+                                )
+                            )
+                        )}
+                    </div>
+                ))}
             </div>
         </div>
     );
