@@ -2,19 +2,15 @@ import Link from 'next/link';
 import { FC } from 'react';
 import { FiExternalLink } from 'react-icons/fi';
 
-const ETHERSCAN_URI = {
-    mainnet: 'etherscan.io/address',
-    goerli: 'ropsten.etherscan.io/address',
-    sepolia: 'sepolia.etherscan.io/address',
-    holesky: 'holesky.etherscan.io/address',
-};
+import { BLOCKCHAIN_EXPLORERS } from '#/data/blockchain_explorers';
+import { DEPLOYMENTS } from '#/data/deployments';
 
 type githubDeploymentReturn = {
     address: string;
     abi: [];
 };
 
-type DeploymentData = {
+export type DeploymentData = {
     name: string;
     address?: string;
     path?: string;
@@ -37,17 +33,11 @@ export const getGithubDeployment = async (
     return (await response.json()) as githubDeploymentReturn;
 };
 
-export const ChainDeployments: FC<{
-    chains: {
-        name: string;
-        slug: string;
-        contracts: DeploymentData[];
-    }[];
-}> = ({ chains }) => {
+export const ChainDeployments: FC = () => {
     return (
         <div className="card1 no-margin">
             <div className="">
-                {chains.map((chain, index) => (
+                {DEPLOYMENTS.map((chain, index) => (
                     <div
                         key={chain.slug}
                         // TODO: Undo temporarily hiding all other chains then the first
@@ -100,20 +90,28 @@ export const ChainDeployments: FC<{
                                                         Source
                                                     </Link>
                                                 )} */}
-                                                {data?.address && (
-                                                    <Link
-                                                        href={`https://${
-                                                            ETHERSCAN_URI[
-                                                                chain.slug
-                                                            ]
-                                                        }/${data?.address}`}
-                                                        target="_blank"
-                                                        className="inline-flex items-center text-xs font-bold leading-4"
-                                                    >
-                                                        <FiExternalLink />
-                                                        Etherscan
-                                                    </Link>
-                                                )}
+                                                {data?.address &&
+                                                    BLOCKCHAIN_EXPLORERS[
+                                                        chain.id
+                                                    ][0].name && (
+                                                        <Link
+                                                            href={BLOCKCHAIN_EXPLORERS[
+                                                                chain.id
+                                                            ][0].contract_url.replace(
+                                                                '%ADDRESS%',
+                                                                data?.address
+                                                            )}
+                                                            target="_blank"
+                                                            className="inline-flex items-center text-xs font-bold leading-4"
+                                                        >
+                                                            <FiExternalLink />
+                                                            {
+                                                                BLOCKCHAIN_EXPLORERS[
+                                                                    chain.id
+                                                                ][0].name
+                                                            }
+                                                        </Link>
+                                                    )}
                                             </div>
                                         </div>
                                         <button
