@@ -16,6 +16,7 @@ export const useMobileNavigationStore = create<{
     navStack: number[];
     pushNav: (index: number) => void;
     popNav: () => void;
+    setNav: (navStack: number[]) => void;
 }>((set) => ({
     isOpen: false,
     open: () => set({ isOpen: true }),
@@ -26,4 +27,5 @@ export const useMobileNavigationStore = create<{
     pushNav: (index) =>
         set((state) => ({ navStack: [...state.navStack, index] })),
     popNav: () => set((state) => ({ navStack: state.navStack.slice(0, -1) })),
+    setNav: (navStack) => set({ navStack }),
 }));

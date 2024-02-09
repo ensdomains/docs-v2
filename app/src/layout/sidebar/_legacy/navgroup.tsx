@@ -12,7 +12,16 @@ import { remToPx } from '@/lib/remToPx';
 
 import { useInitialValue } from './useInitialValue';
 
-export function NavLink({ href, tag, active, isAnchorLink = false, children }) {
+export function NavLink({
+    href,
+    tag,
+    active,
+    isAnchorLink = false,
+    children,
+    // eslint-disable-next-line unicorn/no-useless-undefined
+    onClick = undefined,
+    className = '',
+}) {
     // To hide the sections of a page, uncomment this line:
     if (isAnchorLink) return <></>;
 
@@ -25,8 +34,10 @@ export function NavLink({ href, tag, active, isAnchorLink = false, children }) {
                 isAnchorLink ? 'pl-8' : 'pl-4',
                 active
                     ? 'bg-ens-light-blue-surface text-ens-light-text-primary dark:bg-ens-dark-blue-surface dark:text-ens-dark-text-primary'
-                    : 'text-ens-light-text-primary hover:bg-ens-light-background-secondary dark:text-ens-dark-text-primary dark:hover:bg-ens-dark-background-secondary'
+                    : 'text-ens-light-text-primary hover:bg-ens-light-background-secondary dark:text-ens-dark-text-primary dark:hover:bg-ens-dark-background-secondary',
+                className
             )}
+            onClick={onClick}
         >
             <span className="flex items-center gap-1 truncate leading-5">
                 {children}

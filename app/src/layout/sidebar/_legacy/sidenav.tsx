@@ -3,11 +3,13 @@
 import { usePathname } from 'next/navigation';
 
 import { navigation } from '@/config/navigation';
+import { useIsInsideMobileNavigation } from '@/lib/mobile';
 
 import { NavigationGroup } from './navgroup';
 
 export const Navigation = (_properties) => {
     const pathname = usePathname();
+    const isInsideMobileNavigation = useIsInsideMobileNavigation();
 
     // const isDAO = pathname.match(/\/dao/);
 
@@ -42,11 +44,16 @@ export const Navigation = (_properties) => {
                 </ul> */}
                 {/* {activeSection?.href == section.href && ( */}
                 <ul className="mb-32 px-3">
+                    {!!activeSection && isInsideMobileNavigation && (
+                        <li className="text-ens-light-text-primary dark:text-ens-dark-text-primary mb-2 text-sm font-medium">
+                            {activeSection.name}
+                        </li>
+                    )}
                     {activeSection?.links.map((group) => (
                         <NavigationGroup
                             key={group.title}
                             group={group}
-                            className="border-b border-b-ens-light-border py-2 last:border-b-0 dark:border-b-ens-dark-border"
+                            className="border-b-ens-light-border dark:border-b-ens-dark-border border-b py-2 last:border-b-0"
                         />
                     ))}
                 </ul>
