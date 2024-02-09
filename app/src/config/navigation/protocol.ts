@@ -83,7 +83,6 @@ export const navigation: SectionData[] = [
                         title: 'Getting Started',
                         href: '/web',
                         icon: '👋',
-                        design_wip: true,
                     },
                 ],
             },
@@ -95,14 +94,11 @@ export const navigation: SectionData[] = [
                         title: 'Quickstart',
                         href: '/web/quickstart',
                         icon: '⚡',
-                        wip: 90,
                     },
                     {
                         title: 'Tools and Libraries',
                         href: '/web/libraries',
                         icon: '🛠️',
-                        wip: 70,
-                        design_wip: true,
                     },
                     {
                         title: 'Address Lookup',
@@ -124,8 +120,6 @@ export const navigation: SectionData[] = [
                         title: 'Multichain',
                         href: '/web/multichain',
                         icon: '⛓️',
-                        wip: 70,
-                        design_wip: true,
                     },
                     {
                         title: 'List Names',
@@ -151,22 +145,22 @@ export const navigation: SectionData[] = [
                         title: 'Subgraph',
                         href: '/web/subgraph',
                     },
-                    {
-                        title: 'Sign In With Ethereum (SIWE)',
-                        href: '/web/siwe',
-                        wip: 80,
-                        icon: '✍️',
-                    },
+                    // {
+                    //     title: 'Sign In With Ethereum (SIWE)',
+                    //     href: '/web/siwe',
+                    //     wip: 80,
+                    //     icon: '✍️',
+                    // },
                 ],
             },
             {
                 title: 'Design',
                 icon: '🖼️',
                 links: [
-                    {
-                        title: 'Guidelines',
-                        href: '/web/design',
-                    },
+                    // {
+                    //     title: 'Guidelines',
+                    //     href: '/web/design',
+                    // },
                     {
                         title: 'Thorin',
                         href: 'https://thorin.ens.domains/',
@@ -195,7 +189,6 @@ export const navigation: SectionData[] = [
                         title: 'Welcome',
                         href: '/contracts',
                         icon: '👋',
-                        design_wip: true,
                     },
                 ],
             },
@@ -269,7 +262,6 @@ export const navigation: SectionData[] = [
                     {
                         title: 'ETH Registrar',
                         href: '/registry/eth',
-                        wip: 75,
                         icon: '🗒️',
                     },
                     {
@@ -290,7 +282,6 @@ export const navigation: SectionData[] = [
                     {
                         title: 'Reverse Registrar',
                         href: '/registry/reverse',
-                        wip: 80,
                         icon: '🗒️',
                     },
                     // {

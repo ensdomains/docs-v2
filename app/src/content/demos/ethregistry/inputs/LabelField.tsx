@@ -4,15 +4,23 @@ export const LabelField: FC<{
     label: string;
     setLabel: (_label: string) => void;
 }> = ({ label, setLabel }) => {
+    const id = 'label'; // TODO:
+
     return (
         <div>
-            <p>Label (name without ".eth"):</p>
+            <label
+                htmlFor={id + 'label'}
+                className="text-ens-light-text-secondary px-2 font-bold"
+            >
+                Label (name without ".eth"):
+            </label>
             <div className="flex items-center gap-2">
                 <input
                     value={label}
                     onChange={(event) => setLabel(event.target.value)}
-                    className="input max-w-sm"
+                    className="input"
                     placeholder="test123"
+                    name="label"
                 />
                 <div>.eth</div>
             </div>

@@ -9,6 +9,14 @@ import { FiPaperclip } from 'react-icons/fi';
 import { ClipboardIcon } from '@/components/icons/ClipboardIcon';
 
 const getCopiedLabel = (copyCount) => {
+    // if (copyCount > 200) {
+    //     return 'Buy a new mouse!';
+    // }
+
+    if (copyCount > 200) {
+        return 'Yes, its copied!';
+    }
+
     if (copyCount > 120) {
         return 'Copied!';
     }
