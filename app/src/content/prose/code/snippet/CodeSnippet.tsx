@@ -93,7 +93,7 @@ export const CodePanel: FC<PropsWithChildren<CodePanelProperties>> = ({
 
     return (
         <div
-            className="hidable-code group"
+            className="hidable-code not-prose group"
             data-code-variant={variant ?? title ?? language}
             data-code-group={identifier}
         >

@@ -127,7 +127,6 @@ export const Layout: FC<{
                             </div>
                         </div>
                     )}
-                    ConnectModal
                 </div>
             </div>
         </SectionProvider>

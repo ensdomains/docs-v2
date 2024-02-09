@@ -11,19 +11,21 @@ export const EmbedLink: FC<{
     return (
         <Link
             href={href}
-            className="card1 not-prose text-ens-light-text-primary dark:text-ens-dark-text-primary hover:bg-ens-light-background-secondary/20 hover:dark:bg-ens-dark-background-secondary/20 flex items-center gap-1.5 p-6 no-underline outline-blue-500 transition-all hover:outline-2"
+            className="card1 text-ens-light-text-primary dark:text-ens-dark-text-primary hover:bg-ens-light-background-secondary/20 hover:dark:bg-ens-dark-background-secondary/20 flex items-center gap-1.5 p-6 no-underline outline-blue-500 transition-all hover:outline-2"
         >
-            <span className="flex w-full flex-col">
-                <span className="font-bold">{title}</span>
-                <span className="font-normal">{description}</span>
-            </span>
-
-            {tag && (
-                <span className="bg-ens-light-yellow-surface text-ens-light-yellow-active dark:bg-ens-dark-yellow-surface dark:text-ens-dark-yellow-active ml-2 rounded-full px-2 text-xs">
-                    {tag}
+            <div className="not-prose text-ens-light-text-primary dark:text-ens-dark-text-primary hover:bg-ens-light-background-secondary/20 hover:dark:bg-ens-dark-background-secondary/20 flex w-full items-center gap-1.5 no-underline transition-all">
+                <span className="flex w-full flex-col">
+                    <span className="font-bold">{title}</span>
+                    <span className="font-normal">{description}</span>
                 </span>
-            )}
-            <FiChevronRight className="text-2xl" />
+
+                {tag && (
+                    <span className="bg-ens-light-yellow-surface text-ens-light-yellow-active dark:bg-ens-dark-yellow-surface dark:text-ens-dark-yellow-active ml-2 rounded-full px-2 text-xs">
+                        {tag}
+                    </span>
+                )}
+                <FiChevronRight className="text-2xl" />
+            </div>
         </Link>
     );
 };

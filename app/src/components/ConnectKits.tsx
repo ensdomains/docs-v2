@@ -140,8 +140,8 @@ export const kits: Kit[] = [
 
 export const ConnectKits = () => {
     return (
-        <div className="not-prose">
-            <div className="xl:max-w-none">
+        <div className="">
+            <div className="not-prose xl:max-w-none">
                 <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
                     {kits.map((library) => (
                         <div

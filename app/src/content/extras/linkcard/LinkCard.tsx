@@ -22,7 +22,7 @@ export const LinkCard = ({
     return (
         <a
             href={link}
-            className="card !m-0 flex w-full flex-col p-2 px-4 pb-4 hover:outline focus:outline focus:outline-4"
+            className="card not-prose !m-0 flex w-full flex-col p-2 px-4 pb-4 hover:outline focus:outline focus:outline-4"
             style={{
                 borderColor: bgColor,
                 outlineColor: fgColor,
