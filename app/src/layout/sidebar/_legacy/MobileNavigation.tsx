@@ -53,7 +53,7 @@ export const MobileNavigation = () => {
                             leaveFrom="opacity-100"
                             leaveTo="opacity-0"
                         >
-                            <div className="fixed inset-0 top-14 bg-zinc-400/20 backdrop-blur-sm dark:bg-black/40" />
+                            <div className="fixed inset-0 top-16 bg-zinc-400/20 backdrop-blur-sm dark:bg-black/40" />
                         </Transition.Child>
 
                         <Dialog.Panel>
@@ -80,7 +80,7 @@ export const MobileNavigation = () => {
                             >
                                 <motion.div
                                     layoutScroll
-                                    className="ring-zinc-900/7.5 fixed bottom-0 left-0 top-14 z-50 w-full overflow-y-auto bg-white pb-8 shadow-lg shadow-zinc-900/10 ring-1 dark:bg-zinc-900 dark:ring-zinc-800 min-[416px]:max-w-sm sm:pl-6"
+                                    className="border-zinc-900/7.5 fixed bottom-0 left-0 top-16 z-50 w-full overflow-y-auto bg-white pb-8 shadow-lg shadow-zinc-900/10 border dark:bg-zinc-900 dark:ring-zinc-800 min-[416px]:max-w-sm sm:pl-6"
                                 >
                                     <ActualNavigation />
                                 </motion.div>
