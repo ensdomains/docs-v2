@@ -19,12 +19,26 @@ export const ConnectModal: FC<{ isOpen: boolean; onClose: () => void }> = ({
 
     return (
         <ConnectModalInner isOpen={isOpen} onClose={onClose}>
+            {status === 'connecting' && (
+                <div className="card1 w-full space-y-2 p-4">
+                    <div className="flex items-start justify-between">
+                        <div className="font-bold">Connecting</div>
+                        <button
+                            className="hover:border-ens-light-border dark:hover:border-ens-dark-border rounded-full border border-transparent p-1"
+                            onClick={onClose}
+                        >
+                            <FiX />
+                        </button>
+                    </div>
+                    <div>TODO: Loading spinner here</div>
+                </div>
+            )}
             {status === 'connected' && (
                 <div className="card1 w-full space-y-2 p-4">
                     <div className="flex items-start justify-between">
                         <div className="font-bold">Connected</div>
                         <button
-                            className="rounded-full border border-transparent p-1 hover:border-ens-light-border dark:hover:border-ens-dark-border"
+                            className="hover:border-ens-light-border dark:hover:border-ens-dark-border rounded-full border border-transparent p-1"
                             onClick={onClose}
                         >
                             <FiX />
@@ -55,7 +69,7 @@ export const ConnectModal: FC<{ isOpen: boolean; onClose: () => void }> = ({
                     <div className="flex items-start justify-between">
                         <div className="font-bold">Connect Wallet</div>
                         <button
-                            className="rounded-full border border-transparent p-1 hover:border-ens-light-border dark:hover:border-ens-dark-border"
+                            className="hover:border-ens-light-border dark:hover:border-ens-dark-border rounded-full border border-transparent p-1"
                             onClick={onClose}
                         >
                             <FiX />

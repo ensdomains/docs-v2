@@ -150,8 +150,8 @@ export const ensLibraries: Language[] = [
 
 export function Libraries() {
     return (
-        <div className="not-prose mt-4">
-            <div className="grid gap-x-4 sm:grid-cols-2 xl:grid-cols-3">
+        <div className="mt-4">
+            <div className="not-prose grid gap-x-4 sm:grid-cols-2 xl:grid-cols-3">
                 {ensLibraries.map((language) => (
                     <div
                         className="h-fit space-y-1"
