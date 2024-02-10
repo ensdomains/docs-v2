@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import Link from 'next/link';
 import { FiExternalLink } from 'react-icons/fi';
-import { createPublicClient, http, MulticallReturnType, namehash } from 'viem';
+import { createPublicClient, http, namehash } from 'viem';
 import { mainnet } from 'viem/chains';
 
 import { SmallCopy } from '@/components/SmallCopy';
