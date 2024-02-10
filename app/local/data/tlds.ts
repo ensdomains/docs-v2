@@ -1,5 +1,3 @@
-// export const TLDs = ['eth', 'com', 'box'];
-
 const SHOW_ALL = false;
 
 export const TLDs = !(process.env.NODE_ENV == 'production' || SHOW_ALL)
