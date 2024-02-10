@@ -14,7 +14,7 @@ export const ThemeSwitcher = () => {
                 setTheme(resolvedTheme === 'dark' ? 'light' : 'dark');
             }}
         >
-            <div className="bg-ens-light-background-secondary dark:bg-ens-dark-background-secondary relative flex gap-2 rounded-xl p-1 text-sm">
+            <div className="relative flex gap-2 rounded-xl bg-ens-light-background-secondary p-1 text-sm dark:bg-ens-dark-background-secondary">
                 <div
                     className={clsx(
                         'absolute inset-0 h-full transition-all duration-500'
@@ -22,7 +22,7 @@ export const ThemeSwitcher = () => {
                 >
                     <div
                         className={clsx(
-                            'bg-ens-light-blue-primary absolute aspect-square h-full rounded-full transition-all duration-300'
+                            'absolute aspect-square h-full rounded-full bg-ens-light-blue-primary transition-all duration-300'
                         )}
                         style={{
                             // @ts-ignore

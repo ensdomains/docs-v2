@@ -5,7 +5,7 @@ import { Button } from '@/components/Button';
 
 export const OwnerField: FC<{
     owner: string;
-    setOwner: (owner: string) => void;
+    setOwner: (_owner: string) => void;
 }> = ({ owner, setOwner }) => {
     const { address } = useAccount();
 
@@ -16,7 +16,7 @@ export const OwnerField: FC<{
                 <input
                     value={owner}
                     onChange={(event) => setOwner(event.target.value)}
-                    className="input max-w-sm"
+                    className="input"
                     placeholder="0x225f137127d9067788314bc7fcc1f36746a3c3B5"
                 />
                 {address && (

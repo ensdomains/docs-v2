@@ -1,6 +1,6 @@
 'use client';
 import { createContext, useContext } from 'react';
-import create from 'zustand';
+import { create } from 'zustand';
 
 export const IsInsideMobileNavigationContext = createContext(false);
 

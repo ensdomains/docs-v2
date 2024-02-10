@@ -43,6 +43,8 @@ EP5.1 introduced a new DNSSECOracle and DNSRegistrar which makes it possible to 
 
 It works by enabling [wildcard resolution](/ensip/10) at the DNS TLD level. During the [name resolution process](/resolution), if a name doesn't already exist onchain but has been configured for usage in ENS, the DNSSEC proof will be fetched offchain via [CCIP Read](https://eips.ethereum.org/EIPS/eip-3668) and then verified onchain with the same DNSSECOracle mentioned above.
 
+### Import a DNS name gaslessly {{ id: 'gasless-import' }}
+
 To configure a DNS name for usage in ENS, simply add a `TXT` record with the following format:
 
 ```

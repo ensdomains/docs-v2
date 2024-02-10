@@ -67,10 +67,10 @@
 }
 
 .card1 {
-    @apply rounded-lg bg-ens-light-background-primary dark:bg-ens-dark-background-primary border border-ens-light-border dark:border-ens-dark-border;
+    @apply rounded-2xl bg-ens-light-background-primary dark:bg-ens-dark-background-primary border border-ens-light-border dark:border-ens-dark-border;
 }
 .card2 {
-    @apply rounded-lg bg-ens-light-background-secondary dark:bg-ens-dark-background-secondary border border-ens-light-border dark:border-ens-dark-border;
+    @apply rounded-2xl bg-ens-light-background-secondary dark:bg-ens-dark-background-secondary border border-ens-light-border dark:border-ens-dark-border;
 }
 
 .card:not(.no-margin) {
@@ -299,6 +299,15 @@ tbody tr:last-child td {
     @apply hover:bg-ens-light-blue-light dark:hover:bg-ens-dark-blue-light;
     @apply active:bg-ens-light-blue-bright dark:active:bg-ens-dark-blue-bright; /* */
     @apply focus:ring focus:ring-offset-2 focus:ring-ens-light-blue-bright dark:focus:ring-ens-dark-blue-bright focus:outline-none; /* */
+    @apply rounded-lg py-2.5 px-5;
+}
+
+.btn-red-primary {
+    @apply bg-ens-light-red-primary dark:bg-ens-dark-red-primary;
+    @apply text-ens-light-text-accent dark:text-ens-dark-text-accent;
+    @apply hover:bg-ens-light-red-bright dark:hover:bg-ens-dark-red-bright hover:text-ens-light-text-accent hover:dark:text-ens-dark-text-accent;
+    @apply active:bg-ens-light-red-bright dark:active:bg-ens-dark-red-bright; /* */
+    @apply focus:ring focus:ring-offset-2 focus:ring-ens-light-red-bright dark:focus:ring-ens-dark-red-bright focus:outline-none; /* */
     @apply rounded-lg py-2.5 px-5;
 }
 

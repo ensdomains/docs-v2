@@ -1,11 +1,11 @@
 {/** @type {import('@/lib/mdxPageProps').MdxMetaProps} */}
 export const meta = {
-    description: 'A technical overview of all the terminology used in the ENS documentation.',
-    emoji: '📓',
-    contributors: [
-        'lucemans',
-        'serenae-fansubs'
-    ]
+description: 'A technical overview of all the terminology used in the ENS documentation.',
+emoji: '📓',
+contributors: [
+'lucemans',
+'serenae-fansubs'
+]
 };
 
 # Terminology
@@ -118,7 +118,6 @@ This refers to a resolver that supports [ENSIP-10](/ensip/10). This scheme allow
 
 This is a standard resolver contract implementation written by ENS Labs. It supports all record types and anyone can use it. This is the default resolver used when registering a new name via the official manager app.
 
-
 ## Offchain
 
 This term is typically used with respect to the Ethereum Mainnet blockchain. If data is not posted to the chain via an actual Ethereum Mainnet transaction, then it is "offchain". ENS names can also be offchain. For example names can use a special resolver to resolve records for subnames that don't exist on-chain in the Registry. This is also typically done with [CCIP-read](#ccip-read).
@@ -131,15 +130,14 @@ It allows for an Ethereum call to defer to an [offchain gateway](/resolvers/ccip
 With respect to ENS, this is typically used for offchain subnames that don't exist in the core Registry.
 
 <EmbedLink
-    title="Offchain Resolution"
-    href="/learn/ccip#offchain-resolution"
-    description="Read more about offchain resolution and CCIP Read here"
+  title="Offchain Resolution"
+  href="/learn/ccip#offchain-resolution"
+  description="Read more about offchain resolution and CCIP Read here"
 />
 
 ## Primary Name
 
 The ENS name that you want a particular ETH account to be associated with. When set, it will be displayed instead of your 0x address on integrating websites/apps. This is also often referred to as the "reverse record".
-
 
 ### Reverse Node
 

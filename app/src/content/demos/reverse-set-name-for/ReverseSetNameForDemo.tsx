@@ -6,8 +6,6 @@ import { useAccount } from 'wagmi';
 
 import { Button } from '@/components/Button';
 
-import { ChainField } from '../ethregistry/inputs/ChainField';
-
 export const ReverseSetNameForDemo = () => {
     const { address: account, isConnected } = useAccount();
 
@@ -19,8 +17,7 @@ export const ReverseSetNameForDemo = () => {
     const ownableOwner = undefined;
 
     return (
-        <div className="space-y-4">
-            <ChainField available={new Set([5, 1])} />
+        <div className="space-y-4 p-4">
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                 <div className="space-y-4">
                     <input
