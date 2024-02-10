@@ -29,7 +29,7 @@ export const ConnectModalInner: FC<
                 content: {
                     width: '100%',
                     // Search Menu Width
-                    maxWidth: '320px',
+                    maxWidth: '370px',
                     height: 'auto',
                     marginLeft: 'auto',
                     marginRight: 'auto',
