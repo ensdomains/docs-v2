@@ -105,16 +105,19 @@ export const TLDList = async () => {
         chunks.push(TLDs.slice(index, index + 100));
     }
 
-    const results: [string[], MulticallReturnType][] = [];
+    const results: [string[], any][] = [];
 
     for (const chunk of chunks) {
         const result = await client.multicall({
-            contracts: chunk.map((tld) => ({
-                ...contract,
-                args: [namehash(tld)],
-                functionName: 'owner',
-            })),
-        });
+            contracts: chunk.map(
+                (tld) =>
+                    ({
+                        ...contract,
+                        args: [namehash(tld)],
+                        functionName: 'owner',
+                    } as any)
+            ),
+        } as any);
 
         results.push([chunk, result]);
     }
