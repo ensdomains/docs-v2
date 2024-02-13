@@ -4,6 +4,7 @@ import { goerli, mainnet, sepolia } from 'viem/chains';
 import { DemoBorder } from './border/Border';
 import { ETHRegistryDemo } from './ethregistry/ETHRegistryDemo';
 import { ETHRegistryRenewDemo } from './ethregistryrenew/ETHRegistryRenewDemo';
+import { ListNamesDemo } from './listnames/ListNamesDemo';
 import { NameLookupDemo } from './namelookup/NameLookup';
 import { ResolverTestDemo } from './resolvertest';
 import { ReverseSetNameForDemo } from './reverse-set-name-for/ReverseSetNameForDemo';
@@ -48,6 +49,12 @@ const demos = {
         wallet: true,
         chains: new Set([mainnet.id, goerli.id]),
         component: ReverseSetNameForDemo,
+    },
+    listnamesdemo: {
+        title: 'List Names',
+        wallet: true,
+        chains: new Set([mainnet.id, goerli.id]),
+        component: ListNamesDemo,
     },
 };
 

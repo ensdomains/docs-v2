@@ -370,3 +370,7 @@ label.label {
 .card1.card-red {
     @apply rounded-2xl bg-ens-light-red-surface dark:bg-ens-dark-red-surface border border-ens-light-red-primary dark:border-ens-dark-red-primary text-ens-light-red-primary dark:text-ens-dark-red-primary;
 }
+
+.card1::scrollbar {
+    @apply rounded-tr-xl overflow-hidden;
+}

@@ -113,6 +113,9 @@ dependencies:
   schema-dts:
     specifier: ^1.1.2
     version: 1.1.2(typescript@5.3.3)
+  seedrandom:
+    specifier: ^3.0.5
+    version: 3.0.5
   shiki:
     specifier: ^0.11.1
     version: 0.11.1
@@ -160,6 +163,9 @@ devDependencies:
   '@types/react-dom':
     specifier: ^18.2.19
     version: 18.2.19
+  '@types/seedrandom':
+    specifier: ^3.0.8
+    version: 3.0.8
   '@typescript-eslint/parser':
     specifier: ^6.21.0
     version: 6.21.0(eslint@8.56.0)(typescript@5.3.3)
@@ -3912,6 +3918,10 @@ packages:
     dependencies:
       '@types/node': 20.11.17
     dev: false
+
+  /@types/seedrandom@3.0.8:
+    resolution: {integrity: sha512-TY1eezMU2zH2ozQoAFAQFOPpvP15g+ZgSfTZt31AUUH/Rxtnz3H+A/Sv1Snw2/amp//omibc+AEkTaA8KUeOLQ==}
+    dev: true
 
   /@types/semver@7.5.6:
     resolution: {integrity: sha512-dn1l8LaMea/IjDoHNd9J52uBbInB796CDffS6VdIxvqYCPSG0V0DzHp76GpaWnlhg88uYyPbXCDIowa86ybd5A==}
@@ -12586,6 +12596,10 @@ packages:
 
   /secure-json-parse@2.7.0:
     resolution: {integrity: sha512-6aU+Rwsezw7VR8/nyvKTx8QpWH9FrcYiXXlqC4z5d5XQBDRqtbfsRjnwGyqbi3gddNtWHuEk9OANUotL26qKUw==}
+    dev: false
+
+  /seedrandom@3.0.5:
+    resolution: {integrity: sha512-8OwmbklUNzwezjGInmZ+2clQmExQPvomqjL7LFqOYqtmuxRgQYqOD3mHaU+MvZn5FLUeVxVfQjwLZW/n/JFuqg==}
     dev: false
 
   /semver@5.7.2:
