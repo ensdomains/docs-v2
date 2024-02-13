@@ -203,7 +203,6 @@ export const navigation: SectionData[] = [
                     {
                         title: 'Name Processing',
                         href: '/resolution/names',
-                        wip: true,
                         icon: '⚙️',
                     },
                 ],
