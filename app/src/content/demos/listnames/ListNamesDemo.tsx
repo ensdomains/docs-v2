@@ -68,7 +68,7 @@ const Demo = () => {
     const { address, chainId } = useAccount();
     const [targetAddress, setAddress] = useState(address as string);
     const { data, isLoading } = useSWR(
-        [targetAddress.toLowerCase(), chainId],
+        [targetAddress?.toLowerCase(), chainId],
         fetcher
     );
 
