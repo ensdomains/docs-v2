@@ -9,13 +9,8 @@ export const meta = {
 
 # Naming Contracts
 
-<Note>
-    For most regular wallet accounts, you can just use the ENS Manager App to set the [Primary Name](https://support.ens.domains/core/records/primary-name). Even if your address is technically a contract account, you may still be able to use the app to do this, if the contract allows arbitrary transactions (e.g. [Gnosis Safe](https://safe.global/)).
-    <br/>
-    See here for a how-to guide for the Manager App: [Set a Primary Name](https://support.ens.domains/howto/set-primary-name)
-    <br/>
-    Otherwise, see below for additional methods.
-</Note>
+For most regular wallets you can set your primary name from within the [Manager App](https://ens.domains).
+However also smart contracts can have names, and even better they can have primary names.
 
 ```
 governance.uniswap.eth
@@ -26,7 +21,7 @@ There are several ways of doing this, depending on if you are actively developin
 
 ## New Contracts
 
-If you are developing a new contract, and you want to be able to easily set the ENS Primary Name for it:
+If you are developing a new contract, and you want to be able to easily set the ENS Primary Name for it.
 
 ### ReverseClaimer.sol
 
@@ -40,13 +35,12 @@ contract MyContract is ReverseClaimer {
 }
 ```
 
-When you deploy your contract, it will automatically claim the reverse node for that contract address.
+When you deploy your contract it will automatically claim the reverse node for that contract address.
 
 ### Ownable (OpenZeppelin) {{ id: 'ownable' }}
 
-You can also choose to have your smart contract implement [Ownable](https://docs.openzeppelin.com/contracts/5.x/api/access#Ownable) from OpenZeppelin.
-
-Then you will be able to set the primary name after the contract is deployed, as long as you are the owner. 
+You can can also choose to have your smart-contract implement [Ownable](https://docs.openzeppelin.com/contracts/5.x/api/access#Ownable) from OpenZeppelin.
+The ReverseRegistrar supports the Ownable interface and will let the `Owner` set a Primary name.
 
 ### Manually
 
@@ -68,87 +62,23 @@ contract ReverseClaimer {
 }
 ```
 
+You can read more about setting a primary name for a contract in on the [support page](https://support.ens.domains/en/articles/7902626-set-primary-name-for-contract).
+
 ## Existing Contracts
 
-If your contract is already deployed, you might still be able to set a name for it.
-If your contract supports the [Ownable](https://docs.openzeppelin.com/contracts/5.x/api/access#Ownable) interface from OpenZeppelin, [see below](#using-set-name-for-addr)!
+If your contract is already deployed you might still be able to set a name for it.
+If your contract supports the [Ownable](https://docs.openzeppelin.com/contracts/5.x/api/access#Ownable) interface from OpenZeppelin, you can use the tool above to set a name for it.
 
 ### Safe, Multisig & DAO
 
 If your contract is a Safe, Multisig, DAO, or has a function that can send arbitrary ETH calls, you can use the [ReverseRegistrar](/registry/reverse) contract directly to set a name for it.
-You might even be able to use the [ENS Manager App](https://ens.app/) inside of your safe app to set a primary name. For manual contract instructions, [see below](#using-set-name)!
+You might even be able to use the [ENS Manager App](https://ens.app/) inside of your safe app to set a primary name.
 
 ## Setting a name for your contract
 
-How exactly to set the primary name will differ depending on what type of contract it is, and whether you already own the reverse node or not.
+Once you have granted yourself ownership of the contract's reverse node you can set the name for the contract.
+You can do so by hitting the `setNameForAddr` function on the [Reverse Registrar](/registry/reverse).
 
-### I am able to execute arbitrary transactions through my contract {{ title: "Using setName", id: "using-set-name" }}
+From your contract you can execute `setName` function on the [Reverse Registrar](/registry/reverse)
 
-This may be true if your contract is a Safe, Multisig, DAO, or has a function that can send arbitrary calls.
-
-In this case, just hit the `setName` function on the [Reverse Registrar](/registry/reverse):
-
-```solidity
-ReverseRegistrar.setName(string name)
-
-// For example
-setName(
-    "name.eth" // The primary name to set
-)
-```
-
-### I own the contract via OpenZeppelin Ownable {{ title: "Using setNameForAddr", id: "using-set-name-for-addr" }}
-
-In this case, hit the `setNameForAddr` function on the [Reverse Registrar](/registry/reverse):
-
-```solidity
-ReverseRegistrar.setNameForAddr(address addr, address owner, address resolver, string name)
-
-// For example
-setNameForAddr(
-    0x1234..., // The address to set the primary name for
-    0x5678..., // The address that should own the reverse node
-    0x231b0Ee14048e9dCcD1d247744d114a4EB5E8E63, // The resolver to set for the reverse node
-    "name.eth" // The primary name to set
-)
-```
-
-### I own the reverse node for the contract address {{ title: "Own reverse node", id: "own-reverse-node" }}
-
-In this case, you may need to submit up to two transactions:
-
-First, set a resolver for your reverse node (if one isn't already set) by calling `setResolver` on the [Registry](/registry/ens):
-
-```solidity
-ENS.setResolver(bytes32 node, address resolver)
-
-// For example
-setResolver(
-    0x5835..., // The namehash of the reverse node
-    0x231b0Ee14048e9dCcD1d247744d114a4EB5E8E63, // The resolver to set for the reverse node
-)
-```
-
-Second, set the primary name by calling `setName` on the resolver contract you just set:
-
-```solidity
-NameResolver.setName(bytes32 node, string newName)
-
-// For example
-setName(
-    0x5835..., // The namehash of the reverse node
-    "name.eth" // The primary name to set
-)
-```
-
-If you're not sure how to derive the namehash of your reverse node, see [here](/resolution/names#reverse-nodes)!
-
-### Set Primary Tool
-
-This is a [small helper website](https://tools.ens.domains/setprimary) you can use to easily set the primary name for your contract:
-
-<iframe className="w-full rounded-lg shadow-sm" src="https://tools.ens.domains/setprimary#embedded" title="Set Primary Tool" frameBorder="0" allow="clipboard-write" allowFullScreen style={{height: '32rem'}}></iframe>
-
-{/*
 <LiveDemo id="reversesetnamefordemo" />
-*/}
