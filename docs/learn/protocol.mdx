@@ -66,6 +66,25 @@ Allowing you to take your `.com`, `.xyz`, or `.art` (and more) into the ENS ecos
 Because of the hierarchal nature of ENS, anyone who owns a domain at any level can take control of resolution.
 Users can create subdomains manually, or take matters into their own hands and write their own resolution logic.
 
+<div className="card1 p-4">
+  <div className="flex justify-center">
+    alice.eth
+  </div>
+  <div className="flex justify-center">
+    /|\
+  </div>
+  <div className="flex gap-4 justify-center">
+  {
+    ['vault', 'hot', 'cold'].map((subname, i) => (
+      <div>
+      {subname}
+      <span className="opacity-50">.alice.eth</span>
+      </div>
+    ))
+  }
+  </div>
+</div>
+
 For instance, if Alice owns 'alice.eth', she can create 'pay.alice.eth' and configure it as she wishes.
 Or, use a [Custom Resolver](/resolvers/quickstart), and programmatically issue subdomains, for example in an App, Community, or DAO.
 
