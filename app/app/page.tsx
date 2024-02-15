@@ -18,6 +18,9 @@ export const generateMetadata = async (_x: any, parent: ResolvingMetadata) => {
         },
         parentMetadata,
         {
+            twitter: {
+                card: 'summary_large_image',
+            },
             openGraph: {
                 type: 'article',
                 images: '/opengraph.png',
