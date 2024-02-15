@@ -1,10 +1,13 @@
 'use client';
 
+import { hello } from '@ens-tools/thorin-core';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ThemeProvider } from 'next-themes';
 import { goerli, mainnet, sepolia } from 'viem/chains';
 import { createConfig, http, WagmiProvider } from 'wagmi';
 import { injected } from 'wagmi/connectors';
+
+hello();
 
 const config = createConfig({
     chains: [mainnet, goerli, sepolia],
