@@ -10,7 +10,6 @@ import { forwardRef } from 'react';
 import { FaGithub } from 'react-icons/fa';
 
 import { ClientOnly } from '@/ClientOnly';
-import { cx } from '@/lib/cx';
 import {
     useIsInsideMobileNavigation,
     useMobileNavigationStore,
@@ -73,23 +72,14 @@ export const Header = forwardRef<HTMLDivElement, { className?: string }>(
                                             ? '/ens/dao/ens_logo_dao.svg'
                                             : '/ens/primary/ens_logo_primary.svg'
                                     }
-                                    className="ml-1 h-8 fill-ens-dao-400"
+                                    className="fill-ens-dao-400 ml-1 h-8"
                                     alt="ENS Logo"
                                     height={'32'}
                                 />
                             </Link>
                         </div>
 
-                        <div
-                            className={cx(
-                                'rounded-md px-2 text-xs font-bold',
-                                isDao
-                                    ? 'bg-ens-light-purple-surface dark:bg-ens-dark-purple-surface text-ens-light-purple-primary dark:text-ens-dark-purple-primary'
-                                    : 'bg-ens-light-blue-surface dark:bg-ens-dark-blue-surface text-ens-light-blue-primary dark:text-ens-dark-blue-primary'
-                            )}
-                        >
-                            Docs
-                        </div>
+                        <thorin-tag>Docs</thorin-tag>
                     </div>
                     <div
                         className={clsx(
@@ -109,6 +99,7 @@ export const Header = forwardRef<HTMLDivElement, { className?: string }>(
                             <Link
                                 href="https://github.com/ensdomains/docs-v2"
                                 target="_blank"
+                                aria-label="GitHub Repository"
                             >
                                 <FaGithub
                                     size={'1.4rem'}
@@ -123,3 +114,11 @@ export const Header = forwardRef<HTMLDivElement, { className?: string }>(
         );
     }
 );
+
+declare global {
+    namespace JSX {
+        interface IntrinsicElements {
+            'thorin-tag': any;
+        }
+    }
+}
