@@ -1,8 +1,9 @@
 'use client';
 
+import '@ens-tools/thorin-core';
+
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ThemeProvider } from 'next-themes';
-import { useEffect } from 'react';
 import { goerli, mainnet, sepolia } from 'viem/chains';
 import { createConfig, http, WagmiProvider } from 'wagmi';
 import { injected } from 'wagmi/connectors';
@@ -26,10 +27,6 @@ declare module 'wagmi' {
 const queryClient = new QueryClient();
 
 export const Theme = ({ children }) => {
-    useEffect(() => {
-        import('@ens-tools/thorin-core').finally(console.log);
-    }, []);
-
     return (
         <ThemeProvider attribute="class">
             <QueryClientProvider client={queryClient}>

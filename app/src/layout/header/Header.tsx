@@ -114,11 +114,3 @@ export const Header = forwardRef<HTMLDivElement, { className?: string }>(
         );
     }
 );
-
-declare global {
-    namespace JSX {
-        interface IntrinsicElements {
-            'thorin-tag': any;
-        }
-    }
-}

@@ -45,6 +45,7 @@ export const Button: FC<
         className?: string;
         arrow?: 'left' | 'right';
         disabled?: boolean;
+        width: 'full' | string;
     } & (HrefProperties | ButtonProperties) &
         PropsWithChildren
 > = ({
@@ -74,17 +75,45 @@ export const Button: FC<
     );
 
     return (
-        <Component
+        // @ts-ignore
+        <thorin-button
             href={properties['href']}
-            target={properties['target']}
             onClick={properties['onClick']}
-            className={className}
-            disabled={disabled}
-            {...properties}
+            target={properties['target']}
+            width={properties['width']}
+            variant={newVariant}
         >
             {arrow === 'left' && arrowIcon}
             {children}
             {arrow === 'right' && arrowIcon}
-        </Component>
+            {/* @ts-ignore */}
+        </thorin-button>
     );
+
+    // const arrowIcon = (
+    //     <ArrowIcon
+    //         // @ts-ignore
+    //         className={cx(
+    //             'mt-0.5 h-5 w-5',
+    //             variant === 'text' && 'relative top-px',
+    //             arrow === 'left' && '-ml-1 rotate-180',
+    //             arrow === 'right' && '-mr-1'
+    //         )}
+    //     />
+    // );
+
+    // return (
+    //     <Component
+    //         href={properties['href']}
+    //         target={properties['target']}
+    //         onClick={properties['onClick']}
+    //         className={className}
+    //         disabled={disabled}
+    //         {...properties}
+    //     >
+    //         {arrow === 'left' && arrowIcon}
+    //         {children}
+    //         {arrow === 'right' && arrowIcon}
+    //     </Component>
+    // );
 };

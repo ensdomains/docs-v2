@@ -17,7 +17,7 @@ export const meta = {
         <p>Learn about building applications with decentralized identity.</p>
 
         <div className="flex gap-3 flex-col sm:flex-row">
-            <Button href="/learn/protocol">Open Docs</Button>
+            <thorin-button href="/learn/protocol">Open Docs</thorin-button>
             <thorin-button variant="subtle" href="/web/quickstart">Integrate into your app!</thorin-button>
         </div>
     </div>
@@ -162,7 +162,7 @@ export const meta = {
         )}
       </div>
       <div className="w-full border-t border-ens-light-border dark:border-ens-dark-border px-3 pt-2 pb-3 overflow-ellipsis">
-        <h5 className="font-bold">{entry.title}</h5>
+        <span className="font-bold">{entry.title}</span>
         <p className="tag tag-blue">{entry.location}</p>
         {/*<p className="h-16 overflow-ellipsis text-xs">{entry.description}</p>*/}
       </div>
