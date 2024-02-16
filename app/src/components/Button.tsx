@@ -45,7 +45,7 @@ export const Button: FC<
         className?: string;
         arrow?: 'left' | 'right';
         disabled?: boolean;
-        width: 'full' | string;
+        width?: 'full' | string;
     } & (HrefProperties | ButtonProperties) &
         PropsWithChildren
 > = ({
