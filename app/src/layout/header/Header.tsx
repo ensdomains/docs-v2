@@ -79,6 +79,7 @@ export const Header = forwardRef<HTMLDivElement, { className?: string }>(
                             </Link>
                         </div>
 
+                        {/* @ts-ignore */}
                         <thorin-tag>Docs</thorin-tag>
                     </div>
                     <div
