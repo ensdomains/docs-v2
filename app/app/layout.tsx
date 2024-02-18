@@ -26,7 +26,7 @@ export default function RootLayout(properties) {
                 ></script>
                 <script
                     defer
-                    data-domain="blog.ens.domains"
+                    data-domain="docs.ens.domains"
                     src="https://ens.v3x.report/js/script.js"
                 ></script>
             </body>
