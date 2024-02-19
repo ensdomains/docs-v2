@@ -1,0 +1,13 @@
+{
+    "config": {
+        "routing": {
+            "trailing_slash": "never"
+        },
+        "redirects": [
+            {
+                "pattern": "^/.*$",
+                "destination": "https://docs.ens.domains"
+            }
+        ]
+    }
+}

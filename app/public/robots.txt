@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://alpha-docs.ens.domains/sitemap.xml
