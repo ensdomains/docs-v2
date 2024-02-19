@@ -11,7 +11,9 @@ export const OwnerField: FC<{
 
     return (
         <div>
-            <p>Owner (address):</p>
+            <label className="label" htmlFor="owner">
+                Owner (address):
+            </label>
             <div className="flex items-center gap-2">
                 <input
                     value={owner}

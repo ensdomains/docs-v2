@@ -41,7 +41,7 @@ export const Layout: FC<{
 
     return (
         <SectionProvider sections={mdxProperties.sections}>
-            <div className="h-full max-h-screen" id="app">
+            <div className="h-full" id="app">
                 <RouteCheck slug={programmedSlug} />
                 <Header />
                 <Sidebar />

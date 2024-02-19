@@ -1,25 +1,50 @@
-{/* * @type {import('@/lib/mdxPageProps').MdxMetaProps} */}
+{/** @type {import('@/lib/mdxPageProps').MdxMetaProps} */}
 export const meta = {
     description: '',
     emoji: '📰',
     contributors: [
-    'lucemans'
-]
+        'lucemans'
+    ]
 };
 
 # Deployments
 
-<Note>
+{/* <Note>
     This page contains information that is only relevant to developers who would
     like to interact with the contract manually. Most libraries will handle this
     for you.
-</Note>
+</Note> */}
 
-Though ENS is a platform-agnostic (read more [here](/learn/multichain)), the ENS Protocol smart-contracts are deployed on Ethereum mainnet, as well as the most popular test-networks, such as goerli, ropsten, rinkeby, and kovan.
+ENS is multichain (read more [here](/learn/multichain)) and can be used in any application.
+In addition to being able to query many address formats and record types, data can be stored [practically anywhere](/learn/ccip).
+However, resolution needs to start somewhere, so the entrypoint for resolution is Ethereum Mainnet, alongside the most popular testnets.
+
+<div className="card1 p-4 flex justify-center gap-2">
+    <div>
+    Ethereum Mainnet
+    </div>
+    <div>
+    ->
+    </div>
+    <div>
+        <div>
+            Optimism
+        </div>
+        <div>
+            Arbitrum
+        </div>
+        <div>
+            Offchain
+        </div>
+        <div>
+            ...
+        </div>
+    </div>
+</div>
+
+## Deployments
+
 Listed below you will find a list of latest deployments of registries, resolvers, and more.
-If you are looking for our legacy contracts please refer to the [changelog section](/changelog).
-
-## Active Deployments
 
 <ChainDeployments />
 

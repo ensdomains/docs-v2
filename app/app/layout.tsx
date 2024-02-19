@@ -1,5 +1,6 @@
 import './globals.css';
 import 'focus-visible';
+import '@ens-tools/thorin-core/style.css';
 
 import { Theme } from './theme';
 
@@ -22,6 +23,11 @@ export default function RootLayout(properties) {
                     defer
                     data-domain="alpha-docs.ens.domains"
                     src="https://plausible.io/js/script.js"
+                ></script>
+                <script
+                    defer
+                    data-domain="docs.ens.domains"
+                    src="https://ens.v3x.report/js/script.js"
                 ></script>
             </body>
         </html>
