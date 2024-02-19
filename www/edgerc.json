@@ -5,8 +5,8 @@
         },
         "redirects": [
             {
-                "pattern": "^/.*$",
-                "destination": "https://docs.ens.domains"
+                "pattern": "^/(.*)$",
+                "destination": "https://docs.ens.domains/$1"
             }
         ]
     }
