@@ -151,6 +151,7 @@ export const ResponsiveSearch = () => {
                                 key={_index}
                                 onClick={() => {
                                     setTag(item);
+                                    setSelect(-1);
                                 }}
                             >
                                 {item}
